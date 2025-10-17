@@ -1,5 +1,4 @@
-﻿using HRManagementSystem.Data.ApplicationDbContext;
-using HRManagementSystem.Data.Models;
+﻿using HRManagementSystem.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -7,9 +6,9 @@ namespace HRManagementSystem.Data.Repositories
 {
     public class GeneralRepository<T> : IGeneralRepository<T> where T : BaseModel
     {
-        protected readonly Context _context;
+        protected readonly ApplicationDbContext.ApplicationDbContext _context;
         private readonly DbSet<T> _dbSet;
-        public GeneralRepository(Context context)
+        public GeneralRepository(ApplicationDbContext.ApplicationDbContext context)
         {
             _context = context;
             _dbSet = _context.Set<T>();

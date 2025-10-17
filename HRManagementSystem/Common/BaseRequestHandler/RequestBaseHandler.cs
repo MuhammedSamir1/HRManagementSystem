@@ -3,7 +3,7 @@ using HRManagementSystem.Data.Models;
 using HRManagementSystem.Data.Repositories;
 using MediatR;
 
-namespace HRManagementSystem.Common.Views.BaseRequestHandler
+namespace HRManagementSystem.Common.BaseRequestHandler
 {
     public abstract class RequestHandlerBase<TRequest, TResponse, TEntity> :
         IRequestHandler<TRequest, TResponse> where TRequest : IRequest<TResponse> where TEntity : BaseModel

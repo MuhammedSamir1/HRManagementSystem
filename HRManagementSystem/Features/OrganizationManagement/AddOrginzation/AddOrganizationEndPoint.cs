@@ -1,19 +1,19 @@
-﻿using HRManagementSystem.Common.Views.BaseEndpoints;
-using HRManagementSystem.Common.Views.BaseEndPoints;
+﻿using HRManagementSystem.Common.BaseEndPoints;
 using HRManagementSystem.Common.Views.Response;
 using HRManagementSystem.Features.Common.AddressManagement;
 using HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands;
-using HRManagementSystem.Features.OrganizationManagement.Mapping;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation
 {
-    public class AddOrganizationEndPoint : BaseEndPoint<AddOrganizationViewModel, ResponseViewModel<bool>>
+    public class AddOrganizationEndPoint : BaseEndPoint<AddOrganizationRequestViewModel, ResponseViewModel<bool>>
     {
-        public AddOrganizationEndPoint(EndPointBaseParameters<AddOrganizationViewModel> parameters) : base(parameters)
-        { }
+        public AddOrganizationEndPoint(EndPointBaseParameters<AddOrganizationRequestViewModel> parameters) : base(parameters)
+        { 
+        }
+
         [HttpPost]
-        public async Task<ResponseViewModel<bool>> AddOrganization([FromQuery] AddOrganizationViewModel model, CancellationToken ct)
+        public async Task<ResponseViewModel<bool>> AddOrganization([FromQuery] AddOrganizationRequestViewModel model, CancellationToken ct)
         {
             var validationResult = ValidateRequest(model);
             if (!validationResult.isSuccess)

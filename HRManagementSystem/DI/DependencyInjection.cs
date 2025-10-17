@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
-using HRManagementSystem.Common.Views.BaseEndPoints;
-using HRManagementSystem.Common.Views.BaseRequestHandler;
+using HRManagementSystem.Common.BaseEndPoints;
+using HRManagementSystem.Common.BaseRequestHandler;
 using HRManagementSystem.Data.ApplicationDbContext;
 using HRManagementSystem.Data.Middlewares;
 using HRManagementSystem.Data.Repositories;
@@ -14,7 +14,7 @@ namespace HRManagementSystem.DI
     {
         public static IServiceCollection AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<Context>(opt =>
+            services.AddDbContext<ApplicationDbContext>(opt =>
                opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
                .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
                .LogTo(log => Debug.WriteLine(log), LogLevel.Information)

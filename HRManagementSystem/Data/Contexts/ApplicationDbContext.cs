@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Data.ApplicationDbContext;
-public class Context : DbContext
+public class ApplicationDbContext : DbContext
 {
-    public Context(DbContextOptions<Context> options)
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
      : base(options)
     {
     }

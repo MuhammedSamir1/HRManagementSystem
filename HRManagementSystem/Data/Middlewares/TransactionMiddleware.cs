@@ -1,15 +1,14 @@
-﻿using HRManagementSystem.Data.ApplicationDbContext;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Data;
 
 namespace HRManagementSystem.Data.Middlewares
 {
     public class TransactionMiddleware : IMiddleware
     {
-        private readonly Context _context;
+        private readonly ApplicationDbContext.ApplicationDbContext _context;
         private readonly ILogger<TransactionMiddleware> _logger;
 
-        public TransactionMiddleware(Context context, ILogger<TransactionMiddleware> logger)
+        public TransactionMiddleware(ApplicationDbContext.ApplicationDbContext context, ILogger<TransactionMiddleware> logger)
         {
             _context = context;
             _logger = logger;

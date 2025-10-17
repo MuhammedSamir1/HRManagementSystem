@@ -2,7 +2,7 @@
 using HRManagementSystem.Data.Models;
 using HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands;
 
-namespace HRManagementSystem.Features.OrganizationManagement.Mapping
+namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation.Mapping
 {
     public class AddOrganizationProfile : Profile
     {
@@ -23,7 +23,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.Mapping
                o => o.MapFrom(s => s.AddressDto))
            .ForMember(d => d.AddressId, o => o.Ignore());
 
-            CreateMap<AddOrganizationCommand, AddOrganizationViewModel>().ReverseMap();
+            CreateMap<AddOrganizationCommand, AddOrganizationRequestViewModel>().ReverseMap();
         }
     }
 }
