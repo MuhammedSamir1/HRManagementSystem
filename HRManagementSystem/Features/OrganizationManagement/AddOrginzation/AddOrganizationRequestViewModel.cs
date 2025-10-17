@@ -1,12 +1,12 @@
 ﻿using FluentValidation;
 using HRManagementSystem.Features.Common.AddressManagement;
 
-namespace HRManagementSystem.Features.OrganizationManagement.Mapping
+namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation
 {
-    public record AddOrganizationViewModel(string Name, string? LegalName, string? Industry,
+    public record AddOrganizationRequestViewModel(string Name, string? LegalName, string? Industry,
         string? DefaultTimezone, string? DefaultCurrency, AddAddressViewModel AddressVM);
 
-    public class AddOrginizationResponseViewModel : AbstractValidator<AddOrganizationViewModel>
+    public class AddOrginizationResponseViewModel : AbstractValidator<AddOrganizationRequestViewModel>
     {
         public AddOrginizationResponseViewModel()
         {

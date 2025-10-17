@@ -3,7 +3,7 @@ using HRManagementSystem.Data.Models;
 using HRManagementSystem.Data.Repositories;
 using MediatR;
 
-namespace HRManagementSystem.Common.Views.BaseRequestHandler
+namespace HRManagementSystem.Common.BaseRequestHandler
 {
     public class RequestHandlerBaseParameters<TEntity> where TEntity : BaseModel
     {
@@ -12,8 +12,9 @@ namespace HRManagementSystem.Common.Views.BaseRequestHandler
         private readonly IMapper _mapper;
 
         public IMediator Mediator => _mediator;
-        public IMapper Mapper => _mapper;
         public IGeneralRepository<TEntity> GeneralRepository => _generalRepo;
+        public IMapper Mapper => _mapper;
+
         public RequestHandlerBaseParameters(IMediator mediator, IGeneralRepository<TEntity> generalRepository, IMapper mapper)
         {
             _mediator = mediator;

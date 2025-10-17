@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.BaseEndPoints;
 using HRManagementSystem.Common.Views.Response;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HRManagementSystem.Common.Views.BaseEndpoints
+namespace HRManagementSystem.Common.BaseEndPoints
 {
     [ApiController]
     [Route("[controller]/[action]")]
@@ -15,6 +14,7 @@ namespace HRManagementSystem.Common.Views.BaseEndpoints
         protected readonly IMediator _mediator;
         protected readonly IValidator<TRequest> _validator;
         protected readonly IMapper _mapper;
+
         public BaseEndPoint(EndPointBaseParameters<TRequest> parameters)
         {
             _mediator = parameters.Mediator;
