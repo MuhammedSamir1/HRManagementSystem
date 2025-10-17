@@ -1,14 +1,14 @@
 ﻿using FluentValidation;
 using HRManagementSystem.Features.Common.AddressManagement;
 
-namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation
+namespace HRManagementSystem.Features.OrganizationManagement
 {
-    public record AddOrganizationRequestViewModel(string Name, string? LegalName, string? Industry,
+    public record AddOrganizationViewModel(string Name, string? LegalName, string? Industry,
         string? DefaultTimezone, string? DefaultCurrency, AddAddressViewModel AddressVM);
 
-    public class AddOrginizationResponseViewModel : AbstractValidator<AddOrganizationRequestViewModel>
+    public class AddOrginizationViewModelValidator : AbstractValidator<AddOrganizationViewModel>
     {
-        public AddOrginizationResponseViewModel()
+        public AddOrginizationViewModelValidator()
         {
             RuleFor(x => x.Name)
                 .NotEmpty().WithMessage("Name is required.")
@@ -45,7 +45,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation
 
             RuleFor(x => x.AddressVM)
                 .NotNull().WithMessage("Address is required.")
-                .SetValidator(new AddAddressResponseViewModelValidator());
+                .SetValidator(new AddAddressViewModelValidator());
         }
     }
 }

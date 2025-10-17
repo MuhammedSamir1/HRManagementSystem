@@ -5,14 +5,14 @@ using MediatR;
 
 namespace HRManagementSystem.Common.BaseRequestHandler
 {
-    public abstract class RequestHandlerBase<TRequest, TResponse, TEntity> :
-        IRequestHandler<TRequest, TResponse> where TRequest : IRequest<TResponse> where TEntity : BaseModel
+    public abstract class RequestHandlerBase<TRequest, TResponse, TEntity, TKey> :
+        IRequestHandler<TRequest, TResponse> where TRequest : IRequest<TResponse> where TEntity : BaseModel<TKey>
     {
         protected readonly IMediator _mediator;
-        protected readonly IGeneralRepository<TEntity> _generalRepo;
+        protected readonly IGeneralRepository<TEntity, TKey> _generalRepo;
         protected readonly IMapper _mapper;
 
-        public RequestHandlerBase(RequestHandlerBaseParameters<TEntity> parameters)
+        public RequestHandlerBase(RequestHandlerBaseParameters<TEntity, TKey> parameters)
         {
             _mediator = parameters.Mediator;
             _generalRepo = parameters.GeneralRepository;

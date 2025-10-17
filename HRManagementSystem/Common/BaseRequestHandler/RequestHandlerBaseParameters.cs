@@ -5,17 +5,18 @@ using MediatR;
 
 namespace HRManagementSystem.Common.BaseRequestHandler
 {
-    public class RequestHandlerBaseParameters<TEntity> where TEntity : BaseModel
+    public class RequestHandlerBaseParameters<TEntity, TKey> where TEntity : BaseModel<TKey>
     {
         private readonly IMediator _mediator;
-        private readonly IGeneralRepository<TEntity> _generalRepo;
+        private readonly IGeneralRepository<TEntity, TKey> _generalRepo;
         private readonly IMapper _mapper;
 
         public IMediator Mediator => _mediator;
-        public IGeneralRepository<TEntity> GeneralRepository => _generalRepo;
+        public IGeneralRepository<TEntity, TKey> GeneralRepository => _generalRepo;
         public IMapper Mapper => _mapper;
 
-        public RequestHandlerBaseParameters(IMediator mediator, IGeneralRepository<TEntity> generalRepository, IMapper mapper)
+        public RequestHandlerBaseParameters(IMediator mediator, IGeneralRepository<TEntity, TKey> generalRepository,
+            IMapper mapper)
         {
             _mediator = mediator;
             _generalRepo = generalRepository;

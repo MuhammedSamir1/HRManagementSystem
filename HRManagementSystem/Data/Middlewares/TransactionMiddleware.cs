@@ -8,7 +8,8 @@ namespace HRManagementSystem.Data.Middlewares
         private readonly ApplicationDbContext.ApplicationDbContext _context;
         private readonly ILogger<TransactionMiddleware> _logger;
 
-        public TransactionMiddleware(ApplicationDbContext.ApplicationDbContext context, ILogger<TransactionMiddleware> logger)
+        public TransactionMiddleware(ApplicationDbContext.ApplicationDbContext context,
+            ILogger<TransactionMiddleware> logger)
         {
             _context = context;
             _logger = logger;

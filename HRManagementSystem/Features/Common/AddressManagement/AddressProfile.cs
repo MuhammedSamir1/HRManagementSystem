@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
+using HRManagementSystem.Data.Models.AddressEntity;
 
 namespace HRManagementSystem.Features.Common.AddressManagement
 {

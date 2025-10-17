@@ -4,9 +4,9 @@ namespace HRManagementSystem.Features.Common.AddressManagement
 {
     public record AddAddressViewModel(string Country, string City, string Street, string ZipCode);
 
-    public class AddAddressResponseViewModelValidator : AbstractValidator<AddAddressViewModel>
+    public class AddAddressViewModelValidator : AbstractValidator<AddAddressViewModel>
     {
-        public AddAddressResponseViewModelValidator()
+        public AddAddressViewModelValidator()
         {
             RuleFor(x => x.Country).NotEmpty().WithMessage("Country is required!")
                 .MaximumLength(30).WithMessage("Country must be less than 30 Char!");

@@ -10,17 +10,17 @@ namespace HRManagementSystem.Features.OrganizationManagement.AddOrganization.Com
     public record AddOrganizationCommand(string Name, string? LegalName, string? Industry,
         string? DefaultTimezone, string? DefaultCurrency, AddAddressDto AddressDto) : IRequest<ResponseDto<bool>>;
 
-    public class AddOrganizationCommandHandler : RequestHandlerBase<AddOrganizationCommand, ResponseDto<bool>, Organization>
+    public class AddOrganizationCommandHandler : RequestHandlerBase<AddOrganizationCommand, ResponseDto<bool>, Organization, int>
     {
-        public AddOrganizationCommandHandler(RequestHandlerBaseParameters<Organization> parameters) : base(parameters)
+        public AddOrganizationCommandHandler(RequestHandlerBaseParameters<Organization, int> parameters) : base(parameters)
         {
         }
 
-        public override async Task<ResponseDto<bool>> Handle(AddOrganizationCommand request, CancellationToken cancellationToken)
+        public override async Task<ResponseDto<bool>> Handle(AddOrganizationCommand request, CancellationToken ct)
         {
             var organization = _mapper.Map<AddOrganizationCommand, Organization>(request);
 
-            var isAdded = await _generalRepo.AddAsync(organization);
+            var isAdded = await _generalRepo.AddAsync(organization, ct);
 
             if (!isAdded) return ResponseDto<bool>.Failure("Organization wasn't added successfully!", ErrorCode.InternalServerError);
             return ResponseDto<bool>.Success(isAdded, "Organization added successfully!");

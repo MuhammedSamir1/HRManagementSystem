@@ -4,65 +4,56 @@ using System.Linq.Expressions;
 
 namespace HRManagementSystem.Data.Repositories
 {
-    public class GeneralRepository<T> : IGeneralRepository<T> where T : BaseModel
+    public class GeneralRepository<TEntity, TKey> : IGeneralRepository<TEntity, TKey> where TEntity : BaseModel<TKey>
     {
         protected readonly ApplicationDbContext.ApplicationDbContext _context;
-        private readonly DbSet<T> _dbSet;
+        private readonly DbSet<TEntity> _dbSet;
         public GeneralRepository(ApplicationDbContext.ApplicationDbContext context)
         {
             _context = context;
-            _dbSet = _context.Set<T>();
+            _dbSet = _context.Set<TEntity>();
         }
 
-        public IQueryable<T> Query<T>() where T : BaseModel
-        {
-            return _context.Set<T>().AsNoTracking();
-        }
-        public IQueryable<T> QueryTracked<T>() where T : BaseModel
-        {
-            return _context.Set<T>();
-
-        }
-        public IQueryable<T> GetAll()
+        public IQueryable<TEntity> GetAll()
         {
             var res = _dbSet.Where(x => !x.IsDeleted);
             return res;
         }
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<TEntity> GetByIdAsync(TKey id)
         {
-            var res = await _dbSet.Where(x => x.Id == id && !x.IsDeleted).FirstOrDefaultAsync();
+            var res = await _dbSet.Where(x => x.Id!.Equals(id) && !x.IsDeleted).FirstOrDefaultAsync();
             return res;
         }
-        public async Task<T> GetByIdWithTracking(int id)
+        public async Task<TEntity> GetByIdWithTracking(TKey id)
         {
-            var res = await _dbSet.AsTracking().Where(x => x.Id == id && !x.IsDeleted).FirstOrDefaultAsync();
+            var res = await _dbSet.AsTracking().Where(x => x.Id!.Equals(id) && !x.IsDeleted).FirstOrDefaultAsync();
             return res;
         }
-        public IQueryable<T> Get(Expression<Func<T, bool>> expression)
+        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> expression)
         {
             var res = GetAll().Where(expression);
             return res;
         }
-        public async Task<bool> AddAsync(T entity)
+        public async Task<bool> AddAsync(TEntity entity, CancellationToken ct)
         {
             if (entity is null)
                 return false;
-            await _dbSet.AddAsync(entity);
+            await _dbSet.AddAsync(entity, ct);
 
             await _context.SaveChangesAsync();
             return true;
         }
-        public async Task<bool> UpdateIncludeAsync(T entity, params string[] modifiedProps)
+        public async Task<bool> UpdateIncludeAsync(TEntity entity, params string[] modifiedProps)
         {
-            if (modifiedProps is null || modifiedProps.Length == 0 || entity.Id <= 0)
+            if (modifiedProps is null || modifiedProps.Length == 0)
                 return false;
 
             var isExist = await _dbSet.AsNoTracking()
-                .AnyAsync(x => x.Id == entity.Id && !x.IsDeleted);
+                .AnyAsync(x => x.Id!.Equals(entity.Id) && !x.IsDeleted);
             if (!isExist) return false;
 
 
-            var localEntity = _dbSet.Local.FirstOrDefault(e => e.Id == entity.Id);
+            var localEntity = _dbSet.Local.FirstOrDefault(e => e.Id!.Equals(entity.Id));
             if (localEntity is not null)
             {
                 var localEntry = _context.Entry(localEntity);
@@ -87,17 +78,17 @@ namespace HRManagementSystem.Data.Repositories
             }
             return await _context.SaveChangesAsync() > 0;
         }
-        public async Task<bool> UpdateAsync(T entity)
+        public async Task<bool> UpdateAsync(TEntity entity)
         {
-            if (entity is null || entity.Id <= 0)
+            if (entity is null)
                 return false;
 
             var exists = await _dbSet.AsNoTracking()
-                                     .AnyAsync(x => x.Id == entity.Id && !x.IsDeleted);
+                                     .AnyAsync(x => x.Id!.Equals(entity.Id) && !x.IsDeleted);
             if (!exists) return false;
 
-            var tracked = _context.ChangeTracker.Entries<T>()
-                                  .FirstOrDefault(e => e.Entity.Id == entity.Id);
+            var tracked = _context.ChangeTracker.Entries<TEntity>()
+                                  .FirstOrDefault(e => e.Entity.Id!.Equals(entity.Id));
 
             if (tracked is not null)
             {
@@ -126,12 +117,13 @@ namespace HRManagementSystem.Data.Repositories
                 return false;
 
             var affected = await _dbSet
-                  .Where(x => x.Id == id && !x.IsDeleted)
+                  .Where(x => x.Id!.Equals(id) && !x.IsDeleted)
                   .ExecuteUpdateAsync(s => s
                       .SetProperty(p => p.IsDeleted, true)
                   );
 
             return affected > 0;
         }
+
     }
 }

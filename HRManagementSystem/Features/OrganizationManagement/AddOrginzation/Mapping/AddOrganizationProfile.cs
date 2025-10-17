@@ -23,7 +23,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation.Mapp
                o => o.MapFrom(s => s.AddressDto))
            .ForMember(d => d.AddressId, o => o.Ignore());
 
-            CreateMap<AddOrganizationCommand, AddOrganizationRequestViewModel>().ReverseMap();
+            CreateMap<AddOrganizationCommand, AddOrganizationViewModel>().ReverseMap();
         }
     }
 }

@@ -11,6 +11,9 @@
             catch (Exception ex)
             {
                 context.Response.StatusCode = 500;
+
+                if (ex.InnerException is not null)
+                    throw ex.InnerException;
             }
         }
     }
