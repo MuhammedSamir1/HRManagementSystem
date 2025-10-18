@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
 using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.ViewModels;
 using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.ViewModels;
-using HRManagementSystem.Features.Common.CurrencyManagement.UpdateCurrencyDtosAndVms.ViewModels;
 
 namespace HRManagementSystem.Features.OrganizationManagement
 {

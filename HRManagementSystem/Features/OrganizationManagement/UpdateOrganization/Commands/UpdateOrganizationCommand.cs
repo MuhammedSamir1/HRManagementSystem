@@ -23,7 +23,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.UpdateOrganization.
         public override async Task<RequestResult<bool>> Handle(UpdateOrganizationCommand request, CancellationToken ct)
         {
             var isExist = await _mediator.Send(new IsOrganizationExistQuery(request.Id));
-            if(!isExist.isSuccess) return RequestResult<bool>.Failure("Organization not found.", ErrorCode.OrganizationNotFound);
+            if (!isExist.isSuccess) return RequestResult<bool>.Failure("Organization not found.", ErrorCode.OrganizationNotFound);
 
             var nameExists = await _generalRepo.Get(x => x.Name == request.Name && x.Id != request.Id && !x.IsDeleted)
                                           .AnyAsync(ct);
