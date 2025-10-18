@@ -34,6 +34,14 @@ namespace HRManagementSystem.Data.Repositories
             var res = GetAll().Where(expression);
             return res;
         }
+        public async Task<bool> IsExistAsync(TKey id, CancellationToken ct)
+        {
+            return await _dbSet
+                .AsNoTracking()
+                .AnyAsync(x => x.Id!.Equals(id) &&
+                !x.IsDeleted,
+                ct);
+        }
         public async Task<bool> AddAsync(TEntity entity, CancellationToken ct)
         {
             if (entity is null)

@@ -16,6 +16,7 @@
 
         //Organization
         OrganizationAlreadyExists = 100,
+        OrganizationNotFound = 101,
 
     }
 }

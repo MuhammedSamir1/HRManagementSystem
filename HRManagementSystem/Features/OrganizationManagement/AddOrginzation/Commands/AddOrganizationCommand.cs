@@ -12,7 +12,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.AddOrganization.Com
         DateTime? DefaultTimezone, AddOrganizationCurrencyDto CurrencyDto,
         AddOrganizationAddressDto AddressDto) : IRequest<RequestResult<bool>>;
 
-    public class AddOrganizationCommandHandler : RequestHandlerBase<AddOrganizationCommand, RequestResult<bool>, Organization, int>
+    public sealed class AddOrganizationCommandHandler : RequestHandlerBase<AddOrganizationCommand, RequestResult<bool>, Organization, int>
     {
         public AddOrganizationCommandHandler(RequestHandlerBaseParameters<Organization, int> parameters) : base(parameters)
         {
