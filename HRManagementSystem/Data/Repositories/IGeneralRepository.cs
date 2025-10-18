@@ -11,7 +11,7 @@ namespace HRManagementSystem.Data.Repositories
         public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> expression);
         public Task<bool> AddAsync(TEntity entity, CancellationToken ct);
         public Task<bool> UpdateIncludeAsync(TEntity entity, params string[] modifiedProps);
-        public Task<bool> UpdateAsync(TEntity entity);
+        public Task<bool> UpdateAsync(TEntity entity, CancellationToken ct);
         public Task<bool> SoftDeleteAsync(int id);
     }
 }

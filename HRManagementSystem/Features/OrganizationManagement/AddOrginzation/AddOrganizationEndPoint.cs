@@ -1,7 +1,7 @@
 ﻿using HRManagementSystem.Common.BaseEndPoints;
 using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtos.Dtos;
-using HRManagementSystem.Features.Common.CurrencyManagement;
+using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
+using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.Dtos;
 using HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands;
 using Microsoft.AspNetCore.Mvc;
 

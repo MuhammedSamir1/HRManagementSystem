@@ -78,7 +78,7 @@ namespace HRManagementSystem.Data.Repositories
             }
             return await _context.SaveChangesAsync() > 0;
         }
-        public async Task<bool> UpdateAsync(TEntity entity)
+        public async Task<bool> UpdateAsync(TEntity entity, CancellationToken ct)
         {
             if (entity is null)
                 return false;
