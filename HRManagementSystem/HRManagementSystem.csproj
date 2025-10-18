@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <Folder Include="Features\CityManagement\" />
+    <Folder Include="Features\Common\OrganizationCommon\Commands\" />
     <Folder Include="Features\CompanyManagement\" />
     <Folder Include="Features\CountryManagement\Commands\" />
     <Folder Include="Features\CountryManagement\Queries\" />
