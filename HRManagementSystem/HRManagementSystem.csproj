@@ -23,7 +23,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\CityManagement\" />
+    <Folder Include="Features\CompanyManagement\" />
+    <Folder Include="Features\CountryManagement\Commands\" />
+    <Folder Include="Features\CountryManagement\Queries\" />
+    <Folder Include="Features\BranchManagement\" />
     <Folder Include="Features\OrganizationManagement\AddOrginzation\Queries\" />
+    <Folder Include="Features\StateManagement\" />
   </ItemGroup>
 
 </Project>

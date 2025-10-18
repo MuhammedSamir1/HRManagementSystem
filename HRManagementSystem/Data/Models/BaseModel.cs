@@ -10,6 +10,6 @@
         public int? CreatedBy { get; set; }
         public int? UpdatedBy { get; set; }
         public int? DeletedBy { get; set; }
-        public byte[] RowVersion { get; set; } = default!;
+       // public byte[] RowVersion { get; set; } = default!;
     }
 }

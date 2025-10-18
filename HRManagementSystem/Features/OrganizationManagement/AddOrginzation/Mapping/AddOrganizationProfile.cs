@@ -15,13 +15,15 @@ namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation.Mapp
                o => o.MapFrom(s => string.IsNullOrWhiteSpace(s.LegalName) ? null : s.LegalName.Trim()))
            .ForMember(d => d.Industry,
                o => o.MapFrom(s => string.IsNullOrWhiteSpace(s.Industry) ? null : s.Industry.Trim()))
-           .ForMember(d => d.DefaultTimezone,
-               o => o.MapFrom(s => string.IsNullOrWhiteSpace(s.DefaultTimezone) ? null : s.DefaultTimezone.Trim()))
-           .ForMember(d => d.DefaultCurrency,
-               o => o.MapFrom(s => string.IsNullOrWhiteSpace(s.DefaultCurrency) ? null : s.DefaultCurrency.Trim().ToUpperInvariant()))
+           .ForMember(d => d.Description,
+               o => o.MapFrom(s => string.IsNullOrWhiteSpace(s.Descreption) ? null : s.Descreption.Trim()))
+
            .ForMember(d => d.Address,
                o => o.MapFrom(s => s.AddressDto))
-           .ForMember(d => d.AddressId, o => o.Ignore());
+           .ForMember(d => d.AddressId, o => o.Ignore())
+           .ForMember(d => d.DefaultTimezone, o => o.Ignore())
+           .ForMember(d => d.DefaultTimezone, o => o.MapFrom(s => s.DefaultTimezone));
+
 
             CreateMap<AddOrganizationCommand, AddOrganizationViewModel>().ReverseMap();
         }

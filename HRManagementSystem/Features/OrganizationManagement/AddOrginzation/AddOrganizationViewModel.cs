@@ -1,10 +1,11 @@
 ﻿using FluentValidation;
-using HRManagementSystem.Features.Common.AddressManagement;
+using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtos.ViewModels;
+using HRManagementSystem.Features.Common.CurrencyManagement.ViewModels;
 
 namespace HRManagementSystem.Features.OrganizationManagement
 {
-    public record AddOrganizationViewModel(string Name, string? LegalName, string? Industry,
-        string? DefaultTimezone, string? DefaultCurrency, AddAddressViewModel AddressVM);
+    public record AddOrganizationViewModel(string Name, string? LegalName, string? Industry, string? Descreption,
+        DateTime? DefaultTimezone, AddOrganizationCurrencyViewModel Currency, AddAddressViewModel Address);
 
     public class AddOrginizationViewModelValidator : AbstractValidator<AddOrganizationViewModel>
     {
@@ -21,29 +22,15 @@ namespace HRManagementSystem.Features.OrganizationManagement
                 .When(x => !string.IsNullOrWhiteSpace(x.LegalName))
                 .Must(v => v!.Trim().Length <= 200);
 
+            RuleFor(x => x.Descreption)
+                .MaximumLength(1000).WithMessage("Legal name must be at most 1000 chars.");
+
             RuleFor(x => x.Industry)
                 .MaximumLength(100).WithMessage("Industry must be at most 100 chars.")
                 .When(x => !string.IsNullOrWhiteSpace(x.Industry))
                 .Must(v => v!.Trim().Length <= 100);
 
-            RuleFor(x => x.DefaultTimezone)
-                .MaximumLength(100).WithMessage("Timezone must be at most 100 chars.")
-                .When(x => !string.IsNullOrWhiteSpace(x.DefaultTimezone))
-                .Must(v => v!.Trim().Length <= 100);
-
-            RuleFor(x => x.DefaultCurrency)
-                .Matches("^[A-Za-z]{3}$").WithMessage("Currency must be letters only.")
-                .Must(v =>
-                {
-                    if (string.IsNullOrWhiteSpace(v)) return true;
-                    var t = v.Trim();
-                    return t.Length == 3
-                           && t.All(char.IsLetter)
-                           && t == t.ToUpperInvariant();
-                })
-                .WithMessage("Currency must be a 3-letter UPPERCASE code (e.g., EGP).");
-
-            RuleFor(x => x.AddressVM)
+            RuleFor(x => x.Address)
                 .NotNull().WithMessage("Address is required.")
                 .SetValidator(new AddAddressViewModelValidator());
         }
