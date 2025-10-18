@@ -1,16 +1,20 @@
 ﻿using FluentValidation;
 using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.ViewModels;
-using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.ViewModels;
+using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos;
+using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.ViewModels;
+using HRManagementSystem.Features.Common.CurrencyManagement.UpdateCurrencyDtosAndVms.Dtos;
 using HRManagementSystem.Features.Common.CurrencyManagement.UpdateCurrencyDtosAndVms.ViewModels;
 
-namespace HRManagementSystem.Features.OrganizationManagement
+namespace HRManagementSystem.Features.OrganizationManagement.UpdateOrganization
 {
-    public record AddOrganizationViewModel(string Name, string? LegalName, string? Industry, string? Descreption,
-        DateTime? DefaultTimezone, AddOrganizationCurrencyViewModel Currency, AddOrganizationAddressViewModel Address);
+    public sealed record UpdateOrganizationViewModel(int Id, string Name, string? LegalName, string? Industry, string? Descreption,
+         UpdateOrganizationCurrencyViewModel Currency, UpdateOrganizationAddressViewModel Address);
 
-    public class AddOrginizationViewModelValidator : AbstractValidator<AddOrganizationViewModel>
+
+
+    public class UpdateOrganizationViewModelValidator : AbstractValidator<UpdateOrganizationViewModel>
     {
-        public AddOrginizationViewModelValidator()
+        public UpdateOrganizationViewModelValidator()
         {
             RuleFor(x => x.Name)
                 .NotEmpty().WithMessage("Name is required.")
@@ -33,11 +37,11 @@ namespace HRManagementSystem.Features.OrganizationManagement
 
             RuleFor(x => x.Address)
                 .NotNull().WithMessage("Address is required.")
-                .SetValidator(new AddOrganizationAddressViewModelValidator());
+                .SetValidator(new UpdateOrganizationAddressViewModelValidator());
 
             RuleFor(x => x.Currency)
-               .NotNull().WithMessage("Currency is required.")
-               .SetValidator(new AddOrganizationCurrencyViewModelValidator());
+                .NotNull().WithMessage("Currency is required.")
+                .SetValidator(new UpdateOrganizationCurrencyViewModelValidator());
         }
     }
 }

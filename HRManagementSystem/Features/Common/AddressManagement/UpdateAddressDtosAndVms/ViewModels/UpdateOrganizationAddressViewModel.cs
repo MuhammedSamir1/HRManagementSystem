@@ -1,14 +1,15 @@
 ﻿using FluentValidation;
 
-namespace HRManagementSystem.Features.Common.AddressManagement.AddAddressDtos.ViewModels
+namespace HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.ViewModels
 {
-    public record AddAddressViewModel(int CountryId, int StateId, int CityId, string? Street, string? ZipCode);
+    public sealed record UpdateOrganizationAddressViewModel(int CountryId, int StateId, int CityId,
+             string? Street, string? ZipCode);
 
-    public class AddAddressViewModelValidator : AbstractValidator<AddAddressViewModel>
+
+    public class UpdateOrganizationAddressViewModelValidator : AbstractValidator<UpdateOrganizationAddressViewModel>
     {
-        public AddAddressViewModelValidator()
+        public UpdateOrganizationAddressViewModelValidator()
         {
-
             RuleFor(x => x.CountryId).GreaterThan(0);
             RuleFor(x => x.StateId).GreaterThan(0);
             RuleFor(x => x.CityId).GreaterThan(0);
