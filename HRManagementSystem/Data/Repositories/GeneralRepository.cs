@@ -38,8 +38,8 @@ namespace HRManagementSystem.Data.Repositories
         {
             return await _dbSet
                 .AsNoTracking()
-                .AnyAsync(x => x.Id!.Equals(id) &&
-                !x.IsDeleted,
+                .AnyAsync(e => EF.Property<TKey>(e, "Id")!.Equals(id) &&
+                !EF.Property<bool>(e, "IsDeleted"),
                 ct);
         }
         public async Task<bool> AddAsync(TEntity entity, CancellationToken ct)
@@ -119,19 +119,19 @@ namespace HRManagementSystem.Data.Repositories
 
             return await _context.SaveChangesAsync() > 0;
         }
-        public async Task<bool> SoftDeleteAsync(int id)
+        public async Task<bool> SoftDeleteAsync(TKey id, CancellationToken cancellationToken)
         {
-            if (id <= 0)
-                return false;
-
             var affected = await _dbSet
-                  .Where(x => x.Id!.Equals(id) && !x.IsDeleted)
+                  .AsNoTracking()
+                  .Where(x => EF.Property<TKey>(x, "Id")!.Equals(id) && !x.IsDeleted)
                   .ExecuteUpdateAsync(s => s
                       .SetProperty(p => p.IsDeleted, true)
+                      .SetProperty(p => p.IsActive, false)
+                      .SetProperty(p => p.UpdatedAt, DateTime.UtcNow),
+                      cancellationToken
                   );
-
+            await _context.SaveChangesAsync();
             return affected > 0;
         }
-
     }
 }

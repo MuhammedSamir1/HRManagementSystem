@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands;
 using HRManagementSystem.Features.OrganizationManagement.UpdateOrganization;
 using HRManagementSystem.Features.OrganizationManagement.UpdateOrganization.Commands;
 

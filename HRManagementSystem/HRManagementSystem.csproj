@@ -30,6 +30,7 @@
     <Folder Include="Features\CountryManagement\Queries\" />
     <Folder Include="Features\BranchManagement\" />
     <Folder Include="Features\OrganizationManagement\AddOrginzation\Queries\" />
+    <Folder Include="Features\OrganizationManagement\DeleteOrganization\Queries\" />
     <Folder Include="Features\StateManagement\" />
   </ItemGroup>
 

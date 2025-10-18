@@ -22,7 +22,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.UpdateOrganization
 
             var address = _mapper.Map<UpdateOrganizationAddressDto>(model.Address);
             var currency = _mapper.Map<UpdateOrganizationCurrencyDto>(model.Currency);
-            var result = await _mediator.Send(new UpdateOrganizationCommand(model.Id,model.Name, model.LegalName, model.Industry,
+            var result = await _mediator.Send(new UpdateOrganizationCommand(model.Id, model.Name, model.LegalName, model.Industry,
                 model.Descreption, currency, address));
 
             if (!result.isSuccess) return ResponseViewModel<bool>.Failure(result.errorCode);
