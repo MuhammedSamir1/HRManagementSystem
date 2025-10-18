@@ -38,10 +38,6 @@ namespace HRManagementSystem.Data.Configurations.DepartmentConfigurations
 
             b.Property(x => x.UpdatedAt);
 
-            // Concurrency token
-            b.Property(x => x.RowVersion)
-                .IsRowVersion();
-
             // العلاقة: Branch (1) ← Department (many)
             b.HasOne(x => x.Branch)
              .WithMany(br => br.Departments)

@@ -2,13 +2,15 @@
 using HRManagementSystem.Common.Data.Enums;
 using HRManagementSystem.Common.Views.Response;
 using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.Common.AddressManagement;
+using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtos.Dtos;
+using HRManagementSystem.Features.Common.CurrencyManagement;
 using MediatR;
 
 namespace HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands
 {
-    public record AddOrganizationCommand(string Name, string? LegalName, string? Industry,
-        string? DefaultTimezone, string? DefaultCurrency, AddAddressDto AddressDto) : IRequest<RequestResult<bool>>;
+    public record AddOrganizationCommand(string Name, string? LegalName, string? Industry,string? Descreption,
+        DateTime? DefaultTimezone, AddOrganizationCurrencyDto CurrencyDto,
+        AddOrganizationAddressDto AddressDto) : IRequest<RequestResult<bool>>;
 
     public class AddOrganizationCommandHandler : RequestHandlerBase<AddOrganizationCommand, RequestResult<bool>, Organization, int>
     {

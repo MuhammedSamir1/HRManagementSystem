@@ -38,9 +38,6 @@ namespace HRManagementSystem.Data.Configurations.TeamConfigurations
 
             b.Property(x => x.UpdatedAt);
 
-            // Concurrency token
-            b.Property(x => x.RowVersion)
-                .IsRowVersion();
 
             // العلاقة: Department (1) ← Team (many)
             b.HasOne(x => x.Department)

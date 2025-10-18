@@ -34,10 +34,6 @@ namespace HRManagementSystem.Data.Configurations.CompanyConfigurations
 
             b.Property(x => x.UpdatedAt);
 
-            // Concurrency token
-            b.Property(x => x.RowVersion)
-                .IsRowVersion();
-
             // العلاقة: Organization (1) ← Company (many)
             b.HasOne(x => x.Organization)
              .WithMany(o => o.Companies)

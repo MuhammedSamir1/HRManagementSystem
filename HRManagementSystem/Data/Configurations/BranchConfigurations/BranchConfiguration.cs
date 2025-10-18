@@ -36,10 +36,6 @@ namespace HRManagementSystem.Data.Configurations.BranchConfigurations
 
             b.Property(x => x.UpdatedAt);
 
-            // Concurrency token
-            b.Property(x => x.RowVersion)
-                .IsRowVersion();
-
             // العلاقة: Company (1) ← Branch (many)
             b.HasOne(x => x.Company)
              .WithMany(c => c.Branches)
