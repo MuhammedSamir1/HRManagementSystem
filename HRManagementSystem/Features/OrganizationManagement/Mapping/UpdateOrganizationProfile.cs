@@ -1,14 +1,17 @@
 ﻿using AutoMapper;
 using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands;
+using HRManagementSystem.Features.OrganizationManagement.UpdateOrganization;
+using HRManagementSystem.Features.OrganizationManagement.UpdateOrganization.Commands;
 
-namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation.Mapping
+namespace HRManagementSystem.Features.OrganizationManagement.Mapping
 {
-    public class AddOrganizationProfile : Profile
+    public sealed class UpdateOrganizationProfile : Profile
     {
-        public AddOrganizationProfile()
+        public UpdateOrganizationProfile()
         {
-            CreateMap<AddOrganizationCommand, Organization>()
+            CreateMap<UpdateOrganizationCommand, Organization>()
+           .ForMember(d => d.Id,
+               o => o.MapFrom(s => s.Id))
            .ForMember(d => d.Name,
                o => o.MapFrom(s => s.Name.Trim()))
            .ForMember(d => d.LegalName,
@@ -21,11 +24,9 @@ namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation.Mapp
            .ForMember(d => d.Address,
                o => o.MapFrom(s => s.AddressDto))
            .ForMember(d => d.AddressId, o => o.Ignore())
-           .ForMember(d => d.DefaultTimezone, o => o.Ignore())
-           .ForMember(d => d.DefaultTimezone, o => o.MapFrom(s => s.DefaultTimezone));
+           .ForMember(d => d.DefaultTimezone, o => o.Ignore());
 
-
-            CreateMap<AddOrganizationCommand, AddOrganizationViewModel>().ReverseMap();
+            CreateMap<UpdateOrganizationCommand, UpdateOrganizationViewModel>().ReverseMap();
         }
     }
 }

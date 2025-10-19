@@ -13,7 +13,8 @@ namespace HRManagementSystem.Features.OrganizationManagement.AddOrganization.Com
         DateTime? DefaultTimezone, AddOrganizationCurrencyDto CurrencyDto,
         AddOrganizationAddressDto AddressDto) : IRequest<RequestResult<bool>>;
 
-    public sealed class AddOrganizationCommandHandler : RequestHandlerBase<AddOrganizationCommand, RequestResult<bool>, Organization, int>
+    public sealed class AddOrganizationCommandHandler : RequestHandlerBase<AddOrganizationCommand,
+        RequestResult<bool>, Organization, int>
     {
         public AddOrganizationCommandHandler(RequestHandlerBaseParameters<Organization, int> parameters) : base(parameters)
         {
@@ -23,7 +24,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.AddOrganization.Com
         {
             var organization = _mapper.Map<AddOrganizationCommand, Organization>(request);
 
-            var nameExists = await _generalRepo.Get(x => x.Name == request.Name && !x.IsDeleted)
+            var nameExists = await _generalRepo.Get(x => x.Name == request.Name && !x.IsDeleted, ct)
                                           .AnyAsync(ct);
             if (nameExists)
                 return RequestResult<bool>.Failure("Organization Name already exists.", ErrorCode.Conflict);

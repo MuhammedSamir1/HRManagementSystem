@@ -29,7 +29,7 @@ namespace HRManagementSystem.Data.Repositories
             var res = await _dbSet.AsTracking().Where(x => x.Id!.Equals(id) && !x.IsDeleted).FirstOrDefaultAsync();
             return res;
         }
-        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> expression)
+        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> expression, CancellationToken ct)
         {
             var res = GetAll().Where(expression);
             return res;
@@ -53,8 +53,8 @@ namespace HRManagementSystem.Data.Repositories
         }
         public async Task<bool> UpdateIncludeAsync(TEntity entity, params string[] modifiedProps)
         {
-            if (modifiedProps is null || modifiedProps.Length == 0)
-                return false;
+            //if (modifiedProps is null || modifiedProps.Length == 0)
+            //    return false;
 
             var isExist = await _dbSet.AsNoTracking()
                 .AnyAsync(x => x.Id!.Equals(entity.Id) && !x.IsDeleted);
@@ -88,12 +88,12 @@ namespace HRManagementSystem.Data.Repositories
         }
         public async Task<bool> UpdateAsync(TEntity entity, CancellationToken ct)
         {
-            if (entity is null)
-                return false;
+            //if (entity is null)
+            //    return false;
 
-            var exists = await _dbSet.AsNoTracking()
-                                     .AnyAsync(x => x.Id!.Equals(entity.Id) && !x.IsDeleted);
-            if (!exists) return false;
+            //var exists = await _dbSet.AsNoTracking()
+            //                         .AnyAsync(x => x.Id!.Equals(entity.Id) && !x.IsDeleted);
+            //if (!exists) return false;
 
             var tracked = _context.ChangeTracker.Entries<TEntity>()
                                   .FirstOrDefault(e => e.Entity.Id!.Equals(entity.Id));
