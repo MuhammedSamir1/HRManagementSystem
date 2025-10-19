@@ -2,6 +2,8 @@
 using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
 using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.ViewModels;
+using HRManagementSystem.Features.Common.AddressManagement.GetAddressDtosAndVms.Dtos;
+using HRManagementSystem.Features.Common.AddressManagement.GetAddressDtosAndVms.ViewModels;
 using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos;
 using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.ViewModels;
 
@@ -30,8 +32,17 @@ namespace HRManagementSystem.Features.Common.AddressManagement
                 .ForMember(d => d.ZipCode, o => o.MapFrom(s => s.ZipCode));
 
 
+            CreateMap<Address, ViewOrganizationAddressDto>()
+             .ForCtorParam("CountryDto", o => o.MapFrom(a => a.Country))
+             .ForCtorParam("CityDto", o => o.MapFrom(a => a.City))
+             .ForCtorParam("StateDto", o => o.MapFrom(a => a.State))
+             .ForCtorParam("Street", o => o.MapFrom(a => a.Street))
+             .ForCtorParam("ZipCode", o => o.MapFrom(a => a.ZipCode));
+
+
             CreateMap<AddOrganizationAddressDto, AddOrganizationAddressViewModel>().ReverseMap();
             CreateMap<UpdateOrganizationAddressDto, UpdateOrganizationAddressViewModel>().ReverseMap();
+            CreateMap<ViewOrganizationAddressDto, ViewOrganizationAddressViewModel>().ReverseMap();
         }
     }
 }

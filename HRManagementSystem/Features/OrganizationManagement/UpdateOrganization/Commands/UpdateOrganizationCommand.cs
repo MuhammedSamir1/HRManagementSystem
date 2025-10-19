@@ -25,7 +25,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.UpdateOrganization.
             var isExist = await _mediator.Send(new IsOrganizationExistQuery(request.Id));
             if (!isExist.isSuccess) return RequestResult<bool>.Failure("Organization not found.", ErrorCode.OrganizationNotFound);
 
-            var nameExists = await _generalRepo.Get(x => x.Name == request.Name && x.Id != request.Id && !x.IsDeleted)
+            var nameExists = await _generalRepo.Get(x => x.Name == request.Name && x.Id != request.Id && !x.IsDeleted, ct)
                                           .AnyAsync(ct);
             if (nameExists)
                 return RequestResult<bool>.Failure("Organization Name already exists.", ErrorCode.Conflict);
