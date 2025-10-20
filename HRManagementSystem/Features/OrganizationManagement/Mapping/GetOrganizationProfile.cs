@@ -16,7 +16,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.Mapping
             .ForMember(d => d.DefaultTimezone, o => o.MapFrom(s => s.DefaultTimezone))
             .ForMember(d => d.Currency, o => o.MapFrom(s => s.DefaultCurrency))
             .ForMember(d => d.Address, o => o.MapFrom(s => s.Address));
-           
+
             CreateMap<ViewOrganizationDto, ViewOrganizationViewModel>().ReverseMap();
         }
     }

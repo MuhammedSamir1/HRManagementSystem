@@ -16,7 +16,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.Mapping
            .ForMember(d => d.Industry,
                o => o.MapFrom(s => string.IsNullOrWhiteSpace(s.Industry) ? null : s.Industry.Trim()))
            .ForMember(d => d.Description,
-               o => o.MapFrom(s => string.IsNullOrWhiteSpace(s.Descreption) ? null : s.Descreption.Trim()))
+               o => o.MapFrom(s => string.IsNullOrWhiteSpace(s.Description) ? null : s.Description.Trim()))
 
            .ForMember(d => d.Address,
                o => o.MapFrom(s => s.AddressDto))

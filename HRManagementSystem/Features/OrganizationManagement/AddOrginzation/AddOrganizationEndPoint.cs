@@ -25,7 +25,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation
             var address = _mapper.Map<AddOrganizationAddressDto>(model.Address);
             var currency = _mapper.Map<AddOrganizationCurrencyDto>(model.Currency);
             var result = await _mediator.Send(new AddOrganizationCommand(model.Name, model.LegalName,
-                model.Descreption, model.Industry, model.DefaultTimezone, currency, address), ct);
+                model.Description, model.Industry, model.DefaultTimezone, currency, address), ct);
 
             if (!result.isSuccess) return ResponseViewModel<bool>.Failure(result.errorCode);
             return ResponseViewModel<bool>.Success(true, "Organization Added Successfully!");

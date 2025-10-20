@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands
 {
-    public record AddOrganizationCommand(string Name, string? LegalName, string? Industry, string? Descreption,
+    public record AddOrganizationCommand(string Name, string? LegalName, string? Industry, string? Description,
         DateTime? DefaultTimezone, AddOrganizationCurrencyDto CurrencyDto,
         AddOrganizationAddressDto AddressDto) : IRequest<RequestResult<bool>>;
 
