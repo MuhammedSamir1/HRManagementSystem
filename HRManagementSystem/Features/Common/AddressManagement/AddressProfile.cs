@@ -31,9 +31,18 @@ namespace HRManagementSystem.Features.Common.AddressManagement
 
             // View Organization AddressDto
             CreateMap<Address, ViewOrganizationAddressDto>()
-             .ForCtorParam("CountryDto", o => o.MapFrom(a => a.Country))
-             .ForCtorParam("CityDto", o => o.MapFrom(a => a.City))
-             .ForCtorParam("StateDto", o => o.MapFrom(a => a.State))
+             .ForCtorParam("Country", o => o.MapFrom(a => a.Country))
+             .ForCtorParam("City", o => o.MapFrom(a => a.City))
+             .ForCtorParam("State", o => o.MapFrom(a => a.State))
+             .ForCtorParam("Street", o => o.MapFrom(a => a.Street))
+             .ForCtorParam("ZipCode", o => o.MapFrom(a => a.ZipCode));
+
+
+            // View Branch AddressDto
+            CreateMap<Address, ViewBranchAddressDto>()
+             .ForCtorParam("Country", o => o.MapFrom(a => a.Country))
+             .ForCtorParam("City", o => o.MapFrom(a => a.City))
+             .ForCtorParam("State", o => o.MapFrom(a => a.State))
              .ForCtorParam("Street", o => o.MapFrom(a => a.Street))
              .ForCtorParam("ZipCode", o => o.MapFrom(a => a.ZipCode));
 
@@ -42,6 +51,8 @@ namespace HRManagementSystem.Features.Common.AddressManagement
             CreateMap<AddOrganizationAddressDto, AddOrganizationAddressViewModel>().ReverseMap();
             CreateMap<ViewOrganizationAddressDto, ViewOrganizationAddressViewModel>().ReverseMap();
             CreateMap<AddBranchAddressDto, AddBranchAddressViewModel>().ReverseMap();
+            CreateMap<ViewBranchAddressDto, ViewBranchAddressViewModel>().ReverseMap();
+
         }
     }
 }

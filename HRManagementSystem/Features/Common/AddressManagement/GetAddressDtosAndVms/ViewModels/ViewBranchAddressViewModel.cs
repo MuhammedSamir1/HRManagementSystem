@@ -4,6 +4,6 @@ using HRManagementSystem.Features.Common.AddressManagement.StateCommon.ViewModel
 
 namespace HRManagementSystem.Features.Common.AddressManagement.GetAddressDtosAndVms.ViewModels
 {
-    public sealed record ViewOrganizationAddressViewModel(ViewCountryViewModel Country, ViewCityViewModel City,
+    public sealed record ViewBranchAddressViewModel(ViewCountryViewModel Country, ViewCityViewModel City,
         ViewStateViewModel State, string? Street, string? ZipCode);
 }
