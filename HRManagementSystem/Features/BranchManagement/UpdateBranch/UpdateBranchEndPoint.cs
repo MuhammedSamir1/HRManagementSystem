@@ -2,9 +2,6 @@
 using HRManagementSystem.Common.Views.Response;
 using HRManagementSystem.Features.BranchManagement.UpdateBranch.Commands;
 using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos;
-using HRManagementSystem.Features.Common.CurrencyManagement.UpdateCurrencyDtosAndVms.Dtos;
-using HRManagementSystem.Features.OrganizationManagement.UpdateOrganization;
-using HRManagementSystem.Features.OrganizationManagement.UpdateOrganization.Commands;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HRManagementSystem.Features.BranchManagement.UpdateBranch
@@ -25,8 +22,8 @@ namespace HRManagementSystem.Features.BranchManagement.UpdateBranch
             var address = _mapper.Map<UpdateBranchAddressDto>(model.Address);
             var result = await _mediator.Send(new UpdateBranchCommand(model.Id, model.Name, model.Description,
                  model.Code, address));
-             
-            if (!result.isSuccess) return ResponseViewModel<bool>.Failure(result.errorCode);
+
+            if (!result.isSuccess) return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
             return ResponseViewModel<bool>.Success(result.isSuccess, "Branch Updated Successfully!");
         }
     }

@@ -27,7 +27,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation
             var result = await _mediator.Send(new AddOrganizationCommand(model.Name, model.LegalName,
                 model.Description, model.Industry, model.DefaultTimezone, currency, address), ct);
 
-            if (!result.isSuccess) return ResponseViewModel<bool>.Failure(result.errorCode);
+            if (!result.isSuccess) return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
             return ResponseViewModel<bool>.Success(true, "Organization Added Successfully!");
         }
     }

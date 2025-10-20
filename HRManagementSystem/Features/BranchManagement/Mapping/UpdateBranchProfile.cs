@@ -18,7 +18,7 @@ namespace HRManagementSystem.Features.BranchManagement.Mapping
               o => o.MapFrom(s => string.IsNullOrWhiteSpace(s.Description) ? null : s.Description.Trim()))
           .ForMember(d => d.Code,
               o => o.MapFrom(s => s.Code.Trim()))
-          .ForMember(d=>d.CompanyId,
+          .ForMember(d => d.CompanyId,
               o => o.Ignore())
 
           .ForMember(d => d.Address,
