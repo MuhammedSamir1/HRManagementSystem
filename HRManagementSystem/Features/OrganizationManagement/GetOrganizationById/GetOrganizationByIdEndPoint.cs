@@ -23,7 +23,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.GetOrganizationById
 
             var org = await _mediator.Send(new GetOrganizationByIdQuery(model.Id));
 
-            if (!org.isSuccess) return ResponseViewModel<ViewOrganizationViewModel>.Failure(ErrorCode.InternalServerError);
+            if (!org.isSuccess) return ResponseViewModel<ViewOrganizationViewModel>.Failure(ErrorCode.OrganizationNotFound);
 
             var vm = _mapper.Map<ViewOrganizationViewModel>(org.data);
             return ResponseViewModel<ViewOrganizationViewModel>.Success(vm);

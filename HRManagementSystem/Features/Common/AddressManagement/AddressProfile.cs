@@ -22,6 +22,15 @@ namespace HRManagementSystem.Features.Common.AddressManagement
                 .ForMember(d => d.Street, o => o.MapFrom(s => s.Street))
                 .ForMember(d => d.ZipCode, o => o.MapFrom(s => s.ZipCode));
 
+            // Add Branch Address
+            CreateMap<AddBranchAddressDto, Address>()
+               .ForMember(d => d.Id, o => o.Ignore())
+               .ForMember(d => d.Country, o => o.Ignore())
+               .ForMember(d => d.State, o => o.Ignore())
+               .ForMember(d => d.City, o => o.Ignore())
+               .ForMember(d => d.Street, o => o.MapFrom(s => s.Street))
+               .ForMember(d => d.ZipCode, o => o.MapFrom(s => s.ZipCode));
+
             // Update Organization Address
             CreateMap<UpdateOrganizationAddressDto, Address>()
                 .ForMember(d => d.Id, o => o.Ignore())
@@ -31,7 +40,7 @@ namespace HRManagementSystem.Features.Common.AddressManagement
                 .ForMember(d => d.Street, o => o.MapFrom(s => s.Street))
                 .ForMember(d => d.ZipCode, o => o.MapFrom(s => s.ZipCode));
 
-
+            // View Organization AddressDto
             CreateMap<Address, ViewOrganizationAddressDto>()
              .ForCtorParam("CountryDto", o => o.MapFrom(a => a.Country))
              .ForCtorParam("CityDto", o => o.MapFrom(a => a.City))
@@ -40,9 +49,11 @@ namespace HRManagementSystem.Features.Common.AddressManagement
              .ForCtorParam("ZipCode", o => o.MapFrom(a => a.ZipCode));
 
 
+            // Dtos <-> ViewModels
             CreateMap<AddOrganizationAddressDto, AddOrganizationAddressViewModel>().ReverseMap();
             CreateMap<UpdateOrganizationAddressDto, UpdateOrganizationAddressViewModel>().ReverseMap();
             CreateMap<ViewOrganizationAddressDto, ViewOrganizationAddressViewModel>().ReverseMap();
+            CreateMap<AddBranchAddressDto, AddBranchAddressViewModel>().ReverseMap();
         }
     }
 }

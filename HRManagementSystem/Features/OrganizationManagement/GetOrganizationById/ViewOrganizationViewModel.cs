@@ -1,6 +1,4 @@
-﻿using HRManagementSystem.Features.Common.AddressManagement.GetAddressDtosAndVms.Dtos;
-using HRManagementSystem.Features.Common.AddressManagement.GetAddressDtosAndVms.ViewModels;
-using HRManagementSystem.Features.Common.CurrencyManagement.GetCurrencyDtosAndVms.Dtos;
+﻿using HRManagementSystem.Features.Common.AddressManagement.GetAddressDtosAndVms.ViewModels;
 using HRManagementSystem.Features.Common.CurrencyManagement.GetCurrencyDtosAndVms.ViewModels;
 
 namespace HRManagementSystem.Features.OrganizationManagement.GetOrganizationById
