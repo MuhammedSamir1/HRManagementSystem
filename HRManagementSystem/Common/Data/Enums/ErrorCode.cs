@@ -19,5 +19,12 @@
         OrganizationNotFound = 101,
         OrganizationWasNotDeleted = 102,
 
+
+
+        //Branch
+        BranchNotFound = 200,
+        BranchWasNotDeleted = 201,
+
+
     }
 }

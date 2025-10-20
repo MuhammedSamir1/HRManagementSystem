@@ -143,10 +143,8 @@ namespace HRManagementSystem.Data.Repositories
 
 
         //Update Without update FKs
-        public async Task<bool> UpdatePartialAsync(
-           TEntity entity,
-           IEnumerable<string>? propsToUpdate = null,
-           CancellationToken ct = default)
+        public async Task<bool> UpdatePartialAsync(TEntity entity, IEnumerable<string>? propsToUpdate = null,
+            CancellationToken ct = default)
         {
             // لو فيه نسخة متتبَّعة في نفس السياق
             var tracked = _context.ChangeTracker.Entries<TEntity>()
