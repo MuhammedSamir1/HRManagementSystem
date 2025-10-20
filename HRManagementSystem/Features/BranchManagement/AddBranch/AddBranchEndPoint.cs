@@ -12,7 +12,7 @@ namespace HRManagementSystem.Features.BranchManagement.AddBranch
             : base(parameters) { }
 
         [HttpPost]
-        public async Task<ResponseViewModel<bool>> AddBranch([FromQuery]AddBranchViewModel model, CancellationToken ct)
+        public async Task<ResponseViewModel<bool>> AddBranch([FromQuery] AddBranchViewModel model, CancellationToken ct)
         {
             var validationResult = ValidateRequest(model);
             if (!validationResult.isSuccess)
