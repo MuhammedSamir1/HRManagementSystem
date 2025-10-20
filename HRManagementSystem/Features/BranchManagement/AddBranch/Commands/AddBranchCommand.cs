@@ -4,7 +4,6 @@ using HRManagementSystem.Common.Views.Response;
 using HRManagementSystem.Data.Models;
 using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.BranchManagement.AddBranch.Commands
 {
@@ -12,7 +11,7 @@ namespace HRManagementSystem.Features.BranchManagement.AddBranch.Commands
         string Code, AddBranchAddressDto AddressDto) : IRequest<RequestResult<bool>>;
 
 
-    public sealed class AddBranchCommandHandler : RequestHandlerBase<AddBranchCommand, RequestResult<bool>, Branch, int>
+    public class AddBranchCommandHandler : RequestHandlerBase<AddBranchCommand, RequestResult<bool>, Branch, int>
     {
         public AddBranchCommandHandler(RequestHandlerBaseParameters<Branch, int> parameters)
             : base(parameters) { }
@@ -21,8 +20,7 @@ namespace HRManagementSystem.Features.BranchManagement.AddBranch.Commands
         {
             var branch = _mapper.Map<AddBranchCommand, Branch>(request);
 
-            var nameExists = await _generalRepo.Get(x => x.Name == request.Name && !x.IsDeleted, ct)
-                                         .AnyAsync(ct);
+            var nameExists = await _generalRepo.ExistsByNameAsync<Branch>(request.Name);
             if (nameExists)
                 return RequestResult<bool>.Failure("Branch Name already exists.", ErrorCode.Conflict);
 
