@@ -27,6 +27,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.UpdateOrganization.
 
             var nameExists = await _generalRepo.Get(x => x.Name == request.Name && x.Id != request.Id && !x.IsDeleted)
                                           .AnyAsync(ct);
+
             if (nameExists)
                 return RequestResult<bool>.Failure("Organization Name already exists.", ErrorCode.Conflict);
 

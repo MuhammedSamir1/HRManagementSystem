@@ -7,6 +7,7 @@ namespace HRManagementSystem.Data.Repositories
     {
         public IQueryable<TEntity> GetAll();
         public Task<TEntity> GetByIdAsync(TKey id);
+        public IQueryable<TEntity> GetById(TKey id);
         public Task<TEntity> GetByIdWithTracking(TKey id);
         public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> expression);
         public Task<bool> IsExistAsync(TKey id, CancellationToken ct);
