@@ -23,11 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\BranchManagement\AddBranch\Queries\" />
+    <Folder Include="Features\BranchManagement\UpdateBranch\Queries\" />
     <Folder Include="Features\CityManagement\" />
     <Folder Include="Features\Common\OrganizationCommon\Commands\" />
     <Folder Include="Features\CountryManagement\Commands\" />
     <Folder Include="Features\CountryManagement\Queries\" />
-    <Folder Include="Features\BranchManagement\" />
     <Folder Include="Features\OrganizationManagement\AddOrginzation\Queries\" />
     <Folder Include="Features\OrganizationManagement\DeleteOrganization\Queries\" />
     <Folder Include="Features\StateManagement\" />

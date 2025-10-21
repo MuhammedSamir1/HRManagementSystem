@@ -19,7 +19,8 @@ namespace HRManagementSystem.Features.OrganizationManagement.DeleteOrganization
                 return ResponseViewModel<bool>.Failure(validationResult.errorCode);
 
             var isDeleted = await _mediator.Send(new DeleteOrganizationCommand(model.Id));
-            if (!isDeleted.isSuccess) return ResponseViewModel<bool>.Failure(ErrorCode.OrganizationWasNotDeleted);
+            if (!isDeleted.isSuccess) return ResponseViewModel<bool>.Failure(isDeleted.message,
+                ErrorCode.OrganizationWasNotDeleted);
 
             return ResponseViewModel<bool>.Success(isDeleted.isSuccess, "Organization Deleted Successfully!");
         }

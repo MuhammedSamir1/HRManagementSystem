@@ -220,7 +220,7 @@ namespace HRManagementSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AdressId")
+                    b.Property<int>("AddressId")
                         .HasColumnType("int");
 
                     b.Property<string>("Code")
@@ -264,7 +264,7 @@ namespace HRManagementSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AdressId");
+                    b.HasIndex("AddressId");
 
                     b.HasIndex("CompanyId", "Code")
                         .IsUnique();
@@ -602,9 +602,9 @@ namespace HRManagementSystem.Migrations
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.Branch", b =>
                 {
-                    b.HasOne("HRManagementSystem.Data.Models.AddressEntity.Address", "Adress")
+                    b.HasOne("HRManagementSystem.Data.Models.AddressEntity.Address", "Address")
                         .WithMany()
-                        .HasForeignKey("AdressId")
+                        .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -614,7 +614,7 @@ namespace HRManagementSystem.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Adress");
+                    b.Navigation("Address");
 
                     b.Navigation("Company");
                 });
