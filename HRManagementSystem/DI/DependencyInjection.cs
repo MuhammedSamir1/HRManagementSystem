@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using HRManagementSystem.Common.BaseEndPoints;
 using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Data.ApplicationDbContext;
+using HRManagementSystem.Data.Contexts.ApplicationDbContext;
 using HRManagementSystem.Data.Middlewares;
 using HRManagementSystem.Data.Repositories;
 using Microsoft.EntityFrameworkCore;

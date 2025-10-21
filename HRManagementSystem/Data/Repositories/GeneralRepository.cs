@@ -1,4 +1,5 @@
-﻿using HRManagementSystem.Data.Models;
+﻿using HRManagementSystem.Data.Contexts.ApplicationDbContext;
+using HRManagementSystem.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -8,9 +9,9 @@ namespace HRManagementSystem.Data.Repositories
 {
     public class GeneralRepository<TEntity, TKey> : IGeneralRepository<TEntity, TKey> where TEntity : BaseModel<TKey>
     {
-        protected readonly ApplicationDbContext.ApplicationDbContext _context;
+        protected readonly ApplicationDbContext _context;
         private readonly DbSet<TEntity> _dbSet;
-        public GeneralRepository(ApplicationDbContext.ApplicationDbContext context)
+        public GeneralRepository(ApplicationDbContext context)
         {
             _context = context;
             _dbSet = _context.Set<TEntity>();
@@ -277,5 +278,10 @@ namespace HRManagementSystem.Data.Repositories
             return false;
         }
 
+
+        public IQueryable<TEntity> GetById(TKey id)
+        {
+            return _dbSet.Where(x => x.Id!.Equals(id) && !x.IsDeleted);
+        }
     }
 }

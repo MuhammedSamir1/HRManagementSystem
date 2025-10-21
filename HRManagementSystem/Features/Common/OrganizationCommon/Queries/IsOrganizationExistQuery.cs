@@ -8,7 +8,6 @@ namespace HRManagementSystem.Features.Common.OrganizationCommon.Queries
 {
     public sealed record IsOrganizationExistQuery(int Id) : IRequest<RequestResult<bool>>;
 
-
     public sealed class IsOrganizationExistQueryHandler : RequestHandlerBase<IsOrganizationExistQuery,
         RequestResult<bool>, Organization, int>
     {
