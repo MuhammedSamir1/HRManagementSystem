@@ -16,4 +16,5 @@ public class ApplicationDbContext : DbContext
     }
     public DbSet<Organization> Organizations { get; set; }
     public DbSet<Address> Addresses { get; set; }
+    public DbSet<City> Cities { get; set; }
 }

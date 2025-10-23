@@ -18,6 +18,8 @@
         OrganizationAlreadyExists = 100,
         OrganizationNotFound = 101,
         OrganizationWasNotDeleted = 102,
+        // City 
+        CityWasNotDeleted  = 103,
 
     }
 }
