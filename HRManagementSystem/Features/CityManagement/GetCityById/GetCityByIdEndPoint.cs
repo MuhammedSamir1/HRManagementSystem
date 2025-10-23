@@ -1,10 +1,9 @@
 ﻿using HRManagementSystem.Common.BaseEndPoints;
 using HRManagementSystem.Common.Views.Response;
 using HRManagementSystem.Features.Common.AddressManagement.GetCityById.Commands;
-using HRManagementSystem.Features.Common.AddressManagement.GetCityById.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HRManagementSystem.Features.Common.AddressManagement.AddCity
+namespace HRManagementSystem.Features.CityManagement.GetCityById
 {
     public class GetCityByIdEndPoint
         : BaseEndPoint<GetCityByIdViewModel, ResponseViewModel<GetCityByIdViewModel>>
@@ -24,7 +23,7 @@ namespace HRManagementSystem.Features.Common.AddressManagement.AddCity
                 return ResponseViewModel<GetCityByIdViewModel>.Failure(validationResult.errorCode);
 
             // استدعاء الـCommand
-            var result = await _mediator.Send(new GetCityByIdCommand(model.Id), ct);
+            var result = await _mediator.Send(new GetCityByIDQuery(model.Id), ct);
 
             if (!result.isSuccess)
                 return ResponseViewModel<GetCityByIdViewModel>.Failure(result.errorCode);

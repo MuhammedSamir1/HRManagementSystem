@@ -1,4 +1,4 @@
-﻿namespace HRManagementSystem.Features.Common.AddressManagement.CityByIdDto.Dtos
+﻿namespace HRManagementSystem.Features.CityManagement.GetCityById
 {
     public sealed record GetCityByIdDto(
         int Id,

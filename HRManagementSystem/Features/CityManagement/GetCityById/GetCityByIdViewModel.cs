@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace HRManagementSystem.Features.Common.AddressManagement.GetCityById.ViewModels
+namespace HRManagementSystem.Features.CityManagement.GetCityById
 {
     // ✅ ViewModel واللي بيستقبل Id من الEndpoint
     public record GetCityByIdViewModel(int Id);

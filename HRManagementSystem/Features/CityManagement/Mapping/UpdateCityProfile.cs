@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using HRManagementSystem.Data.Models;
 using HRManagementSystem.Data.Models.AddressEntity;
+using HRManagementSystem.Features.BranchManagement.UpdateBranch.Commands;
 using HRManagementSystem.Features.CityManagement.UpdateCity.Commands;
 using HRManagementSystem.Features.CityManagement.UpdateCity.ViewModels;
 
@@ -9,10 +11,16 @@ namespace HRManagementSystem.Features.CityManagement.UpdateCity
     {
         public UpdateCityProfile()
         {
-            CreateMap<UpdateCityViewModel, City>();
-            CreateMap<City, UpdateCityViewModel>();
-            CreateMap<UpdateCityViewModel, UpdateCityCommand>()
-                .ConstructUsing(vm => new UpdateCityCommand(vm.Id, vm.Name, vm.StateId));
+            CreateMap<UpdateCityCommand, City>()
+             .ForMember(d => d.Id,
+                 o => o.MapFrom(s => s.Id))
+             .ForMember(d => d.Name,
+                 o => o.MapFrom(s => s.Name.Trim()))
+             .ForMember(d => d.StateId,
+             o => o.MapFrom(s => s.StateId));
+
+
+            CreateMap<UpdateCityCommand, UpdateCityViewModel>();
         }
     }
 }

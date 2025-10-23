@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.CityManagement.AddCity.Commands;
-using HRManagementSystem.Features.Common.AddressManagement.CityByIdDto.Dtos;
-
+using HRManagementSystem.Features.CityManagement.GetCityById;
 
 namespace HRManagementSystem.Features.Common.AddressManagement.AddCity.Profiles
 {
@@ -17,6 +16,8 @@ namespace HRManagementSystem.Features.Common.AddressManagement.AddCity.Profiles
 
             // Map City -> GetCityByIdDto (لـ GetById Handler)
             CreateMap<City, GetCityByIdDto>();
+
+            CreateMap<GetCityByIdDto,GetCityByIdViewModel>();
         }
     }
 }

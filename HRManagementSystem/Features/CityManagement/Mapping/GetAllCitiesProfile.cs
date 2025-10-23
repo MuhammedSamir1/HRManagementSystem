@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using HRManagementSystem.Data.Models.AddressEntity;
-using HRManagementSystem.Features.Common.AddressManagement.GetAllCities.Dtos;
+using HRManagementSystem.Features.CityManagement.GetAllCities;
 
 namespace HRManagementSystem.Features.Common.AddressManagement.GetAllCities.Profiles
 {
@@ -9,9 +9,11 @@ namespace HRManagementSystem.Features.Common.AddressManagement.GetAllCities.Prof
         public GetAllCitiesProfile()
         {
             // Map City -> GetAllCitiesDto
-            CreateMap<City, GetAllCitiesDto>()
+            CreateMap<City, ViewAllCitiesDto>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+
+            CreateMap<ViewAllCitiesDto, ViewAllCitiesViewModel>().ReverseMap();
         }
     }
 }
