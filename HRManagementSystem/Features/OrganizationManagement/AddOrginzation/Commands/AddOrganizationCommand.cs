@@ -5,11 +5,10 @@ using HRManagementSystem.Data.Models;
 using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
 using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.Dtos;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands
 {
-    public record AddOrganizationCommand(string Name, string? LegalName, string? Industry, string? Descreption,
+    public record AddOrganizationCommand(string Name, string? LegalName, string? Industry, string? Description,
         DateTime? DefaultTimezone, AddOrganizationCurrencyDto CurrencyDto,
         AddOrganizationAddressDto AddressDto) : IRequest<RequestResult<bool>>;
 
@@ -24,8 +23,8 @@ namespace HRManagementSystem.Features.OrganizationManagement.AddOrganization.Com
         {
             var organization = _mapper.Map<AddOrganizationCommand, Organization>(request);
 
-            var nameExists = await _generalRepo.Get(x => x.Name == request.Name && !x.IsDeleted, ct)
-                                          .AnyAsync(ct);
+            var nameExists = await _generalRepo.ExistsByNameAsync<Branch>(request.Name);
+
             if (nameExists)
                 return RequestResult<bool>.Failure("Organization Name already exists.", ErrorCode.Conflict);
 

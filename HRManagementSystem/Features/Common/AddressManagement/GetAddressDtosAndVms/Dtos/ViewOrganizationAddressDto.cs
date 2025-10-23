@@ -4,6 +4,6 @@ using HRManagementSystem.Features.Common.AddressManagement.StateCommon.Dtos;
 
 namespace HRManagementSystem.Features.Common.AddressManagement.GetAddressDtosAndVms.Dtos
 {
-    public sealed record ViewOrganizationAddressDto(ViewCountryDto CountryDto, ViewCityDto CityDto,
-        ViewStateDto StateDto, string? Street, string? ZipCode);
+    public sealed record ViewOrganizationAddressDto(ViewCountryDto Country, ViewCityDto City,
+        ViewStateDto State, string? Street, string? ZipCode);
 }

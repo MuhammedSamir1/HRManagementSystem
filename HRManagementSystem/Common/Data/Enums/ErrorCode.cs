@@ -21,5 +21,13 @@
         // City 
         CityWasNotDeleted  = 103,
 
+
+
+        //Branch
+        BranchNotFound = 200,
+        BranchWasNotDeleted = 201,
+        NoBranchesFound = 202
+
+
     }
 }

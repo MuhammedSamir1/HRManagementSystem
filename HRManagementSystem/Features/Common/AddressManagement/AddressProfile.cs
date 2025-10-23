@@ -4,8 +4,6 @@ using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.D
 using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.ViewModels;
 using HRManagementSystem.Features.Common.AddressManagement.GetAddressDtosAndVms.Dtos;
 using HRManagementSystem.Features.Common.AddressManagement.GetAddressDtosAndVms.ViewModels;
-using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos;
-using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.ViewModels;
 
 namespace HRManagementSystem.Features.Common.AddressManagement
 {
@@ -22,27 +20,39 @@ namespace HRManagementSystem.Features.Common.AddressManagement
                 .ForMember(d => d.Street, o => o.MapFrom(s => s.Street))
                 .ForMember(d => d.ZipCode, o => o.MapFrom(s => s.ZipCode));
 
-            // Update Organization Address
-            CreateMap<UpdateOrganizationAddressDto, Address>()
-                .ForMember(d => d.Id, o => o.Ignore())
-                .ForMember(d => d.Country, o => o.Ignore())
-                .ForMember(d => d.State, o => o.Ignore())
-                .ForMember(d => d.City, o => o.Ignore())
-                .ForMember(d => d.Street, o => o.MapFrom(s => s.Street))
-                .ForMember(d => d.ZipCode, o => o.MapFrom(s => s.ZipCode));
+            // Add Branch Address
+            CreateMap<AddBranchAddressDto, Address>()
+               .ForMember(d => d.Id, o => o.Ignore())
+               .ForMember(d => d.Country, o => o.Ignore())
+               .ForMember(d => d.State, o => o.Ignore())
+               .ForMember(d => d.City, o => o.Ignore())
+               .ForMember(d => d.Street, o => o.MapFrom(s => s.Street))
+               .ForMember(d => d.ZipCode, o => o.MapFrom(s => s.ZipCode));
 
-
+            // View Organization AddressDto
             CreateMap<Address, ViewOrganizationAddressDto>()
-             .ForCtorParam("CountryDto", o => o.MapFrom(a => a.Country))
-             .ForCtorParam("CityDto", o => o.MapFrom(a => a.City))
-             .ForCtorParam("StateDto", o => o.MapFrom(a => a.State))
+             .ForCtorParam("Country", o => o.MapFrom(a => a.Country))
+             .ForCtorParam("City", o => o.MapFrom(a => a.City))
+             .ForCtorParam("State", o => o.MapFrom(a => a.State))
              .ForCtorParam("Street", o => o.MapFrom(a => a.Street))
              .ForCtorParam("ZipCode", o => o.MapFrom(a => a.ZipCode));
 
 
+            // View Branch AddressDto
+            CreateMap<Address, ViewBranchAddressDto>()
+             .ForCtorParam("Country", o => o.MapFrom(a => a.Country))
+             .ForCtorParam("City", o => o.MapFrom(a => a.City))
+             .ForCtorParam("State", o => o.MapFrom(a => a.State))
+             .ForCtorParam("Street", o => o.MapFrom(a => a.Street))
+             .ForCtorParam("ZipCode", o => o.MapFrom(a => a.ZipCode));
+
+
+            // Dtos <-> ViewModels
             CreateMap<AddOrganizationAddressDto, AddOrganizationAddressViewModel>().ReverseMap();
-            CreateMap<UpdateOrganizationAddressDto, UpdateOrganizationAddressViewModel>().ReverseMap();
             CreateMap<ViewOrganizationAddressDto, ViewOrganizationAddressViewModel>().ReverseMap();
+            CreateMap<AddBranchAddressDto, AddBranchAddressViewModel>().ReverseMap();
+            CreateMap<ViewBranchAddressDto, ViewBranchAddressViewModel>().ReverseMap();
+
         }
     }
 }

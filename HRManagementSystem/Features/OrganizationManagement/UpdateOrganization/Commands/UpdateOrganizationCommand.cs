@@ -6,7 +6,6 @@ using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndV
 using HRManagementSystem.Features.Common.CurrencyManagement.UpdateCurrencyDtosAndVms.Dtos;
 using HRManagementSystem.Features.Common.OrganizationCommon.Queries;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.OrganizationManagement.UpdateOrganization.Commands
 {
@@ -25,8 +24,8 @@ namespace HRManagementSystem.Features.OrganizationManagement.UpdateOrganization.
             var isExist = await _mediator.Send(new IsOrganizationExistQuery(request.Id));
             if (!isExist.isSuccess) return RequestResult<bool>.Failure("Organization not found.", ErrorCode.OrganizationNotFound);
 
-            var nameExists = await _generalRepo.Get(x => x.Name == request.Name && x.Id != request.Id && !x.IsDeleted, ct)
-                                          .AnyAsync(ct);
+            var nameExists = await _generalRepo.ExistsByNameAsync<Branch>(request.Name);
+
             if (nameExists)
                 return RequestResult<bool>.Failure("Organization Name already exists.", ErrorCode.Conflict);
 

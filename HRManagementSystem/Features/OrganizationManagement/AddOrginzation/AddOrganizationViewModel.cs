@@ -4,7 +4,7 @@ using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVm
 
 namespace HRManagementSystem.Features.OrganizationManagement
 {
-    public record AddOrganizationViewModel(string Name, string? LegalName, string? Industry, string? Descreption,
+    public record AddOrganizationViewModel(string Name, string? LegalName, string? Industry, string? Description,
         DateTime? DefaultTimezone, AddOrganizationCurrencyViewModel Currency, AddOrganizationAddressViewModel Address);
 
     public class AddOrginizationViewModelValidator : AbstractValidator<AddOrganizationViewModel>
@@ -22,7 +22,7 @@ namespace HRManagementSystem.Features.OrganizationManagement
                 .When(x => !string.IsNullOrWhiteSpace(x.LegalName))
                 .Must(v => v!.Trim().Length <= 200);
 
-            RuleFor(x => x.Descreption)
+            RuleFor(x => x.Description)
                 .MaximumLength(1000).WithMessage("Legal name must be at most 1000 chars.");
 
             RuleFor(x => x.Industry)
