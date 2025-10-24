@@ -18,12 +18,23 @@
         OrganizationAlreadyExists = 100,
         OrganizationNotFound = 101,
         OrganizationWasNotDeleted = 102,
+        // City 
+        CityWasNotDeleted = 103,
 
 
 
         //Branch
         BranchNotFound = 200,
         BranchWasNotDeleted = 201,
+        NoBranchesFound = 202,
+
+
+
+
+        //
+        TeamNotFound = 300,
+        TeamWasNotDeleted = 301,
+        TeamAlreadyExists = 302,
 
 
     }

@@ -45,16 +45,16 @@ namespace HRManagementSystem
 
             var app = builder.Build();
 
-            #region Migrate Database - Data Seeding
-            using var Scope = app.Services.CreateScope();
-            var dbContext = Scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-            var pendingMigrations = dbContext.Database.GetPendingMigrations();
-            if (pendingMigrations?.Any() ?? false)
-            {
-                dbContext.Database.Migrate();
-            }
-            ApplicationDbContextSeeding.SeedData(dbContext);
-            #endregion
+            //#region Migrate Database - Data Seeding
+            //using var Scope = app.Services.CreateScope();
+            //var dbContext = Scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            //var pendingMigrations = dbContext.Database.GetPendingMigrations();
+            //if (pendingMigrations?.Any() ?? false)
+            //{
+            //    dbContext.Database.Migrate();
+            //}
+            //ApplicationDbContextSeeding.SeedData(dbContext);
+            //#endregion
 
             app.UseMiddleware<GlobalErrorHandlerMiddleware>();
             if (app.Environment.IsDevelopment())

@@ -21,14 +21,13 @@ namespace HRManagementSystem.Features.BranchManagement.GetBranchById
                 return ResponseViewModel<ViewBranchByIdViewModel>.Failure(validationResult.errorCode);
             }
 
-            var org = await _mediator.Send(new GetBranchByIdQuery(model.Id));
+            var branch = await _mediator.Send(new GetBranchByIdQuery(model.Id));
 
-            if (!org.isSuccess) return ResponseViewModel<ViewBranchByIdViewModel>.Failure(org.message,
+            if (branch is null) return ResponseViewModel<ViewBranchByIdViewModel>.Failure(branch.message,
                 ErrorCode.BranchNotFound);
 
-            var vm = _mapper.Map<ViewBranchByIdViewModel>(org.data);
+            var vm = _mapper.Map<ViewBranchByIdViewModel>(branch.data);
             return ResponseViewModel<ViewBranchByIdViewModel>.Success(vm);
         }
     }
-
 }
