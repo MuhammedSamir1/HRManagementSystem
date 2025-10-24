@@ -9,21 +9,21 @@ using Microsoft.AspNetCore.Mvc;
 namespace HRManagementSystem.Features.BranchManagement.GetAllBranches
 {
     public class GetAllBranchesEndPoint : BaseEndPoint<GetAllBranchesViewModel,
-         ResponseViewModel<ViewBranchViewModel>>
+         ResponseViewModel<List<ViewBranchViewModel>>>
     {
         public GetAllBranchesEndPoint(EndPointBaseParameters<GetAllBranchesViewModel> parameters)
             : base(parameters) { }
 
         [HttpGet]
-        public async Task<ResponseViewModel<ViewBranchViewModel>> GetAll()
+        public async Task<ResponseViewModel<List<ViewBranchViewModel>>> GetAll()
         {
             var org = await _mediator.Send(new GetAllBranchesQuery());
 
-            if (!org.isSuccess) return ResponseViewModel<ViewBranchViewModel>.Failure(org.message,
+            if (!org.isSuccess) return ResponseViewModel<List<ViewBranchViewModel>>.Failure(org.message,
                 ErrorCode.NoBranchesFound);
 
-            var vm = _mapper.Map<ViewBranchViewModel>(org.data);
-            return ResponseViewModel<ViewBranchViewModel>.Success(vm);
+            var vm = _mapper.Map<List<ViewBranchViewModel>>(org.data);
+            return ResponseViewModel<List<ViewBranchViewModel>>.Success(vm);
         }
     }
 }

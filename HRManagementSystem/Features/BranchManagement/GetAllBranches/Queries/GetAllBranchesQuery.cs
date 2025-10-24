@@ -9,24 +9,24 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.BranchManagement.GetAllBranches.Queries
 {
-    public sealed record GetAllBranchesQuery : IRequest<RequestResult<ViewBranchDto>>;
+    public sealed record GetAllBranchesQuery : IRequest<RequestResult<IEnumerable<ViewBranchDto>>>;
 
-    public sealed class GetBranchByIdQueryHandler : RequestHandlerBase<GetAllBranchesQuery,
-        RequestResult<ViewBranchDto>, Branch, int>
+    public sealed class GetAllBranchesQueryHandler : RequestHandlerBase<GetAllBranchesQuery,
+        RequestResult<IEnumerable<ViewBranchDto>>, Branch, int>
     {
-        public GetBranchByIdQueryHandler(RequestHandlerBaseParameters<Branch, int> parameters)
+        public GetAllBranchesQueryHandler(RequestHandlerBaseParameters<Branch, int> parameters)
             : base(parameters) { }
 
-        public override async Task<RequestResult<ViewBranchDto>> Handle(GetAllBranchesQuery request, CancellationToken ct)
+        public override async Task<RequestResult<IEnumerable<ViewBranchDto>>> Handle(GetAllBranchesQuery request, CancellationToken ct)
         {
             var branch = await _generalRepo.Get(x => !x.IsDeleted, ct)
                 .ProjectTo<ViewBranchDto>(_mapper.ConfigurationProvider)
-                .FirstOrDefaultAsync(ct);
+                .ToListAsync(ct);
 
             if (branch is null)
-                return RequestResult<ViewBranchDto>.Failure(ErrorCode.NoBranchesFound);
+                return RequestResult<IEnumerable<ViewBranchDto>>.Failure(ErrorCode.NoBranchesFound);
 
-            return RequestResult<ViewBranchDto>.Success(branch);
+            return RequestResult<IEnumerable<ViewBranchDto>>.Success(branch);
         }
     }
 }
