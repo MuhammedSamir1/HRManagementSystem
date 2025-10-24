@@ -25,13 +25,23 @@
   <ItemGroup>
     <Folder Include="Features\BranchManagement\AddBranch\Queries\" />
     <Folder Include="Features\BranchManagement\UpdateBranch\Queries\" />
-    <Folder Include="Features\CityManagement\" />
     <Folder Include="Features\Common\OrganizationCommon\Commands\" />
     <Folder Include="Features\CompanyManagement\" />
+    <Folder Include="Features\CountryManagement\Commands\" />
     <Folder Include="Features\CountryManagement\Queries\" />
+    <Folder Include="Features\DepartmentManagement\AddDepartment\" />
+    <Folder Include="Features\DepartmentManagement\DeleteDepartment\" />
+    <Folder Include="Features\DepartmentManagement\GetDepartmentById\" />
+    <Folder Include="Features\DepartmentManagement\GetAllDepartments\" />
+    <Folder Include="Features\DepartmentManagement\UpdateDepartment\" />
     <Folder Include="Features\OrganizationManagement\AddOrginzation\Queries\" />
     <Folder Include="Features\OrganizationManagement\DeleteOrganization\Queries\" />
     <Folder Include="Features\StateManagement\" />
+    <Folder Include="Features\TeamManagement\AddTeam\" />
+    <Folder Include="Features\TeamManagement\DeleteTeam\" />
+    <Folder Include="Features\TeamManagement\GetTeamById\" />
+    <Folder Include="Features\TeamManagement\GetAllTeams\" />
+    <Folder Include="Features\TeamManagement\UpdateTeam\" />
   </ItemGroup>
 
 </Project>

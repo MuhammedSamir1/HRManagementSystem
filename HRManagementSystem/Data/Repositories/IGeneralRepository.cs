@@ -8,6 +8,7 @@ namespace HRManagementSystem.Data.Repositories
         public Task<bool> ExistsByNameAsync<T>(string name, bool IsDeleted = false, CancellationToken ct = default) where T : class;
         public IQueryable<TEntity> GetAll();
         public Task<TEntity> GetByIdAsync(TKey id);
+        public IQueryable<TEntity> GetById(TKey id);
         public Task<TEntity> GetByIdWithTracking(TKey id);
         public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> expression, CancellationToken ct);
         public Task<bool> IsExistAsync(TKey id, CancellationToken ct);

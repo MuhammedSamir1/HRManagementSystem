@@ -5,7 +5,7 @@
 namespace HRManagementSystem.Migrations
 {
     /// <inheritdoc />
-    public partial class AddAddressIdInBranch : Migration
+    public partial class AddressId : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

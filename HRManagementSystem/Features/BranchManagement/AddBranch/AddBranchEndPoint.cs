@@ -24,7 +24,7 @@ namespace HRManagementSystem.Features.BranchManagement.AddBranch
             var result = await _mediator.Send(new AddBranchCommand(model.Name, model.Description, model.CompanyId,
                 model.Code, address), ct);
 
-            if (!result.isSuccess) return ResponseViewModel<bool>.Failure(result.errorCode);
+            if (!result.isSuccess) return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
             return ResponseViewModel<bool>.Success(true, "Branch Added Successfully!");
         }
     }
