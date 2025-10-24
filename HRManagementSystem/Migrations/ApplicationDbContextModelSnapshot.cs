@@ -98,7 +98,7 @@ namespace HRManagementSystem.Migrations
                     b.HasIndex("StateId", "Name")
                         .IsUnique();
 
-                    b.ToTable("City");
+                    b.ToTable("Cities");
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.AddressEntity.Country", b =>

@@ -1,4 +1,5 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
+﻿using AutoMapper.QueryableExtensions;
+using HRManagementSystem.Common.BaseRequestHandler;
 using HRManagementSystem.Common.Data.Enums;
 using HRManagementSystem.Common.Views.Response;
 using HRManagementSystem.Data.Models;
@@ -17,21 +18,14 @@ namespace HRManagementSystem.Features.CompanyManagement.GetAllCompany.Queries
 
         public override async Task<RequestResult<IEnumerable<GetAllCompaniesDto>>> Handle(GetAllCompaniesQuery request, CancellationToken ct)
         {
-            var companies = await _generalRepo.GetAll()
-                                    .Select(x => new GetAllCompaniesDto
-                                    {
-                                        Id = x.Id,
-                                        Name = x.Name,
-                                        Code = x.Code,
-                                        Description = x.Description,
-                                        OrganizationName = x.Organization.Name
-                                    })
-                                    .ToListAsync(ct);
+            var companiesDto = await _generalRepo.GetAll()
+                            .ProjectTo<GetAllCompaniesDto>(_mapper.ConfigurationProvider)
+                            .ToListAsync(ct);
 
-            if (!companies.Any())
+            if (!companiesDto.Any())
                 return RequestResult<IEnumerable<GetAllCompaniesDto>>.Failure("No companies!", ErrorCode.NotFound);
 
-            return RequestResult<IEnumerable<GetAllCompaniesDto>>.Success(companies, "Companies returned successfully!");
+            return RequestResult<IEnumerable<GetAllCompaniesDto>>.Success(companiesDto, "Companies returned successfully!");
         }
     }
 }

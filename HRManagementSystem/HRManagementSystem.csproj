@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\CountryManagement\Commands\**" />
+    <Compile Remove="Features\CountryManagement\Queries\**" />
+    <Content Remove="Features\CountryManagement\Commands\**" />
+    <Content Remove="Features\CountryManagement\Queries\**" />
+    <EmbeddedResource Remove="Features\CountryManagement\Commands\**" />
+    <EmbeddedResource Remove="Features\CountryManagement\Queries\**" />
+    <None Remove="Features\CountryManagement\Commands\**" />
+    <None Remove="Features\CountryManagement\Queries\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="FluentValidation" Version="12.0.0" />
@@ -28,8 +39,12 @@
     <Folder Include="Features\CityManagement\" />
     <Folder Include="Features\Common\AddressManagement\CountryCommon\Queries\" />
     <Folder Include="Features\Common\OrganizationCommon\Commands\" />
-    <Folder Include="Features\CountryManagement\Commands\" />
-    <Folder Include="Features\CountryManagement\Queries\" />
+    <Folder Include="Features\CompanyManagement\" />
+    <Folder Include="Features\DepartmentManagement\AddDepartment\" />
+    <Folder Include="Features\DepartmentManagement\DeleteDepartment\" />
+    <Folder Include="Features\DepartmentManagement\GetDepartmentById\" />
+    <Folder Include="Features\DepartmentManagement\GetAllDepartments\" />
+    <Folder Include="Features\DepartmentManagement\UpdateDepartment\" />
     <Folder Include="Features\OrganizationManagement\AddOrginzation\Queries\" />
     <Folder Include="Features\OrganizationManagement\DeleteOrganization\Queries\" />
   </ItemGroup>

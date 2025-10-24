@@ -18,6 +18,8 @@
         OrganizationAlreadyExists = 100,
         OrganizationNotFound = 101,
         OrganizationWasNotDeleted = 102,
+        // City 
+        CityWasNotDeleted = 103,
 
 
 
@@ -29,5 +31,16 @@
         StateAlreadyExists = 204,
         InvalidRequest = 205,
         StateHasCities = 206,
+        NoBranchesFound = 202,
+
+
+
+
+        //
+        TeamNotFound = 300,
+        TeamWasNotDeleted = 301,
+        TeamAlreadyExists = 302,
+
+
     }
 }
