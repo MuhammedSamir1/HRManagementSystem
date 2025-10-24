@@ -10,7 +10,7 @@ namespace HRManagementSystem.Features.CityManagement.GetAllCities
     {
         public GetAllCitiesViewModelValidator()
         {
-          
+
         }
     }
 }

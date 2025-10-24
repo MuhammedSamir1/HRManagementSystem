@@ -8,10 +8,10 @@ namespace HRManagementSystem.Features.CountryManagement.Mapping
     {
         public DeleteCountryProfile()
         {
-            
+
             CreateMap<DeleteCountryViewModel, DeleteCountryCommand>();
 
-           
+
         }
     }
 }

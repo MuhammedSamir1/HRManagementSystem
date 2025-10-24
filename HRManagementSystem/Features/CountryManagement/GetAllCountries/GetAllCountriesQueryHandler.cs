@@ -1,5 +1,4 @@
-﻿using AutoMapper.QueryableExtensions;
-using HRManagementSystem.Common.BaseRequestHandler;
+﻿using HRManagementSystem.Common.BaseRequestHandler;
 using HRManagementSystem.Common.Views.Response;
 using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos;
@@ -15,10 +14,10 @@ namespace HRManagementSystem.Features.CountryManagement.GetAllCountries
 
         public override async Task<ResponseViewModel<List<ViewCountryDto>>> Handle(GetAllCountriesQuery request, CancellationToken cancellationToken)
         {
-           
+
             var countries = await _generalRepo.GetAll()
-                                              //.ProjectTo              
-                                            .OrderBy(c => c.Name) 
+                                            //.ProjectTo              
+                                            .OrderBy(c => c.Name)
                                             .ToListAsync(cancellationToken);
 
             //  تحويل   Entities إلى قائمة DTOs
