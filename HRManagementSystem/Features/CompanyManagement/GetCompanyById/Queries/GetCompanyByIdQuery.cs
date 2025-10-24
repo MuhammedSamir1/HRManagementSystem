@@ -2,7 +2,6 @@
 using HRManagementSystem.Common.Data.Enums;
 using HRManagementSystem.Common.Views.Response;
 using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.CompanyManagement.GetAllCompany;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

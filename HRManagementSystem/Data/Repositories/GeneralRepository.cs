@@ -1,9 +1,9 @@
-﻿using HRManagementSystem.Data.Contexts.ApplicationDbContext;
+﻿using System.Linq.Expressions;
+using HRManagementSystem.Data.Contexts.ApplicationDbContext;
 using HRManagementSystem.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata;
-using System.Linq.Expressions;
 
 namespace HRManagementSystem.Data.Repositories
 {
