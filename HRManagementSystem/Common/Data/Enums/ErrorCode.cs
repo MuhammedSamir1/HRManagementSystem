@@ -26,6 +26,11 @@
         //Branch
         BranchNotFound = 200,
         BranchWasNotDeleted = 201,
+        StateNotFound = 202,
+        CountryNotFound = 203,
+        StateAlreadyExists = 204,
+        InvalidRequest = 205,
+        StateHasCities = 206,
         NoBranchesFound = 202,
 
 

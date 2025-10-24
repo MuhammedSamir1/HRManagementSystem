@@ -1,6 +1,6 @@
-﻿using HRManagementSystem.Data.Contexts.ApplicationDbContext;
+﻿using System.Text.Json;
+using HRManagementSystem.Data.Contexts.ApplicationDbContext;
 using HRManagementSystem.Data.Models.AddressEntity;
-using System.Text.Json;
 
 namespace HRManagementSystem.Data.DataSeed
 {
