@@ -4,6 +4,7 @@ using HRManagementSystem.Common.Views.Response;
 using HRManagementSystem.Data.Models;
 using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos;
+using HRManagementSystem.Features.Common.CountryCommon.Queries;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.CountryManagement.AddCountry.Commands
@@ -14,25 +15,25 @@ namespace HRManagementSystem.Features.CountryManagement.AddCountry.Commands
         {
         }
 
+
         public override async Task<RequestResult<ViewCountryDto>> Handle(AddCountryCommand request, CancellationToken cancellationToken)
         {
-            // 1. التحقق من تكرار رمز ISO3
-            var exists = await _generalRepo
-                .Get(c => c.Iso3 == request.Iso3, cancellationToken)
-                .AnyAsync(cancellationToken);
+            var existsResult = await _mediator.Send(new IsCountryExistQuery(request.Iso3), cancellationToken);
 
-            if (exists)
+            if (!existsResult.isSuccess)
             {
-                return RequestResult<ViewCountryDto>.Failure("Country with this ISO3 code already exists.", ErrorCode.Conflict);
+                return RequestResult<ViewCountryDto>.Failure(existsResult.message, existsResult.errorCode);
             }
+
 
             var countryEntity = _mapper.Map<Country>(request);
             var res = await _generalRepo.AddAsync(countryEntity, cancellationToken);
+
             if (!res)
             {
-                return RequestResult<ViewCountryDto>.Failure("Failed to add country.", ErrorCode.BadRequest);
+                return RequestResult<ViewCountryDto>.Failure("Failed to add country to the database.", ErrorCode.InternalServerError);
             }
-            // 3. الإرجاع
+
             var countryDto = _mapper.Map<ViewCountryDto>(countryEntity);
             return RequestResult<ViewCountryDto>.Success(countryDto, "Country added successfully.");
         }

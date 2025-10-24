@@ -5,23 +5,23 @@ using HRManagementSystem.Data.Models.AddressEntity;
 
 namespace HRManagementSystem.Features.CountryManagement.DeleteCountry.Commands
 {
-    public sealed class DeleteCountryCommandHandler : RequestHandlerBase<DeleteCountryCommand, ResponseViewModel<bool>, Country, int>
+    public sealed class DeleteCountryCommandHandler : RequestHandlerBase<DeleteCountryCommand, RequestResult<bool>, Country, int>
     {
         public DeleteCountryCommandHandler(RequestHandlerBaseParameters<Country, int> parameters) : base(parameters)
         {
         }
 
-        public override async Task<ResponseViewModel<bool>> Handle(DeleteCountryCommand request, CancellationToken cancellationToken)
+        public override async Task<RequestResult<bool>> Handle(DeleteCountryCommand request, CancellationToken cancellationToken)
         {
-            // SoftDeleteAsync يتضمن منطق التحقق من الوجود (IsExistAsync)
+            // SoftDeleteAsync 
             var result = await _generalRepo.SoftDeleteAsync(request.Id, cancellationToken);
 
             if (!result)
             {
-                return ResponseViewModel<bool>.Failure(ErrorCode.NotFound);
+                return RequestResult<bool>.Failure(ErrorCode.NotFound);
             }
 
-            return ResponseViewModel<bool>.Success(true, "Country deleted successfully.");
+            return RequestResult<bool>.Success(true, "Country deleted successfully.");
         }
     }
 }

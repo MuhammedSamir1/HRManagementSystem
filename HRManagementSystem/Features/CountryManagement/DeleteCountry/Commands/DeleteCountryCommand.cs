@@ -4,5 +4,5 @@ using MediatR;
 namespace HRManagementSystem.Features.CountryManagement.DeleteCountry.Commands
 {
     public sealed record DeleteCountryCommand(int Id)
-     : IRequest<ResponseViewModel<bool>>;
+     : IRequest<RequestResult<bool>>;
 }
