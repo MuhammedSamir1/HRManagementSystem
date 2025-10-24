@@ -17,7 +17,7 @@ namespace HRManagementSystem.Features.Common.AddressManagement.AddCity.Profiles
             // Map City -> GetCityByIdDto (لـ GetById Handler)
             CreateMap<City, GetCityByIdDto>();
 
-            CreateMap<GetCityByIdDto,GetCityByIdViewModel>();
+            CreateMap<GetCityByIdDto, GetCityByIdViewModel>();
         }
     }
 }

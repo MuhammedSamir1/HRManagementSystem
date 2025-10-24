@@ -2,8 +2,6 @@
 using HRManagementSystem.Common.Data.Enums;
 using HRManagementSystem.Common.Views.Response;
 using HRManagementSystem.Features.BranchManagement.GetAllBranches.Queries;
-using HRManagementSystem.Features.BranchManagement.GetBranchById;
-using HRManagementSystem.Features.BranchManagement.GetBranchById.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HRManagementSystem.Features.BranchManagement.GetAllBranches

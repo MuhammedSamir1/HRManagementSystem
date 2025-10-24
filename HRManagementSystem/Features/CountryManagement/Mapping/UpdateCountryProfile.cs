@@ -9,10 +9,10 @@ namespace HRManagementSystem.Features.CountryManagement.Mapping
     {
         public UpdateCountryProfile()
         {
-         
+
             CreateMap<UpdateCountryViewModel, UpdateCountryCommand>();
 
-          
+
             CreateMap<UpdateCountryCommand, Country>();
         }
     }

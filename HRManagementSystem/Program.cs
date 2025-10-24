@@ -1,8 +1,5 @@
-using HRManagementSystem.Data.Contexts.ApplicationDbContext;
-using HRManagementSystem.Data.DataSeed;
 using HRManagementSystem.Data.Middlewares;
 using HRManagementSystem.DI;
-using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem
 {

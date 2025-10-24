@@ -1,10 +1,6 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models.AddressEntity;
+﻿using HRManagementSystem.Common.Views.Response;
 using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.CountryManagement.UpdateCountry.Commands
 {

@@ -1,20 +1,18 @@
 ﻿using HRManagementSystem.Common.BaseEndPoints;
 using HRManagementSystem.Common.Data.Enums;
 using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos;
 using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.ViewModels;
 using HRManagementSystem.Features.CountryManagement.AddCountry.Commands;
 using HRManagementSystem.Features.CountryManagement.ViewModels.AddCountry;
 using Microsoft.AspNetCore.Mvc;
-using System.Net.WebSockets;
 
 namespace HRManagementSystem.Features.CountryManagement.AddCountry
 {
-    public class AddCountryEndPoint : BaseEndPoint<AddCountryViewModel, ViewCountryViewModel >
+    public class AddCountryEndPoint : BaseEndPoint<AddCountryViewModel, ViewCountryViewModel>
     {
         public AddCountryEndPoint(EndPointBaseParameters<AddCountryViewModel> parameters) : base(parameters) { }
 
-        [HttpPost("add")] 
+        [HttpPost("add")]
         public async Task<ResponseViewModel<ViewCountryViewModel>> AddCountry([FromQuery] AddCountryViewModel model, CancellationToken ct)
         {
             var validationResult = ValidateRequest(model);

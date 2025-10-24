@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
 using HRManagementSystem.Data.Models.AddressEntity;
-using HRManagementSystem.Features.BranchManagement.UpdateBranch.Commands;
 using HRManagementSystem.Features.CityManagement.UpdateCity.Commands;
 using HRManagementSystem.Features.CityManagement.UpdateCity.ViewModels;
 

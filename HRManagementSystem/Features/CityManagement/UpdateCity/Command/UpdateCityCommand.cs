@@ -19,7 +19,7 @@ namespace HRManagementSystem.Features.CityManagement.UpdateCity.Commands
 
         public override async Task<RequestResult<bool>> Handle(UpdateCityCommand request, CancellationToken ct)
         {
-          
+
             var isExist = await _generalRepo.IsExistAsync(request.Id, ct);
             if (!isExist)
                 return RequestResult<bool>.Failure("City not found.", ErrorCode.NotFound);
