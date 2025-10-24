@@ -18,7 +18,7 @@ namespace HRManagementSystem.Features.CompanyManagement.UpdateCompany
                 return ResponseViewModel<bool>.Failure(validationResult.errorCode);
             }
 
-            var result = await _mediator.Send(new UpdateCompanyCommand(model.id,model.name,model.description));
+            var result = await _mediator.Send(new UpdateCompanyCommand(model.id, model.name, model.description));
 
             if (!result.isSuccess) return ResponseViewModel<bool>.Failure(result.errorCode);
             return ResponseViewModel<bool>.Success(result.isSuccess, "Organization Updated Successfully!");
