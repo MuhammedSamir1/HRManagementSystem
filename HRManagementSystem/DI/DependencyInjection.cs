@@ -1,12 +1,12 @@
-﻿using System.Diagnostics;
-using System.Reflection;
-using FluentValidation;
+﻿using FluentValidation;
 using HRManagementSystem.Common.BaseEndPoints;
 using HRManagementSystem.Common.BaseRequestHandler;
 using HRManagementSystem.Data.Contexts.ApplicationDbContext;
 using HRManagementSystem.Data.Middlewares;
 using HRManagementSystem.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace HRManagementSystem.DI
 {

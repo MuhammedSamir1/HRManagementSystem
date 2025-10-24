@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using HRManagementSystem.Data.Models.AddressEntity;
+﻿using HRManagementSystem.Data.Models.AddressEntity;
+using System.ComponentModel.DataAnnotations;
 
 namespace HRManagementSystem.Data.Models
 {

@@ -4,7 +4,6 @@ using HRManagementSystem.Common.Views.Response;
 using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos;
 using HRManagementSystem.Features.Common.CountryCommon.Queries;
-using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.CountryManagement.AddCountry.Commands
 {

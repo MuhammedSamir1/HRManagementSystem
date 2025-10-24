@@ -1,7 +1,6 @@
 ﻿using HRManagementSystem.Common.BaseEndPoints;
 using HRManagementSystem.Common.Data.Enums;
 using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos;
 using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.ViewModels;
 using HRManagementSystem.Features.CountryManagement.UpdateCountry.Commands;
 using HRManagementSystem.Features.CountryManagement.ViewModels.UpdateCountry;

@@ -1,6 +1,6 @@
-﻿using System.Data;
-using HRManagementSystem.Data.Contexts.ApplicationDbContext;
+﻿using HRManagementSystem.Data.Contexts.ApplicationDbContext;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace HRManagementSystem.Data.Middlewares
 {

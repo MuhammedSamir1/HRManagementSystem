@@ -1,5 +1,5 @@
-﻿using System.Linq.Expressions;
-using HRManagementSystem.Data.Models;
+﻿using HRManagementSystem.Data.Models;
+using System.Linq.Expressions;
 
 namespace HRManagementSystem.Data.Repositories
 {

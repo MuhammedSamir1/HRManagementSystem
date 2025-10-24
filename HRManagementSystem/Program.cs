@@ -1,10 +1,7 @@
 using HRManagementSystem.Data;
-using HRManagementSystem.Data.Contexts.ApplicationDbContext;
-using HRManagementSystem.Data.DataSeed;
 using HRManagementSystem.Data.Middlewares;
 using HRManagementSystem.DI;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
