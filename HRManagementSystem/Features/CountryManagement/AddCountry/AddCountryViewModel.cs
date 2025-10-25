@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using System.ComponentModel.DataAnnotations;
 
-namespace HRManagementSystem.Features.CountryManagement.ViewModels.AddCountry
+namespace HRManagementSystem.Features.CountryManagement.AddCountry
 {
     public sealed record AddCountryViewModel([Required] string Iso2, [Required] string Iso3, [Required] string Name);
     public class AddCountryViewModelValidator : AbstractValidator<AddCountryViewModel>

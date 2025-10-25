@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using HRManagementSystem.Features.CountryManagement.DeleteCountry;
 using HRManagementSystem.Features.CountryManagement.DeleteCountry.Commands;
-using HRManagementSystem.Features.CountryManagement.ViewModels.DeleteCountry;
 
 namespace HRManagementSystem.Features.CountryManagement.Mapping
 {

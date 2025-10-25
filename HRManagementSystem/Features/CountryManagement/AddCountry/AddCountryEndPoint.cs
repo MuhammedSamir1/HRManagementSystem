@@ -3,7 +3,6 @@ using HRManagementSystem.Common.Data.Enums;
 using HRManagementSystem.Common.Views.Response;
 using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.ViewModels;
 using HRManagementSystem.Features.CountryManagement.AddCountry.Commands;
-using HRManagementSystem.Features.CountryManagement.ViewModels.AddCountry;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HRManagementSystem.Features.CountryManagement.AddCountry

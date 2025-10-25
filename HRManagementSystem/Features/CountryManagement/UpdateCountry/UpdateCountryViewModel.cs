@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using System.ComponentModel.DataAnnotations;
 
-namespace HRManagementSystem.Features.CountryManagement.ViewModels.UpdateCountry
+namespace HRManagementSystem.Features.CountryManagement.UpdateCountry
 {
     public sealed record UpdateCountryViewModel(int Id, [Required] string Iso2, [Required] string Iso3, [Required] string Name);
 

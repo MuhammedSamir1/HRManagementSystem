@@ -1,22 +1,25 @@
 ﻿using HRManagementSystem.Common.BaseEndPoints;
+using HRManagementSystem.Common.Data.Enums;
 using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos;
+using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HRManagementSystem.Features.CountryManagement.GetAllCountries
 {
-    public class GetAllCountriesEndPoint : BaseEndPoint<bool, List<ViewCountryDto>>
+    public class GetAllCountriesEndPoint : BaseEndPoint<GetAllCountriesViewModel, ViewCountryViewModel>
     {
-        public GetAllCountriesEndPoint(EndPointBaseParameters<bool> parameters) : base(parameters) { }
+        public GetAllCountriesEndPoint(EndPointBaseParameters<GetAllCountriesViewModel> parameters) : base(parameters) { }
 
-        [HttpGet("all")] // GET api/country/all
-        public async Task<ResponseViewModel<List<ViewCountryDto>>> GetAllCountries(CancellationToken ct)
+        [HttpGet] // GET api/country/all
+        public async Task<ResponseViewModel<List<ViewCountryViewModel>>> GetAllCountries(CancellationToken ct)
         {
             // 1. إرسال الـ Query بدون مدخلات
             var result = await _mediator.Send(new GetAllCountriesQuery(), ct);
 
-            if (!result.isSuccess) return ResponseViewModel<List<ViewCountryDto>>.Failure(result.errorCode);
-            return ResponseViewModel<List<ViewCountryDto>>.Success(result.data);
+            if (result is null) return ResponseViewModel<List<ViewCountryViewModel>>.Failure(ErrorCode.NoCountriesFound);
+
+            var mapped = _mapper.Map<List<ViewCountryViewModel>>(result.data);
+            return ResponseViewModel<List<ViewCountryViewModel>>.Success(mapped);
         }
     }
 }

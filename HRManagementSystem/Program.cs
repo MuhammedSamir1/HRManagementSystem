@@ -42,7 +42,7 @@ namespace HRManagementSystem
 
             var app = builder.Build();
 
-            //#region Migrate Database - Data Seeding
+            #region Migrate Database - Data Seeding
             //using var Scope = app.Services.CreateScope();
             //var dbContext = Scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
             //var pendingMigrations = dbContext.Database.GetPendingMigrations();
@@ -51,7 +51,7 @@ namespace HRManagementSystem
             //    dbContext.Database.Migrate();
             //}
             //ApplicationDbContextSeeding.SeedData(dbContext);
-            //#endregion
+            #endregion
 
             app.UseMiddleware<GlobalErrorHandlerMiddleware>();
             if (app.Environment.IsDevelopment())

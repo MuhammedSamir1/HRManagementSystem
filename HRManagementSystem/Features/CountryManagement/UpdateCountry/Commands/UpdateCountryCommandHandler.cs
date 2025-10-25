@@ -3,7 +3,7 @@ using HRManagementSystem.Common.Data.Enums;
 using HRManagementSystem.Common.Views.Response;
 using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos;
-using Microsoft.EntityFrameworkCore;
+using HRManagementSystem.Features.Common.CountryCommon.Queries;
 
 namespace HRManagementSystem.Features.CountryManagement.UpdateCountry.Commands
 {
@@ -16,25 +16,17 @@ namespace HRManagementSystem.Features.CountryManagement.UpdateCountry.Commands
         public override async Task<RequestResult<ViewCountryDto>> Handle(UpdateCountryCommand request, CancellationToken cancellationToken)
         {
 
-            var countryEntity = await _generalRepo.GetByIdWithTracking(request.Id);
+            var isCountryExist = await _mediator.Send(new IsCountryExistQuery(request.Iso3));
 
-            if (countryEntity == null)
+            if (!isCountryExist.isSuccess)
             {
                 return RequestResult<ViewCountryDto>.Failure(ErrorCode.NotFound);
             }
 
-            // 
-            var exists = await _generalRepo.Get(c => c.Iso3 == request.Iso3 && c.Id != request.Id, cancellationToken).AnyAsync(cancellationToken);
-            if (exists)
-            {
-                return RequestResult<ViewCountryDto>.Failure(ErrorCode.Conflict);
-            }
+            var country = _mapper.Map<Country>(request);
+            await _generalRepo.UpdatePartialAsync(country);
 
-            // 3
-            _mapper.Map(request, countryEntity);
-            await _generalRepo.UpdateAsync(countryEntity, cancellationToken);
-
-            var countryDto = _mapper.Map<ViewCountryDto>(countryEntity);
+            var countryDto = _mapper.Map<ViewCountryDto>(country);
             return RequestResult<ViewCountryDto>.Success(countryDto, "Country updated successfully.");
         }
     }
