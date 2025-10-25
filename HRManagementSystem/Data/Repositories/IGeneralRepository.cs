@@ -20,5 +20,6 @@ namespace HRManagementSystem.Data.Repositories
     TEntity entity,
     IEnumerable<string>? propsToUpdate = null,
     CancellationToken ct = default);
+        public Task<bool> CheckAnyAsync(Expression<Func<TEntity, bool>> expression, CancellationToken ct = default);
     }
 }

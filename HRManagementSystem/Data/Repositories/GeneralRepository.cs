@@ -283,5 +283,10 @@ namespace HRManagementSystem.Data.Repositories
         {
             return _dbSet.Where(x => x.Id!.Equals(id) && !x.IsDeleted);
         }
+
+        public Task<bool> CheckAnyAsync(Expression<Func<TEntity, bool>> expression, CancellationToken ct = default)
+        {
+            return _dbSet.AsNoTracking().AnyAsync(expression, ct);
+        }
     }
 }

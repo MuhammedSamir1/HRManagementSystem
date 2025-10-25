@@ -1,6 +1,7 @@
 ﻿using HRManagementSystem.Common.BaseRequestHandler;
 using HRManagementSystem.Common.Views.Response;
 using HRManagementSystem.Data.Models.AddressEntity;
+using HRManagementSystem.Features.Common.AddressManagement.CityCommon.Queries;
 using MediatR;
 
 namespace HRManagementSystem.Features.StateManagement.DeleteState.Command
@@ -16,6 +17,12 @@ namespace HRManagementSystem.Features.StateManagement.DeleteState.Command
         public override async Task<RequestResult<bool>> Handle(DeleteStateCommand request, CancellationToken ct)
         {
             // Check if any city assigned to this state 
+
+            var hasCities = await _mediator.Send(new IsAnyCityAssignedToStateQuery(request.Id), ct);
+            if (hasCities.data)
+            {
+                return RequestResult<bool>.Failure("Cannot delete state. There are cities assigned to this state.");
+            }
             await _generalRepo.SoftDeleteAsync(request.Id, ct);
             return RequestResult<bool>.Success(true, "State deleted successfully.");
         }
