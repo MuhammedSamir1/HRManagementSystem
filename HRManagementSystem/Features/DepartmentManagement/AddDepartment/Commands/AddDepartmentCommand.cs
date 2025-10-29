@@ -2,6 +2,8 @@
 using HRManagementSystem.Common.Data.Enums;
 using HRManagementSystem.Common.Views.Response;
 using HRManagementSystem.Data.Models;
+using HRManagementSystem.Features.Common.BranchCommon.Queries;
+using HRManagementSystem.Features.Common.DepartmentCommon.Queries;
 using MediatR;
 
 namespace HRManagementSystem.Features.DepartmentManagement.AddDepartment.Commands
@@ -19,6 +21,20 @@ namespace HRManagementSystem.Features.DepartmentManagement.AddDepartment.Command
 
         public override async Task<RequestResult<bool>> Handle(AddDepartmentCommand request, CancellationToken ct)
         {
+            var branchValidation = await _mediator.Send(new IsBranchValidQuery(request.branchId), ct);
+            if (!branchValidation.isSuccess)
+            {
+                //   Branch (NotFound) 
+                return RequestResult<bool>.Failure(branchValidation.message , branchValidation.errorCode);
+            }
+
+            // 2.   عدم التكرار (Code) 
+            var uniqueValidation = await _mediator.Send(new IsDepartmentCodeUniqueQuery(request.branchId, request.code), ct);
+            if (!uniqueValidation.isSuccess)
+            {
+                
+                return RequestResult<bool>.Failure(uniqueValidation.message, uniqueValidation.errorCode);
+            }
             var department = _mapper.Map<Department>(request);
 
             var isAdded = await _generalRepo.AddAsync(department, ct);
