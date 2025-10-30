@@ -1,6 +1,6 @@
 ﻿using HRManagementSystem.Data.Models.AddressEntity;
+using HRManagementSystem.Features.CountryManagement.UpdateCountry;
 using HRManagementSystem.Features.CountryManagement.UpdateCountry.Commands;
-using HRManagementSystem.Features.CountryManagement.ViewModels.UpdateCountry;
 
 namespace HRManagementSystem.Features.CountryManagement.Mapping
 {

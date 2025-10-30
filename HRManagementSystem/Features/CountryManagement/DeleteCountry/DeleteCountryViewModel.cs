@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace HRManagementSystem.Features.CountryManagement.ViewModels.DeleteCountry
+namespace HRManagementSystem.Features.CountryManagement.DeleteCountry
 {
     public sealed record DeleteCountryViewModel(int Id);
     public class DeleteCountryViewModelValidator : AbstractValidator<DeleteCountryViewModel>

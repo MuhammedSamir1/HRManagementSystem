@@ -36,12 +36,10 @@
   <ItemGroup>
     <Folder Include="Features\BranchManagement\AddBranch\Queries\" />
     <Folder Include="Features\BranchManagement\UpdateBranch\Queries\" />
-    <Folder Include="Features\CityManagement\" />
     <Folder Include="Features\Common\AddressManagement\CountryCommon\Queries\" />
     <Folder Include="Features\Common\OrganizationCommon\Commands\" />
     <Folder Include="Features\CompanyManagement\" />
     <Folder Include="Features\DepartmentManagement\AddDepartment\" />
-    <Folder Include="Features\DepartmentManagement\DeleteDepartment\" />
     <Folder Include="Features\DepartmentManagement\GetDepartmentById\" />
     <Folder Include="Features\DepartmentManagement\GetAllDepartments\" />
     <Folder Include="Features\DepartmentManagement\UpdateDepartment\" />

@@ -8,7 +8,7 @@ namespace HRManagementSystem.Features.CountryManagement.DeleteCountry
         public DeleteCountryEndPoint(EndPointBaseParameters<DeleteCountryViewModel> parameters) : base(parameters) { }
 
         [HttpDelete("delete/{id:int}")]
-        // نستخدم [FromRoute] الـ ID من 
+      
         public async Task<ResponseViewModel<bool>> DeleteCountry([FromRoute] int id, CancellationToken ct)
         {
             var model = new DeleteCountryViewModel(id);
@@ -19,10 +19,14 @@ namespace HRManagementSystem.Features.CountryManagement.DeleteCountry
                 return ResponseViewModel<bool>.Failure(validationResult.errorCode);
             }
 
-            // 3. إرسال الـ Command
+    
             var result = await _mediator.Send(new DeleteCountryCommand(id), ct);
 
-            if (!result.isSuccess) return ResponseViewModel<bool>.Failure(result.errorCode);
+            if (!result.isSuccess)
+            {
+               
+                return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
+            }
             return ResponseViewModel<bool>.Success(true, "Country Deleted Successfully!");
         }
     }

@@ -3,5 +3,5 @@
 namespace HRManagementSystem.Features.CountryManagement.GetAllCountries
 {
     public sealed record GetAllCountriesQuery()
-     : IRequest<ResponseViewModel<List<ViewCountryDto>>>;
+     : IRequest<RequestResult<List<ViewCountryDto>>>;
 }
