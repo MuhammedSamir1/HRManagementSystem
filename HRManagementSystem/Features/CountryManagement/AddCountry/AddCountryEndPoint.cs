@@ -1,7 +1,5 @@
 ﻿using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.ViewModels;
 using HRManagementSystem.Features.CountryManagement.AddCountry.Commands;
-using HRManagementSystem.Features.CountryManagement.ViewModels.AddCountry;
-using Microsoft.AspNetCore.Mvc;
 
 namespace HRManagementSystem.Features.CountryManagement.AddCountry
 {

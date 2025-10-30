@@ -1,18 +1,14 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models.AddressEntity;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
+﻿using HRManagementSystem.Data.Models.AddressEntity;
 
 namespace HRManagementSystem.Features.Common.AddressManagement.CityCommon.Queries
 {
     public record IsAnyCityAssignedToStateQuery(int stateId) : IRequest<RequestResult<bool>>;
 
-    public class IsAnyCityAssignedToStateQueryHandler : RequestHandlerBase<IsAnyCityAssignedToStateQuery, RequestResult<bool>,City,int>
+    public class IsAnyCityAssignedToStateQueryHandler : RequestHandlerBase<IsAnyCityAssignedToStateQuery, RequestResult<bool>, City, int>
     {
-        public IsAnyCityAssignedToStateQueryHandler(RequestHandlerBaseParameters<City,int>_params):base(_params)
+        public IsAnyCityAssignedToStateQueryHandler(RequestHandlerBaseParameters<City, int> _params) : base(_params)
         {
-            
+
         }
 
         public override async Task<RequestResult<bool>> Handle(IsAnyCityAssignedToStateQuery request, CancellationToken cancellationToken)

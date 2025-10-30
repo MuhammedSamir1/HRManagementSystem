@@ -11,11 +11,11 @@ namespace HRManagementSystem.Features.CountryManagement.DeleteCountry.Commands
 
         public override async Task<RequestResult<bool>> Handle(DeleteCountryCommand request, CancellationToken cancellationToken)
         {
-            
+
             var existingCountry = await _generalRepo.GetByIdAsync(request.Id);
             if (existingCountry == null)
             {
-              
+
                 return RequestResult<bool>.Failure("Country not found or already deleted.", ErrorCode.NotFound);
             }
 
@@ -23,16 +23,16 @@ namespace HRManagementSystem.Features.CountryManagement.DeleteCountry.Commands
             var cityCheck = await _mediator.Send(new HasAssignedCitiesQuery(request.Id), cancellationToken);
             if (!cityCheck.isSuccess)
             {
-               
+
                 return RequestResult<bool>.Failure(cityCheck.message, cityCheck.errorCode);
             }
 
-            
+
             var result = await _generalRepo.SoftDeleteAsync(request.Id, cancellationToken);
 
             if (!result)
             {
-         
+
                 return RequestResult<bool>.Failure("Failed to delete the country.", ErrorCode.InternalServerError);
             }
 

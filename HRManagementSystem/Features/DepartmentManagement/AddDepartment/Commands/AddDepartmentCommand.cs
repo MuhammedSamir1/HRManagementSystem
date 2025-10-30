@@ -1,4 +1,7 @@
-﻿namespace HRManagementSystem.Features.DepartmentManagement.AddDepartment.Commands
+﻿using HRManagementSystem.Features.Common.BranchCommon.Queries;
+using HRManagementSystem.Features.Common.DepartmentCommon.Queries;
+
+namespace HRManagementSystem.Features.DepartmentManagement.AddDepartment.Commands
 {
     public record AddDepartmentCommand(
                                    int branchId, string name,
@@ -17,14 +20,14 @@
             if (!branchValidation.isSuccess)
             {
                 //   Branch (NotFound) 
-                return RequestResult<bool>.Failure(branchValidation.message , branchValidation.errorCode);
+                return RequestResult<bool>.Failure(branchValidation.message, branchValidation.errorCode);
             }
 
             // 2.   عدم التكرار (Code) 
             var uniqueValidation = await _mediator.Send(new IsDepartmentCodeUniqueQuery(request.branchId, request.code), ct);
             if (!uniqueValidation.isSuccess)
             {
-                
+
                 return RequestResult<bool>.Failure(uniqueValidation.message, uniqueValidation.errorCode);
             }
             var department = _mapper.Map<Department>(request);

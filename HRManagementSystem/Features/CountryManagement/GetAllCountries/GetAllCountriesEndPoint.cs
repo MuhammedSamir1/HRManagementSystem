@@ -1,5 +1,4 @@
 ﻿using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.ViewModels;
-using Microsoft.AspNetCore.Mvc;
 
 namespace HRManagementSystem.Features.CountryManagement.GetAllCountries
 {

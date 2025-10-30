@@ -1,6 +1,5 @@
 ﻿using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.ViewModels;
 using HRManagementSystem.Features.CountryManagement.UpdateCountry.Commands;
-using HRManagementSystem.Features.CountryManagement.ViewModels.UpdateCountry;
 
 namespace HRManagementSystem.Features.CountryManagement.UpdateCountry
 {

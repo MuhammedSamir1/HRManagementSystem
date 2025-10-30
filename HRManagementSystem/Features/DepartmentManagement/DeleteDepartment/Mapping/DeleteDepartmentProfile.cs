@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Commands;
+﻿using HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Commands;
 
 namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Mapping
 {

@@ -1,4 +1,5 @@
 ﻿using HRManagementSystem.Data.Models.AddressEntity;
+using HRManagementSystem.Features.Common.AddressManagement.CityCommon.Queries;
 
 namespace HRManagementSystem.Features.StateManagement.DeleteState.Command
 {

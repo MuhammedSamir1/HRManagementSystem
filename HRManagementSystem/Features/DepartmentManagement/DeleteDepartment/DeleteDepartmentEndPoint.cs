@@ -19,7 +19,7 @@ namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment
             var command = _mapper.Map<DeleteDepartmentCommand>(model);
             var result = await _mediator.Send(command, ct);
 
-          
+
             if (!result.isSuccess)
             {
                 return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
