@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.OrganizationManagement.UpdateOrganization;
+﻿using HRManagementSystem.Features.OrganizationManagement.UpdateOrganization;
 using HRManagementSystem.Features.OrganizationManagement.UpdateOrganization.Commands;
 
 namespace HRManagementSystem.Features.OrganizationManagement.Mapping

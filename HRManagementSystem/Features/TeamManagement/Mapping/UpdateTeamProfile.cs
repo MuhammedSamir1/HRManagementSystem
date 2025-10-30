@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.TeamManagement.UpdateTeam;
+﻿using HRManagementSystem.Features.TeamManagement.UpdateTeam;
 using HRManagementSystem.Features.TeamManagement.UpdateTeam.Commands;
 
 namespace HRManagementSystem.Features.TeamManagement.Mapping

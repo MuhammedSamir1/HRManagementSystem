@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
-
-namespace HRManagementSystem.Features.DepartmentManagement.GetDepartmentById.Mapping
+﻿namespace HRManagementSystem.Features.DepartmentManagement.GetDepartmentById.Mapping
 {
     public class GetDepartmentByIdProfile : Profile
     {

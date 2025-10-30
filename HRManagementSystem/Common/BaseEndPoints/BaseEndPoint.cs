@@ -1,9 +1,4 @@
-﻿using AutoMapper;
-using FluentValidation;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
 
 namespace HRManagementSystem.Common.BaseEndPoints
 {

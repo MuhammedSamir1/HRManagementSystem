@@ -63,9 +63,12 @@ namespace HRManagementSystem
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseMiddleware<TransactionMiddleware>();
+            app.UseMiddleware<UserStateMiddleware>();
+
             app.MapControllers();
 
             app.Run();

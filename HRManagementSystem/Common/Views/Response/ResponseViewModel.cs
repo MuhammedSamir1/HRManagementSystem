@@ -1,6 +1,4 @@
-﻿using HRManagementSystem.Common.Data.Enums;
-
-namespace HRManagementSystem.Common.Views.Response
+﻿namespace HRManagementSystem.Common.Views.Response
 {
     public record ResponseViewModel<T>(T data, bool isSuccess, string message, ErrorCode errorCode)
     {

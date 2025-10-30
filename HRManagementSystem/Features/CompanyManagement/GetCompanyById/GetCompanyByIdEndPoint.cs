@@ -1,8 +1,4 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.CompanyManagement.GetCompanyById.Queries;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.CompanyManagement.GetCompanyById.Queries;
 
 namespace HRManagementSystem.Features.CompanyManagement.GetCompanyById
 {

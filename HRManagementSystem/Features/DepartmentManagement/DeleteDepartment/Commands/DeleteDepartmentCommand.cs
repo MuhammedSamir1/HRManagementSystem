@@ -1,9 +1,4 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.TeamManagement.HasAssignedTeams;
-using MediatR;
+﻿using HRManagementSystem.Features.TeamManagement.HasAssignedTeams;
 
 namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Commands
 {
@@ -27,11 +22,11 @@ namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Comm
             var teamCheck = await _mediator.Send(new HasAssignedTeamsQuery(request.departmentId), ct);
             if (!teamCheck.isSuccess)
             {
-             
+
                 return RequestResult<bool>.Failure(teamCheck.message, teamCheck.errorCode);
             }
 
-            
+
             var isDeleted = await _generalRepo.SoftDeleteAsync(request.departmentId, ct);
 
             if (!isDeleted)

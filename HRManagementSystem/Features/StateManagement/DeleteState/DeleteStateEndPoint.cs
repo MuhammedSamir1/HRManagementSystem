@@ -1,7 +1,4 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.StateManagement.DeleteState.Command;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.StateManagement.DeleteState.Command;
 
 namespace HRManagementSystem.Features.StateManagement.DeleteState
 {

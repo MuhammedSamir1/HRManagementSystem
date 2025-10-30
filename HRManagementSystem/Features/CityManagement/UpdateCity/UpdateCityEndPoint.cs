@@ -1,8 +1,5 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.CityManagement.UpdateCity.Commands;
+﻿using HRManagementSystem.Features.CityManagement.UpdateCity.Commands;
 using HRManagementSystem.Features.CityManagement.UpdateCity.ViewModels;
-using Microsoft.AspNetCore.Mvc;
 
 namespace HRManagementSystem.Features.CityManagement.UpdateCity
 {

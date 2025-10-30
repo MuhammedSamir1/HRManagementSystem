@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Features.CountryManagement.DeleteCountry;
+﻿using HRManagementSystem.Features.CountryManagement.DeleteCountry;
 using HRManagementSystem.Features.CountryManagement.DeleteCountry.Commands;
 
 namespace HRManagementSystem.Features.CountryManagement.Mapping

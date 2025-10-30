@@ -1,8 +1,5 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.Common.AddressManagement.StateCommon.ViewModels;
+﻿using HRManagementSystem.Features.Common.AddressManagement.StateCommon.ViewModels;
 using HRManagementSystem.Features.StateManagement.GetAllStates.Queries;
-using Microsoft.AspNetCore.Mvc;
 
 namespace HRManagementSystem.Features.StateManagement.GetAllStates
 {

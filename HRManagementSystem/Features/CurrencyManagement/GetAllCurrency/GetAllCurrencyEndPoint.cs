@@ -1,8 +1,4 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.CurrencyManagement.GetAllCurrency.Queries;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.CurrencyManagement.GetAllCurrency.Queries;
 
 namespace HRManagementSystem.Features.CurrencyManagement.GetAllCurrency
 {

@@ -1,12 +1,8 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models.AddressEntity;
+﻿using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Data.Repositories;
 using HRManagementSystem.Features.Common.AddressManagement.StateCommon.Dtos;
 using HRManagementSystem.Features.Common.AddressManagement.StateCommon.IsStateExistWithSameCode.Query;
 using HRManagementSystem.Features.StateManagement.GetStateById.Queries;
-using MediatR;
 namespace HRManagementSystem.Features.StateManagement.UpdateState.Command
 {
     public sealed record UpdateStateCommand(int Id, string Code, string Name, int CountryId) : IRequest<RequestResult<ViewStateDto>>;

@@ -1,8 +1,4 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.BranchManagement.DeleteBranch.Commands;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.BranchManagement.DeleteBranch.Commands;
 
 namespace HRManagementSystem.Features.BranchManagement.DeleteBranch
 {

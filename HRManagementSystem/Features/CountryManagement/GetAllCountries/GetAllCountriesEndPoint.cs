@@ -1,8 +1,4 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.ViewModels;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.ViewModels;
 
 namespace HRManagementSystem.Features.CountryManagement.GetAllCountries
 {

@@ -1,8 +1,5 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models.AddressEntity;
+﻿using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.Common.AddressManagement.CityCommon.Queries;
-using MediatR;
 
 namespace HRManagementSystem.Features.StateManagement.DeleteState.Command
 {

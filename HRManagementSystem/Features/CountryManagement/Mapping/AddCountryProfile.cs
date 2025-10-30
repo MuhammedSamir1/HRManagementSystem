@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models.AddressEntity;
+﻿using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.CountryManagement.AddCountry;
 using HRManagementSystem.Features.CountryManagement.AddCountry.Commands;
 

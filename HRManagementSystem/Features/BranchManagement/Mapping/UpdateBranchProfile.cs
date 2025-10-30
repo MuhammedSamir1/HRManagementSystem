@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.BranchManagement.UpdateBranch;
+﻿using HRManagementSystem.Features.BranchManagement.UpdateBranch;
 using HRManagementSystem.Features.BranchManagement.UpdateBranch.Commands;
 
 namespace HRManagementSystem.Features.BranchManagement.Mapping

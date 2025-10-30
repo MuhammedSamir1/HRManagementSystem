@@ -1,5 +1,4 @@
-﻿using HRManagementSystem.Data.Models;
-using HRManagementSystem.Data.Models.AddressEntity;
+﻿using HRManagementSystem.Data.Models.AddressEntity;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Data.Contexts.ApplicationDbContext;
@@ -9,11 +8,17 @@ public class ApplicationDbContext : DbContext
      : base(options)
     {
     }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
     }
+
+    public DbSet<User> Users { get; set; }
+    public DbSet<Role> Roles { get; set; }
+    public DbSet<RoleFeature> RoleFeatures { get; set; }
+
     public DbSet<Organization> Organizations { get; set; }
     public DbSet<Company> Companies { get; set; }
     public DbSet<Address> Addresses { get; set; }

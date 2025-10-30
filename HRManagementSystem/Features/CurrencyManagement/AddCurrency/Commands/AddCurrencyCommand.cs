@@ -1,10 +1,4 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models;
-using MediatR;
-
-namespace HRManagementSystem.Features.CurrencyManagement.AddCurrency.Commands
+﻿namespace HRManagementSystem.Features.CurrencyManagement.AddCurrency.Commands
 {
     public record AddCurrencyCommand(
                                     string Code, int NumericCode,

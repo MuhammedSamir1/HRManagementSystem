@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.TeamManagement.GetTeamById;
+﻿using HRManagementSystem.Features.TeamManagement.GetTeamById;
 
 namespace HRManagementSystem.Features.TeamManagement.Mapping
 {

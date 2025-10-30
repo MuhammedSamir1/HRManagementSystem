@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.BaseRequestHandler;
+using HRManagementSystem.Common.Views;
 using HRManagementSystem.Data.Contexts.ApplicationDbContext;
 using HRManagementSystem.Data.Middlewares;
 using HRManagementSystem.Data.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Reflection;
@@ -38,6 +38,8 @@ namespace HRManagementSystem.DI
             services.AddScoped(typeof(EndPointBaseParameters<>));
             services.AddScoped(typeof(RequestHandlerBaseParameters<,>));
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+            services.AddScoped<UserState>();
 
             return services;
         }

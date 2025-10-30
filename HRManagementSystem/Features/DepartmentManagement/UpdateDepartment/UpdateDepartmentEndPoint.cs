@@ -1,7 +1,4 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.DepartmentManagement.UpdateDepartment.Commands;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.DepartmentManagement.UpdateDepartment.Commands;
 
 namespace HRManagementSystem.Features.DepartmentManagement.UpdateDepartment
 {
@@ -18,14 +15,14 @@ namespace HRManagementSystem.Features.DepartmentManagement.UpdateDepartment
                 return ResponseViewModel<bool>.Failure(validationResult.errorCode);
             }
 
-        
+
             var command = _mapper.Map<UpdateDepartmentCommand>(model);
             var result = await _mediator.Send(command, ct);
 
 
             if (!result.isSuccess)
             {
-           
+
                 return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
             }
 

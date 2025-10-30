@@ -1,7 +1,4 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models.AddressEntity;
+﻿using HRManagementSystem.Data.Models.AddressEntity;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.CityManagement.HasAssignedCities
@@ -12,14 +9,14 @@ namespace HRManagementSystem.Features.CityManagement.HasAssignedCities
 
         public override async Task<RequestResult<bool>> Handle(HasAssignedCitiesQuery request, CancellationToken ct)
         {
-       
+
             var hasCities = await _generalRepo
                 .Get(c => c.State.CountryId == request.CountryId, ct)
                 .AnyAsync(ct);
 
             if (hasCities)
             {
-         
+
                 return RequestResult<bool>.Failure("Cannot delete country: It has active assigned cities.", ErrorCode.Conflict);
             }
             return RequestResult<bool>.Success(true);

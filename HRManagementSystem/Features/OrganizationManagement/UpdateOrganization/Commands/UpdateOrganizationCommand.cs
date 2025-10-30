@@ -1,11 +1,6 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos;
+﻿using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos;
 using HRManagementSystem.Features.Common.CurrencyManagement.UpdateCurrencyDtosAndVms.Dtos;
 using HRManagementSystem.Features.Common.OrganizationCommon.Queries;
-using MediatR;
 
 namespace HRManagementSystem.Features.OrganizationManagement.UpdateOrganization.Commands
 {

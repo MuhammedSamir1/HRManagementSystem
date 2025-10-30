@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.DepartmentManagement.UpdateDepartment.Commands;
+﻿using HRManagementSystem.Features.DepartmentManagement.UpdateDepartment.Commands;
 
 namespace HRManagementSystem.Features.DepartmentManagement.UpdateDepartment.Mapping
 {
@@ -8,7 +6,7 @@ namespace HRManagementSystem.Features.DepartmentManagement.UpdateDepartment.Mapp
     {
         public UpdateDepartmentProfile()
         {
-   
+
             CreateMap<UpdateDepartmentRequestViewModel, UpdateDepartmentCommand>()
                 .ForCtorParam("id", opt => opt.MapFrom(src => src.Id))
                 .ForCtorParam("branchId", opt => opt.MapFrom(src => src.branchId))
@@ -16,7 +14,7 @@ namespace HRManagementSystem.Features.DepartmentManagement.UpdateDepartment.Mapp
                 .ForCtorParam("code", opt => opt.MapFrom(src => src.code))
                 .ForCtorParam("description", opt => opt.MapFrom(src => src.description));
 
-         
+
             CreateMap<UpdateDepartmentCommand, Department>()
                 // عشان    الid موجود
                 .ForMember(dest => dest.Id, opt => opt.Ignore())

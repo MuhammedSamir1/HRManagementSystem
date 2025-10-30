@@ -1,8 +1,4 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Commands;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Commands;
 
 namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment
 {
@@ -23,7 +19,7 @@ namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment
             var command = _mapper.Map<DeleteDepartmentCommand>(model);
             var result = await _mediator.Send(command, ct);
 
-          
+
             if (!result.isSuccess)
             {
                 return ResponseViewModel<bool>.Failure(result.message, result.errorCode);

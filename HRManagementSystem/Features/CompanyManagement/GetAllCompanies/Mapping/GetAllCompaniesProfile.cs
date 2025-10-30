@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.CompanyManagement.GetAllCompany;
+﻿using HRManagementSystem.Features.CompanyManagement.GetAllCompany;
 
 namespace HRManagementSystem.Features.CompanyManagement.GetAllCompanies.Mapping
 {

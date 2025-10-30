@@ -1,8 +1,5 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.CityManagement.AddCity.Commands;
+﻿using HRManagementSystem.Features.CityManagement.AddCity.Commands;
 using HRManagementSystem.Features.Common.AddressManagement.AddCity.ViewModels;
-using Microsoft.AspNetCore.Mvc;
 
 namespace HRManagementSystem.Features.Common.AddressManagement.AddCity.EndPoints
 {

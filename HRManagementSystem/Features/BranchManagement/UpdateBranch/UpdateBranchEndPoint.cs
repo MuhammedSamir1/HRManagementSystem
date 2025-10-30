@@ -1,8 +1,5 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.BranchManagement.UpdateBranch.Commands;
+﻿using HRManagementSystem.Features.BranchManagement.UpdateBranch.Commands;
 using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos;
-using Microsoft.AspNetCore.Mvc;
 
 namespace HRManagementSystem.Features.BranchManagement.UpdateBranch
 {

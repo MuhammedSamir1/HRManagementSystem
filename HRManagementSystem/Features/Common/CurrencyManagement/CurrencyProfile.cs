@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.Dtos;
+﻿using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.Dtos;
 using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.ViewModels;
 using HRManagementSystem.Features.Common.CurrencyManagement.GetCurrencyDtosAndVms.Dtos;
 using HRManagementSystem.Features.Common.CurrencyManagement.GetCurrencyDtosAndVms.ViewModels;

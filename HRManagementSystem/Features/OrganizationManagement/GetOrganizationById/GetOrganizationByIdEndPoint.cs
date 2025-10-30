@@ -1,8 +1,4 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.OrganizationManagement.GetOrganizationById.Queries;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.OrganizationManagement.GetOrganizationById.Queries;
 
 namespace HRManagementSystem.Features.OrganizationManagement.GetOrganizationById
 {

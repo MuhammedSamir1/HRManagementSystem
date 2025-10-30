@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using FluentValidation;
-using MediatR;
+﻿using FluentValidation;
 
 namespace HRManagementSystem.Common.BaseEndPoints
 {

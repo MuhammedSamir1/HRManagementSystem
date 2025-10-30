@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.CurrencyManagement.AddCurrency.Commands;
+﻿using HRManagementSystem.Features.CurrencyManagement.AddCurrency.Commands;
 
 namespace HRManagementSystem.Features.CurrencyManagement.AddCurrency.Mapping
 {
