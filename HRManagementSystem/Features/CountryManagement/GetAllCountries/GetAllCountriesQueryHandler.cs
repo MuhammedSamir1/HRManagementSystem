@@ -1,6 +1,4 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models.AddressEntity;
+﻿using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,7 +1,4 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.TeamManagement.AddTeam.Commands;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.TeamManagement.AddTeam.Commands;
 
 namespace HRManagementSystem.Features.TeamManagement.AddTeam
 {

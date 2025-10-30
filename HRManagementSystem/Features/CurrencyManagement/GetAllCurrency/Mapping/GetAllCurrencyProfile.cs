@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
-
-namespace HRManagementSystem.Features.CurrencyManagement.GetAllCurrency.Mapping
+﻿namespace HRManagementSystem.Features.CurrencyManagement.GetAllCurrency.Mapping
 {
     public class GetAllCurrencyProfile : Profile
     {

@@ -1,10 +1,4 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models;
-using MediatR;
-
-namespace HRManagementSystem.Features.OrganizationManagement.DeleteOrganization.Commands
+﻿namespace HRManagementSystem.Features.OrganizationManagement.DeleteOrganization.Commands
 {
     public sealed record DeleteOrganizationCommand(int Id) : IRequest<RequestResult<bool>>;
 

@@ -1,10 +1,4 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models;
-using MediatR;
-
-namespace HRManagementSystem.Features.TeamManagement.AddTeam.Commands
+﻿namespace HRManagementSystem.Features.TeamManagement.AddTeam.Commands
 {
     public sealed record AddTeamCommand(string Name, string Code, string? Description, int DepartmentId)
         : IRequest<RequestResult<bool>>;

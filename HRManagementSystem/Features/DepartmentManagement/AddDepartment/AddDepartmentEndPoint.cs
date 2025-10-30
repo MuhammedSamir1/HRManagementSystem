@@ -1,7 +1,4 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.DepartmentManagement.AddDepartment.Commands;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.DepartmentManagement.AddDepartment.Commands;
 
 namespace HRManagementSystem.Features.DepartmentManagement.AddDepartment
 {

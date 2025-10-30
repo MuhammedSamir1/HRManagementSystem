@@ -1,9 +1,6 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos;
+﻿using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos;
 using HRManagementSystem.Features.Common.CurrencyManagement.UpdateCurrencyDtosAndVms.Dtos;
 using HRManagementSystem.Features.OrganizationManagement.UpdateOrganization.Commands;
-using Microsoft.AspNetCore.Mvc;
 
 namespace HRManagementSystem.Features.OrganizationManagement.UpdateOrganization
 {

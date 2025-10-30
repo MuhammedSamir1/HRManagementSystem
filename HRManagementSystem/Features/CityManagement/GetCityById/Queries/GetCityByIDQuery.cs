@@ -1,9 +1,5 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models.AddressEntity;
+﻿using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.CityManagement.GetCityById;
-using MediatR;
 
 namespace HRManagementSystem.Features.Common.AddressManagement.GetCityById.Commands
 {

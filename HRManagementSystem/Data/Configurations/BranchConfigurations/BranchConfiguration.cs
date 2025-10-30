@@ -1,5 +1,4 @@
-﻿using HRManagementSystem.Data.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HRManagementSystem.Data.Configurations.BranchConfigurations

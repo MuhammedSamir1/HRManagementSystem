@@ -1,7 +1,4 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.Common.AddressManagement.GetAllCities.Commands;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.Common.AddressManagement.GetAllCities.Commands;
 
 namespace HRManagementSystem.Features.CityManagement.GetAllCities
 {

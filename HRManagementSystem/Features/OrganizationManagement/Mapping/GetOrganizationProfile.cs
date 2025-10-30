@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.OrganizationManagement.GetOrganizationById;
+﻿using HRManagementSystem.Features.OrganizationManagement.GetOrganizationById;
 
 namespace HRManagementSystem.Features.OrganizationManagement.Mapping
 {

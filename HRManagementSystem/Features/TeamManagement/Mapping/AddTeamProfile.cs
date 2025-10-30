@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.TeamManagement.AddTeam;
+﻿using HRManagementSystem.Features.TeamManagement.AddTeam;
 using HRManagementSystem.Features.TeamManagement.AddTeam.Commands;
 
 namespace HRManagementSystem.Features.TeamManagement.Mapping

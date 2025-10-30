@@ -1,7 +1,4 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.TeamManagement.UpdateTeam.Commands;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.TeamManagement.UpdateTeam.Commands;
 
 namespace HRManagementSystem.Features.TeamManagement.UpdateTeam
 {

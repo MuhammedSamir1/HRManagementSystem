@@ -1,9 +1,5 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.CityManagement.DeleteCity.Commands;
+﻿using HRManagementSystem.Features.CityManagement.DeleteCity.Commands;
 using HRManagementSystem.Features.CityManagement.DeleteCity.ViewModels;
-using Microsoft.AspNetCore.Mvc;
 
 namespace HRManagementSystem.Features.CityManagement.DeleteCity
 {

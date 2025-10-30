@@ -1,8 +1,4 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.OrganizationManagement.DeleteOrganization.Commands;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.OrganizationManagement.DeleteOrganization.Commands;
 
 namespace HRManagementSystem.Features.OrganizationManagement.DeleteOrganization
 {

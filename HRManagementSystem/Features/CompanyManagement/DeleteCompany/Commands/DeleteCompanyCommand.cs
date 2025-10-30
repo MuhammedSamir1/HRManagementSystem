@@ -1,10 +1,4 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models;
-using MediatR;
-
-namespace HRManagementSystem.Features.CompanyManagement.DeleteCompany.Commands
+﻿namespace HRManagementSystem.Features.CompanyManagement.DeleteCompany.Commands
 {
     public record DeleteCompanyCommand(int companyId) : IRequest<RequestResult<bool>>;
 

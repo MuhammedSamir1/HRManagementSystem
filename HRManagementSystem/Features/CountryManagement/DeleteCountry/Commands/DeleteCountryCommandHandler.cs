@@ -1,7 +1,4 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models.AddressEntity;
+﻿using HRManagementSystem.Data.Models.AddressEntity;
 
 namespace HRManagementSystem.Features.CountryManagement.DeleteCountry.Commands
 {

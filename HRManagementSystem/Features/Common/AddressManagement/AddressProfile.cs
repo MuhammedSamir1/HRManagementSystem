@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models.AddressEntity;
+﻿using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
 using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.ViewModels;
 using HRManagementSystem.Features.Common.AddressManagement.GetAddressDtosAndVms.Dtos;

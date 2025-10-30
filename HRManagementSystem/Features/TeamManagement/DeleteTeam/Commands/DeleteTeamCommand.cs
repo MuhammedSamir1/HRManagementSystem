@@ -1,10 +1,4 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models;
-using MediatR;
-
-namespace HRManagementSystem.Features.TeamManagement.DeleteTeam.Commands
+﻿namespace HRManagementSystem.Features.TeamManagement.DeleteTeam.Commands
 {
     public sealed record DeleteTeamCommand(int Id) : IRequest<RequestResult<bool>>;
 

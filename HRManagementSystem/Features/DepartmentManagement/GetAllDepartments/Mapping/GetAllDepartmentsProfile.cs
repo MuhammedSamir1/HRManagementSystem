@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
-
-namespace HRManagementSystem.Features.DepartmentManagement.GetAllDepartments.Mapping
+﻿namespace HRManagementSystem.Features.DepartmentManagement.GetAllDepartments.Mapping
 {
     public class GetAllDepartmentsProfile : Profile
     {

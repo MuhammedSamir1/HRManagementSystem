@@ -1,10 +1,6 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models.AddressEntity;
+﻿using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.Common.AddressManagement.StateCommon.Dtos;
 using HRManagementSystem.Features.Common.AddressManagement.StateCommon.IsStateExistWithSameCode.Query;
-using MediatR;
 
 namespace HRManagementSystem.Features.StateManagement.AddState.Command
 {

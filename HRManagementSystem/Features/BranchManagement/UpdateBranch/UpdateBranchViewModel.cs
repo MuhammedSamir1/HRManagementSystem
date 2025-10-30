@@ -1,7 +1,5 @@
 ﻿using FluentValidation;
-using HRManagementSystem.Common.Views.Response;
 using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.ViewModels;
-using MediatR;
 
 namespace HRManagementSystem.Features.BranchManagement.UpdateBranch
 {

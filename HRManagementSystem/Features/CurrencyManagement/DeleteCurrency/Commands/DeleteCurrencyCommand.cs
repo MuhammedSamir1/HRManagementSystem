@@ -1,10 +1,4 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models;
-using MediatR;
-
-namespace HRManagementSystem.Features.CurrencyManagement.DeleteCurrency.Commands
+﻿namespace HRManagementSystem.Features.CurrencyManagement.DeleteCurrency.Commands
 {
     public record DeleteCurrencyCommand(int currencyId) : IRequest<RequestResult<bool>>;
 

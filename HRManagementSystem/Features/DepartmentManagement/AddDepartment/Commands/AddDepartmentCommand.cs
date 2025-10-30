@@ -1,10 +1,4 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models;
-using MediatR;
-
-namespace HRManagementSystem.Features.DepartmentManagement.AddDepartment.Commands
+﻿namespace HRManagementSystem.Features.DepartmentManagement.AddDepartment.Commands
 {
     public record AddDepartmentCommand(
                                    int branchId, string name,

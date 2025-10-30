@@ -1,5 +1,4 @@
 ﻿using HRManagementSystem.Data.Contexts.ApplicationDbContext;
-using HRManagementSystem.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -42,6 +41,12 @@ namespace HRManagementSystem.Data.Repositories
             var res = GetAll().Where(expression);
             return res;
         }
+
+        public IQueryable<TEntity> GetForLogin(Expression<Func<TEntity, bool>> expression)
+        {
+            return _dbSet.Where(expression);
+        }
+
         public async Task<bool> IsExistAsync(TKey id, CancellationToken ct)
         {
             return await _dbSet

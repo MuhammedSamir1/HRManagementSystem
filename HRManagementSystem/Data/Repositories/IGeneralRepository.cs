@@ -1,5 +1,4 @@
-﻿using HRManagementSystem.Data.Models;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace HRManagementSystem.Data.Repositories
 {
@@ -17,8 +16,9 @@ namespace HRManagementSystem.Data.Repositories
         public Task<bool> UpdateAsync(TEntity entity, CancellationToken ct);
         public Task<bool> SoftDeleteAsync(TKey id, CancellationToken cancellationToken);
         public Task<bool> UpdatePartialAsync(
-    TEntity entity,
-    IEnumerable<string>? propsToUpdate = null,
-    CancellationToken ct = default);
+                            TEntity entity,
+                            IEnumerable<string>? propsToUpdate = null,
+                            CancellationToken ct = default);
+        public IQueryable<TEntity> GetForLogin(Expression<Func<TEntity, bool>> expression);
     }
 }

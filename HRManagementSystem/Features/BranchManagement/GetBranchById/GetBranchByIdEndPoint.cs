@@ -1,8 +1,4 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.BranchManagement.GetBranchById.Queries;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.BranchManagement.GetBranchById.Queries;
 
 namespace HRManagementSystem.Features.BranchManagement.GetBranchById
 {

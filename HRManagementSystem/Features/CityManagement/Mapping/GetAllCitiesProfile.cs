@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models.AddressEntity;
+﻿using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.CityManagement.GetAllCities;
 
 namespace HRManagementSystem.Features.Common.AddressManagement.GetAllCities.Profiles

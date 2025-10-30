@@ -1,7 +1,4 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.CurrencyManagement.AddCurrency.Commands;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.CurrencyManagement.AddCurrency.Commands;
 
 namespace HRManagementSystem.Features.CurrencyManagement.AddCurrency
 {

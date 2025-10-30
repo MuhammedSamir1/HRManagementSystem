@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.BranchManagement.GetBranchById;
+﻿using HRManagementSystem.Features.BranchManagement.GetBranchById;
 
 namespace HRManagementSystem.Features.BranchManagement.Mapping
 {

@@ -1,7 +1,4 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos;
 
 namespace HRManagementSystem.Features.CountryManagement.GetCountryById
 {

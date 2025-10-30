@@ -45,6 +45,7 @@
     <Folder Include="Features\DepartmentManagement\GetDepartmentById\" />
     <Folder Include="Features\DepartmentManagement\GetAllDepartments\" />
     <Folder Include="Features\DepartmentManagement\UpdateDepartment\" />
+    <Folder Include="Features\RoleFeatureManagement\HasAccess\" />
     <Folder Include="Features\OrganizationManagement\AddOrginzation\Queries\" />
     <Folder Include="Features\OrganizationManagement\DeleteOrganization\Queries\" />
   </ItemGroup>

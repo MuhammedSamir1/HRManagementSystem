@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
-using HRManagementSystem.Features.DepartmentManagement.AddDepartment.Commands;
+﻿using HRManagementSystem.Features.DepartmentManagement.AddDepartment.Commands;
 
 namespace HRManagementSystem.Features.DepartmentManagement.AddDepartment.Mapping
 {

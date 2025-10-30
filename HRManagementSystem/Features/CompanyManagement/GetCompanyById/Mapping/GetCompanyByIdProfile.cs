@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using HRManagementSystem.Data.Models;
-
-namespace HRManagementSystem.Features.CompanyManagement.GetCompanyById.Mapping
+﻿namespace HRManagementSystem.Features.CompanyManagement.GetCompanyById.Mapping
 {
     public class GetCompanyByIdProfile : Profile
     {

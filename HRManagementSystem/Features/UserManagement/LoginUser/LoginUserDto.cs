@@ -1,6 +1,7 @@
 ﻿namespace HRManagementSystem.Features.AuthManagement.Login
 {
-    public record LoginRequestViewModel();
-
-
+    public record LoginUserDto
+    (
+        string Token
+    );
 }

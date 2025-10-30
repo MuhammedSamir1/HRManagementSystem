@@ -1,8 +1,5 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.CountryManagement.DeleteCountry.Commands;
+﻿using HRManagementSystem.Features.CountryManagement.DeleteCountry.Commands;
 using HRManagementSystem.Features.CountryManagement.ViewModels.DeleteCountry;
-using Microsoft.AspNetCore.Mvc;
 
 namespace HRManagementSystem.Features.CountryManagement.DeleteCountry
 {

@@ -1,8 +1,4 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.CompanyManagement.DeleteCompany.Commands;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.CompanyManagement.DeleteCompany.Commands;
 
 namespace HRManagementSystem.Features.CompanyManagement.DeleteCompany
 {

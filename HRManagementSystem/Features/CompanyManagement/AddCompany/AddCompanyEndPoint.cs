@@ -1,7 +1,5 @@
-﻿using HRManagementSystem.Common.BaseEndPoints;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Features.CompanyManagement.AddCompany.Commands;
-using Microsoft.AspNetCore.Mvc;
+﻿using HRManagementSystem.Features.CompanyManagement.AddCompany.Commands;
+using HRManagementSystem.Filters;
 
 namespace HRManagementSystem.Features.CompanyManagement.AddCompany
 {
@@ -11,8 +9,9 @@ namespace HRManagementSystem.Features.CompanyManagement.AddCompany
         {
         }
 
-        [HttpPost("add")]
-        public async Task<ResponseViewModel<bool>> AddOrganization([FromQuery] AddCompanyRequestViewModel model, CancellationToken ct)
+        [HttpPost("AddCompany")]
+        [TypeFilter<CustomAuthorizeFilter>(Arguments = new object[] { Feature.AddCompany })]
+        public async Task<ResponseViewModel<bool>> AddCompany([FromQuery] AddCompanyRequestViewModel model, CancellationToken ct)
         {
             var validationResult = ValidateRequest(model);
             if (!validationResult.isSuccess)

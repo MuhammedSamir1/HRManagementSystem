@@ -1,10 +1,4 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models;
-using MediatR;
-
-namespace HRManagementSystem.Features.CompanyManagement.AddCompany.Commands
+﻿namespace HRManagementSystem.Features.CompanyManagement.AddCompany.Commands
 {
     public record AddCompanyCommand(
                                     int organizationId, string name,

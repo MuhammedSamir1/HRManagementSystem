@@ -1,10 +1,4 @@
-﻿using HRManagementSystem.Common.BaseRequestHandler;
-using HRManagementSystem.Common.Data.Enums;
-using HRManagementSystem.Common.Views.Response;
-using HRManagementSystem.Data.Models;
-using MediatR;
-
-namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Commands
+﻿namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Commands
 {
     public record DeleteDepartmentCommand(int departmentId) : IRequest<RequestResult<bool>>;
 
