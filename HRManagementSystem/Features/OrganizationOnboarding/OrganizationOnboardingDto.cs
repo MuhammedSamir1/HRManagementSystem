@@ -3,7 +3,7 @@ using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVm
 
 namespace HRManagementSystem.Features.OrganizationOnboarding
 {
-    public class OrganizationOnboardingDto
+    public sealed class OrganizationOnboardingDto
     {
         public string Name { get; set; } = default!;
         public string? LegalName { get; set; }
@@ -17,7 +17,7 @@ namespace HRManagementSystem.Features.OrganizationOnboarding
         public List<CompanyDto>? Companies { get; set; }
     }
 
-    public class CompanyDto
+    public sealed class CompanyDto
     {
         public int OrganizationId { get; set; }
         public string Name { get; set; } = default!;
@@ -26,7 +26,7 @@ namespace HRManagementSystem.Features.OrganizationOnboarding
         public List<BranchDto>? Branches { get; set; }
     }
 
-    public class BranchDto
+    public sealed class BranchDto
     {
         public int CompanyId { get; set; }
         public string Name { get; set; } = default!;
@@ -37,7 +37,7 @@ namespace HRManagementSystem.Features.OrganizationOnboarding
         public List<DepartmentDto>? Departments { get; set; }
     }
 
-    public class DepartmentDto
+    public sealed class DepartmentDto
     {
         public int BranchId { get; set; }
         public string Name { get; set; } = default!;
@@ -46,7 +46,7 @@ namespace HRManagementSystem.Features.OrganizationOnboarding
         public List<TeamDto>? Teams { get; set; }
     }
 
-    public class TeamDto
+    public sealed class TeamDto
     {
         public int DepartmentId { get; set; }
         public string Name { get; set; } = default!;

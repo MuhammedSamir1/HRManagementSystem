@@ -1,4 +1,5 @@
-﻿using HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands;
+﻿using HRManagementSystem.Features.Common.Dtos;
+using HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands;
 
 namespace HRManagementSystem.Features.OrganizationManagement.Mapping
 {
@@ -21,6 +22,10 @@ namespace HRManagementSystem.Features.OrganizationManagement.Mapping
            .ForMember(d => d.AddressId, o => o.Ignore())
            .ForMember(d => d.DefaultTimezone, o => o.Ignore())
            .ForMember(d => d.DefaultTimezone, o => o.MapFrom(s => s.DefaultTimezone));
+
+            CreateMap<Organization, CreatedIdDto>()
+                .ForMember(d => d.Id,
+                    o => o.MapFrom(s => s.Id));
 
 
             CreateMap<AddOrganizationCommand, AddOrganizationViewModel>().ReverseMap();

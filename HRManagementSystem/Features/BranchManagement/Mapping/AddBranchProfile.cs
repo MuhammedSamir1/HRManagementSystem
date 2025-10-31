@@ -1,5 +1,6 @@
 ﻿using HRManagementSystem.Features.BranchManagement.AddBranch;
 using HRManagementSystem.Features.BranchManagement.AddBranch.Commands;
+using HRManagementSystem.Features.Common.Dtos;
 
 namespace HRManagementSystem.Features.BranchManagement.Mapping
 {
@@ -16,6 +17,10 @@ namespace HRManagementSystem.Features.BranchManagement.Mapping
           .ForMember(d => d.Address,
               o => o.MapFrom(s => s.AddressDto))
           .ForMember(d => d.AddressId, o => o.Ignore());
+
+            CreateMap<Branch, CreatedIdDto>()
+                .ForMember(d => d.Id,
+                    o => o.MapFrom(s => s.Id));
 
 
             CreateMap<AddBranchCommand, AddBranchViewModel>().ReverseMap();

@@ -1,5 +1,4 @@
 ﻿using HRManagementSystem.Features.CompanyManagement.AddCompany.Commands;
-using HRManagementSystem.Filters;
 
 namespace HRManagementSystem.Features.CompanyManagement.AddCompany
 {
@@ -9,9 +8,8 @@ namespace HRManagementSystem.Features.CompanyManagement.AddCompany
         {
         }
 
-        [HttpPost("AddCompany")]
-        [TypeFilter<CustomAuthorizeFilter>(Arguments = new object[] { Feature.AddCompany })]
-        public async Task<ResponseViewModel<bool>> AddCompany([FromQuery] AddCompanyRequestViewModel model, CancellationToken ct)
+        [HttpPost("add")]
+        public async Task<ResponseViewModel<bool>> AddOrganization([FromQuery] AddCompanyRequestViewModel model, CancellationToken ct)
         {
             var validationResult = ValidateRequest(model);
             if (!validationResult.isSuccess)

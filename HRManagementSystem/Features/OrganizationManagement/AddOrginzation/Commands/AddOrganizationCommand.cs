@@ -1,32 +1,12 @@
 ﻿using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
 using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.Dtos;
+using HRManagementSystem.Features.Common.Dtos;
 
 namespace HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands
 {
     public record AddOrganizationCommand(string Name, string? LegalName, string? Industry, string? Description,
         DateTime? DefaultTimezone, AddOrganizationCurrencyDto CurrencyDto,
-        AddOrganizationAddressDto AddressDto) : IRequest<RequestResult<bool>>;
+        AddOrganizationAddressDto AddressDto) : IRequest<RequestResult<CreatedIdDto>>;
 
-    public sealed class AddOrganizationCommandHandler : RequestHandlerBase<AddOrganizationCommand,
-        RequestResult<bool>, Organization, int>
-    {
-        public AddOrganizationCommandHandler(RequestHandlerBaseParameters<Organization, int> parameters) : base(parameters)
-        {
-        }
 
-        public override async Task<RequestResult<bool>> Handle(AddOrganizationCommand request, CancellationToken ct)
-        {
-            var organization = _mapper.Map<AddOrganizationCommand, Organization>(request);
-
-            var nameExists = await _generalRepo.ExistsByNameAsync<Branch>(request.Name);
-
-            if (nameExists)
-                return RequestResult<bool>.Failure("Organization Name already exists.", ErrorCode.Conflict);
-
-            var isAdded = await _generalRepo.AddAsync(organization, ct);
-
-            if (!isAdded) return RequestResult<bool>.Failure("Organization wasn't added successfully!", ErrorCode.InternalServerError);
-            return RequestResult<bool>.Success(isAdded, "Organization added successfully!");
-        }
-    }
 }

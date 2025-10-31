@@ -1,6 +1,7 @@
 ﻿using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
 using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.Dtos;
 using HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands;
+using HRManagementSystem.Features.OrganizationOnboarding.Commands;
 
 namespace HRManagementSystem.Features.OrganizationOnboarding
 {
@@ -10,27 +11,27 @@ namespace HRManagementSystem.Features.OrganizationOnboarding
         {
         }
 
-        [HttpPost]
-        public async Task<ResponseViewModel<bool>> OrganizationOnboarding([FromBody] OrganizationOnboardingRequestViewModel model, CancellationToken ct)
+        [HttpPost("onboarding")]
+        public async Task<ResponseViewModel<ViewOrganizationOnboardingDto>> OrganizationOnboarding(
+       [FromBody] OrganizationOnboardingRequestViewModel model,
+       CancellationToken ct)
         {
             var validationResult = ValidateRequest(model);
             if (!validationResult.isSuccess)
-            {
-                return ResponseViewModel<bool>.Failure(validationResult.errorCode);
-            }
+                return ResponseViewModel<ViewOrganizationOnboardingDto>.Failure(
+                    validationResult.message, validationResult.errorCode);
 
-            var address = _mapper.Map<AddOrganizationAddressDto>(model.Address);
-            var currency = _mapper.Map<AddOrganizationCurrencyDto>(model.Currency);
+            var onboardingDto = _mapper.Map<OrganizationOnboardingDto>(model);
 
+            var result = await _mediator.Send(new OrganizationOnboardingCommand(onboardingDto), ct);
 
-            var result = await _mediator.Send(new AddOrganizationCommand(model.Name, model.LegalName,
-                model.Description, model.Industry, model.DefaultTimezone, currency, address), ct);
+            if (!result.isSuccess)
+                return ResponseViewModel<ViewOrganizationOnboardingDto>.Failure(result.message, result.errorCode);
 
-
-
-            if (!result.isSuccess) return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
-            return ResponseViewModel<bool>.Success(true, "Organization Added Successfully!");
+            return ResponseViewModel<ViewOrganizationOnboardingDto>.Success(
+                result.data,
+                "Organization onboarding completed successfully!"
+            );
         }
     }
-
 }

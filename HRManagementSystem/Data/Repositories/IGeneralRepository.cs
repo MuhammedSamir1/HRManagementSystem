@@ -16,11 +16,10 @@ namespace HRManagementSystem.Data.Repositories
         public Task<bool> UpdateAsync(TEntity entity, CancellationToken ct);
         public Task<bool> SoftDeleteAsync(TKey id, CancellationToken cancellationToken);
         public Task<bool> UpdatePartialAsync(
-                            TEntity entity,
-                            IEnumerable<string>? propsToUpdate = null,
-                            CancellationToken ct = default);
-        public IQueryable<TEntity> GetForLogin(Expression<Func<TEntity, bool>> expression);
-
+    TEntity entity,
+    IEnumerable<string>? propsToUpdate = null,
+    CancellationToken ct = default);
         public Task<bool> CheckAnyAsync(Expression<Func<TEntity, bool>> expression, CancellationToken ct = default);
+        IQueryable<TEntity> GetForLogin(Expression<Func<TEntity, bool>> expression);
     }
 }

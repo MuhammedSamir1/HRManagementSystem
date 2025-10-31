@@ -17,19 +17,17 @@ namespace HRManagementSystem.Features.OrganizationOnboarding
         public List<CompanyRequestViewModel>? Companies { get; set; }
     }
 
-
     public class CompanyRequestViewModel
     {
-        public int OrganizationId { get; set; }
         public string Name { get; set; } = default!;
         public string Code { get; set; } = default!;
         public string? Description { get; set; }
+
         public List<BranchRequestViewModel>? Branches { get; set; }
     }
 
     public class BranchRequestViewModel
     {
-        public int CompanyId { get; set; }
         public string Name { get; set; } = default!;
         public string? Description { get; set; }
         public string Code { get; set; } = default!;
@@ -40,16 +38,15 @@ namespace HRManagementSystem.Features.OrganizationOnboarding
 
     public class DepartmentRequestViewModel
     {
-        public int BranchId { get; set; }
         public string Name { get; set; } = default!;
         public string? Description { get; set; }
         public string Code { get; set; } = default!;
+
         public List<TeamRequestViewModel>? Teams { get; set; }
     }
 
     public class TeamRequestViewModel
     {
-        public int DepartmentId { get; set; }
         public string Name { get; set; } = default!;
         public string? Description { get; set; }
         public string Code { get; set; } = default!;

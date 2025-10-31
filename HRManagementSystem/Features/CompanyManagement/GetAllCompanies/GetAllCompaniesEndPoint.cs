@@ -1,5 +1,4 @@
 ﻿using HRManagementSystem.Features.CompanyManagement.GetAllCompany.Queries;
-using HRManagementSystem.Filters;
 
 namespace HRManagementSystem.Features.CompanyManagement.GetAllCompanies
 {
@@ -9,8 +8,7 @@ namespace HRManagementSystem.Features.CompanyManagement.GetAllCompanies
         {
         }
 
-        [HttpGet()]
-        [TypeFilter<CustomAuthorizeFilter>(Arguments = new object[] { Feature.GetAllCompanies })]
+        [HttpGet("GetAll")]
         public async Task<ResponseViewModel<IEnumerable<GetAllCompaniesResponseViewModel>>> GetAllCompanies([FromQuery] GetAllCompaniesRequestViewModel request, CancellationToken ct)
         {
             var validationResult = ValidateRequest(request);
