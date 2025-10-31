@@ -53,7 +53,7 @@ namespace HRManagementSystem.Migrations
 
                     b.HasIndex("StateId");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.AddressEntity.City", b =>
@@ -98,7 +98,7 @@ namespace HRManagementSystem.Migrations
                     b.HasIndex("StateId", "Name")
                         .IsUnique();
 
-                    b.ToTable("City");
+                    b.ToTable("City", (string)null);
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.AddressEntity.Country", b =>
@@ -156,7 +156,7 @@ namespace HRManagementSystem.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Country");
+                    b.ToTable("Country", (string)null);
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.AddressEntity.State", b =>
@@ -209,7 +209,7 @@ namespace HRManagementSystem.Migrations
                     b.HasIndex("CountryId", "Name")
                         .IsUnique();
 
-                    b.ToTable("State");
+                    b.ToTable("State", (string)null);
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.Branch", b =>
@@ -373,7 +373,7 @@ namespace HRManagementSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Currency");
+                    b.ToTable("Currency", (string)null);
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.Department", b =>
@@ -528,7 +528,7 @@ namespace HRManagementSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.RoleFeature", b =>
@@ -568,7 +568,7 @@ namespace HRManagementSystem.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("RoleFeatures");
+                    b.ToTable("RoleFeatures", (string)null);
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.Team", b =>
