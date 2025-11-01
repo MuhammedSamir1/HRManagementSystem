@@ -50,5 +50,10 @@
         NoCountriesFound = 400,
 
 
+        //Departments
+        DepartmentNotFound = 500,
+        DepartmentWasNotDeleted = 501,
+
+
     }
 }

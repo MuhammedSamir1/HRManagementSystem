@@ -40,6 +40,7 @@ namespace HRManagementSystem
                 opt.AddPolicy("Admins", policy => policy.RequireRole("admin", "instructor"));
             });
 
+
             var app = builder.Build();
 
             #region Migrate Database - Data Seeding

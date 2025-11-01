@@ -1,4 +1,4 @@
-﻿namespace HRManagementSystem.Features.OrganizationOnboarding.Mapping;
+﻿namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding.Mapping;
 
 public sealed class OrganizationOnboardingProfile : Profile
 {

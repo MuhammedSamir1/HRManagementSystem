@@ -1,4 +1,4 @@
-﻿using HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Commands;
+﻿using HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Orchestrators;
 
 namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment
 {
@@ -14,8 +14,8 @@ namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment
             if (!validationResult.isSuccess)
                 return ResponseViewModel<bool>.Failure(validationResult.errorCode);
 
-            var isDeleted = await _mediator.Send(new DeleteDepartmentCommand(model.departmentId));
-            if (!isDeleted.isSuccess) return ResponseViewModel<bool>.Failure(ErrorCode.NotFound);
+            var isDeleted = await _mediator.Send(new DeleteDepartmentOrchestrator(model.departmentId));
+            if (!isDeleted.isSuccess) return ResponseViewModel<bool>.Failure(isDeleted.message, isDeleted.errorCode);
 
             return ResponseViewModel<bool>.Success(isDeleted.isSuccess, "Department Deleted Successfully!");
         }
