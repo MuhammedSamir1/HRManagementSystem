@@ -6,9 +6,8 @@ public sealed class DeleteDepartmentCascadeCommandHandler
         : DeleteEntityCascadeCommandHandler<Department, int>
 {
     public DeleteDepartmentCascadeCommandHandler(
-        RequestHandlerBaseParameters<Department, int> parameters,
-        IServiceProvider sp
-    ) : base(parameters, sp)
+        RequestHandlerBaseParameters<Department, int> parameters
+    ) : base(parameters)
     {
     }
 }

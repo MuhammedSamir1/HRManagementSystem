@@ -6,9 +6,8 @@ public sealed class DeleteCompanyCascadeCommandHandler
         : DeleteEntityCascadeCommandHandler<Company, int>
 {
     public DeleteCompanyCascadeCommandHandler(
-        RequestHandlerBaseParameters<Company, int> parameters,
-        IServiceProvider sp
-    ) : base(parameters, sp)
+        RequestHandlerBaseParameters<Company, int> parameters
+    ) : base(parameters)
     {
     }
 }

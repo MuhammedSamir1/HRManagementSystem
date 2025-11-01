@@ -10,14 +10,11 @@ namespace HRManagementSystem.Features.Common.DeleteCascadeGeneric
         : RequestHandlerBase<DeleteEntityCascadeCommand<TEntity, TKey>, RequestResult<bool>, TEntity, TKey>
         where TEntity : BaseModel<TKey>
     {
-        private readonly IServiceProvider _sp;
 
         public DeleteEntityCascadeCommandHandler(
-            RequestHandlerBaseParameters<TEntity, TKey> parameters,
-            IServiceProvider sp
+            RequestHandlerBaseParameters<TEntity, TKey> parameters
         ) : base(parameters)
         {
-            _sp = sp;
         }
 
         public override async Task<RequestResult<bool>> Handle(DeleteEntityCascadeCommand<TEntity, TKey> request, CancellationToken ct)
@@ -29,7 +26,6 @@ namespace HRManagementSystem.Features.Common.DeleteCascadeGeneric
         }
 
         #region Core
-
         private async Task<bool> DeleteCascadeAsync(Type rootType, int id, CancellationToken ct)
         {
             if (rootType == typeof(Organization))
