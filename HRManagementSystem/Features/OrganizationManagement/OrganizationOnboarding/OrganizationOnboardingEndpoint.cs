@@ -1,9 +1,6 @@
-﻿using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
-using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.Dtos;
-using HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands;
-using HRManagementSystem.Features.OrganizationOnboarding.Commands;
+﻿using HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding.Commands;
 
-namespace HRManagementSystem.Features.OrganizationOnboarding
+namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding
 {
     public class OrganizationOnboardingEndpoint : BaseEndPoint<OrganizationOnboardingRequestViewModel, ResponseViewModel<bool>>
     {

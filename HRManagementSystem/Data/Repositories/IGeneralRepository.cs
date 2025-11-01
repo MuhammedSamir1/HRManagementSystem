@@ -4,7 +4,13 @@ namespace HRManagementSystem.Data.Repositories
 {
     public interface IGeneralRepository<TEntity, TKey> where TEntity : BaseModel<TKey>
     {
+        IQueryable<TEntity> Query();
+        Task<IEnumerable<TKey>> GetIdsAsync<TChild, TKey>(
+        Expression<Func<TChild, bool>> predicate,
+        CancellationToken ct
+        ) where TChild : BaseModel<TKey>;
         public Task<bool> ExistsByNameAsync<T>(string name, bool IsDeleted = false, CancellationToken ct = default) where T : class;
+        Task<bool> HasAnyChildAsync<TParent>(TKey parentId, CancellationToken ct);
         public IQueryable<TEntity> GetAll();
         public Task<TEntity> GetByIdAsync(TKey id);
         public IQueryable<TEntity> GetById(TKey id);

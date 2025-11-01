@@ -6,7 +6,7 @@ using HRManagementSystem.Features.DepartmentManagement.AddDepartment.Commands;
 using HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands;
 using HRManagementSystem.Features.TeamManagement.AddTeam.Commands;
 
-namespace HRManagementSystem.Features.OrganizationOnboarding.Commands
+namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding.Commands
 {
     public sealed class OrganizationOnboardingHandler
         : RequestHandlerBase<OrganizationOnboardingCommand, RequestResult<ViewOrganizationOnboardingDto>, Organization, int>
@@ -69,7 +69,7 @@ namespace HRManagementSystem.Features.OrganizationOnboarding.Commands
                         new AddBranchCommand(
                             branchDto.Name,
                             branchDto.Description,
-                            companyId, 
+                            companyId,
                             branchDto.Code,
                             branchAddress
                         ), ct);
@@ -87,7 +87,7 @@ namespace HRManagementSystem.Features.OrganizationOnboarding.Commands
                     {
                         var deptAdded = await _mediator.Send(
                             new AddDepartmentCommand(
-                                branchId, 
+                                branchId,
                                 deptDto.Name,
                                 deptDto.Code,
                                 deptDto.Description
@@ -109,7 +109,7 @@ namespace HRManagementSystem.Features.OrganizationOnboarding.Commands
                                     teamDto.Name,
                                     teamDto.Code,
                                     teamDto.Description,
-                                    deptId 
+                                    deptId
                                 ), ct);
 
                             if (!teamAdded.isSuccess)

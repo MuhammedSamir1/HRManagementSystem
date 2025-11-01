@@ -1,5 +1,5 @@
 ﻿using HRManagementSystem.Data.Models.AddressEntity;
-using HRManagementSystem.Features.Common.AddressManagement.CityCommon.Queries;
+using HRManagementSystem.Features.Common.IsAnyChildAssignedGeneric;
 
 namespace HRManagementSystem.Features.StateManagement.DeleteState.Command
 {
@@ -15,7 +15,7 @@ namespace HRManagementSystem.Features.StateManagement.DeleteState.Command
         {
             // Check if any city assigned to this state 
 
-            var hasCities = await _mediator.Send(new IsAnyCityAssignedToStateQuery(request.Id), ct);
+            var hasCities = await _mediator.Send(new IsAnyChildAssignedQuery<State, City, int>(request.Id), ct);
             if (hasCities.data)
             {
                 return RequestResult<bool>.Failure("Cannot delete state. There are cities assigned to this state.");
