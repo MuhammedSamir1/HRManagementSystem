@@ -4,6 +4,7 @@ using HRManagementSystem.Data.Contexts.ApplicationDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HRManagementSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251109081958_AddProbationPeriod")]
+    partial class AddProbationPeriod
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,7 +56,7 @@ namespace HRManagementSystem.Migrations
 
                     b.HasIndex("StateId");
 
-                    b.ToTable("Addresses", (string)null);
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.AddressEntity.City", b =>
@@ -98,7 +101,7 @@ namespace HRManagementSystem.Migrations
                     b.HasIndex("StateId", "Name")
                         .IsUnique();
 
-                    b.ToTable("City", (string)null);
+                    b.ToTable("City");
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.AddressEntity.Country", b =>
@@ -156,7 +159,7 @@ namespace HRManagementSystem.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Country", (string)null);
+                    b.ToTable("Country");
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.AddressEntity.State", b =>
@@ -209,7 +212,7 @@ namespace HRManagementSystem.Migrations
                     b.HasIndex("CountryId", "Name")
                         .IsUnique();
 
-                    b.ToTable("State", (string)null);
+                    b.ToTable("State");
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.Branch", b =>
@@ -373,7 +376,7 @@ namespace HRManagementSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Currency", (string)null);
+                    b.ToTable("Currency");
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.Department", b =>
@@ -584,7 +587,7 @@ namespace HRManagementSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles", (string)null);
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.RoleFeature", b =>
@@ -624,7 +627,7 @@ namespace HRManagementSystem.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("RoleFeatures", (string)null);
+                    b.ToTable("RoleFeatures");
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.Shift", b =>

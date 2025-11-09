@@ -61,5 +61,11 @@
         ShiftAlreadyExists = 602,
 
 
+        //ProbationPeriod
+        ProbationPeriodNotFound = 700,
+        ProbationPeriodWasNotDeleted = 701,
+        ProbationPeriodAlreadyExists = 702,
+
+
     }
 }
