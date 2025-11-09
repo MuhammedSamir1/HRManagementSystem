@@ -1,4 +1,6 @@
-﻿namespace HRManagementSystem.Features.HolidayManagement.DeleteHoliday.Commands
+﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
+
+namespace HRManagementSystem.Features.HolidayManagement.DeleteHoliday.Commands
 {
     public sealed class DeleteHolidayCommandHandler : RequestHandlerBase<DeleteHolidayCommand, RequestResult<bool>, Holiday, int>
     {

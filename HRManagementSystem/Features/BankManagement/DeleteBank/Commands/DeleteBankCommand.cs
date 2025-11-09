@@ -1,3 +1,5 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
+
 namespace HRManagementSystem.Features.BankManagement.DeleteBank.Commands
 {
     public record DeleteBankCommand(int Id) : IRequest<RequestResult<bool>>;

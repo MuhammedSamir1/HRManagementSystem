@@ -1,4 +1,4 @@
-﻿namespace HRManagementSystem.Data.Models.HolidayEntity
+﻿namespace HRManagementSystem.Common.Data.Enums
 {
     public enum HolidayType
     {

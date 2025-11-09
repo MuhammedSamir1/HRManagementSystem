@@ -1,4 +1,5 @@
-﻿using HRManagementSystem.Features.HolidayManagement.AddHoliday;
+﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
+using HRManagementSystem.Features.HolidayManagement.AddHoliday;
 using HRManagementSystem.Features.HolidayManagement.AddHoliday.Commands;
 
 namespace HRManagementSystem.Features.HolidayManagement.Mapping

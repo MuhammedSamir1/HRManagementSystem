@@ -1,4 +1,6 @@
-﻿namespace HRManagementSystem.Features.PayrollManagement.OvertimeRateManagement.DeleteOvertimeRate.Commands
+﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
+
+namespace HRManagementSystem.Features.PayrollManagement.OvertimeRateManagement.DeleteOvertimeRate.Commands
 {
     public sealed class DeleteOvertimeRateCommandHandler :
          RequestHandlerBase<DeleteOvertimeRateCommand, RequestResult<bool>, OvertimeRate, int>

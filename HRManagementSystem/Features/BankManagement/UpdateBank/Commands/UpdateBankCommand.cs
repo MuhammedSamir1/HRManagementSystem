@@ -1,3 +1,5 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
+
 namespace HRManagementSystem.Features.BankManagement.UpdateBank.Commands
 {
     public record UpdateBankCommand(int Id, string Name, string Code, string Address) : IRequest<RequestResult<bool>>;

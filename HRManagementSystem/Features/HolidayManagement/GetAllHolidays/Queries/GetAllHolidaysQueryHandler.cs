@@ -2,6 +2,7 @@
 using HRManagementSystem.Features.HolidayManagement.Common.DTOs;
 using System.Linq.Dynamic.Core.Exceptions;
 using System.Linq.Dynamic.Core;
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.HolidayManagement.GetAllHolidays.Queries
 {

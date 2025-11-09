@@ -1,3 +1,4 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.BankManagement.GetAllBanks;
 
 namespace HRManagementSystem.Features.BankManagement.Mapping

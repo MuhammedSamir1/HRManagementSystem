@@ -1,4 +1,5 @@
-﻿using HRManagementSystem.Features.Common.PayrollCommon;
+﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
+using HRManagementSystem.Features.Common.PayrollCommon;
 using HRManagementSystem.Features.PayrollManagement.OvertimeRateManagement.AddOvertimeRate.Commands;
 using HRManagementSystem.Features.PayrollManagement.OvertimeRateManagement.AddOvertimeRate.ViewModels;
 using HRManagementSystem.Features.PayrollManagement.OvertimeRateManagement.UpdateOvertimeRate.Commands;

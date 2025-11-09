@@ -1,6 +1,4 @@
-﻿using HRManagementSystem.Data.Models.HolidayEntity;
-
-namespace HRManagementSystem.Features.HolidayManagement.AddHoliday.Commands
+﻿namespace HRManagementSystem.Features.HolidayManagement.AddHoliday.Commands
 {
     public record AddHolidayCommand(
      string Name,

@@ -1,3 +1,5 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
+
 namespace HRManagementSystem.Features.BankManagement.GetBankById.Queries
 {
     public record GetBankByIdQuery(int Id) : IRequest<RequestResult<GetBankByIdDto>>;

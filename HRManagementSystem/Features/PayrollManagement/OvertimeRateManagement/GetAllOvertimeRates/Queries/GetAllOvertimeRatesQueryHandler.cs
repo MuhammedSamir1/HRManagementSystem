@@ -1,4 +1,5 @@
 ﻿using HRManagementSystem.Common.Views;
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.Common.PayrollCommon;
 using Microsoft.EntityFrameworkCore;
 

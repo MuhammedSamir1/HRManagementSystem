@@ -1,5 +1,6 @@
 ﻿using AutoMapper.QueryableExtensions;
 using HRManagementSystem.Common.Views;
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.Common.CustodyCommon.Dtos;
 
 namespace HRManagementSystem.Features.CustodyManagement.GetAllCustodies.Queries

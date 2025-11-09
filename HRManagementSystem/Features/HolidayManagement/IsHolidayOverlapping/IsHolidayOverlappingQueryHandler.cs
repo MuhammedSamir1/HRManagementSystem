@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.HolidayManagement.IsHolidayOverlapping
 {

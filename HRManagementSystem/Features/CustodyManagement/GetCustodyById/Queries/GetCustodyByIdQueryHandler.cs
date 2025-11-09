@@ -1,4 +1,5 @@
 ﻿using AutoMapper.QueryableExtensions;
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.Common.CustodyCommon.Dtos;
 using Microsoft.EntityFrameworkCore;
 

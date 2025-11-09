@@ -1,6 +1,4 @@
-﻿using HRManagementSystem.Data.Models.HolidayEntity;
-
-namespace HRManagementSystem.Data.Models
+﻿namespace HRManagementSystem.Data.Models.ConfigurationsModels
 {
     public class Holiday : BaseModel<int>
     {

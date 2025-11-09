@@ -1,4 +1,5 @@
-﻿using HRManagementSystem.Features.HolidayManagement.Common.DTOs;
+﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
+using HRManagementSystem.Features.HolidayManagement.Common.DTOs;
 
 namespace HRManagementSystem.Features.HolidayManagement.GetHolidayById.Queries
 {

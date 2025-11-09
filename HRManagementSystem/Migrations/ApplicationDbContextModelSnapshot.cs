@@ -212,52 +212,6 @@ namespace HRManagementSystem.Migrations
                     b.ToTable("State");
                 });
 
-            modelBuilder.Entity("HRManagementSystem.Data.Models.Bank", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("DeletedBy")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("UpdatedBy")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Banks");
-                });
-
             modelBuilder.Entity("HRManagementSystem.Data.Models.Branch", b =>
                 {
                     b.Property<int>("Id")
@@ -373,6 +327,52 @@ namespace HRManagementSystem.Migrations
                     b.ToTable("Companies", (string)null);
                 });
 
+            modelBuilder.Entity("HRManagementSystem.Data.Models.ConfigurationsModels.Bank", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("UpdatedBy")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Banks");
+                });
+
             modelBuilder.Entity("HRManagementSystem.Data.Models.ConfigurationsModels.ProbationPeriod", b =>
                 {
                     b.Property<int>("Id")
@@ -427,6 +427,50 @@ namespace HRManagementSystem.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProbationPeriods", (string)null);
+                });
+
+            modelBuilder.Entity("HRManagementSystem.Data.Models.ConfigurationsModels.RequestType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("RequiresAttachments")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("UpdatedBy")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RequestTypes");
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.ConfigurationsModels.Shift", b =>
@@ -809,7 +853,6 @@ namespace HRManagementSystem.Migrations
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.OvertimeRate", b =>
-            modelBuilder.Entity("HRManagementSystem.Data.Models.RequestType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -903,13 +946,6 @@ namespace HRManagementSystem.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("RequiresAttachments")
-                        .HasColumnType("bit");
-
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -925,9 +961,6 @@ namespace HRManagementSystem.Migrations
                         .IsUnique();
 
                     b.ToTable("PayrollItems", (string)null);
-                    b.HasKey("Id");
-
-                    b.ToTable("RequestTypes");
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.Role", b =>

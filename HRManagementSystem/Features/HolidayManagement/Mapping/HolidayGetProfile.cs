@@ -3,6 +3,7 @@ using HRManagementSystem.Features.HolidayManagement.Common.ViewModels;
 using HRManagementSystem.Features.HolidayManagement.GetAllHolidays.Queries;
 using HRManagementSystem.Features.HolidayManagement.GetAllHolidays;
 using HRManagementSystem.Features.HolidayManagement.GetHolidayById;
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.HolidayManagement.Mapping
 {

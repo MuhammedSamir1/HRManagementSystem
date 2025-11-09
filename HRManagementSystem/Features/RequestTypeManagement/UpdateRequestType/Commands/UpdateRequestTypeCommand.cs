@@ -1,3 +1,5 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
+
 namespace HRManagementSystem.Features.RequestTypeManagement.UpdateRequestType.Commands
 {
     public record UpdateRequestTypeCommand(int Id, string Name, string? Description, bool RequiresAttachments) : IRequest<RequestResult<bool>>;

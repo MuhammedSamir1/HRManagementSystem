@@ -1,5 +1,6 @@
 using HRManagementSystem.Features.RequestTypeManagement.AddRequestType.Commands;
 using HRManagementSystem.Features.Common.Dtos;
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.RequestTypeManagement.Mapping
 {

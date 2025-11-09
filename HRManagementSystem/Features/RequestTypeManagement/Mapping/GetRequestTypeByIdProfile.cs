@@ -1,3 +1,4 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.RequestTypeManagement.GetRequestTypeById;
 
 namespace HRManagementSystem.Features.RequestTypeManagement.Mapping

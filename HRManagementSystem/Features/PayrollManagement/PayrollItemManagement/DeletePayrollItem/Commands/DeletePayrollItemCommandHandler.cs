@@ -1,4 +1,5 @@
-﻿using HRManagementSystem.Features.PayrollManagement.PayrollItemManagement.Common.Queries;
+﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
+using HRManagementSystem.Features.PayrollManagement.PayrollItemManagement.Common.Queries;
 
 namespace HRManagementSystem.Features.PayrollManagement.PayrollItemManagement.DeletePayrollItem.Commands
 {

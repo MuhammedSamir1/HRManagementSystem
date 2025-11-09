@@ -1,3 +1,4 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.BankManagement.UpdateBank.Commands;
 
 namespace HRManagementSystem.Features.BankManagement.Mapping

@@ -4,6 +4,7 @@ using HRManagementSystem.Features.CustodyManagement.GetAllCustodies.Queries;
 using HRManagementSystem.Features.CustodyManagement.GetAllCustodies;
 using HRManagementSystem.Features.CustodyManagement.UpdateCustody.Commands;
 using HRManagementSystem.Features.CustodyManagement.UpdateCustody;
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.CustodyManagement.Mappings
 {

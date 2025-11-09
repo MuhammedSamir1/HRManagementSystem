@@ -1,3 +1,4 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.BankManagement.AddBank.Commands;
 using HRManagementSystem.Features.Common.Dtos;
 

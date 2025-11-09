@@ -1,3 +1,5 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
+
 namespace HRManagementSystem.Features.RequestTypeManagement.GetRequestTypeById.Queries
 {
     public record GetRequestTypeByIdQuery(int Id) : IRequest<RequestResult<GetRequestTypeByIdDto>>;

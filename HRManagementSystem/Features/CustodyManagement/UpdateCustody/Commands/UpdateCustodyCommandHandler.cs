@@ -1,4 +1,5 @@
-﻿using HRManagementSystem.Data.Repositories;
+﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
+using HRManagementSystem.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.CustodyManagement.UpdateCustody.Commands

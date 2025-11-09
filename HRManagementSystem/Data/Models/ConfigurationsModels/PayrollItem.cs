@@ -1,4 +1,4 @@
-﻿namespace HRManagementSystem.Data.Models
+﻿namespace HRManagementSystem.Data.Models.ConfigurationsModels
 {
     public class PayrollItem:BaseModel<int>
     {

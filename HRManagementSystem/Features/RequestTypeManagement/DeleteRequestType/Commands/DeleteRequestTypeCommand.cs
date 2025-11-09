@@ -1,3 +1,5 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
+
 namespace HRManagementSystem.Features.RequestTypeManagement.DeleteRequestType.Commands
 {
     public record DeleteRequestTypeCommand(int Id) : IRequest<RequestResult<bool>>;

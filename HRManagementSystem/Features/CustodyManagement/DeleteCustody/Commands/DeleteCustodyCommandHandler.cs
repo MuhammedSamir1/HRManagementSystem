@@ -1,4 +1,6 @@
-﻿namespace HRManagementSystem.Features.CustodyManagement.DeleteCustody.Commands
+﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
+
+namespace HRManagementSystem.Features.CustodyManagement.DeleteCustody.Commands
 {
     public sealed class DeleteCustodyCommandHandler : RequestHandlerBase<DeleteCustodyCommand, RequestResult<bool>, Custody, int>
     {

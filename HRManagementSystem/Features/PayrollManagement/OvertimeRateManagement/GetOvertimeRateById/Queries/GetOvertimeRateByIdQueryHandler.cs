@@ -1,4 +1,5 @@
-﻿using HRManagementSystem.Features.Common.PayrollCommon;
+﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
+using HRManagementSystem.Features.Common.PayrollCommon;
 
 namespace HRManagementSystem.Features.PayrollManagement.OvertimeRateManagement.GetOvertimeRateById.Queries
 {

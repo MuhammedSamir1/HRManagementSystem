@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using HRManagementSystem.Data.Models.HolidayEntity;
 using System.ComponentModel.DataAnnotations;
 
 namespace HRManagementSystem.Features.HolidayManagement.AddHoliday

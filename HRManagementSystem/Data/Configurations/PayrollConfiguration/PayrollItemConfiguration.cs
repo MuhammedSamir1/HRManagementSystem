@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Data.Configurations.PayrollConfiguration
 {
