@@ -55,5 +55,11 @@
         DepartmentWasNotDeleted = 501,
 
 
+        //Shift
+        ShiftNotFound = 600,
+        ShiftWasNotDeleted = 601,
+        ShiftAlreadyExists = 602,
+
+
     }
 }
