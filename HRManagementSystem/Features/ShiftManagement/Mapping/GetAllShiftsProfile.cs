@@ -1,3 +1,4 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.ShiftManagement.GetAllShifts;
 
 namespace HRManagementSystem.Features.ShiftManagement.Mapping

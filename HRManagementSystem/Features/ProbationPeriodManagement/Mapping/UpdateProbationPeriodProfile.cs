@@ -1,3 +1,4 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.ProbationPeriodManagement.UpdateProbationPeriod;
 using HRManagementSystem.Features.ProbationPeriodManagement.UpdateProbationPeriod.Commands;
 

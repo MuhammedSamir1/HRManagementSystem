@@ -1,3 +1,4 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.ShiftManagement.UpdateShift.Commands

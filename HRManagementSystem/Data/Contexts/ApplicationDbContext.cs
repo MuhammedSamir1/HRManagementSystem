@@ -1,4 +1,5 @@
 ﻿using HRManagementSystem.Data.Models.AddressEntity;
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Data.Contexts.ApplicationDbContext;

@@ -1,3 +1,5 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
+
 namespace HRManagementSystem.Features.ShiftManagement.DeleteShift.Commands
 {
     public sealed record DeleteShiftCommand(int Id) : IRequest<RequestResult<bool>>;

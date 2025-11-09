@@ -1,3 +1,4 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.Common.Dtos;
 
 namespace HRManagementSystem.Features.ProbationPeriodManagement.AddProbationPeriod.Commands

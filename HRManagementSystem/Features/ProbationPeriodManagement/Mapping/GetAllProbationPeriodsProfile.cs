@@ -1,3 +1,4 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.ProbationPeriodManagement.GetAllProbationPeriods;
 
 namespace HRManagementSystem.Features.ProbationPeriodManagement.Mapping

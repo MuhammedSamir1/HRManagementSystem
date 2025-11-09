@@ -1,3 +1,5 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
+
 namespace HRManagementSystem.Features.ProbationPeriodManagement.UpdateProbationPeriod.Commands
 {
     public sealed record UpdateProbationPeriodCommand(int Id, DateTime StartDate, DateTime EndDate, 

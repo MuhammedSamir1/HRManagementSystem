@@ -1,3 +1,5 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
+
 namespace HRManagementSystem.Features.ProbationPeriodManagement.DeleteProbationPeriod.Commands
 {
     public sealed record DeleteProbationPeriodCommand(int Id) : IRequest<RequestResult<bool>>;

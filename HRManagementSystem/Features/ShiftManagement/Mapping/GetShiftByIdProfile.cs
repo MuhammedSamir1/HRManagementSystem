@@ -1,3 +1,4 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.ShiftManagement.GetShiftById;
 
 namespace HRManagementSystem.Features.ShiftManagement.Mapping

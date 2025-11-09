@@ -1,3 +1,4 @@
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.ShiftManagement.UpdateShift;
 using HRManagementSystem.Features.ShiftManagement.UpdateShift.Commands;
 
