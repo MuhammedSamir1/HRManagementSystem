@@ -1,4 +1,5 @@
-﻿using HRManagementSystem.Features.TeamManagement.AddTeam;
+﻿using HRManagementSystem.Features.Common.Dtos;
+using HRManagementSystem.Features.TeamManagement.AddTeam;
 using HRManagementSystem.Features.TeamManagement.AddTeam.Commands;
 
 namespace HRManagementSystem.Features.TeamManagement.Mapping
@@ -15,6 +16,10 @@ namespace HRManagementSystem.Features.TeamManagement.Mapping
              .ForMember(d => d.Description,
              o => o.MapFrom(s => string.IsNullOrWhiteSpace(s.Description) ? null : s.Description.Trim()));
 
+
+            CreateMap<Team, CreatedIdDto>()
+                .ForMember(d => d.Id,
+                    o => o.MapFrom(s => s.Id));
 
             CreateMap<AddTeamCommand, AddTeamViewModel>().ReverseMap();
         }

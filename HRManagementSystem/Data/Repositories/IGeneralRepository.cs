@@ -4,7 +4,13 @@ namespace HRManagementSystem.Data.Repositories
 {
     public interface IGeneralRepository<TEntity, TKey> where TEntity : BaseModel<TKey>
     {
+        IQueryable<TEntity> Query();
+        Task<IEnumerable<TKey>> GetIdsAsync<TChild, TKey>(
+        Expression<Func<TChild, bool>> predicate,
+        CancellationToken ct
+        ) where TChild : BaseModel<TKey>;
         public Task<bool> ExistsByNameAsync<T>(string name, bool IsDeleted = false, CancellationToken ct = default) where T : class;
+        Task<bool> HasAnyChildAsync<TParent>(TKey parentId, CancellationToken ct);
         public IQueryable<TEntity> GetAll();
         public Task<TEntity> GetByIdAsync(TKey id);
         public IQueryable<TEntity> GetById(TKey id);
@@ -16,11 +22,10 @@ namespace HRManagementSystem.Data.Repositories
         public Task<bool> UpdateAsync(TEntity entity, CancellationToken ct);
         public Task<bool> SoftDeleteAsync(TKey id, CancellationToken cancellationToken);
         public Task<bool> UpdatePartialAsync(
-                            TEntity entity,
-                            IEnumerable<string>? propsToUpdate = null,
-                            CancellationToken ct = default);
-        public IQueryable<TEntity> GetForLogin(Expression<Func<TEntity, bool>> expression);
-
+    TEntity entity,
+    IEnumerable<string>? propsToUpdate = null,
+    CancellationToken ct = default);
         public Task<bool> CheckAnyAsync(Expression<Func<TEntity, bool>> expression, CancellationToken ct = default);
+        IQueryable<TEntity> GetForLogin(Expression<Func<TEntity, bool>> expression);
     }
 }

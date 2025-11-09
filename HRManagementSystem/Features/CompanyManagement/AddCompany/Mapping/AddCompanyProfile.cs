@@ -1,4 +1,5 @@
-﻿using HRManagementSystem.Features.CompanyManagement.AddCompany.Commands;
+﻿using HRManagementSystem.Features.Common.Dtos;
+using HRManagementSystem.Features.CompanyManagement.AddCompany.Commands;
 
 namespace HRManagementSystem.Features.CompanyManagement.AddCompany.Mapping
 {
@@ -24,6 +25,10 @@ namespace HRManagementSystem.Features.CompanyManagement.AddCompany.Mapping
 
                 .ForMember(dest => dest.Branches,
                            opt => opt.Ignore());
+
+            CreateMap<Company, CreatedIdDto>()
+               .ForMember(d => d.Id,
+                   o => o.MapFrom(s => s.Id));
         }
     }
 }

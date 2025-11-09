@@ -3,6 +3,7 @@ using HRManagementSystem.Common.Views;
 using HRManagementSystem.Data.Contexts.ApplicationDbContext;
 using HRManagementSystem.Data.Middlewares;
 using HRManagementSystem.Data.Repositories;
+using HRManagementSystem.Features.Common.IsAnyChildAssignedGeneric;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -31,7 +32,25 @@ namespace HRManagementSystem.DI
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-            services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+            #region Generic Child Check Handlers Registration
+            //Generic Child Check Handlers Registration
+            var maps = new (Type Parent, Type Child, Type Key)[]
+         {
+                (typeof(Organization), typeof(Company),  typeof(int)),
+                (typeof(Company),      typeof(Branch),   typeof(int)),
+                (typeof(Branch),       typeof(Department), typeof(int)),
+                (typeof(Department),   typeof(Team),     typeof(int)),
+         };
+            foreach (var (p, c, k) in maps)
+            {
+                var req = typeof(IsAnyChildAssignedQuery<,,>).MakeGenericType(p, c, k);
+                var resp = typeof(RequestResult<bool>);
+                var svc = typeof(IRequestHandler<,>).MakeGenericType(req, resp);
+                var impl = typeof(IsAnyChildAssignedQueryHandler<,,>).MakeGenericType(p, c, k);
+                services.AddTransient(svc, impl);
+            }
+            #endregion
             services.AddScoped<GlobalErrorHandlerMiddleware>();
             services.AddScoped<TransactionMiddleware>();
             services.AddScoped(typeof(IGeneralRepository<,>), typeof(GeneralRepository<,>));

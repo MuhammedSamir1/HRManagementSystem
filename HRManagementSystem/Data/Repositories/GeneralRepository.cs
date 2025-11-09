@@ -10,17 +10,42 @@ namespace HRManagementSystem.Data.Repositories
     {
         protected readonly ApplicationDbContext _context;
         private readonly DbSet<TEntity> _dbSet;
-        public GeneralRepository(ApplicationDbContext context)
+        private readonly IServiceProvider _sp;
+        public GeneralRepository(ApplicationDbContext context, IServiceProvider sp)
         {
             _context = context;
             _dbSet = _context.Set<TEntity>();
+            _sp = sp;
         }
 
+        public IQueryable<TEntity> Query()
+           => _dbSet.AsQueryable();
+
+        public async Task<IEnumerable<TKey>> GetIdsAsync<TChild, TKey>(
+        Expression<Func<TChild, bool>> predicate,
+        CancellationToken ct
+    ) where TChild : BaseModel<TKey>
+        {
+            var repo = _sp.GetRequiredService<IGeneralRepository<TChild, TKey>>();
+
+            return await repo.Query()
+                             .AsNoTracking()
+                             .Where(predicate)
+                             .Select(x => x.Id)
+                             .ToListAsync(ct);
+        }
         public async Task<bool> ExistsByNameAsync<T>(string name, bool IsDeleted = false, CancellationToken ct = default) where T : class
         {
             return await _context.Set<T>().AnyAsync(e =>
                     EF.Property<string>(e, "Name").ToUpper().Trim() == name.ToUpper().Trim() && !IsDeleted, ct);
         }
+        public async Task<bool> HasAnyChildAsync<TParent>(TKey parentId, CancellationToken ct)
+        {
+            return await _dbSet.AnyAsync(
+                x => EF.Property<TKey>(x, $"{typeof(TParent).Name}Id")!.Equals(parentId),
+                ct);
+        }
+
         public IQueryable<TEntity> GetAll()
         {
             var res = _dbSet.Where(x => !x.IsDeleted);
@@ -282,13 +307,10 @@ namespace HRManagementSystem.Data.Repositories
             }
             return false;
         }
-
-
         public IQueryable<TEntity> GetById(TKey id)
         {
             return _dbSet.Where(x => x.Id!.Equals(id) && !x.IsDeleted);
         }
-
         public Task<bool> CheckAnyAsync(Expression<Func<TEntity, bool>> expression, CancellationToken ct = default)
         {
             return _dbSet.AsNoTracking().AnyAsync(expression, ct);

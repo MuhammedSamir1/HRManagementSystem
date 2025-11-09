@@ -50,5 +50,22 @@
         NoCountriesFound = 400,
 
 
+        //Departments
+        DepartmentNotFound = 500,
+        DepartmentWasNotDeleted = 501,
+
+
+        //Shift
+        ShiftNotFound = 600,
+        ShiftWasNotDeleted = 601,
+        ShiftAlreadyExists = 602,
+
+
+        //ProbationPeriod
+        ProbationPeriodNotFound = 700,
+        ProbationPeriodWasNotDeleted = 701,
+        ProbationPeriodAlreadyExists = 702,
+
+
     }
 }
