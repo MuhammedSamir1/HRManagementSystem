@@ -1,4 +1,4 @@
-﻿using HRManagementSystem.Features.OrganizationManagement.DeleteOrganization.Commands;
+﻿using HRManagementSystem.Features.OrganizationManagement.DeleteOrganization.Orchestrators;
 
 namespace HRManagementSystem.Features.OrganizationManagement.DeleteOrganization
 {
@@ -14,7 +14,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.DeleteOrganization
             if (!validationResult.isSuccess)
                 return ResponseViewModel<bool>.Failure(validationResult.errorCode);
 
-            var isDeleted = await _mediator.Send(new DeleteOrganizationCommand(model.Id));
+            var isDeleted = await _mediator.Send(new DeleteOrganizationOrchestrator(model.Id));
             if (!isDeleted.isSuccess) return ResponseViewModel<bool>.Failure(isDeleted.message,
                 ErrorCode.OrganizationWasNotDeleted);
 

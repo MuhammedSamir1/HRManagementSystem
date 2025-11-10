@@ -1,4 +1,4 @@
-﻿using HRManagementSystem.Features.CompanyManagement.DeleteCompany.Commands;
+﻿using HRManagementSystem.Features.CompanyManagement.DeleteCompany.Orchestrator;
 
 namespace HRManagementSystem.Features.CompanyManagement.DeleteCompany
 {
@@ -14,8 +14,8 @@ namespace HRManagementSystem.Features.CompanyManagement.DeleteCompany
             if (!validationResult.isSuccess)
                 return ResponseViewModel<bool>.Failure(validationResult.errorCode);
 
-            var isDeleted = await _mediator.Send(new DeleteCompanyCommand(model.companyId));
-            if (!isDeleted.isSuccess) return ResponseViewModel<bool>.Failure(ErrorCode.NotFound);
+            var isDeleted = await _mediator.Send(new DeleteCompanyOrchestrator(model.companyId));
+            if (!isDeleted.isSuccess) return ResponseViewModel<bool>.Failure(isDeleted.message, isDeleted.errorCode);
 
             return ResponseViewModel<bool>.Success(isDeleted.isSuccess, "Company Deleted Successfully!");
         }
