@@ -17,7 +17,7 @@ namespace HRManagementSystem.Features.Common.AddressManagement.StateCommon.IsSta
                 x.Code == request.code &&
                 x.CountryId == request.countryId &&
                 !x.IsDeleted, ct)
-                .AnyAsync(ct);
+                .AnyAsync(ct); 
             if (exists)
             {
                 return RequestResult<bool>.Success(exists);

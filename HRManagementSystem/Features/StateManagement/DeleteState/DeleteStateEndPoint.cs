@@ -8,8 +8,8 @@ namespace HRManagementSystem.Features.StateManagement.DeleteState
         public DeleteStateEndPoint(EndPointBaseParameters<DeleteStateViewModel> parameters)
             : base(parameters) { }
 
-        [HttpDelete("{id}")]
-        public async Task<ResponseViewModel<DeleteStateResponseViewModel>> Delete([FromRoute] DeleteStateViewModel model)
+        [HttpDelete()]
+        public async Task<ResponseViewModel<DeleteStateResponseViewModel>> Delete([FromBody] DeleteStateViewModel model)
         {
             var validationResult = ValidateRequest(model);
             if (!validationResult.isSuccess)

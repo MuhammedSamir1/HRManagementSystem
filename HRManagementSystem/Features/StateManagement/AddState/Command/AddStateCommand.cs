@@ -25,7 +25,7 @@ namespace HRManagementSystem.Features.StateManagement.AddState.Command
             // Check if state with same code already exists
             var stateExistsResult = await _mediator.Send(new IsStateExistWithSameCodeQuery(request.Code, request.CountryId), ct);
 
-            if (!stateExistsResult.isSuccess)
+            if (stateExistsResult.isSuccess)
                 return RequestResult<ViewStateDto>.Failure(ErrorCode.StateAlreadyExists);
 
             // Create new state

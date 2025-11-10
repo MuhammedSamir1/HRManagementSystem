@@ -48,6 +48,7 @@
 
         //Countries
         NoCountriesFound = 400,
+        DuplicateRecord = 401,
 
 
         //Departments
