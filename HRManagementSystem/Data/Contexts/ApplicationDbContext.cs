@@ -27,7 +27,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Country> Country { get; set; }
     public DbSet<State> State { get; set; }
     public DbSet<City> City { get; set; }
-    
+
     public DbSet<Shift> Shifts { get; set; }
     public DbSet<ProbationPeriod> ProbationPeriods { get; set; }
     public DbSet<Bank> Banks { get; set; }

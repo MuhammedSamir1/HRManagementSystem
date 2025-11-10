@@ -2,10 +2,10 @@
 {
     public class OvertimeRate : BaseModel<int>
     {
-        
+
         public string Name { get; set; }
 
-    
+
         // ده بالنسبة ليا  اللي هيضرب   في الوقت المحدد
         public decimal Multiplier { get; set; }
 

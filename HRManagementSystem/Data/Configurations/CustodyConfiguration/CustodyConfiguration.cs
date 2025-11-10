@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
 using Microsoft.EntityFrameworkCore;
-using HRManagementSystem.Data.Models.ConfigurationsModels;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HRManagementSystem.Data.Configurations.CustodyConfiguration
 {
@@ -19,27 +19,27 @@ namespace HRManagementSystem.Data.Configurations.CustodyConfiguration
             b.Property(x => x.SerialNumber).IsRequired().HasMaxLength(150);
 
             b.Property(x => x.HandoverDate).IsRequired();
-        
+
             b.Property(x => x.ReturnDate).IsRequired(false);
 
             b.Property(x => x.Status).IsRequired().HasMaxLength(50);
 
-       
+
             b.HasIndex(x => x.SerialNumber).IsUnique();
 
             // 4.  (Relationships)
 
             // Employee (1) ← Custody (many)
             b.HasOne(x => x.Employee)
-                .WithMany() 
+                .WithMany()
                 .HasForeignKey(x => x.EmployeeId)
                 .IsRequired()
-             
+
                 .OnDelete(DeleteBehavior.NoAction);
 
-           
+
             b.Property(x => x.CreatedAt).IsRequired();
-            
+
         }
     }
 }

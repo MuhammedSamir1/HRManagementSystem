@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
 using Microsoft.EntityFrameworkCore;
-using HRManagementSystem.Data.Models.ConfigurationsModels;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HRManagementSystem.Data.Configurations.HolidayConfigurations
 {
@@ -16,11 +16,11 @@ namespace HRManagementSystem.Data.Configurations.HolidayConfigurations
             b.Property(x => x.StartDate).IsRequired();
             b.Property(x => x.EndDate).IsRequired();
 
-           
-            b.Property(x => x.IsMandatory).HasDefaultValue(true).IsRequired();
-            b.Property(x => x.Type).IsRequired(); 
 
-         
+            b.Property(x => x.IsMandatory).HasDefaultValue(true).IsRequired();
+            b.Property(x => x.Type).IsRequired();
+
+
             b.HasIndex(x => new { x.Name, x.CompanyId }).IsUnique();
 
             b.Property(x => x.CreatedAt).IsRequired();
@@ -29,7 +29,7 @@ namespace HRManagementSystem.Data.Configurations.HolidayConfigurations
             b.HasOne(x => x.Company)
                 .WithMany()
                 .HasForeignKey(x => x.CompanyId)
-                
+
                 .OnDelete(DeleteBehavior.NoAction);
         }
     }

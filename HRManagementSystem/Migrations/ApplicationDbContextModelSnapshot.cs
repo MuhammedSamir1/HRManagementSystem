@@ -328,7 +328,6 @@ namespace HRManagementSystem.Migrations
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.ConfigurationOfSys.DisabilityType", b =>
-            modelBuilder.Entity("HRManagementSystem.Data.Models.ConfigurationsModels.Bank", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -339,6 +338,57 @@ namespace HRManagementSystem.Migrations
                     b.Property<string>("Code")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("UpdatedBy")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique()
+                        .HasFilter("[Code] IS NOT NULL");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("DisabilityTypes", (string)null);
+                });
+
+            modelBuilder.Entity("HRManagementSystem.Data.Models.ConfigurationsModels.Bank", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -410,9 +460,6 @@ namespace HRManagementSystem.Migrations
                     b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("EmployeeId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
@@ -443,7 +490,7 @@ namespace HRManagementSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId1");
+                    b.HasIndex("EmployeeId");
 
                     b.ToTable("Contracts");
                 });
@@ -465,15 +512,11 @@ namespace HRManagementSystem.Migrations
                     b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("EmployeeId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("HandoverDate")
                         .HasColumnType("datetime2");
-                    b.Property<string>("Description")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -485,9 +528,6 @@ namespace HRManagementSystem.Migrations
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ReturnDate")
                         .HasColumnType("datetime2");
@@ -516,10 +556,6 @@ namespace HRManagementSystem.Migrations
                         .IsUnique();
 
                     b.ToTable("Custodies", (string)null);
-                    b.HasIndex("Code")
-                        .IsUnique()
-                        .HasFilter("[Code] IS NOT NULL");
-                    b.ToTable("RequestTypes");
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.ConfigurationsModels.Holiday", b =>
@@ -582,8 +618,6 @@ namespace HRManagementSystem.Migrations
                         .HasFilter("[CompanyId] IS NOT NULL");
 
                     b.ToTable("Holidays", (string)null);
-                    b.ToTable("DisabilityTypes", (string)null);
-                    b.ToTable("Shifts", (string)null);
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.ConfigurationsModels.OvertimeRate", b =>
@@ -772,8 +806,6 @@ namespace HRManagementSystem.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
-                    b.Property<int?>("DisabilityTypeId")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -820,15 +852,6 @@ namespace HRManagementSystem.Migrations
                         .HasColumnType("time");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-                    b.Property<bool>("IsMandatory")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(true);
@@ -854,14 +877,6 @@ namespace HRManagementSystem.Migrations
 
                     b.HasIndex("Name")
                         .IsUnique();
-                    b.HasIndex("DisabilityTypeId");
-
-                    b.ToTable("Employee");
-                    b.HasIndex("CompanyId");
-
-                    b.HasIndex("Name", "CompanyId")
-                        .IsUnique()
-                        .HasFilter("[CompanyId] IS NOT NULL");
 
                     b.ToTable("Shifts", (string)null);
                 });
@@ -973,9 +988,11 @@ namespace HRManagementSystem.Migrations
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.Employee", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -985,6 +1002,15 @@ namespace HRManagementSystem.Migrations
 
                     b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
+
+                    b.Property<int?>("DisabilityTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("HireDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -996,6 +1022,12 @@ namespace HRManagementSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Position")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -1004,7 +1036,9 @@ namespace HRManagementSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employee");
+                    b.HasIndex("DisabilityTypeId");
+
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.Organization", b =>
@@ -1342,7 +1376,7 @@ namespace HRManagementSystem.Migrations
                 {
                     b.HasOne("HRManagementSystem.Data.Models.Employee", "Employee")
                         .WithMany()
-                        .HasForeignKey("EmployeeId1");
+                        .HasForeignKey("EmployeeId");
 
                     b.Navigation("Employee");
                 });
@@ -1359,12 +1393,6 @@ namespace HRManagementSystem.Migrations
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.ConfigurationsModels.Holiday", b =>
-            modelBuilder.Entity("HRManagementSystem.Data.Models.Employee", b =>
-                {
-                    b.HasOne("HRManagementSystem.Data.Models.ConfigurationOfSys.DisabilityType", null)
-                        .WithMany("Employees")
-                        .HasForeignKey("DisabilityTypeId");
-            modelBuilder.Entity("HRManagementSystem.Data.Models.Holiday", b =>
                 {
                     b.HasOne("HRManagementSystem.Data.Models.Company", "Company")
                         .WithMany()
@@ -1383,6 +1411,13 @@ namespace HRManagementSystem.Migrations
                         .IsRequired();
 
                     b.Navigation("Branch");
+                });
+
+            modelBuilder.Entity("HRManagementSystem.Data.Models.Employee", b =>
+                {
+                    b.HasOne("HRManagementSystem.Data.Models.ConfigurationOfSys.DisabilityType", null)
+                        .WithMany("Employees")
+                        .HasForeignKey("DisabilityTypeId");
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.Organization", b =>

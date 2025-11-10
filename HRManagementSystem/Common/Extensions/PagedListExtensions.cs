@@ -4,7 +4,7 @@ namespace HRManagementSystem.Common.Extensions
 {
     public static class PagedListExtensions
     {
-      
+
         public static PagedList<TDestination> MapTo<TSource, TDestination>(
             this PagedList<TSource> source,
             MapperConfiguration configuration)

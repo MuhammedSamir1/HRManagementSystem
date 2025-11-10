@@ -1,7 +1,6 @@
 ﻿using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Data.Repositories;
 using HRManagementSystem.Features.Common.AddressManagement.StateCommon.Dtos;
-using HRManagementSystem.Features.Common.AddressManagement.StateCommon.IsStateExistWithSameCode.Query;
 using HRManagementSystem.Features.StateManagement.GetStateById.Queries;
 namespace HRManagementSystem.Features.StateManagement.UpdateState.Command
 {
@@ -39,7 +38,7 @@ namespace HRManagementSystem.Features.StateManagement.UpdateState.Command
             //    return RequestResult<ViewStateDto>.Failure(ErrorCode.StateAlreadyExists);
 
             // Update state
-            
+
             var updatedState = _mapper.Map<State>(state.data);
             updatedState.Name = request.Name;
             updatedState.Code = request.Code;

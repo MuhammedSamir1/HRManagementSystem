@@ -1,6 +1,6 @@
 ﻿namespace HRManagementSystem.Data.Models.ConfigurationsModels
 {
-    public class PayrollItem:BaseModel<int>
+    public class PayrollItem : BaseModel<int>
     {
         public string Name { get; set; }
 

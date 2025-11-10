@@ -1,5 +1,3 @@
-using HRManagementSystem.Common.Data.Enums;
-
 namespace HRManagementSystem.Data.Models.ConfigurationsModels
 {
     public class Contract : BaseModel<int>

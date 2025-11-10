@@ -5,5 +5,5 @@
          string Name,
          decimal RateFactor, // معامل السعر (مثل 1.5)
          string Description,
-         bool IsActive); 
+         bool IsActive);
 }

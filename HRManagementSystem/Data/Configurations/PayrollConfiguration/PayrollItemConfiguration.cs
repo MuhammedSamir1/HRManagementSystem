@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
 using Microsoft.EntityFrameworkCore;
-using HRManagementSystem.Data.Models.ConfigurationsModels;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HRManagementSystem.Data.Configurations.PayrollConfiguration
 {
@@ -8,11 +8,11 @@ namespace HRManagementSystem.Data.Configurations.PayrollConfiguration
     {
         public void Configure(EntityTypeBuilder<PayrollItem> b)
         {
-       
+
             b.ToTable("PayrollItems");
             b.HasKey(x => x.Id);
 
- 
+
             b.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(100);
@@ -20,9 +20,9 @@ namespace HRManagementSystem.Data.Configurations.PayrollConfiguration
             b.HasIndex(x => x.Name)
                 .IsUnique();
 
-          
+
             b.Property(x => x.Type)
-                .HasConversion<string>() 
+                .HasConversion<string>()
                 .IsRequired()
                 .HasMaxLength(50);
 
@@ -31,16 +31,16 @@ namespace HRManagementSystem.Data.Configurations.PayrollConfiguration
                 .IsRequired()
                 .HasMaxLength(50);
 
-           
+
             b.Property(x => x.Value)
-                .HasColumnType("decimal(18, 4)") 
+                .HasColumnType("decimal(18, 4)")
                 .IsRequired();
 
             b.Property(x => x.IsStatutory)
                 .IsRequired();
 
-        
-     
+
+
         }
     }
 }

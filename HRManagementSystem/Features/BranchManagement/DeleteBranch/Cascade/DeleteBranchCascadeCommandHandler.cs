@@ -7,7 +7,7 @@ public sealed class DeleteBranchCascadeCommandHandler
 {
     public DeleteBranchCascadeCommandHandler(
         RequestHandlerBaseParameters<Branch, int> parameters
-    ) : base(parameters)    
+    ) : base(parameters)
     {
     }
 }

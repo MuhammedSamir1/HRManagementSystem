@@ -28,11 +28,11 @@ namespace HRManagementSystem.Common.Views
         {
             var count = await source.CountAsync(ct);
 
-     
+
             var items = await source
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
-                .ProjectTo<T>(mapper.ConfigurationProvider) 
+                .ProjectTo<T>(mapper.ConfigurationProvider)
                 .ToListAsync(ct);
 
             var pagedList = new PagedList<T>
