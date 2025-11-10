@@ -1,5 +1,4 @@
 using HRManagementSystem.Data.Models.ConfigurationsModels;
-using HRManagementSystem.Features.Common.Dtos;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.AddBonus.Commands
 {
@@ -12,24 +11,23 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.A
         DateTime? PaymentDate,
         bool IsPaid,
         int? EmployeeId)
-        : IRequest<RequestResult<CreatedIdDto>>;
+        : IRequest<RequestResult<int>>;
 
-    public class AddBonusCommandHandler : RequestHandlerBase<AddBonusCommand, RequestResult<CreatedIdDto>, Bonus, int>
+    public class AddBonusCommandHandler : RequestHandlerBase<AddBonusCommand, RequestResult<int>, Bonus, int>
     {
         public AddBonusCommandHandler(RequestHandlerBaseParameters<Bonus, int> parameters)
             : base(parameters) { }
 
-        public override async Task<RequestResult<CreatedIdDto>> Handle(AddBonusCommand request, CancellationToken ct)
+        public override async Task<RequestResult<int>> Handle(AddBonusCommand request, CancellationToken ct)
         {
-            var bonus = _mapper.Map<AddBonusCommand, Bonus>(request);
+            var bonus = _mapper.Map<Bonus>(request);
 
             var isAdded = await _generalRepo.AddAsync(bonus, ct);
 
-            if (!isAdded) return RequestResult<CreatedIdDto>.Failure("Bonus wasn't added successfully!", ErrorCode.InternalServerError);
+            if (!isAdded) 
+                return RequestResult<int>.Failure("Bonus wasn't added successfully!", ErrorCode.InternalServerError);
 
-            var mapped = _mapper.Map<CreatedIdDto>(bonus);
-            return RequestResult<CreatedIdDto>.Success(mapped, "Bonus added successfully!");
+            return RequestResult<int>.Success(bonus.Id, "Bonus added successfully!");
         }
     }
 }
-

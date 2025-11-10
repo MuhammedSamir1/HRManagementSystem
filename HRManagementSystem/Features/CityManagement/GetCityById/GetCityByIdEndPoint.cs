@@ -1,4 +1,6 @@
-﻿using HRManagementSystem.Features.Common.AddressManagement.GetCityById.Commands;
+﻿using HRManagementSystem.Features.CityManagement.GetCityById.Queries;
+
+using HRManagementSystem.Features.CityManagement.GetCityById.Queries;
 
 namespace HRManagementSystem.Features.CityManagement.GetCityById
 {

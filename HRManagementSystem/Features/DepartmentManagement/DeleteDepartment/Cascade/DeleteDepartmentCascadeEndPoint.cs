@@ -1,5 +1,6 @@
-﻿using HRManagementSystem.Features.Common.DeleteCascadeGeneric;
-using HRManagementSystem.Features.Common.DeleteEntityCascade;
+﻿using HRManagementSystem.Features.Common.DeleteEntityCascade;
+
+using HRManagementSystem.Features.Common.DeleteEntityCascade.Command;
 
 namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Cascade;
 

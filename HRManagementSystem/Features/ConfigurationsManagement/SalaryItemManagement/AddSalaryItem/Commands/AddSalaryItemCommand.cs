@@ -1,5 +1,5 @@
 using HRManagementSystem.Data.Models.ConfigurationsModels;
-using HRManagementSystem.Features.Common.Dtos;
+using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.AddSalaryItem.Commands
 {
@@ -11,27 +11,27 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
         bool IsFixed,
         bool IsRecurring,
         int? EmployeeId)
-        : IRequest<RequestResult<CreatedIdDto>>;
+        : IRequest<RequestResult<int>>;
 
-    public class AddSalaryItemCommandHandler : RequestHandlerBase<AddSalaryItemCommand, RequestResult<CreatedIdDto>, SalaryItem, int>
+    public class AddSalaryItemCommandHandler : RequestHandlerBase<AddSalaryItemCommand, RequestResult<int>, SalaryItem, int>
     {
         public AddSalaryItemCommandHandler(RequestHandlerBaseParameters<SalaryItem, int> parameters)
             : base(parameters) { }
 
-        public override async Task<RequestResult<CreatedIdDto>> Handle(AddSalaryItemCommand request, CancellationToken ct)
+        public override async Task<RequestResult<int>> Handle(AddSalaryItemCommand request, CancellationToken ct)
         {
-            var salaryItem = _mapper.Map<AddSalaryItemCommand, SalaryItem>(request);
-
-            var nameExists = await _generalRepo.CheckAnyAsync(x => x.Name == request.Name, ct);
+            var nameExists = await _generalRepo.Get(x => x.Name == request.Name && !x.IsDeleted, ct).AnyAsync(ct);
             if (nameExists)
-                return RequestResult<CreatedIdDto>.Failure("Salary Item Name already exists.", ErrorCode.Conflict);
+                return RequestResult<int>.Failure("Salary Item Name already exists.", ErrorCode.Conflict);
+
+            var salaryItem = _mapper.Map<SalaryItem>(request);
 
             var isAdded = await _generalRepo.AddAsync(salaryItem, ct);
 
-            if (!isAdded) return RequestResult<CreatedIdDto>.Failure("Salary Item wasn't added successfully!", ErrorCode.InternalServerError);
+            if (!isAdded) 
+                return RequestResult<int>.Failure("Salary Item wasn't added successfully!", ErrorCode.InternalServerError);
 
-            var mapped = _mapper.Map<CreatedIdDto>(salaryItem);
-            return RequestResult<CreatedIdDto>.Success(mapped, "Salary Item added successfully!");
+            return RequestResult<int>.Success(salaryItem.Id, "Salary Item added successfully!");
         }
     }
 }

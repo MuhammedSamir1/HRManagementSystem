@@ -3,7 +3,7 @@ using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.D
 using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.Dtos;
 using HRManagementSystem.Features.CompanyManagement.AddCompany.Commands;
 using HRManagementSystem.Features.DepartmentManagement.AddDepartment.Commands;
-using HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands;
+using HRManagementSystem.Features.OrganizationManagement.AddOrginzation.Commands;
 using HRManagementSystem.Features.TeamManagement.AddTeam.Commands;
 
 namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding.Commands

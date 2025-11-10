@@ -11,9 +11,9 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
 
         public override async Task<RequestResult<ViewPenaltyByIdDto>> Handle(GetPenaltyByIdQuery request, CancellationToken ct)
         {
-            var penalty = await _generalRepo.GetByIdAsync(request.Id, ct);
+            var penalty = await _generalRepo.GetByIdAsync(request.Id);
 
-            if (penalty == null)
+            if (penalty == null || penalty.IsDeleted)
                 return RequestResult<ViewPenaltyByIdDto>.Failure("Penalty not found.", ErrorCode.NotFound);
 
             var mapped = _mapper.Map<ViewPenaltyByIdDto>(penalty);

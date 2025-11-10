@@ -1,4 +1,5 @@
 using HRManagementSystem.Data.Models.ConfigurationsModels;
+using HRManagementSystem.Common.Views;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagement.GetAllEndOfServices.Queries
 {
@@ -11,9 +12,17 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
 
         public override async Task<RequestResult<PagedList<ViewEndOfServiceDto>>> Handle(GetAllEndOfServicesQuery request, CancellationToken ct)
         {
-            var endOfServices = await _generalRepo.GetAllAsync(ct);
-            var mapped = _mapper.Map<PagedList<ViewEndOfServiceDto>>(endOfServices);
-            return RequestResult<PagedList<ViewEndOfServiceDto>>.Success(mapped);
+            var query = _generalRepo.Get(x => !x.IsDeleted, ct);
+
+            var pagedList = await PagedList<ViewEndOfServiceDto>.CreateAsync(
+                query,
+                1,
+                100,
+                _mapper,
+                ct
+            );
+
+            return RequestResult<PagedList<ViewEndOfServiceDto>>.Success(pagedList);
         }
     }
 }

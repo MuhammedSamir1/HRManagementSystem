@@ -1,4 +1,5 @@
 using HRManagementSystem.Data.Models.ConfigurationsModels;
+using HRManagementSystem.Common.Views;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.GetAllSalaryItems.Queries
 {
@@ -11,9 +12,17 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
 
         public override async Task<RequestResult<PagedList<ViewSalaryItemDto>>> Handle(GetAllSalaryItemsQuery request, CancellationToken ct)
         {
-            var salaryItems = await _generalRepo.GetAllAsync(ct);
-            var mapped = _mapper.Map<PagedList<ViewSalaryItemDto>>(salaryItems);
-            return RequestResult<PagedList<ViewSalaryItemDto>>.Success(mapped);
+            var query = _generalRepo.Get(x => !x.IsDeleted, ct);
+
+            var pagedList = await PagedList<ViewSalaryItemDto>.CreateAsync(
+                query,
+                1,
+                100,
+                _mapper,
+                ct
+            );
+
+            return RequestResult<PagedList<ViewSalaryItemDto>>.Success(pagedList);
         }
     }
 }

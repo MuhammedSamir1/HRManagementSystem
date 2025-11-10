@@ -2,21 +2,22 @@ using HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.Del
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.DeletePenalty
 {
-    public class DeletePenaltyEndPoint : EndPointBase<DeletePenaltyViewModel, DeletePenaltyCommand, RequestResult<string>>
+    public class DeletePenaltyEndPoint : BaseEndPoint<int, ResponseViewModel<bool>>
     {
-        private readonly IMediator _mediator;
+        public DeletePenaltyEndPoint(EndPointBaseParameters<int> parameters) : base(parameters) { }
 
-        public DeletePenaltyEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpDelete("{id:int}")]
+        public async Task<ResponseViewModel<bool>> DeletePenalty(int id, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpDelete("api/Penalty/Delete")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<string>>>> HandleAsync([FromQuery] DeletePenaltyViewModel viewModel, CancellationToken ct)
-        {
-            var command = _mapper.Map<DeletePenaltyViewModel, DeletePenaltyCommand>(viewModel);
+            var command = new DeletePenaltyCommand(id);
             var result = await _mediator.Send(command, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
+            }
+
+            return ResponseViewModel<bool>.Success(true, result.message);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using HRManagementSystem.Features.CityManagement.UpdateCity.Commands;
-using HRManagementSystem.Features.CityManagement.UpdateCity.ViewModels;
+﻿using HRManagementSystem.Features.CityManagement.UpdateCity.Command;
 
 namespace HRManagementSystem.Features.CityManagement.UpdateCity
 {

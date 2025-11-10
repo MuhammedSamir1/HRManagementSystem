@@ -2,21 +2,22 @@ using HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.UpdateSalaryItem
 {
-    public class UpdateSalaryItemEndPoint : EndPointBase<UpdateSalaryItemViewModel, UpdateSalaryItemCommand, RequestResult<string>>
+    public class UpdateSalaryItemEndPoint : BaseEndPoint<UpdateSalaryItemViewModel, ResponseViewModel<bool>>
     {
-        private readonly IMediator _mediator;
+        public UpdateSalaryItemEndPoint(EndPointBaseParameters<UpdateSalaryItemViewModel> parameters) : base(parameters) { }
 
-        public UpdateSalaryItemEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpPut]
+        public async Task<ResponseViewModel<bool>> UpdateSalaryItem([FromBody] UpdateSalaryItemViewModel model, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpPut("api/SalaryItem/Update")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<string>>>> HandleAsync([FromBody] UpdateSalaryItemViewModel viewModel, CancellationToken ct)
-        {
-            var command = _mapper.Map<UpdateSalaryItemViewModel, UpdateSalaryItemCommand>(viewModel);
+            var command = _mapper.Map<UpdateSalaryItemCommand>(model);
             var result = await _mediator.Send(command, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
+            }
+
+            return ResponseViewModel<bool>.Success(true, result.message);
         }
     }
 }

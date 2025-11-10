@@ -1,22 +1,27 @@
+using HRManagementSystem.Common.Extensions;
+using HRManagementSystem.Common.Views;
 using HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.GetAllLoans.Queries;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.GetAllLoans
 {
-    public class GetAllLoansEndPoint : EndPointBase<GetAllLoansViewModel, GetAllLoansQuery, RequestResult<PagedList<ViewLoanDto>>>
+    public class GetAllLoansEndPoint : BaseEndPoint<GetAllLoansViewModel, ResponseViewModel<object>>
     {
-        private readonly IMediator _mediator;
+        public GetAllLoansEndPoint(EndPointBaseParameters<GetAllLoansViewModel> parameters) : base(parameters) { }
 
-        public GetAllLoansEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpGet]
+        public async Task<ResponseViewModel<PagedList<ViewLoanViewModel>>> GetAllLoans([FromQuery] GetAllLoansViewModel model, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpGet("api/Loan/GetAll")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<PagedList<ViewLoanDto>>>>> HandleAsync([FromQuery] GetAllLoansViewModel viewModel, CancellationToken ct)
-        {
-            var query = _mapper.Map<GetAllLoansViewModel, GetAllLoansQuery>(viewModel);
+            var query = _mapper.Map<GetAllLoansQuery>(model);
             var result = await _mediator.Send(query, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<PagedList<ViewLoanViewModel>>.Failure(result.message, result.errorCode);
+            }
+
+            var mappedPagedList = result.data!.MapTo<ViewLoanDto, ViewLoanViewModel>(_mapper.ConfigurationProvider);
+
+            return ResponseViewModel<PagedList<ViewLoanViewModel>>.Success(mappedPagedList);
         }
     }
 }

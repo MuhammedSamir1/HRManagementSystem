@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace HRManagementSystem.Features.AuthManagement.Login
+namespace HRManagementSystem.Features.UserManagement.LoginUser
 {
     public record LoginUserRequestViewModel(string Username, string Password);
 

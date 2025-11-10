@@ -11,9 +11,9 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Ge
 
         public override async Task<RequestResult<ViewLoanByIdDto>> Handle(GetLoanByIdQuery request, CancellationToken ct)
         {
-            var loan = await _generalRepo.GetByIdAsync(request.Id, ct);
+            var loan = await _generalRepo.GetByIdAsync(request.Id);
 
-            if (loan == null)
+            if (loan == null || loan.IsDeleted)
                 return RequestResult<ViewLoanByIdDto>.Failure("Loan not found.", ErrorCode.NotFound);
 
             var mapped = _mapper.Map<ViewLoanByIdDto>(loan);

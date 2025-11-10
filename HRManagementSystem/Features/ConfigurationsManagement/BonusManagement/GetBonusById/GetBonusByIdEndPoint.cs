@@ -2,21 +2,24 @@ using HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.GetBo
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.GetBonusById
 {
-    public class GetBonusByIdEndPoint : EndPointBase<GetBonusByIdViewModel, GetBonusByIdQuery, RequestResult<ViewBonusByIdDto>>
+    public class GetBonusByIdEndPoint : BaseEndPoint<GetBonusByIdViewModel, ResponseViewModel<ViewBonusByIdViewModel>>
     {
-        private readonly IMediator _mediator;
+        public GetBonusByIdEndPoint(EndPointBaseParameters<GetBonusByIdViewModel> parameters) : base(parameters) { }
 
-        public GetBonusByIdEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpGet("{id:int}")]
+        public async Task<ResponseViewModel<ViewBonusByIdViewModel>> GetBonusById(int id, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpGet("api/Bonus/GetById")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<ViewBonusByIdDto>>>> HandleAsync([FromQuery] GetBonusByIdViewModel viewModel, CancellationToken ct)
-        {
-            var query = _mapper.Map<GetBonusByIdViewModel, GetBonusByIdQuery>(viewModel);
+            var query = new GetBonusByIdQuery(id);
             var result = await _mediator.Send(query, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<ViewBonusByIdViewModel>.Failure(result.message, result.errorCode);
+            }
+
+            var mapped = _mapper.Map<ViewBonusByIdViewModel>(result.data);
+
+            return ResponseViewModel<ViewBonusByIdViewModel>.Success(mapped);
         }
     }
 }

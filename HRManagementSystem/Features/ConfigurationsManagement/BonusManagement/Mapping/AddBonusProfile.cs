@@ -1,5 +1,4 @@
 using HRManagementSystem.Data.Models.ConfigurationsModels;
-using HRManagementSystem.Features.Common.Dtos;
 using HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.AddBonus;
 using HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.AddBonus.Commands;
 
@@ -11,7 +10,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.M
         {
             CreateMap<AddBonusViewModel, AddBonusCommand>();
             CreateMap<AddBonusCommand, Bonus>();
-            CreateMap<Bonus, CreatedIdDto>();
         }
     }
 }

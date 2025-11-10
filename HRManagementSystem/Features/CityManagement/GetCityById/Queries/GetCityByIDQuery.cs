@@ -1,7 +1,6 @@
 ﻿using HRManagementSystem.Data.Models.AddressEntity;
-using HRManagementSystem.Features.CityManagement.GetCityById;
 
-namespace HRManagementSystem.Features.Common.AddressManagement.GetCityById.Commands
+namespace HRManagementSystem.Features.CityManagement.GetCityById.Queries
 {
     public record GetCityByIDQuery(int Id) : IRequest<RequestResult<GetCityByIdDto>>;
 

@@ -1,5 +1,4 @@
 ﻿using HRManagementSystem.Features.Common.Dtos;
-using HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands;
 
 namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation.Commands;
 

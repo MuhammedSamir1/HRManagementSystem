@@ -3,7 +3,7 @@ using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos;
 using Microsoft.EntityFrameworkCore;
 
-namespace HRManagementSystem.Features.CountryManagement.GetAllCountries
+namespace HRManagementSystem.Features.CountryManagement.GetAllCountries.Queries
 {
     public sealed class GetAllCountriesQueryHandler : RequestHandlerBase<GetAllCountriesQuery, RequestResult<List<ViewCountryDto>>, Country, int>
     {

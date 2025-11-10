@@ -2,21 +2,24 @@ using HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.Get
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.GetPenaltyById
 {
-    public class GetPenaltyByIdEndPoint : EndPointBase<GetPenaltyByIdViewModel, GetPenaltyByIdQuery, RequestResult<ViewPenaltyByIdDto>>
+    public class GetPenaltyByIdEndPoint : BaseEndPoint<GetPenaltyByIdViewModel, ResponseViewModel<ViewPenaltyByIdViewModel>>
     {
-        private readonly IMediator _mediator;
+        public GetPenaltyByIdEndPoint(EndPointBaseParameters<GetPenaltyByIdViewModel> parameters) : base(parameters) { }
 
-        public GetPenaltyByIdEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpGet("{id:int}")]
+        public async Task<ResponseViewModel<ViewPenaltyByIdViewModel>> GetPenaltyById(int id, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpGet("api/Penalty/GetById")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<ViewPenaltyByIdDto>>>> HandleAsync([FromQuery] GetPenaltyByIdViewModel viewModel, CancellationToken ct)
-        {
-            var query = _mapper.Map<GetPenaltyByIdViewModel, GetPenaltyByIdQuery>(viewModel);
+            var query = new GetPenaltyByIdQuery(id);
             var result = await _mediator.Send(query, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<ViewPenaltyByIdViewModel>.Failure(result.message, result.errorCode);
+            }
+
+            var mapped = _mapper.Map<ViewPenaltyByIdViewModel>(result.data);
+
+            return ResponseViewModel<ViewPenaltyByIdViewModel>.Success(mapped);
         }
     }
 }

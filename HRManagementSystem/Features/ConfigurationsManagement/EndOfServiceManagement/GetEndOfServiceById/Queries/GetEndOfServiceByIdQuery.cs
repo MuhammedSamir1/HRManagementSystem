@@ -11,9 +11,9 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
 
         public override async Task<RequestResult<ViewEndOfServiceByIdDto>> Handle(GetEndOfServiceByIdQuery request, CancellationToken ct)
         {
-            var endOfService = await _generalRepo.GetByIdAsync(request.Id, ct);
+            var endOfService = await _generalRepo.GetByIdAsync(request.Id);
 
-            if (endOfService == null)
+            if (endOfService == null || endOfService.IsDeleted)
                 return RequestResult<ViewEndOfServiceByIdDto>.Failure("End Of Service not found.", ErrorCode.NotFound);
 
             var mapped = _mapper.Map<ViewEndOfServiceByIdDto>(endOfService);

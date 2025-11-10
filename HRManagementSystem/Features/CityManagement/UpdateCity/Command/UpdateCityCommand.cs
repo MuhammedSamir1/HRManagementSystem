@@ -1,7 +1,7 @@
 ﻿using HRManagementSystem.Data.Models.AddressEntity;
 using Microsoft.EntityFrameworkCore;
 
-namespace HRManagementSystem.Features.CityManagement.UpdateCity.Commands
+namespace HRManagementSystem.Features.CityManagement.UpdateCity.Command
 {
     public sealed record UpdateCityCommand(int Id, string Name, int StateId) : IRequest<RequestResult<bool>>;
 

@@ -1,6 +1,7 @@
 ﻿using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
 using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.Dtos;
-using HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands;
+
+using HRManagementSystem.Features.OrganizationManagement.AddOrginzation.Commands;
 
 namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation
 {

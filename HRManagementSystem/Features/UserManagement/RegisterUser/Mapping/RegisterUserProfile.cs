@@ -1,4 +1,4 @@
-﻿using HRManagementSystem.Features.AuthManagement.Register.Commands;
+﻿using HRManagementSystem.Features.UserManagement.RegisterUser.Commands;
 
 namespace HRManagementSystem.Features.UserManagement.RegisterUser.Mapping
 {

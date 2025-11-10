@@ -5,7 +5,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace HRManagementSystem.Features.AuthManagement.Login.Query
+namespace HRManagementSystem.Features.UserManagement.LoginUser.Query
 {
     public record LoginUserQuery(string userName, string password) : IRequest<RequestResult<string>>;
 

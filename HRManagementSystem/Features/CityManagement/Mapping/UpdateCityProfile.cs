@@ -1,8 +1,8 @@
 ﻿using HRManagementSystem.Data.Models.AddressEntity;
-using HRManagementSystem.Features.CityManagement.UpdateCity.Commands;
-using HRManagementSystem.Features.CityManagement.UpdateCity.ViewModels;
+using HRManagementSystem.Features.CityManagement.UpdateCity;
+using HRManagementSystem.Features.CityManagement.UpdateCity.Command;
 
-namespace HRManagementSystem.Features.CityManagement.UpdateCity
+namespace HRManagementSystem.Features.CityManagement.Mapping
 {
     public class UpdateCityProfile : Profile
     {

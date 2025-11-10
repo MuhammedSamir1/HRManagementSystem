@@ -1,22 +1,27 @@
+using HRManagementSystem.Common.Extensions;
+using HRManagementSystem.Common.Views;
 using HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.GetAllPenalties.Queries;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.GetAllPenalties
 {
-    public class GetAllPenaltiesEndPoint : EndPointBase<GetAllPenaltiesViewModel, GetAllPenaltiesQuery, RequestResult<PagedList<ViewPenaltyDto>>>
+    public class GetAllPenaltiesEndPoint : BaseEndPoint<GetAllPenaltiesViewModel, ResponseViewModel<object>>
     {
-        private readonly IMediator _mediator;
+        public GetAllPenaltiesEndPoint(EndPointBaseParameters<GetAllPenaltiesViewModel> parameters) : base(parameters) { }
 
-        public GetAllPenaltiesEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpGet]
+        public async Task<ResponseViewModel<PagedList<ViewPenaltyViewModel>>> GetAllPenalties([FromQuery] GetAllPenaltiesViewModel model, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpGet("api/Penalty/GetAll")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<PagedList<ViewPenaltyDto>>>>> HandleAsync([FromQuery] GetAllPenaltiesViewModel viewModel, CancellationToken ct)
-        {
-            var query = _mapper.Map<GetAllPenaltiesViewModel, GetAllPenaltiesQuery>(viewModel);
+            var query = _mapper.Map<GetAllPenaltiesQuery>(model);
             var result = await _mediator.Send(query, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<PagedList<ViewPenaltyViewModel>>.Failure(result.message, result.errorCode);
+            }
+
+            var mappedPagedList = result.data!.MapTo<ViewPenaltyDto, ViewPenaltyViewModel>(_mapper.ConfigurationProvider);
+
+            return ResponseViewModel<PagedList<ViewPenaltyViewModel>>.Success(mappedPagedList);
         }
     }
 }

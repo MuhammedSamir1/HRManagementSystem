@@ -1,5 +1,4 @@
 using HRManagementSystem.Data.Models.ConfigurationsModels;
-using HRManagementSystem.Features.Common.Dtos;
 using HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagement.AddEndOfService;
 using HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagement.AddEndOfService.Commands;
 
@@ -11,7 +10,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         {
             CreateMap<AddEndOfServiceViewModel, AddEndOfServiceCommand>();
             CreateMap<AddEndOfServiceCommand, EndOfService>();
-            CreateMap<EndOfService, CreatedIdDto>();
         }
     }
 }

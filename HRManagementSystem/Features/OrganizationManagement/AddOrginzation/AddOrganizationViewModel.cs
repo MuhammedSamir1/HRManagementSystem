@@ -2,7 +2,7 @@
 using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.ViewModels;
 using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.ViewModels;
 
-namespace HRManagementSystem.Features.OrganizationManagement
+namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation
 {
     public record AddOrganizationViewModel(string Name, string? LegalName, string? Industry, string? Description,
         DateTime? DefaultTimezone, AddOrganizationCurrencyViewModel Currency, AddOrganizationAddressViewModel Address);

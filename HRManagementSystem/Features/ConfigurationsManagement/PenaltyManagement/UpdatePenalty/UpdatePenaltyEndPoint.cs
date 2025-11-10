@@ -2,21 +2,22 @@ using HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.Upd
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.UpdatePenalty
 {
-    public class UpdatePenaltyEndPoint : EndPointBase<UpdatePenaltyViewModel, UpdatePenaltyCommand, RequestResult<string>>
+    public class UpdatePenaltyEndPoint : BaseEndPoint<UpdatePenaltyViewModel, ResponseViewModel<bool>>
     {
-        private readonly IMediator _mediator;
+        public UpdatePenaltyEndPoint(EndPointBaseParameters<UpdatePenaltyViewModel> parameters) : base(parameters) { }
 
-        public UpdatePenaltyEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpPut]
+        public async Task<ResponseViewModel<bool>> UpdatePenalty([FromBody] UpdatePenaltyViewModel model, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpPut("api/Penalty/Update")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<string>>>> HandleAsync([FromBody] UpdatePenaltyViewModel viewModel, CancellationToken ct)
-        {
-            var command = _mapper.Map<UpdatePenaltyViewModel, UpdatePenaltyCommand>(viewModel);
+            var command = _mapper.Map<UpdatePenaltyCommand>(model);
             var result = await _mediator.Send(command, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
+            }
+
+            return ResponseViewModel<bool>.Success(true, result.message);
         }
     }
 }

@@ -2,21 +2,22 @@ using HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Update
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.UpdateLoan
 {
-    public class UpdateLoanEndPoint : EndPointBase<UpdateLoanViewModel, UpdateLoanCommand, RequestResult<string>>
+    public class UpdateLoanEndPoint : BaseEndPoint<UpdateLoanViewModel, ResponseViewModel<bool>>
     {
-        private readonly IMediator _mediator;
+        public UpdateLoanEndPoint(EndPointBaseParameters<UpdateLoanViewModel> parameters) : base(parameters) { }
 
-        public UpdateLoanEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpPut]
+        public async Task<ResponseViewModel<bool>> UpdateLoan([FromBody] UpdateLoanViewModel model, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpPut("api/Loan/Update")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<string>>>> HandleAsync([FromBody] UpdateLoanViewModel viewModel, CancellationToken ct)
-        {
-            var command = _mapper.Map<UpdateLoanViewModel, UpdateLoanCommand>(viewModel);
+            var command = _mapper.Map<UpdateLoanCommand>(model);
             var result = await _mediator.Send(command, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
+            }
+
+            return ResponseViewModel<bool>.Success(true, result.message);
         }
     }
 }

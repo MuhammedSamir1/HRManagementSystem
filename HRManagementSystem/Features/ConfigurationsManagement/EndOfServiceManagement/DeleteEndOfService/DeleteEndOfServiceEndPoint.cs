@@ -2,21 +2,22 @@ using HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagemen
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagement.DeleteEndOfService
 {
-    public class DeleteEndOfServiceEndPoint : EndPointBase<DeleteEndOfServiceViewModel, DeleteEndOfServiceCommand, RequestResult<string>>
+    public class DeleteEndOfServiceEndPoint : BaseEndPoint<int, ResponseViewModel<bool>>
     {
-        private readonly IMediator _mediator;
+        public DeleteEndOfServiceEndPoint(EndPointBaseParameters<int> parameters) : base(parameters) { }
 
-        public DeleteEndOfServiceEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpDelete("{id:int}")]
+        public async Task<ResponseViewModel<bool>> DeleteEndOfService(int id, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpDelete("api/EndOfService/Delete")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<string>>>> HandleAsync([FromQuery] DeleteEndOfServiceViewModel viewModel, CancellationToken ct)
-        {
-            var command = _mapper.Map<DeleteEndOfServiceViewModel, DeleteEndOfServiceCommand>(viewModel);
+            var command = new DeleteEndOfServiceCommand(id);
             var result = await _mediator.Send(command, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
+            }
+
+            return ResponseViewModel<bool>.Success(true, result.message);
         }
     }
 }

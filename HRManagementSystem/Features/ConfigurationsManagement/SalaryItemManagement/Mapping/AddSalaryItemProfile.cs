@@ -1,5 +1,4 @@
 using HRManagementSystem.Data.Models.ConfigurationsModels;
-using HRManagementSystem.Features.Common.Dtos;
 using HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.AddSalaryItem;
 using HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.AddSalaryItem.Commands;
 
@@ -11,7 +10,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
         {
             CreateMap<AddSalaryItemViewModel, AddSalaryItemCommand>();
             CreateMap<AddSalaryItemCommand, SalaryItem>();
-            CreateMap<SalaryItem, CreatedIdDto>();
         }
     }
 }

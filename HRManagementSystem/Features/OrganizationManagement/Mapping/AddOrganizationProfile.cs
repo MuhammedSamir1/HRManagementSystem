@@ -1,5 +1,6 @@
 ﻿using HRManagementSystem.Features.Common.Dtos;
-using HRManagementSystem.Features.OrganizationManagement.AddOrganization.Commands;
+using HRManagementSystem.Features.OrganizationManagement.AddOrginzation;
+using HRManagementSystem.Features.OrganizationManagement.AddOrginzation.Commands;
 
 namespace HRManagementSystem.Features.OrganizationManagement.Mapping
 {

@@ -1,7 +1,6 @@
 ﻿using HRManagementSystem.Features.CityManagement.AddCity.Commands;
-using HRManagementSystem.Features.Common.AddressManagement.AddCity.ViewModels;
 
-namespace HRManagementSystem.Features.Common.AddressManagement.AddCity.EndPoints
+namespace HRManagementSystem.Features.CityManagement.AddCity
 {
     public class AddCityEndPoint : BaseEndPoint<AddCityViewModel, ResponseViewModel<bool>>
     {

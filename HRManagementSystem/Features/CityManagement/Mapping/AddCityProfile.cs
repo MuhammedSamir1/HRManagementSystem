@@ -1,8 +1,8 @@
 ﻿using HRManagementSystem.Data.Models.AddressEntity;
+using HRManagementSystem.Features.CityManagement.AddCity;
 using HRManagementSystem.Features.CityManagement.AddCity.Commands;
-using HRManagementSystem.Features.Common.AddressManagement.AddCity.ViewModels;
 
-namespace HRManagementSystem.Features.CityManagement.AddCity
+namespace HRManagementSystem.Features.CityManagement.Mapping
 {
     public class AddCityProfile : Profile
     {

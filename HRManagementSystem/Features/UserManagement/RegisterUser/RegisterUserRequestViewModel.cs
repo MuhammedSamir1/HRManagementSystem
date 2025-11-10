@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace HRManagementSystem.Features.AuthManagement.Register
+namespace HRManagementSystem.Features.UserManagement.RegisterUser
 {
     public record RegisterUserRequestViewModel
         (

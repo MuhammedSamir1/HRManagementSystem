@@ -14,28 +14,34 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Up
         DateTime? StartDeductionDate,
         LoanStatus Status,
         int? EmployeeId)
-        : IRequest<RequestResult<string>>;
+        : IRequest<RequestResult<bool>>;
 
-    public class UpdateLoanCommandHandler : RequestHandlerBase<UpdateLoanCommand, RequestResult<string>, Loan, int>
+    public class UpdateLoanCommandHandler : RequestHandlerBase<UpdateLoanCommand, RequestResult<bool>, Loan, int>
     {
         public UpdateLoanCommandHandler(RequestHandlerBaseParameters<Loan, int> parameters)
             : base(parameters) { }
 
-        public override async Task<RequestResult<string>> Handle(UpdateLoanCommand request, CancellationToken ct)
+        public override async Task<RequestResult<bool>> Handle(UpdateLoanCommand request, CancellationToken ct)
         {
-            var loan = await _generalRepo.GetByIdAsync(request.Id, ct);
+            var loan = await _generalRepo.GetByIdWithTracking(request.Id);
 
-            if (loan == null)
-                return RequestResult<string>.Failure("Loan not found.", ErrorCode.NotFound);
+            if (loan == null || loan.IsDeleted)
+                return RequestResult<bool>.Failure("Loan not found.", ErrorCode.NotFound);
 
-            _mapper.Map(request, loan);
+            loan.Title = request.Title;
+            loan.Description = request.Description;
+            loan.Amount = request.Amount;
+            loan.RemainingAmount = request.RemainingAmount;
+            loan.MonthlyInstallment = request.MonthlyInstallment;
+            loan.InstallmentMonths = request.InstallmentMonths;
+            loan.LoanDate = request.LoanDate;
+            loan.StartDeductionDate = request.StartDeductionDate;
+            loan.Status = request.Status;
+            loan.EmployeeId = request.EmployeeId;
 
-            var isUpdated = await _generalRepo.UpdateAsync(loan, ct);
+            await _generalRepo.UpdateAsync(loan, ct);
 
-            if (!isUpdated)
-                return RequestResult<string>.Failure("Loan wasn't updated successfully!", ErrorCode.InternalServerError);
-
-            return RequestResult<string>.Success("Loan updated successfully!");
+            return RequestResult<bool>.Success(true, "Loan updated successfully!");
         }
     }
 }

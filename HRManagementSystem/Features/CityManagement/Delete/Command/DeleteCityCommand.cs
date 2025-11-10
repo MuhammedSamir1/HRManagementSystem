@@ -1,6 +1,6 @@
 ﻿using HRManagementSystem.Data.Models.AddressEntity;
 
-namespace HRManagementSystem.Features.CityManagement.DeleteCity.Commands
+namespace HRManagementSystem.Features.CityManagement.Delete.Command
 {
     public sealed record DeleteCityCommand(int Id) : IRequest<RequestResult<bool>>;
 

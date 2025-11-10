@@ -1,6 +1,6 @@
-﻿using HRManagementSystem.Features.AuthManagement.Login.Query;
+﻿using HRManagementSystem.Features.UserManagement.LoginUser.Query;
 
-namespace HRManagementSystem.Features.AuthManagement.Login
+namespace HRManagementSystem.Features.UserManagement.LoginUser
 {
     public class LoginUserEndPoint : BaseEndPoint<LoginUserRequestViewModel, ResponseViewModel<string>>
     {

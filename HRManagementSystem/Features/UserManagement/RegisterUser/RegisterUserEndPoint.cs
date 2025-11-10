@@ -1,6 +1,6 @@
-﻿using HRManagementSystem.Features.AuthManagement.Register.Commands;
+﻿using HRManagementSystem.Features.UserManagement.RegisterUser.Commands;
 
-namespace HRManagementSystem.Features.AuthManagement.Register
+namespace HRManagementSystem.Features.UserManagement.RegisterUser
 {
     public class RegisterUserEndPoint : BaseEndPoint<RegisterUserRequestViewModel, ResponseViewModel<bool>>
     {

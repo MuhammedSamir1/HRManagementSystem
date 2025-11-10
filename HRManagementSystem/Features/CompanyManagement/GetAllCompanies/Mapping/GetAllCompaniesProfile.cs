@@ -1,6 +1,4 @@
-﻿using HRManagementSystem.Features.CompanyManagement.GetAllCompany;
-
-namespace HRManagementSystem.Features.CompanyManagement.GetAllCompanies.Mapping
+﻿namespace HRManagementSystem.Features.CompanyManagement.GetAllCompanies.Mapping
 {
     public class GetAllCompaniesProfile : Profile
     {

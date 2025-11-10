@@ -2,21 +2,22 @@ using HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.Updat
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.UpdateBonus
 {
-    public class UpdateBonusEndPoint : EndPointBase<UpdateBonusViewModel, UpdateBonusCommand, RequestResult<string>>
+    public class UpdateBonusEndPoint : BaseEndPoint<UpdateBonusViewModel, ResponseViewModel<bool>>
     {
-        private readonly IMediator _mediator;
+        public UpdateBonusEndPoint(EndPointBaseParameters<UpdateBonusViewModel> parameters) : base(parameters) { }
 
-        public UpdateBonusEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpPut]
+        public async Task<ResponseViewModel<bool>> UpdateBonus([FromBody] UpdateBonusViewModel model, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpPut("api/Bonus/Update")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<string>>>> HandleAsync([FromBody] UpdateBonusViewModel viewModel, CancellationToken ct)
-        {
-            var command = _mapper.Map<UpdateBonusViewModel, UpdateBonusCommand>(viewModel);
+            var command = _mapper.Map<UpdateBonusCommand>(model);
             var result = await _mediator.Send(command, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
+            }
+
+            return ResponseViewModel<bool>.Success(true, result.message);
         }
     }
 }

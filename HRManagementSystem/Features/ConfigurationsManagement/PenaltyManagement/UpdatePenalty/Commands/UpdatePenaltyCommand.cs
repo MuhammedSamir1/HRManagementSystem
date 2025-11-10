@@ -11,28 +11,31 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
         string? Reason,
         PenaltyStatus Status,
         int? EmployeeId)
-        : IRequest<RequestResult<string>>;
+        : IRequest<RequestResult<bool>>;
 
-    public class UpdatePenaltyCommandHandler : RequestHandlerBase<UpdatePenaltyCommand, RequestResult<string>, Penalty, int>
+    public class UpdatePenaltyCommandHandler : RequestHandlerBase<UpdatePenaltyCommand, RequestResult<bool>, Penalty, int>
     {
         public UpdatePenaltyCommandHandler(RequestHandlerBaseParameters<Penalty, int> parameters)
             : base(parameters) { }
 
-        public override async Task<RequestResult<string>> Handle(UpdatePenaltyCommand request, CancellationToken ct)
+        public override async Task<RequestResult<bool>> Handle(UpdatePenaltyCommand request, CancellationToken ct)
         {
-            var penalty = await _generalRepo.GetByIdAsync(request.Id, ct);
+            var penalty = await _generalRepo.GetByIdWithTracking(request.Id);
 
-            if (penalty == null)
-                return RequestResult<string>.Failure("Penalty not found.", ErrorCode.NotFound);
+            if (penalty == null || penalty.IsDeleted)
+                return RequestResult<bool>.Failure("Penalty not found.", ErrorCode.NotFound);
 
-            _mapper.Map(request, penalty);
+            penalty.Title = request.Title;
+            penalty.Description = request.Description;
+            penalty.Amount = request.Amount;
+            penalty.PenaltyDate = request.PenaltyDate;
+            penalty.Reason = request.Reason;
+            penalty.Status = request.Status;
+            penalty.EmployeeId = request.EmployeeId;
 
-            var isUpdated = await _generalRepo.UpdateAsync(penalty, ct);
+            await _generalRepo.UpdateAsync(penalty, ct);
 
-            if (!isUpdated)
-                return RequestResult<string>.Failure("Penalty wasn't updated successfully!", ErrorCode.InternalServerError);
-
-            return RequestResult<string>.Success("Penalty updated successfully!");
+            return RequestResult<bool>.Success(true, "Penalty updated successfully!");
         }
     }
 }

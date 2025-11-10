@@ -2,26 +2,21 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.DeleteBonus.Commands
 {
-    public sealed record DeleteBonusCommand(int Id) : IRequest<RequestResult<string>>;
+    public sealed record DeleteBonusCommand(int Id) : IRequest<RequestResult<bool>>;
 
-    public class DeleteBonusCommandHandler : RequestHandlerBase<DeleteBonusCommand, RequestResult<string>, Bonus, int>
+    public class DeleteBonusCommandHandler : RequestHandlerBase<DeleteBonusCommand, RequestResult<bool>, Bonus, int>
     {
         public DeleteBonusCommandHandler(RequestHandlerBaseParameters<Bonus, int> parameters)
             : base(parameters) { }
 
-        public override async Task<RequestResult<string>> Handle(DeleteBonusCommand request, CancellationToken ct)
+        public override async Task<RequestResult<bool>> Handle(DeleteBonusCommand request, CancellationToken ct)
         {
-            var bonus = await _generalRepo.GetByIdAsync(request.Id, ct);
-
-            if (bonus == null)
-                return RequestResult<string>.Failure("Bonus not found.", ErrorCode.NotFound);
-
-            var isDeleted = await _generalRepo.DeleteAsync(bonus, ct);
+            var isDeleted = await _generalRepo.SoftDeleteAsync(request.Id, ct);
 
             if (!isDeleted)
-                return RequestResult<string>.Failure("Bonus wasn't deleted successfully!", ErrorCode.InternalServerError);
+                return RequestResult<bool>.Failure("Bonus not found or wasn't deleted successfully!", ErrorCode.NotFound);
 
-            return RequestResult<string>.Success("Bonus deleted successfully!");
+            return RequestResult<bool>.Success(true, "Bonus deleted successfully!");
         }
     }
 }

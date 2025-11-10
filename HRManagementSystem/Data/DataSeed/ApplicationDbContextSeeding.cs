@@ -1,4 +1,4 @@
-﻿using HRManagementSystem.Data.Contexts.ApplicationDbContext;
+﻿using HRManagementSystem.Data.Contexts;
 using HRManagementSystem.Data.Models.AddressEntity;
 using System.Text.Json;
 

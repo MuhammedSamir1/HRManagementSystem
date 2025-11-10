@@ -1,22 +1,27 @@
+using HRManagementSystem.Common.Extensions;
+using HRManagementSystem.Common.Views;
 using HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagement.GetAllEndOfServices.Queries;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagement.GetAllEndOfServices
 {
-    public class GetAllEndOfServicesEndPoint : EndPointBase<GetAllEndOfServicesViewModel, GetAllEndOfServicesQuery, RequestResult<PagedList<ViewEndOfServiceDto>>>
+    public class GetAllEndOfServicesEndPoint : BaseEndPoint<GetAllEndOfServicesViewModel, ResponseViewModel<object>>
     {
-        private readonly IMediator _mediator;
+        public GetAllEndOfServicesEndPoint(EndPointBaseParameters<GetAllEndOfServicesViewModel> parameters) : base(parameters) { }
 
-        public GetAllEndOfServicesEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpGet]
+        public async Task<ResponseViewModel<PagedList<ViewEndOfServiceViewModel>>> GetAllEndOfServices([FromQuery] GetAllEndOfServicesViewModel model, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpGet("api/EndOfService/GetAll")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<PagedList<ViewEndOfServiceDto>>>>> HandleAsync([FromQuery] GetAllEndOfServicesViewModel viewModel, CancellationToken ct)
-        {
-            var query = _mapper.Map<GetAllEndOfServicesViewModel, GetAllEndOfServicesQuery>(viewModel);
+            var query = _mapper.Map<GetAllEndOfServicesQuery>(model);
             var result = await _mediator.Send(query, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<PagedList<ViewEndOfServiceViewModel>>.Failure(result.message, result.errorCode);
+            }
+
+            var mappedPagedList = result.data!.MapTo<ViewEndOfServiceDto, ViewEndOfServiceViewModel>(_mapper.ConfigurationProvider);
+
+            return ResponseViewModel<PagedList<ViewEndOfServiceViewModel>>.Success(mappedPagedList);
         }
     }
 }

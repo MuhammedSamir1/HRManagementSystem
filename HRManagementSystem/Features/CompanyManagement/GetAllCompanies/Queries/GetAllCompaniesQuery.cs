@@ -1,7 +1,7 @@
 ﻿using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 
-namespace HRManagementSystem.Features.CompanyManagement.GetAllCompany.Queries
+namespace HRManagementSystem.Features.CompanyManagement.GetAllCompanies.Queries
 {
     public record GetAllCompaniesQuery() : IRequest<RequestResult<IEnumerable<GetAllCompaniesDto>>>;
 

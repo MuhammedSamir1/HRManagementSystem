@@ -1,4 +1,4 @@
-﻿using HRManagementSystem.Features.CompanyManagement.DeleteCompany.Orchestrator;
+﻿using HRManagementSystem.Features.CompanyManagement.DeleteCompany.Orchestrators;
 
 namespace HRManagementSystem.Features.CompanyManagement.DeleteCompany
 {

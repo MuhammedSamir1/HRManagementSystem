@@ -1,7 +1,7 @@
 ﻿using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.CityManagement.GetAllCities;
 
-namespace HRManagementSystem.Features.Common.AddressManagement.GetAllCities.Profiles
+namespace HRManagementSystem.Features.CityManagement.Mapping
 {
     public class GetAllCitiesProfile : Profile
     {

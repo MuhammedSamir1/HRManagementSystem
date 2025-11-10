@@ -2,7 +2,7 @@
 using FluentValidation;
 
 
-namespace HRManagementSystem.Features.Common.AddressManagement.AddCity.ViewModels
+namespace HRManagementSystem.Features.CityManagement.AddCity
 {
 
     public record AddCityViewModel(string Name, int StateId);

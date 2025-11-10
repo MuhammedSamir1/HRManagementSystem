@@ -12,28 +12,32 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.U
         DateTime? PaymentDate,
         bool IsPaid,
         int? EmployeeId)
-        : IRequest<RequestResult<string>>;
+        : IRequest<RequestResult<bool>>;
 
-    public class UpdateBonusCommandHandler : RequestHandlerBase<UpdateBonusCommand, RequestResult<string>, Bonus, int>
+    public class UpdateBonusCommandHandler : RequestHandlerBase<UpdateBonusCommand, RequestResult<bool>, Bonus, int>
     {
         public UpdateBonusCommandHandler(RequestHandlerBaseParameters<Bonus, int> parameters)
             : base(parameters) { }
 
-        public override async Task<RequestResult<string>> Handle(UpdateBonusCommand request, CancellationToken ct)
+        public override async Task<RequestResult<bool>> Handle(UpdateBonusCommand request, CancellationToken ct)
         {
-            var bonus = await _generalRepo.GetByIdAsync(request.Id, ct);
+            var bonus = await _generalRepo.GetByIdWithTracking(request.Id);
 
-            if (bonus == null)
-                return RequestResult<string>.Failure("Bonus not found.", ErrorCode.NotFound);
+            if (bonus == null || bonus.IsDeleted)
+                return RequestResult<bool>.Failure("Bonus not found.", ErrorCode.NotFound);
 
-            _mapper.Map(request, bonus);
+            bonus.Title = request.Title;
+            bonus.Description = request.Description;
+            bonus.Amount = request.Amount;
+            bonus.BonusType = request.BonusType;
+            bonus.BonusDate = request.BonusDate;
+            bonus.PaymentDate = request.PaymentDate;
+            bonus.IsPaid = request.IsPaid;
+            bonus.EmployeeId = request.EmployeeId;
 
-            var isUpdated = await _generalRepo.UpdateAsync(bonus, ct);
+            await _generalRepo.UpdateAsync(bonus, ct);
 
-            if (!isUpdated)
-                return RequestResult<string>.Failure("Bonus wasn't updated successfully!", ErrorCode.InternalServerError);
-
-            return RequestResult<string>.Success("Bonus updated successfully!");
+            return RequestResult<bool>.Success(true, "Bonus updated successfully!");
         }
     }
 }

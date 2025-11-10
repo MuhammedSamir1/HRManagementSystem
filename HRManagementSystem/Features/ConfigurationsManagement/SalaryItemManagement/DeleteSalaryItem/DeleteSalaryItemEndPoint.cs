@@ -2,21 +2,22 @@ using HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.DeleteSalaryItem
 {
-    public class DeleteSalaryItemEndPoint : EndPointBase<DeleteSalaryItemViewModel, DeleteSalaryItemCommand, RequestResult<string>>
+    public class DeleteSalaryItemEndPoint : BaseEndPoint<int, ResponseViewModel<bool>>
     {
-        private readonly IMediator _mediator;
+        public DeleteSalaryItemEndPoint(EndPointBaseParameters<int> parameters) : base(parameters) { }
 
-        public DeleteSalaryItemEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpDelete("{id:int}")]
+        public async Task<ResponseViewModel<bool>> DeleteSalaryItem(int id, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpDelete("api/SalaryItem/Delete")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<string>>>> HandleAsync([FromQuery] DeleteSalaryItemViewModel viewModel, CancellationToken ct)
-        {
-            var command = _mapper.Map<DeleteSalaryItemViewModel, DeleteSalaryItemCommand>(viewModel);
+            var command = new DeleteSalaryItemCommand(id);
             var result = await _mediator.Send(command, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
+            }
+
+            return ResponseViewModel<bool>.Success(true, result.message);
         }
     }
 }

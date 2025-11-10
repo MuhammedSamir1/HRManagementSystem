@@ -1,10 +1,11 @@
 ﻿using HRManagementSystem.Features.BranchManagement.DeleteBranch.Commands;
+using HRManagementSystem.Features.Common.DeleteEntityCascade.Command;
 using HRManagementSystem.Features.CompanyManagement.DeleteCompany.Commands;
 using HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Commands;
 using HRManagementSystem.Features.OrganizationManagement.DeleteOrganization.Commands;
 using HRManagementSystem.Features.TeamManagement.DeleteTeam.Commands;
 
-namespace HRManagementSystem.Features.Common.DeleteCascadeGeneric
+namespace HRManagementSystem.Features.Common.DeleteEntityCascade.Handler
 {
     public class DeleteEntityCascadeCommandHandler<TEntity, TKey>
         : RequestHandlerBase<DeleteEntityCascadeCommand<TEntity, TKey>, RequestResult<bool>, TEntity, TKey>

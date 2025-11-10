@@ -1,4 +1,4 @@
-﻿namespace HRManagementSystem.Features.AuthManagement.Login
+﻿namespace HRManagementSystem.Features.UserManagement.LoginUser
 {
     public record LoginUserDto
     (

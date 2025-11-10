@@ -1,4 +1,5 @@
 using HRManagementSystem.Data.Models.ConfigurationsModels;
+using HRManagementSystem.Common.Views;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.GetAllLoans.Queries
 {
@@ -11,9 +12,17 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Ge
 
         public override async Task<RequestResult<PagedList<ViewLoanDto>>> Handle(GetAllLoansQuery request, CancellationToken ct)
         {
-            var loans = await _generalRepo.GetAllAsync(ct);
-            var mapped = _mapper.Map<PagedList<ViewLoanDto>>(loans);
-            return RequestResult<PagedList<ViewLoanDto>>.Success(mapped);
+            var query = _generalRepo.Get(x => !x.IsDeleted, ct);
+
+            var pagedList = await PagedList<ViewLoanDto>.CreateAsync(
+                query,
+                1,
+                100,
+                _mapper,
+                ct
+            );
+
+            return RequestResult<PagedList<ViewLoanDto>>.Success(pagedList);
         }
     }
 }

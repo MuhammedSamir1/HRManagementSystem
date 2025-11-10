@@ -1,4 +1,6 @@
-﻿using HRManagementSystem.Features.CompanyManagement.GetAllCompany.Queries;
+﻿using HRManagementSystem.Features.CompanyManagement.GetAllCompanies.Queries;
+
+using HRManagementSystem.Features.CompanyManagement.GetAllCompanies.Queries;
 
 namespace HRManagementSystem.Features.CompanyManagement.GetAllCompanies
 {

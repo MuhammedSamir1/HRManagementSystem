@@ -2,7 +2,7 @@
 using HRManagementSystem.Features.CityManagement.AddCity.Commands;
 using HRManagementSystem.Features.CityManagement.GetCityById;
 
-namespace HRManagementSystem.Features.Common.AddressManagement.AddCity.Profiles
+namespace HRManagementSystem.Features.CityManagement.Mapping
 {
     public class CityProfile : Profile
     {

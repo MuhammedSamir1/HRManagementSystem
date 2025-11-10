@@ -1,4 +1,4 @@
-﻿using HRManagementSystem.Features.Common.AddressManagement.GetAllCities.Commands;
+﻿using HRManagementSystem.Features.CityManagement.GetAllCities.Queries;
 
 namespace HRManagementSystem.Features.CityManagement.GetAllCities
 {

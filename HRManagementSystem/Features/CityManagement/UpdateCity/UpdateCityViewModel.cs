@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace HRManagementSystem.Features.CityManagement.UpdateCity.ViewModels
+namespace HRManagementSystem.Features.CityManagement.UpdateCity
 {
     // ✅ ViewModel اللي هيستقبل البيانات من ال Endpoint
     public sealed record UpdateCityViewModel(int Id, string Name, int StateId);

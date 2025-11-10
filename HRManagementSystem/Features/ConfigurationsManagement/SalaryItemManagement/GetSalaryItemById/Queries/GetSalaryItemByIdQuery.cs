@@ -11,9 +11,9 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
 
         public override async Task<RequestResult<ViewSalaryItemByIdDto>> Handle(GetSalaryItemByIdQuery request, CancellationToken ct)
         {
-            var salaryItem = await _generalRepo.GetByIdAsync(request.Id, ct);
+            var salaryItem = await _generalRepo.GetByIdAsync(request.Id);
 
-            if (salaryItem == null)
+            if (salaryItem == null || salaryItem.IsDeleted)
                 return RequestResult<ViewSalaryItemByIdDto>.Failure("Salary Item not found.", ErrorCode.NotFound);
 
             var mapped = _mapper.Map<ViewSalaryItemByIdDto>(salaryItem);

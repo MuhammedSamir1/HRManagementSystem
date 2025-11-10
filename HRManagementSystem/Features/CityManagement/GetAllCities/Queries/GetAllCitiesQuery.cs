@@ -1,8 +1,7 @@
 ﻿using HRManagementSystem.Data.Models.AddressEntity;
-using HRManagementSystem.Features.CityManagement.GetAllCities;
 using Microsoft.EntityFrameworkCore;
 
-namespace HRManagementSystem.Features.Common.AddressManagement.GetAllCities.Commands
+namespace HRManagementSystem.Features.CityManagement.GetAllCities.Queries
 {
     public record GetAllCitiesQuery() : IRequest<RequestResult<List<ViewAllCitiesDto>>>;
 

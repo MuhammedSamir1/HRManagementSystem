@@ -1,4 +1,4 @@
-﻿namespace HRManagementSystem.Features.AuthManagement.Register.Commands
+﻿namespace HRManagementSystem.Features.UserManagement.RegisterUser.Commands
 {
     public record RegisterUserCommand(
         string Name,

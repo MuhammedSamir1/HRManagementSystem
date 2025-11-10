@@ -2,21 +2,24 @@ using HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.GetLoa
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.GetLoanById
 {
-    public class GetLoanByIdEndPoint : EndPointBase<GetLoanByIdViewModel, GetLoanByIdQuery, RequestResult<ViewLoanByIdDto>>
+    public class GetLoanByIdEndPoint : BaseEndPoint<GetLoanByIdViewModel, ResponseViewModel<ViewLoanByIdViewModel>>
     {
-        private readonly IMediator _mediator;
+        public GetLoanByIdEndPoint(EndPointBaseParameters<GetLoanByIdViewModel> parameters) : base(parameters) { }
 
-        public GetLoanByIdEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpGet("{id:int}")]
+        public async Task<ResponseViewModel<ViewLoanByIdViewModel>> GetLoanById(int id, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpGet("api/Loan/GetById")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<ViewLoanByIdDto>>>> HandleAsync([FromQuery] GetLoanByIdViewModel viewModel, CancellationToken ct)
-        {
-            var query = _mapper.Map<GetLoanByIdViewModel, GetLoanByIdQuery>(viewModel);
+            var query = new GetLoanByIdQuery(id);
             var result = await _mediator.Send(query, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<ViewLoanByIdViewModel>.Failure(result.message, result.errorCode);
+            }
+
+            var mapped = _mapper.Map<ViewLoanByIdViewModel>(result.data);
+
+            return ResponseViewModel<ViewLoanByIdViewModel>.Success(mapped);
         }
     }
 }

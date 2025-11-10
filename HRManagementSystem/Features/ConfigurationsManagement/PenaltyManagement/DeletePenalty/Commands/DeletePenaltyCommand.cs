@@ -2,26 +2,21 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.DeletePenalty.Commands
 {
-    public sealed record DeletePenaltyCommand(int Id) : IRequest<RequestResult<string>>;
+    public sealed record DeletePenaltyCommand(int Id) : IRequest<RequestResult<bool>>;
 
-    public class DeletePenaltyCommandHandler : RequestHandlerBase<DeletePenaltyCommand, RequestResult<string>, Penalty, int>
+    public class DeletePenaltyCommandHandler : RequestHandlerBase<DeletePenaltyCommand, RequestResult<bool>, Penalty, int>
     {
         public DeletePenaltyCommandHandler(RequestHandlerBaseParameters<Penalty, int> parameters)
             : base(parameters) { }
 
-        public override async Task<RequestResult<string>> Handle(DeletePenaltyCommand request, CancellationToken ct)
+        public override async Task<RequestResult<bool>> Handle(DeletePenaltyCommand request, CancellationToken ct)
         {
-            var penalty = await _generalRepo.GetByIdAsync(request.Id, ct);
-
-            if (penalty == null)
-                return RequestResult<string>.Failure("Penalty not found.", ErrorCode.NotFound);
-
-            var isDeleted = await _generalRepo.DeleteAsync(penalty, ct);
+            var isDeleted = await _generalRepo.SoftDeleteAsync(request.Id, ct);
 
             if (!isDeleted)
-                return RequestResult<string>.Failure("Penalty wasn't deleted successfully!", ErrorCode.InternalServerError);
+                return RequestResult<bool>.Failure("Penalty not found or wasn't deleted successfully!", ErrorCode.NotFound);
 
-            return RequestResult<string>.Success("Penalty deleted successfully!");
+            return RequestResult<bool>.Success(true, "Penalty deleted successfully!");
         }
     }
 }

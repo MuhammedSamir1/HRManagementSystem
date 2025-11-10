@@ -2,21 +2,22 @@ using HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.AddBo
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.AddBonus
 {
-    public class AddBonusEndPoint : EndPointBase<AddBonusViewModel, AddBonusCommand, RequestResult<CreatedIdDto>>
+    public class AddBonusEndPoint : BaseEndPoint<AddBonusViewModel, ResponseViewModel<int>>
     {
-        private readonly IMediator _mediator;
+        public AddBonusEndPoint(EndPointBaseParameters<AddBonusViewModel> parameters) : base(parameters) { }
 
-        public AddBonusEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpPost]
+        public async Task<ResponseViewModel<int>> AddBonus([FromBody] AddBonusViewModel model, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpPost("api/Bonus/Add")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<CreatedIdDto>>>> HandleAsync([FromBody] AddBonusViewModel viewModel, CancellationToken ct)
-        {
-            var command = _mapper.Map<AddBonusViewModel, AddBonusCommand>(viewModel);
+            var command = _mapper.Map<AddBonusCommand>(model);
             var result = await _mediator.Send(command, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<int>.Failure(result.message, result.errorCode);
+            }
+
+            return ResponseViewModel<int>.Success(result.data, result.message);
         }
     }
 }

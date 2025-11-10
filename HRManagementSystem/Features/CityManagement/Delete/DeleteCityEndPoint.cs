@@ -1,7 +1,6 @@
-﻿using HRManagementSystem.Features.CityManagement.DeleteCity.Commands;
-using HRManagementSystem.Features.CityManagement.DeleteCity.ViewModels;
+﻿using HRManagementSystem.Features.CityManagement.Delete.Command;
 
-namespace HRManagementSystem.Features.CityManagement.DeleteCity
+namespace HRManagementSystem.Features.CityManagement.Delete
 {
     public class DeleteCityEndPoint
         : BaseEndPoint<DeleteCityViewModel, ResponseViewModel<bool>>

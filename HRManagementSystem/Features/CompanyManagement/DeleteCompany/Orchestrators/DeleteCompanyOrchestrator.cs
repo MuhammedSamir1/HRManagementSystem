@@ -1,3 +1,3 @@
-﻿namespace HRManagementSystem.Features.CompanyManagement.DeleteCompany.Orchestrator;
+﻿namespace HRManagementSystem.Features.CompanyManagement.DeleteCompany.Orchestrators;
 
 public record DeleteCompanyOrchestrator(int companyId) : IRequest<RequestResult<bool>>;

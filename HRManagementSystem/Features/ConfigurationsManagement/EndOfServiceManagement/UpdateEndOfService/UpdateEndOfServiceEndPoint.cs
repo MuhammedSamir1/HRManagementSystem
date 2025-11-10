@@ -2,21 +2,22 @@ using HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagemen
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagement.UpdateEndOfService
 {
-    public class UpdateEndOfServiceEndPoint : EndPointBase<UpdateEndOfServiceViewModel, UpdateEndOfServiceCommand, RequestResult<string>>
+    public class UpdateEndOfServiceEndPoint : BaseEndPoint<UpdateEndOfServiceViewModel, ResponseViewModel<bool>>
     {
-        private readonly IMediator _mediator;
+        public UpdateEndOfServiceEndPoint(EndPointBaseParameters<UpdateEndOfServiceViewModel> parameters) : base(parameters) { }
 
-        public UpdateEndOfServiceEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpPut]
+        public async Task<ResponseViewModel<bool>> UpdateEndOfService([FromBody] UpdateEndOfServiceViewModel model, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpPut("api/EndOfService/Update")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<string>>>> HandleAsync([FromBody] UpdateEndOfServiceViewModel viewModel, CancellationToken ct)
-        {
-            var command = _mapper.Map<UpdateEndOfServiceViewModel, UpdateEndOfServiceCommand>(viewModel);
+            var command = _mapper.Map<UpdateEndOfServiceCommand>(model);
             var result = await _mediator.Send(command, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
+            }
+
+            return ResponseViewModel<bool>.Success(true, result.message);
         }
     }
 }

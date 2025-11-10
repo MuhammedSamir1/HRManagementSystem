@@ -1,22 +1,27 @@
+using HRManagementSystem.Common.Extensions;
+using HRManagementSystem.Common.Views;
 using HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.GetAllBonuses.Queries;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.GetAllBonuses
 {
-    public class GetAllBonusesEndPoint : EndPointBase<GetAllBonusesViewModel, GetAllBonusesQuery, RequestResult<PagedList<ViewBonusDto>>>
+    public class GetAllBonusesEndPoint : BaseEndPoint<GetAllBonusesViewModel, ResponseViewModel<object>>
     {
-        private readonly IMediator _mediator;
+        public GetAllBonusesEndPoint(EndPointBaseParameters<GetAllBonusesViewModel> parameters) : base(parameters) { }
 
-        public GetAllBonusesEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpGet]
+        public async Task<ResponseViewModel<PagedList<ViewBonusViewModel>>> GetAllBonuses([FromQuery] GetAllBonusesViewModel model, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpGet("api/Bonus/GetAll")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<PagedList<ViewBonusDto>>>>> HandleAsync([FromQuery] GetAllBonusesViewModel viewModel, CancellationToken ct)
-        {
-            var query = _mapper.Map<GetAllBonusesViewModel, GetAllBonusesQuery>(viewModel);
+            var query = _mapper.Map<GetAllBonusesQuery>(model);
             var result = await _mediator.Send(query, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<PagedList<ViewBonusViewModel>>.Failure(result.message, result.errorCode);
+            }
+
+            var mappedPagedList = result.data!.MapTo<ViewBonusDto, ViewBonusViewModel>(_mapper.ConfigurationProvider);
+
+            return ResponseViewModel<PagedList<ViewBonusViewModel>>.Success(mappedPagedList);
         }
     }
 }

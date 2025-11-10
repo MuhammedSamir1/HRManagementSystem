@@ -2,7 +2,7 @@
 using HRManagementSystem.Data.Models.ConfigurationsModels;
 using Microsoft.EntityFrameworkCore;
 
-namespace HRManagementSystem.Data.Contexts.ApplicationDbContext;
+namespace HRManagementSystem.Data.Contexts;
 public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)

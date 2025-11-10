@@ -1,4 +1,4 @@
-﻿namespace HRManagementSystem.Features.CompanyManagement.GetAllCompany
+﻿namespace HRManagementSystem.Features.CompanyManagement.GetAllCompanies
 {
     public class GetAllCompaniesDto
     {

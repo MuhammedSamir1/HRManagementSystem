@@ -1,7 +1,7 @@
 ﻿using HRManagementSystem.Features.Common.IsAnyChildAssignedGeneric;
 using HRManagementSystem.Features.CompanyManagement.DeleteCompany.Commands;
 
-namespace HRManagementSystem.Features.CompanyManagement.DeleteCompany.Orchestrator;
+namespace HRManagementSystem.Features.CompanyManagement.DeleteCompany.Orchestrators;
 
 public sealed class DeleteCompanyOrchestratorHandler : RequestHandlerBase<DeleteCompanyOrchestrator,
 RequestResult<bool>, Company, int>

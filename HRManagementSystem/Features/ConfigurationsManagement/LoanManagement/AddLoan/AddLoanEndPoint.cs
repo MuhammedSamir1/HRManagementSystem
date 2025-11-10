@@ -2,21 +2,22 @@ using HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.AddLoa
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.AddLoan
 {
-    public class AddLoanEndPoint : EndPointBase<AddLoanViewModel, AddLoanCommand, RequestResult<CreatedIdDto>>
+    public class AddLoanEndPoint : BaseEndPoint<AddLoanViewModel, ResponseViewModel<int>>
     {
-        private readonly IMediator _mediator;
+        public AddLoanEndPoint(EndPointBaseParameters<AddLoanViewModel> parameters) : base(parameters) { }
 
-        public AddLoanEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpPost]
+        public async Task<ResponseViewModel<int>> AddLoan([FromBody] AddLoanViewModel model, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpPost("api/Loan/Add")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<CreatedIdDto>>>> HandleAsync([FromBody] AddLoanViewModel viewModel, CancellationToken ct)
-        {
-            var command = _mapper.Map<AddLoanViewModel, AddLoanCommand>(viewModel);
+            var command = _mapper.Map<AddLoanCommand>(model);
             var result = await _mediator.Send(command, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<int>.Failure(result.message, result.errorCode);
+            }
+
+            return ResponseViewModel<int>.Success(result.data, result.message);
         }
     }
 }

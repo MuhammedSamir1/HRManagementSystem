@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace HRManagementSystem.Features.CityManagement.DeleteCity.ViewModels
+namespace HRManagementSystem.Features.CityManagement.Delete
 {
     public record DeleteCityViewModel(int Id);
 

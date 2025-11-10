@@ -2,21 +2,22 @@ using HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.Delet
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.DeleteBonus
 {
-    public class DeleteBonusEndPoint : EndPointBase<DeleteBonusViewModel, DeleteBonusCommand, RequestResult<string>>
+    public class DeleteBonusEndPoint : BaseEndPoint<int, ResponseViewModel<bool>>
     {
-        private readonly IMediator _mediator;
+        public DeleteBonusEndPoint(EndPointBaseParameters<int> parameters) : base(parameters) { }
 
-        public DeleteBonusEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpDelete("{id:int}")]
+        public async Task<ResponseViewModel<bool>> DeleteBonus(int id, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpDelete("api/Bonus/Delete")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<string>>>> HandleAsync([FromQuery] DeleteBonusViewModel viewModel, CancellationToken ct)
-        {
-            var command = _mapper.Map<DeleteBonusViewModel, DeleteBonusCommand>(viewModel);
+            var command = new DeleteBonusCommand(id);
             var result = await _mediator.Send(command, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
+            }
+
+            return ResponseViewModel<bool>.Success(true, result.message);
         }
     }
 }

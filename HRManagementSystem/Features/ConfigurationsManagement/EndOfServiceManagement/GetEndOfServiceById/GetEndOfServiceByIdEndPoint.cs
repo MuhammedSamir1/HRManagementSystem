@@ -2,21 +2,24 @@ using HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagemen
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagement.GetEndOfServiceById
 {
-    public class GetEndOfServiceByIdEndPoint : EndPointBase<GetEndOfServiceByIdViewModel, GetEndOfServiceByIdQuery, RequestResult<ViewEndOfServiceByIdDto>>
+    public class GetEndOfServiceByIdEndPoint : BaseEndPoint<GetEndOfServiceByIdViewModel, ResponseViewModel<ViewEndOfServiceByIdViewModel>>
     {
-        private readonly IMediator _mediator;
+        public GetEndOfServiceByIdEndPoint(EndPointBaseParameters<GetEndOfServiceByIdViewModel> parameters) : base(parameters) { }
 
-        public GetEndOfServiceByIdEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpGet("{id:int}")]
+        public async Task<ResponseViewModel<ViewEndOfServiceByIdViewModel>> GetEndOfServiceById(int id, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpGet("api/EndOfService/GetById")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<ViewEndOfServiceByIdDto>>>> HandleAsync([FromQuery] GetEndOfServiceByIdViewModel viewModel, CancellationToken ct)
-        {
-            var query = _mapper.Map<GetEndOfServiceByIdViewModel, GetEndOfServiceByIdQuery>(viewModel);
+            var query = new GetEndOfServiceByIdQuery(id);
             var result = await _mediator.Send(query, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<ViewEndOfServiceByIdViewModel>.Failure(result.message, result.errorCode);
+            }
+
+            var mapped = _mapper.Map<ViewEndOfServiceByIdViewModel>(result.data);
+
+            return ResponseViewModel<ViewEndOfServiceByIdViewModel>.Success(mapped);
         }
     }
 }

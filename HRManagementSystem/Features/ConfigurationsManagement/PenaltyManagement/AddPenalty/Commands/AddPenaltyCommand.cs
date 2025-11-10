@@ -1,5 +1,4 @@
 using HRManagementSystem.Data.Models.ConfigurationsModels;
-using HRManagementSystem.Features.Common.Dtos;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.AddPenalty.Commands
 {
@@ -11,24 +10,23 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
         string? Reason,
         PenaltyStatus Status,
         int? EmployeeId)
-        : IRequest<RequestResult<CreatedIdDto>>;
+        : IRequest<RequestResult<int>>;
 
-    public class AddPenaltyCommandHandler : RequestHandlerBase<AddPenaltyCommand, RequestResult<CreatedIdDto>, Penalty, int>
+    public class AddPenaltyCommandHandler : RequestHandlerBase<AddPenaltyCommand, RequestResult<int>, Penalty, int>
     {
         public AddPenaltyCommandHandler(RequestHandlerBaseParameters<Penalty, int> parameters)
             : base(parameters) { }
 
-        public override async Task<RequestResult<CreatedIdDto>> Handle(AddPenaltyCommand request, CancellationToken ct)
+        public override async Task<RequestResult<int>> Handle(AddPenaltyCommand request, CancellationToken ct)
         {
-            var penalty = _mapper.Map<AddPenaltyCommand, Penalty>(request);
+            var penalty = _mapper.Map<Penalty>(request);
 
             var isAdded = await _generalRepo.AddAsync(penalty, ct);
 
-            if (!isAdded) return RequestResult<CreatedIdDto>.Failure("Penalty wasn't added successfully!", ErrorCode.InternalServerError);
+            if (!isAdded) 
+                return RequestResult<int>.Failure("Penalty wasn't added successfully!", ErrorCode.InternalServerError);
 
-            var mapped = _mapper.Map<CreatedIdDto>(penalty);
-            return RequestResult<CreatedIdDto>.Success(mapped, "Penalty added successfully!");
+            return RequestResult<int>.Success(penalty.Id, "Penalty added successfully!");
         }
     }
 }
-

@@ -11,9 +11,9 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.G
 
         public override async Task<RequestResult<ViewBonusByIdDto>> Handle(GetBonusByIdQuery request, CancellationToken ct)
         {
-            var bonus = await _generalRepo.GetByIdAsync(request.Id, ct);
+            var bonus = await _generalRepo.GetByIdAsync(request.Id);
 
-            if (bonus == null)
+            if (bonus == null || bonus.IsDeleted)
                 return RequestResult<ViewBonusByIdDto>.Failure("Bonus not found.", ErrorCode.NotFound);
 
             var mapped = _mapper.Map<ViewBonusByIdDto>(bonus);

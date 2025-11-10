@@ -1,22 +1,27 @@
+using HRManagementSystem.Common.Extensions;
+using HRManagementSystem.Common.Views;
 using HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.GetAllSalaryItems.Queries;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.GetAllSalaryItems
 {
-    public class GetAllSalaryItemsEndPoint : EndPointBase<GetAllSalaryItemsViewModel, GetAllSalaryItemsQuery, RequestResult<PagedList<ViewSalaryItemDto>>>
+    public class GetAllSalaryItemsEndPoint : BaseEndPoint<GetAllSalaryItemsViewModel, ResponseViewModel<object>>
     {
-        private readonly IMediator _mediator;
+        public GetAllSalaryItemsEndPoint(EndPointBaseParameters<GetAllSalaryItemsViewModel> parameters) : base(parameters) { }
 
-        public GetAllSalaryItemsEndPoint(EndPointBaseParameters parameters, IMediator mediator) : base(parameters)
+        [HttpGet]
+        public async Task<ResponseViewModel<PagedList<ViewSalaryItemViewModel>>> GetAllSalaryItems([FromQuery] GetAllSalaryItemsViewModel model, CancellationToken ct)
         {
-            _mediator = mediator;
-        }
-
-        [HttpGet("api/SalaryItem/GetAll")]
-        public override async Task<ActionResult<ResponseViewModel<RequestResult<PagedList<ViewSalaryItemDto>>>>> HandleAsync([FromQuery] GetAllSalaryItemsViewModel viewModel, CancellationToken ct)
-        {
-            var query = _mapper.Map<GetAllSalaryItemsViewModel, GetAllSalaryItemsQuery>(viewModel);
+            var query = _mapper.Map<GetAllSalaryItemsQuery>(model);
             var result = await _mediator.Send(query, ct);
-            return result.ToActionResult(_mapper);
+
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<PagedList<ViewSalaryItemViewModel>>.Failure(result.message, result.errorCode);
+            }
+
+            var mappedPagedList = result.data!.MapTo<ViewSalaryItemDto, ViewSalaryItemViewModel>(_mapper.ConfigurationProvider);
+
+            return ResponseViewModel<PagedList<ViewSalaryItemViewModel>>.Success(mappedPagedList);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace HRManagementSystem.Features.AuthManagement.Register.Commands
+namespace HRManagementSystem.Features.UserManagement.RegisterUser.Commands
 {
     public class RegisterUserCommandHandler : RequestHandlerBase<RegisterUserCommand, RequestResult<bool>, User, Guid>
     {

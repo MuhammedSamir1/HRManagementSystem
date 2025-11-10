@@ -14,28 +14,34 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         int TotalServiceDays,
         DateTime? PaymentDate,
         int? EmployeeId)
-        : IRequest<RequestResult<string>>;
+        : IRequest<RequestResult<bool>>;
 
-    public class UpdateEndOfServiceCommandHandler : RequestHandlerBase<UpdateEndOfServiceCommand, RequestResult<string>, EndOfService, int>
+    public class UpdateEndOfServiceCommandHandler : RequestHandlerBase<UpdateEndOfServiceCommand, RequestResult<bool>, EndOfService, int>
     {
         public UpdateEndOfServiceCommandHandler(RequestHandlerBaseParameters<EndOfService, int> parameters)
             : base(parameters) { }
 
-        public override async Task<RequestResult<string>> Handle(UpdateEndOfServiceCommand request, CancellationToken ct)
+        public override async Task<RequestResult<bool>> Handle(UpdateEndOfServiceCommand request, CancellationToken ct)
         {
-            var endOfService = await _generalRepo.GetByIdAsync(request.Id, ct);
+            var endOfService = await _generalRepo.GetByIdWithTracking(request.Id);
 
-            if (endOfService == null)
-                return RequestResult<string>.Failure("End Of Service not found.", ErrorCode.NotFound);
+            if (endOfService == null || endOfService.IsDeleted)
+                return RequestResult<bool>.Failure("End Of Service not found.", ErrorCode.NotFound);
 
-            _mapper.Map(request, endOfService);
+            endOfService.Title = request.Title;
+            endOfService.Description = request.Description;
+            endOfService.Amount = request.Amount;
+            endOfService.ServiceStartDate = request.ServiceStartDate;
+            endOfService.ServiceEndDate = request.ServiceEndDate;
+            endOfService.TotalServiceYears = request.TotalServiceYears;
+            endOfService.TotalServiceMonths = request.TotalServiceMonths;
+            endOfService.TotalServiceDays = request.TotalServiceDays;
+            endOfService.PaymentDate = request.PaymentDate;
+            endOfService.EmployeeId = request.EmployeeId;
 
-            var isUpdated = await _generalRepo.UpdateAsync(endOfService, ct);
+            await _generalRepo.UpdateAsync(endOfService, ct);
 
-            if (!isUpdated)
-                return RequestResult<string>.Failure("End Of Service wasn't updated successfully!", ErrorCode.InternalServerError);
-
-            return RequestResult<string>.Success("End Of Service updated successfully!");
+            return RequestResult<bool>.Success(true, "End Of Service updated successfully!");
         }
     }
 }
