@@ -10,7 +10,7 @@ namespace HRManagementSystem.Features.StateManagement.GetStateById
             : base(parameters) { }
 
         [HttpGet()]
-        public async Task<ResponseViewModel<ViewStateViewModel>> GetById([FromQuery]GetStateByIdViewModel model)
+        public async Task<ResponseViewModel<ViewStateViewModel>> GetById([FromQuery] GetStateByIdViewModel model)
         {
             var validationResult = ValidateRequest(model);
             if (!validationResult.isSuccess)

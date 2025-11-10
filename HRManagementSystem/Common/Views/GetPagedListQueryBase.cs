@@ -2,9 +2,9 @@
 {
     public record GetPagedListQueryBase<TDto> : IRequest<RequestResult<PagedList<TDto>>>
     {
-        
+
         public int PageNumber { get; init; } = 1;
-        public int PageSize { get; init; } = 10;  
+        public int PageSize { get; init; } = 10;
 
         //   Sorting 
         public string? SortBy { get; init; }
