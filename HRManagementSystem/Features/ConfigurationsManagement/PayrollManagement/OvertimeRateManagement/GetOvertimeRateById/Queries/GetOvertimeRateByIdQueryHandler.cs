@@ -6,14 +6,10 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
     public sealed class GetOvertimeRateByIdQueryHandler :
         RequestHandlerBase<GetOvertimeRateByIdQuery, RequestResult<OvertimeRateDto>, OvertimeRate, int>
     {
-        private readonly IMapper _mapper;
-
         public GetOvertimeRateByIdQueryHandler(
-            RequestHandlerBaseParameters<OvertimeRate, int> parameters,
-            IMapper mapper)
+            RequestHandlerBaseParameters<OvertimeRate, int> parameters)
             : base(parameters)
         {
-            _mapper = mapper;
         }
 
         public override async Task<RequestResult<OvertimeRateDto>> Handle(GetOvertimeRateByIdQuery request, CancellationToken ct)

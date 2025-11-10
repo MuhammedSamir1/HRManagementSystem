@@ -6,14 +6,10 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
     public sealed class UpdatePayrollItemCommandHandler :
      RequestHandlerBase<UpdatePayrollItemCommand, RequestResult<PayrollItemDto>, PayrollItem, int>
     {
-        private readonly IMapper _mapper;
-
         public UpdatePayrollItemCommandHandler(
-            RequestHandlerBaseParameters<PayrollItem, int> parameters,
-            IMapper mapper)
+            RequestHandlerBaseParameters<PayrollItem, int> parameters)
             : base(parameters)
         {
-            _mapper = mapper;
         }
 
         public override async Task<RequestResult<PayrollItemDto>> Handle(UpdatePayrollItemCommand request, CancellationToken ct)
@@ -46,7 +42,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
 
 
 
-            _generalRepo.UpdateAsync(existingItem, ct);
+            await _generalRepo.UpdateAsync(existingItem, ct);
 
             //var isSaved = await _generalRepo.CommitAsync(ct);
 

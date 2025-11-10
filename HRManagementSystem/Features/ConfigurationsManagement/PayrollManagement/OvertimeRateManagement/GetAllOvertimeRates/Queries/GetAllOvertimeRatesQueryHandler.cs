@@ -8,15 +8,12 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
     public sealed class GetAllOvertimeRatesQueryHandler :
          RequestHandlerBase<GetAllOvertimeRatesQuery, RequestResult<PagedList<OvertimeRateDto>>, OvertimeRate, int>
     {
-        private readonly IMapper _mapper;
         private const int MaxPageSize = 100;
 
         public GetAllOvertimeRatesQueryHandler(
-            RequestHandlerBaseParameters<OvertimeRate, int> parameters,
-            IMapper mapper)
+            RequestHandlerBaseParameters<OvertimeRate, int> parameters)
             : base(parameters)
         {
-            _mapper = mapper;
         }
 
         public override async Task<RequestResult<PagedList<OvertimeRateDto>>> Handle(GetAllOvertimeRatesQuery request, CancellationToken ct)

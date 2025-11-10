@@ -6,14 +6,10 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
     public sealed class GetPayrollItemByIdQueryHandler :
      RequestHandlerBase<GetPayrollItemByIdQuery, RequestResult<PayrollItemDto>, PayrollItem, int>
     {
-        private readonly IMapper _mapper;
-
         public GetPayrollItemByIdQueryHandler(
-            RequestHandlerBaseParameters<PayrollItem, int> parameters,
-            IMapper mapper)
+            RequestHandlerBaseParameters<PayrollItem, int> parameters)
             : base(parameters)
         {
-            _mapper = mapper;
         }
 
         public override async Task<RequestResult<PayrollItemDto>> Handle(GetPayrollItemByIdQuery request, CancellationToken ct)

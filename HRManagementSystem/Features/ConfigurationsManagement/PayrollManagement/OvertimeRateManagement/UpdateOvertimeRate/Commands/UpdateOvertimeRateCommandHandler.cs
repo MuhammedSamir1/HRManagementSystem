@@ -6,14 +6,10 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
     public sealed class UpdateOvertimeRateCommandHandler :
          RequestHandlerBase<UpdateOvertimeRateCommand, RequestResult<OvertimeRateDto>, OvertimeRate, int>
     {
-        private readonly IMapper _mapper;
-
         public UpdateOvertimeRateCommandHandler(
-            RequestHandlerBaseParameters<OvertimeRate, int> parameters,
-            IMapper mapper)
+            RequestHandlerBaseParameters<OvertimeRate, int> parameters)
             : base(parameters)
         {
-            _mapper = mapper;
         }
 
         public override async Task<RequestResult<OvertimeRateDto>> Handle(UpdateOvertimeRateCommand request, CancellationToken ct)
@@ -44,7 +40,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
             existingRate.IsDeleted = !request.IsActive;
 
 
-            _generalRepo.UpdateAsync(existingRate, ct);
+            await _generalRepo.UpdateAsync(existingRate, ct);
 
             //var isSaved = await _generalRepo.CommitAsync(ct);
 

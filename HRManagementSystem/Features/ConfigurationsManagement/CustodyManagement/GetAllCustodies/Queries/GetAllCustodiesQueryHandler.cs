@@ -7,15 +7,10 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement
     public sealed class GetAllCustodiesQueryHandler :
     RequestHandlerBase<GetAllCustodiesQuery, RequestResult<PagedList<ViewCustodyDto>>, Custody, int>
     {
-        private readonly IMapper _mapper;
-
-        // ??? IMapper ?? ??? Constructor
         public GetAllCustodiesQueryHandler(
-            RequestHandlerBaseParameters<Custody, int> parameters,
-            IMapper mapper)
+            RequestHandlerBaseParameters<Custody, int> parameters)
             : base(parameters)
         {
-            _mapper = mapper;
         }
 
         public override async Task<RequestResult<PagedList<ViewCustodyDto>>> Handle(

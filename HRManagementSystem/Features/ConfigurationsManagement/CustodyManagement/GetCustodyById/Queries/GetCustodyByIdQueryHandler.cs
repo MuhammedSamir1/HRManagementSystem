@@ -6,17 +6,12 @@ using Microsoft.EntityFrameworkCore;
 namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.GetCustodyById.Queries
 {
     public sealed class GetCustodyByIdQueryHandler :
-
           RequestHandlerBase<GetCustodyByIdQuery, RequestResult<ViewCustodyDto>, Custody, int>
     {
-        private readonly IMapper _mapper;
-
         public GetCustodyByIdQueryHandler(
-            RequestHandlerBaseParameters<Custody, int> parameters,
-            IMapper mapper)
+            RequestHandlerBaseParameters<Custody, int> parameters)
             : base(parameters)
         {
-            _mapper = mapper;
         }
 
         public override async Task<RequestResult<ViewCustodyDto>> Handle(
