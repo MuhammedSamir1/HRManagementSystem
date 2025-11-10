@@ -7,11 +7,11 @@ namespace HRManagementSystem.Features.CustodyManagement.UpdateCustody.Commands
     public sealed class UpdateCustodyCommandHandler : RequestHandlerBase<UpdateCustodyCommand, RequestResult<bool>, Custody, int>
     {
     
-        private readonly IGeneralRepository<Employee, Guid> _employeeRepo;
+        private readonly IGeneralRepository<Employee, int> _employeeRepo;
 
         public UpdateCustodyCommandHandler(
             RequestHandlerBaseParameters<Custody, int> parameters,
-            IGeneralRepository<Employee, Guid> employeeRepo
+            IGeneralRepository<Employee, int> employeeRepo
            )
             : base(parameters)
         {

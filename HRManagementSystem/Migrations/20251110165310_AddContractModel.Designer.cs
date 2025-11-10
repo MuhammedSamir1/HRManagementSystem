@@ -4,6 +4,7 @@ using HRManagementSystem.Data.Contexts.ApplicationDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HRManagementSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251110165310_AddContractModel")]
+    partial class AddContractModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -327,7 +330,6 @@ namespace HRManagementSystem.Migrations
                     b.ToTable("Companies", (string)null);
                 });
 
-            modelBuilder.Entity("HRManagementSystem.Data.Models.ConfigurationOfSys.DisabilityType", b =>
             modelBuilder.Entity("HRManagementSystem.Data.Models.ConfigurationsModels.Bank", b =>
                 {
                     b.Property<int>("Id")
@@ -336,9 +338,6 @@ namespace HRManagementSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Code")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -470,10 +469,6 @@ namespace HRManagementSystem.Migrations
 
                     b.Property<DateTime>("HandoverDate")
                         .HasColumnType("datetime2");
-                    b.Property<string>("Description")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -485,9 +480,6 @@ namespace HRManagementSystem.Migrations
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ReturnDate")
                         .HasColumnType("datetime2");
@@ -516,10 +508,6 @@ namespace HRManagementSystem.Migrations
                         .IsUnique();
 
                     b.ToTable("Custodies", (string)null);
-                    b.HasIndex("Code")
-                        .IsUnique()
-                        .HasFilter("[Code] IS NOT NULL");
-                    b.ToTable("RequestTypes");
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.ConfigurationsModels.Holiday", b =>
@@ -582,8 +570,6 @@ namespace HRManagementSystem.Migrations
                         .HasFilter("[CompanyId] IS NOT NULL");
 
                     b.ToTable("Holidays", (string)null);
-                    b.ToTable("DisabilityTypes", (string)null);
-                    b.ToTable("Shifts", (string)null);
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.ConfigurationsModels.OvertimeRate", b =>
@@ -772,8 +758,6 @@ namespace HRManagementSystem.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
-                    b.Property<int?>("DisabilityTypeId")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -820,15 +804,6 @@ namespace HRManagementSystem.Migrations
                         .HasColumnType("time");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-                    b.Property<bool>("IsMandatory")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(true);
@@ -854,14 +829,6 @@ namespace HRManagementSystem.Migrations
 
                     b.HasIndex("Name")
                         .IsUnique();
-                    b.HasIndex("DisabilityTypeId");
-
-                    b.ToTable("Employee");
-                    b.HasIndex("CompanyId");
-
-                    b.HasIndex("Name", "CompanyId")
-                        .IsUnique()
-                        .HasFilter("[CompanyId] IS NOT NULL");
 
                     b.ToTable("Shifts", (string)null);
                 });
@@ -1359,12 +1326,6 @@ namespace HRManagementSystem.Migrations
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.ConfigurationsModels.Holiday", b =>
-            modelBuilder.Entity("HRManagementSystem.Data.Models.Employee", b =>
-                {
-                    b.HasOne("HRManagementSystem.Data.Models.ConfigurationOfSys.DisabilityType", null)
-                        .WithMany("Employees")
-                        .HasForeignKey("DisabilityTypeId");
-            modelBuilder.Entity("HRManagementSystem.Data.Models.Holiday", b =>
                 {
                     b.HasOne("HRManagementSystem.Data.Models.Company", "Company")
                         .WithMany()
@@ -1453,11 +1414,6 @@ namespace HRManagementSystem.Migrations
             modelBuilder.Entity("HRManagementSystem.Data.Models.Company", b =>
                 {
                     b.Navigation("Branches");
-                });
-
-            modelBuilder.Entity("HRManagementSystem.Data.Models.ConfigurationOfSys.DisabilityType", b =>
-                {
-                    b.Navigation("Employees");
                 });
 
             modelBuilder.Entity("HRManagementSystem.Data.Models.Department", b =>

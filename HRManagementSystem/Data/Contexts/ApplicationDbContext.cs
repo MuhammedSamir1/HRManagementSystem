@@ -32,4 +32,6 @@ public class ApplicationDbContext : DbContext
     public DbSet<ProbationPeriod> ProbationPeriods { get; set; }
     public DbSet<Bank> Banks { get; set; }
     public DbSet<RequestType> RequestTypes { get; set; }
+    public DbSet<Contract> Contracts { get; set; }
+    public DbSet<Employee> Employees { get; set; }
 }

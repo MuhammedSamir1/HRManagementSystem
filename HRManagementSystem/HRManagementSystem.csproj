@@ -46,6 +46,7 @@
     <Folder Include="Features\RoleFeatureManagement\HasAccess\" />
     <Folder Include="Features\OrganizationManagement\AddOrginzation\Queries\" />
     <Folder Include="Features\OrganizationManagement\DeleteOrganization\Queries\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>

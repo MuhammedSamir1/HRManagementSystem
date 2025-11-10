@@ -4,7 +4,7 @@
     int Id,
     string? ItemName,
     string? SerialNumber,
-    Guid? EmployeeId,
+    int? EmployeeId,
     DateTime? HandoverDate,
     DateTime? ReturnDate,
     string? Status) : IRequest<RequestResult<bool>>;
