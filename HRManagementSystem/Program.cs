@@ -54,7 +54,7 @@ namespace HRManagementSystem
             //ApplicationDbContextSeeding.SeedData(dbContext);
             #endregion
 
-            app.UseMiddleware<GlobalErrorHandlerMiddleware>();
+            app.UseGlobalErrorHandlerMiddleware();
             if (app.Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -67,8 +67,8 @@ namespace HRManagementSystem
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseMiddleware<TransactionMiddleware>();
-            app.UseMiddleware<UserStateMiddleware>();
+            app.UseTransactionMiddleware();
+            app.UseUserStateMiddleware();
 
             app.MapControllers();
 

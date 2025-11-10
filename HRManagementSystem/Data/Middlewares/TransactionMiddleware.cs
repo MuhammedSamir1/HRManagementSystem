@@ -52,4 +52,12 @@ namespace HRManagementSystem.Data.Middlewares
                 HttpMethods.IsPatch(method) ||
                 HttpMethods.IsDelete(method);
     }
+
+    public static class TransactionMiddlewareExtensions
+    {
+        public static IApplicationBuilder UseTransactionMiddleware(this IApplicationBuilder builder)
+        {
+            return builder.UseMiddleware<TransactionMiddleware>();
+        }
+    }
 }
