@@ -48,7 +48,6 @@
 
         //Countries
         NoCountriesFound = 400,
-
-
+        DuplicateRecord = 401,
     }
 }
