@@ -6,12 +6,11 @@ namespace HRManagementSystem.Features.CustodyManagement.AddCustody.Commands
 {
     public sealed class AddCustodyCommandHandler : RequestHandlerBase<AddCustodyCommand, RequestResult<int>, Custody, int>
     {
-        // 🛑 تصحيح Generic Constraint: استخدام Guid كنوع للمفتاح
-        private readonly IGeneralRepository<Employee, Guid> _employeeRepo;
+        private readonly IGeneralRepository<Employee, int> _employeeRepo;
 
         public AddCustodyCommandHandler(
             RequestHandlerBaseParameters<Custody, int> parameters,
-            IGeneralRepository<Employee, Guid> employeeRepo) 
+            IGeneralRepository<Employee, int> employeeRepo) 
             : base(parameters)
         {
             _employeeRepo = employeeRepo;

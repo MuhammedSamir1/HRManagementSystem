@@ -7,7 +7,7 @@
       DateTime HandoverDate,
       DateTime? ReturnDate,
       string Status,
-      Guid EmployeeId,
+      int EmployeeId,
         string EmployeeName
         );
 }

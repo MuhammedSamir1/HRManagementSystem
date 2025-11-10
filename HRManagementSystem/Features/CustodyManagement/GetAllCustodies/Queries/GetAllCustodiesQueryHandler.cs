@@ -35,7 +35,7 @@ namespace HRManagementSystem.Features.CustodyManagement.GetAllCustodies.Queries
                     c.SerialNumber.Contains(request.SearchTerm));
             }
 
-            if (request.EmployeeId.HasValue && request.EmployeeId.Value != Guid.Empty)
+            if (request.EmployeeId.HasValue && request.EmployeeId.Value > 0)
             {
 
                 query = query.Where(c => c.EmployeeId == request.EmployeeId.Value);

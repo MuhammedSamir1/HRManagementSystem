@@ -8,7 +8,7 @@ namespace HRManagementSystem.Features.CustodyManagement.UpdateCustody
     [Required] int Id, 
     string? ItemName,
     string? SerialNumber,
-    Guid? EmployeeId, 
+    int? EmployeeId, 
     DateTime? HandoverDate,
     DateTime? ReturnDate, 
     string? Status);
@@ -27,7 +27,7 @@ namespace HRManagementSystem.Features.CustodyManagement.UpdateCustody
 
          
             RuleFor(x => x.EmployeeId)
-                .NotEqual(Guid.Empty).When(x => x.EmployeeId.HasValue).WithMessage("يجب تحديد موظف صالح.");
+                .GreaterThan(0).When(x => x.EmployeeId.HasValue).WithMessage("يجب تحديد موظف صالح.");
 
         
             RuleFor(x => x.ReturnDate)

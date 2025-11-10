@@ -9,7 +9,7 @@
         public string Status { get; set; } // الحالة (Active, Returned, Damaged)
 
         // علاقة بالمستلم
-        public Guid EmployeeId { get; set; }
+        public int EmployeeId { get; set; }
         public Employee Employee { get; set; } 
     }
 }

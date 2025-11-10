@@ -3,6 +3,6 @@
     public sealed record AddCustodyCommand(
     string ItemName,
     string SerialNumber,
-    Guid EmployeeId,
+    int EmployeeId,
     DateTime HandoverDate) : IRequest<RequestResult<int>>;
 }
