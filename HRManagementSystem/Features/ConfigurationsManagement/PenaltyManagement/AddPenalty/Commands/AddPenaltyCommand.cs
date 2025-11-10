@@ -23,7 +23,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
 
             var isAdded = await _generalRepo.AddAsync(penalty, ct);
 
-            if (!isAdded) 
+            if (!isAdded)
                 return RequestResult<int>.Failure("Penalty wasn't added successfully!", ErrorCode.InternalServerError);
 
             return RequestResult<int>.Success(penalty.Id, "Penalty added successfully!");

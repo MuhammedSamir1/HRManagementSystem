@@ -24,7 +24,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.A
 
             var isAdded = await _generalRepo.AddAsync(bonus, ct);
 
-            if (!isAdded) 
+            if (!isAdded)
                 return RequestResult<int>.Failure("Bonus wasn't added successfully!", ErrorCode.InternalServerError);
 
             return RequestResult<int>.Success(bonus.Id, "Bonus added successfully!");

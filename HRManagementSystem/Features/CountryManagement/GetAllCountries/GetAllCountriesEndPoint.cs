@@ -1,8 +1,6 @@
 ﻿using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.ViewModels;
 using HRManagementSystem.Features.CountryManagement.GetAllCountries.Queries;
 
-using HRManagementSystem.Features.CountryManagement.GetAllCountries.Queries;
-
 namespace HRManagementSystem.Features.CountryManagement.GetAllCountries
 {
     public class GetAllCountriesEndPoint : BaseEndPoint<GetAllCountriesViewModel, ViewCountryViewModel>

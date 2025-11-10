@@ -26,7 +26,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Ad
 
             var isAdded = await _generalRepo.AddAsync(loan, ct);
 
-            if (!isAdded) 
+            if (!isAdded)
                 return RequestResult<int>.Failure("Loan wasn't added successfully!", ErrorCode.InternalServerError);
 
             return RequestResult<int>.Success(loan.Id, "Loan added successfully!");

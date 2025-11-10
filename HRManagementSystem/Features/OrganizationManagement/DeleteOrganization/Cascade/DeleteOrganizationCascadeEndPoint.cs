@@ -1,8 +1,6 @@
 ﻿using HRManagementSystem.Features.Common.DeleteEntityCascade;
 using HRManagementSystem.Features.Common.DeleteEntityCascade.Command;
 
-using HRManagementSystem.Features.Common.DeleteEntityCascade.Command;
-
 namespace HRManagementSystem.Features.OrganizationManagement.DeleteOrganization.Cascade;
 
 public class DeleteOrganizationCascadeEndPoint : BaseEndPoint<DeleteEntityCascadeViewModel<

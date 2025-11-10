@@ -26,7 +26,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
 
             var isAdded = await _generalRepo.AddAsync(endOfService, ct);
 
-            if (!isAdded) 
+            if (!isAdded)
                 return RequestResult<int>.Failure("End Of Service wasn't added successfully!", ErrorCode.InternalServerError);
 
             return RequestResult<int>.Success(endOfService.Id, "End Of Service added successfully!");

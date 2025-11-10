@@ -1,4 +1,3 @@
-using HRManagementSystem.Common.Extensions;
 using HRManagementSystem.Common.Views;
 using HRManagementSystem.Features.Common.PayrollCommon;
 using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.OvertimeRateManagement.GetAllOvertimeRates.Queries;

@@ -28,7 +28,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
 
             var isAdded = await _generalRepo.AddAsync(salaryItem, ct);
 
-            if (!isAdded) 
+            if (!isAdded)
                 return RequestResult<int>.Failure("Salary Item wasn't added successfully!", ErrorCode.InternalServerError);
 
             return RequestResult<int>.Success(salaryItem.Id, "Salary Item added successfully!");

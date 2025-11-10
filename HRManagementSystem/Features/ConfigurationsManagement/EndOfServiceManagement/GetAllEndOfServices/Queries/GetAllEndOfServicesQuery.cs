@@ -1,5 +1,5 @@
-using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Common.Views;
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagement.GetAllEndOfServices.Queries
 {

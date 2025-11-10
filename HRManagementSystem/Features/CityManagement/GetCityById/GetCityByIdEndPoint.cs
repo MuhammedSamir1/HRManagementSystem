@@ -1,7 +1,5 @@
 ﻿using HRManagementSystem.Features.CityManagement.GetCityById.Queries;
 
-using HRManagementSystem.Features.CityManagement.GetCityById.Queries;
-
 namespace HRManagementSystem.Features.CityManagement.GetCityById
 {
     public class GetCityByIdEndPoint
