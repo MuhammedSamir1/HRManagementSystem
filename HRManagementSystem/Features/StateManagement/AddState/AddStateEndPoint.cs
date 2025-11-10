@@ -15,7 +15,7 @@ namespace HRManagementSystem.Features.StateManagement.AddState
             var validationResult = ValidateRequest(model);
             if (!validationResult.isSuccess)
             {
-                return ResponseViewModel<ViewStateViewModel>.Failure(validationResult.errorCode);
+                return ResponseViewModel<ViewStateViewModel>.Failure(validationResult.message, validationResult.errorCode);
             }
 
             var result = await _mediator.Send(new AddStateCommand(model.Code, model.Name, model.CountryId));

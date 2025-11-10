@@ -33,13 +33,17 @@ namespace HRManagementSystem.Features.StateManagement.UpdateState.Command
 
 
             // Check if state with same code already exists (excluding current state)
-            var stateWithSameCode = await _mediator.Send(new IsStateExistWithSameCodeQuery(request.Code, request.CountryId));
+            //var stateWithSameCode = await _mediator.Send(new IsStateExistWithSameCodeQuery(request.Code, request.CountryId));
 
-            if (stateWithSameCode != null)
-                return RequestResult<ViewStateDto>.Failure(ErrorCode.StateAlreadyExists);
+            //if (stateWithSameCode != null)
+            //    return RequestResult<ViewStateDto>.Failure(ErrorCode.StateAlreadyExists);
 
             // Update state
-            var updatedState = _mapper.Map<State>(state);
+            
+            var updatedState = _mapper.Map<State>(state.data);
+            updatedState.Name = request.Name;
+            updatedState.Code = request.Code;
+            updatedState.CountryId = request.CountryId;
             var res = await _generalRepo.UpdateAsync(updatedState, ct);
 
 
