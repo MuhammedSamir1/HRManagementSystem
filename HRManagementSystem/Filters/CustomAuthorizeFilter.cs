@@ -1,5 +1,5 @@
 ﻿using HRManagementSystem.Common.Views;
-using HRManagementSystem.Data.Contexts;
+using HRManagementSystem.Data.Contexts.ApplicationDbContext;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Security.Claims;
 

@@ -1,4 +1,4 @@
-﻿using HRManagementSystem.Data.Contexts;
+﻿using HRManagementSystem.Data.Contexts.ApplicationDbContext;
 using HRManagementSystem.Data.Models.AddressEntity;
 using System.Text.Json;
 
@@ -48,7 +48,7 @@ namespace HRManagementSystem.Data.DataSeed
 
         private static List<T> LoadDataFromJsonFile<T>(string fileName)
         {
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Files", fileName);
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
             if (!File.Exists(filePath)) throw new FileNotFoundException();
 
             string data = File.ReadAllText(filePath);

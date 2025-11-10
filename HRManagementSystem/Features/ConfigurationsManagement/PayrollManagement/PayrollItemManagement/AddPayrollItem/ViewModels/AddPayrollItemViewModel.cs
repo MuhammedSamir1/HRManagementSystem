@@ -1,20 +1,20 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.AddPayrollItem.ViewModels
+namespace HRManagementSystem.Features.Configurations.PayrollManagement.PayrollItemManagement.AddPayrollItem.ViewModels
 {
     public record AddPayrollItemViewModel(
-      [Required(ErrorMessage = "????? ?????.")]
-    [StringLength(100, ErrorMessage = "????? ?? ??? ?? ?????? 100 ???.")]
+      [Required(ErrorMessage = "الاسم مطلوب.")]
+    [StringLength(100, ErrorMessage = "الاسم لا يجب أن يتجاوز 100 حرف.")]
     string Name,
 
-      [Required(ErrorMessage = "??? ????? ??? ????? (?????/???????).")]
+      [Required(ErrorMessage = "يجب تحديد نوع البند (إضافة/استقطاع).")]
     PayrollItemType Type,
 
-      [Required(ErrorMessage = "??? ????? ??? ?????? (????/????).")]
+      [Required(ErrorMessage = "يجب تحديد نوع الحساب (ثابت/نسبة).")]
     CalculationType CalculationType,
 
-      [Required(ErrorMessage = "?????? ??????.")]
-    [Range(0.0001, (double)decimal.MaxValue, ErrorMessage = "??? ?? ???? ?????? ?????.")]
+      [Required(ErrorMessage = "القيمة مطلوبة.")]
+    [Range(0.0001, (double)decimal.MaxValue, ErrorMessage = "يجب أن تكون القيمة موجبة.")]
     decimal Value,
 
       bool IsStatutory = false);

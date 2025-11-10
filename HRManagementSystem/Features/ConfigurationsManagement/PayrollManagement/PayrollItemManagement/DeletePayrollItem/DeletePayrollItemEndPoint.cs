@@ -1,7 +1,7 @@
-using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.DeletePayrollItem.Commands;
+﻿using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.DeletePayrollItem.Commands;
 using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.DeletePayrollItem.ViewModels;
 
-namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.DeletePayrollItem
+namespace HRManagementSystem.Features.Configurations.PayrollManagement.PayrollItemManagement.DeletePayrollItem
 {
     public class DeletePayrollItemEndPoint : BaseEndPoint<DeletePayrollItemViewModel, ResponseViewModel<bool>>
     {

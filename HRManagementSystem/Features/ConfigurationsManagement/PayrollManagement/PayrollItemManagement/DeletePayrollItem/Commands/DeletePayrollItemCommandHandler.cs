@@ -1,7 +1,8 @@
-using HRManagementSystem.Data.Models.ConfigurationsModels;
+﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.Common.Queries;
+using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.DeletePayrollItem.Commands;
 
-namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.DeletePayrollItem.Commands
+namespace HRManagementSystem.Features.Configurations.PayrollManagement.PayrollItemManagement.DeletePayrollItem.Commands
 {
     public sealed class DeletePayrollItemCommandHandler :
     RequestHandlerBase<DeletePayrollItemCommand, RequestResult<bool>, PayrollItem, int>

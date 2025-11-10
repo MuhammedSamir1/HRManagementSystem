@@ -1,6 +1,6 @@
-using HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.DeleteCustody.Commands;
+﻿using HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.DeleteCustody.Commands;
 
-namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.DeleteCustody
+namespace HRManagementSystem.Features.Configurations.CustodyManagement.DeleteCustody
 {
     public class DeleteCustodyEndPoint : BaseEndPoint<int, ResponseViewModel<bool>>
     {

@@ -1,5 +1,6 @@
 using HRManagementSystem.Common.Views;
 using HRManagementSystem.Data.Models.ConfigurationsModels;
+using HRManagementSystem.Features.Configurations.HolidayManagement.GetAllHolidays.Queries;
 using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.Common.DTOs;
 using System.Linq.Dynamic.Core;
 using System.Linq.Dynamic.Core.Exceptions;

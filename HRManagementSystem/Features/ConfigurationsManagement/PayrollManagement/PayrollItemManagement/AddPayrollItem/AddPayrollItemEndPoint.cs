@@ -1,6 +1,6 @@
 using HRManagementSystem.Features.Common.PayrollCommon;
+using HRManagementSystem.Features.Configurations.PayrollManagement.PayrollItemManagement.AddPayrollItem.ViewModels;
 using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.AddPayrollItem.Commands;
-using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.AddPayrollItem.ViewModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.AddPayrollItem
 {

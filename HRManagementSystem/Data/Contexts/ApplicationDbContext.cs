@@ -2,7 +2,7 @@
 using HRManagementSystem.Data.Models.ConfigurationsModels;
 using Microsoft.EntityFrameworkCore;
 
-namespace HRManagementSystem.Data.Contexts;
+namespace HRManagementSystem.Data.Contexts.ApplicationDbContext;
 public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -34,4 +34,11 @@ public class ApplicationDbContext : DbContext
     public DbSet<RequestType> RequestTypes { get; set; }
     public DbSet<Contract> Contracts { get; set; }
     public DbSet<Employee> Employees { get; set; }
+
+    // New Configuration Models
+    public DbSet<Penalty> Penalties { get; set; }
+    public DbSet<EndOfService> EndOfServices { get; set; }
+    public DbSet<Loan> Loans { get; set; }
+    public DbSet<SalaryItem> SalaryItems { get; set; }
+    public DbSet<Bonus> Bonuses { get; set; }
 }

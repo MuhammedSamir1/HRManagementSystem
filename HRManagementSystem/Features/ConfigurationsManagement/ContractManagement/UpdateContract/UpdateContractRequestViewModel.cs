@@ -49,3 +49,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagemen
         }
     }
 }
+

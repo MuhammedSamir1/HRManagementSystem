@@ -1,6 +1,7 @@
+using HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.DeleteContract;
 using HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.DeleteContract.Commands;
 
-namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.DeleteContract
+namespace HRManagementSystem.Features.Configurations.ContractManagement.DeleteContract
 {
     public class DeleteContractEndPoint : BaseEndPoint<DeleteContractRequestViewModel, ResponseViewModel<bool>>
     {

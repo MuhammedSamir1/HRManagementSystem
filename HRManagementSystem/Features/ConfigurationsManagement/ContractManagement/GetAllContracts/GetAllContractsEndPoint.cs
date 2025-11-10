@@ -1,6 +1,7 @@
+using HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.GetAllContracts;
 using HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.GetAllContracts.Queries;
 
-namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.GetAllContracts
+namespace HRManagementSystem.Features.Configurations.ContractManagement.GetAllContracts
 {
     public class GetAllContractsEndPoint : BaseEndPoint<GetAllContractsRequestViewModel, ResponseViewModel<IEnumerable<GetAllContractsResponseViewModel>>>
     {

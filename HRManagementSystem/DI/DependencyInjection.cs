@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using HRManagementSystem.Common.Views;
-using HRManagementSystem.Data.Contexts;
+using HRManagementSystem.Data.Contexts.ApplicationDbContext;
 using HRManagementSystem.Data.Middlewares;
 using HRManagementSystem.Data.Repositories;
 using HRManagementSystem.Features.Common.IsAnyChildAssignedGeneric;

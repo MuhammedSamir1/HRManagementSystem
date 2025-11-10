@@ -1,7 +1,7 @@
-using HRManagementSystem.Features.Common.CustodyCommon.Dtos;
+﻿using HRManagementSystem.Features.Common.CustodyCommon.Dtos;
 using HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.GetCustodyById.Queries;
 
-namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.GetCustodyById
+namespace HRManagementSystem.Features.Configurations.CustodyManagement.GetCustodyById
 {
     public class GetCustodyByIdEndPoint : BaseEndPoint<int, ResponseViewModel<ViewCustodyDto>>
     {

@@ -1,7 +1,7 @@
-using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.Common.ViewModels;
+﻿using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.Common.ViewModels;
 using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.GetHolidayById.Queries;
 
-namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.GetHolidayById
+namespace HRManagementSystem.Features.Configurations.HolidayManagement.GetHolidayById
 {
     public class GetHolidayByIdEndPoint : BaseEndPoint<object, ResponseViewModel<object>>
     {
@@ -16,7 +16,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
             if (!result.isSuccess)
                 return ResponseViewModel<ViewHolidayViewModel>.Failure(result.message, result.errorCode);
 
-            // 2. Mapping ?? DTO ??? ViewModel  
+            // 2. Mapping من DTO إلى ViewModel  
             var mappedViewModel = _mapper.Map<ViewHolidayViewModel>(result.data);
 
             return ResponseViewModel<ViewHolidayViewModel>.Success(mappedViewModel);

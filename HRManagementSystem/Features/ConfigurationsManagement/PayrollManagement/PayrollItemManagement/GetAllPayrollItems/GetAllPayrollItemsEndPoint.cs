@@ -1,11 +1,11 @@
-using HRManagementSystem.Features.Common.PayrollCommon;
+﻿using HRManagementSystem.Features.Common.PayrollCommon;
 using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.GetAllPayrollItems.Queries;
 
-namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.GetAllPayrollItems
+namespace HRManagementSystem.Features.Configurations.PayrollManagement.PayrollItemManagement.GetAllPayrollItems
 {
     public class GetAllPayrollItemsEndPoint : BaseEndPoint<object, ResponseViewModel<IEnumerable<PayrollItemDto>>>
     {
-        // ?????? object ??? ??? Query ?? ????? ?? ?????? ?? ??? ??????
+        // نستخدم object لأن الـ Query لا تحتاج أي مدخلات في هذه النسخة
         public GetAllPayrollItemsEndPoint(EndPointBaseParameters<object> parameters)
             : base(parameters) { }
 

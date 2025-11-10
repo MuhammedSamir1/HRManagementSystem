@@ -1,8 +1,9 @@
-using HRManagementSystem.Data.Models.ConfigurationsModels;
+﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
+using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.AddHoliday.Commands;
 using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.IsHolidayOverlapping;
 using Microsoft.EntityFrameworkCore;
 
-namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.AddHoliday.Commands
+namespace HRManagementSystem.Features.Configurations.HolidayManagement.AddHoliday.Commands
 {
     public sealed class AddHolidayCommandHandler : RequestHandlerBase<AddHolidayCommand, RequestResult<bool>, Holiday, int>
     {
@@ -10,7 +11,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
 
         public override async Task<RequestResult<bool>> Handle(AddHolidayCommand request, CancellationToken ct)
         {
-            // 1. ?????? ?? ??????? (No Overlap)
+            // 1. التحقق من التداخل (No Overlap)
             var overlapValidation = await _mediator.Send(
                 new IsHolidayOverlappingQuery(request.StartDate, request.EndDate, request.CompanyId), ct);
 
@@ -19,7 +20,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
                 return RequestResult<bool>.Failure(overlapValidation.message, overlapValidation.errorCode);
             }
 
-            // 2. ?????? ??  (Unique Name Check)
+            // 2. التحقق من  (Unique Name Check)
             var isNameDuplicate = await _generalRepo
                 .Get(h => h.Name == request.Name && h.CompanyId == request.CompanyId, ct)
                 .AnyAsync(ct);

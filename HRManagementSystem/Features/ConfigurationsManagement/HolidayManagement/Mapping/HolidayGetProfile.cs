@@ -1,8 +1,8 @@
 using HRManagementSystem.Data.Models.ConfigurationsModels;
+using HRManagementSystem.Features.Configurations.HolidayManagement.GetAllHolidays.Queries;
 using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.Common.DTOs;
 using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.Common.ViewModels;
 using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.GetAllHolidays;
-using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.GetAllHolidays.Queries;
 using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.GetHolidayById;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.Mapping

@@ -1,8 +1,9 @@
-using HRManagementSystem.Data.Models.ConfigurationsModels;
+﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.IsHolidayOverlapping;
+using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.UpdateHoliday.Command;
 using Microsoft.EntityFrameworkCore;
 
-namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.UpdateHoliday.Command
+namespace HRManagementSystem.Features.Configurations.HolidayManagement.UpdateHoliday.Command
 {
     public sealed class UpdateHolidayCommandHandler : RequestHandlerBase<UpdateHolidayCommand, RequestResult<bool>, Holiday, int>
     {
@@ -17,7 +18,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
                 return RequestResult<bool>.Failure("Holiday not found.", ErrorCode.NotFound);
             }
 
-            // 2.  ?? ??????? (No Overlap) - ??????? ??????? ?????
+            // 2.  من التداخل (No Overlap) - استثناء الاجازة نفسها
             var overlapValidation = await _mediator.Send(
                 new IsHolidayOverlappingQuery(
                     request.StartDate,

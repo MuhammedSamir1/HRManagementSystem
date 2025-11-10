@@ -1,4 +1,4 @@
-﻿using HRManagementSystem.Data.Contexts;
+﻿using HRManagementSystem.Data.Contexts.ApplicationDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata;

@@ -1,7 +1,7 @@
-using HRManagementSystem.Common.Views;
+﻿using HRManagementSystem.Common.Views;
 using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.Common.DTOs;
 
-namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.GetAllHolidays.Queries
+namespace HRManagementSystem.Features.Configurations.HolidayManagement.GetAllHolidays.Queries
 {
     public record GetAllHolidaysQuery(
      string? Name,

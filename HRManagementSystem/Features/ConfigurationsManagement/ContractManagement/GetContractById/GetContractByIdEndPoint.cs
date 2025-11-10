@@ -1,6 +1,7 @@
+using HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.GetContractById;
 using HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.GetContractById.Queries;
 
-namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.GetContractById
+namespace HRManagementSystem.Features.Configurations.ContractManagement.GetContractById
 {
     public class GetContractByIdEndPoint : BaseEndPoint<GetContractByIdRequestViewModel, ResponseViewModel<GetContractByIdResponseViewModel>>
     {

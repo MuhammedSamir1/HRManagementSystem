@@ -1,7 +1,7 @@
-using HRManagementSystem.Features.Common.PayrollCommon;
+﻿using HRManagementSystem.Features.Common.PayrollCommon;
 using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.GetPayrollItemById.Queries;
 
-namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.GetPayrollItemById
+namespace HRManagementSystem.Features.Configurations.PayrollManagement.PayrollItemManagement.GetPayrollItemById
 {
     public class GetPayrollItemByIdEndPoint : BaseEndPoint<int, ResponseViewModel<PayrollItemDto>>
     {
