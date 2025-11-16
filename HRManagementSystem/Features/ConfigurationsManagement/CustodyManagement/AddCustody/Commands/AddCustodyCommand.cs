@@ -3,6 +3,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement
     public sealed record AddCustodyCommand(
     string ItemName,
     string SerialNumber,
-    int EmployeeId,
-    DateTime HandoverDate) : IRequest<RequestResult<int>>;
+    DateTime HandoverDate) : IRequest<RequestResult<Guid>>;
 }
+

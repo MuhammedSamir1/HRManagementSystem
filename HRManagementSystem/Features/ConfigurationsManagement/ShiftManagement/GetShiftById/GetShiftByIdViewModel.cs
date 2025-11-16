@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.GetShiftById
 {
-    public sealed record GetShiftByIdViewModel(int Id);
+    public sealed record GetShiftByIdViewModel(Guid Id);
 
 
     public sealed class GetShiftByIdViewModelValidator : AbstractValidator<GetShiftByIdViewModel>
@@ -11,8 +11,10 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.G
         {
             RuleFor(d => d.Id)
               .NotEmpty().WithMessage("Id is required.")
-              .GreaterThan(0).WithMessage("Id must be greater than 0");
+              .NotEqual(Guid.Empty).WithMessage("Id must be greater than 0");
         }
     }
 }
+
+
 

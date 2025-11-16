@@ -1,8 +1,8 @@
-﻿using FluentValidation;
+using FluentValidation;
 
 namespace HRManagementSystem.Features.TeamManagement.AddTeam
 {
-    public sealed record AddTeamViewModel(string Name, string Code, string? Description, int DepartmentId);
+    public sealed record AddTeamViewModel(string Name, string Code, string? Description, Guid DepartmentId);
 
 
     public sealed class AddTeamViewModelValidator : AbstractValidator<AddTeamViewModel>
@@ -26,7 +26,9 @@ namespace HRManagementSystem.Features.TeamManagement.AddTeam
 
             RuleFor(x => x.DepartmentId)
                .NotEmpty().WithMessage("DepartmentId is required.")
-               .GreaterThan(0).WithMessage("Id must be greater than 0.");
+               .NotEqual(Guid.Empty).WithMessage("Id must be greater than 0.");
         }
     }
 }
+
+

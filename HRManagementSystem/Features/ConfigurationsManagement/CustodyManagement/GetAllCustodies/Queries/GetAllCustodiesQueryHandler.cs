@@ -5,10 +5,10 @@ using HRManagementSystem.Features.Common.CustodyCommon.Dtos;
 namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.GetAllCustodies.Queries
 {
     public sealed class GetAllCustodiesQueryHandler :
-    RequestHandlerBase<GetAllCustodiesQuery, RequestResult<PagedList<ViewCustodyDto>>, Custody, int>
+    RequestHandlerBase<GetAllCustodiesQuery, RequestResult<PagedList<ViewCustodyDto>>, Custody, Guid>
     {
         public GetAllCustodiesQueryHandler(
-            RequestHandlerBaseParameters<Custody, int> parameters)
+            RequestHandlerBaseParameters<Custody, Guid> parameters)
             : base(parameters)
         {
         }
@@ -27,12 +27,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement
                 query = query.Where(c =>
                     c.ItemName.Contains(request.SearchTerm) ||
                     c.SerialNumber.Contains(request.SearchTerm));
-            }
-
-            if (request.EmployeeId.HasValue && request.EmployeeId.Value > 0)
-            {
-
-                query = query.Where(c => c.EmployeeId == request.EmployeeId.Value);
             }
 
             if (!string.IsNullOrWhiteSpace(request.Status))
@@ -64,3 +58,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement
         }
     }
 }
+

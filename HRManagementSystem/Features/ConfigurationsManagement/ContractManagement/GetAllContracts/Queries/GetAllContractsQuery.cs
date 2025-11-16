@@ -6,9 +6,9 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagemen
 {
     public record GetAllContractsQuery() : IRequest<RequestResult<IEnumerable<GetAllContractsDto>>>;
 
-    public class GetAllContractsQueryHandler : RequestHandlerBase<GetAllContractsQuery, RequestResult<IEnumerable<GetAllContractsDto>>, Contract, int>
+    public class GetAllContractsQueryHandler : RequestHandlerBase<GetAllContractsQuery, RequestResult<IEnumerable<GetAllContractsDto>>, Contract, Guid>
     {
-        public GetAllContractsQueryHandler(RequestHandlerBaseParameters<Contract, int> parameters)
+        public GetAllContractsQueryHandler(RequestHandlerBaseParameters<Contract, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<IEnumerable<GetAllContractsDto>>> Handle(GetAllContractsQuery request, CancellationToken ct)
@@ -24,4 +24,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagemen
         }
     }
 }
+
 

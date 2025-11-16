@@ -3,14 +3,15 @@
 namespace HRManagementSystem.Features.CityManagement.GetCityById
 {
     // ✅ ViewModel واللي بيستقبل Id من الEndpoint
-    public record GetCityByIdViewModel(int Id);
+    public record GetCityByIdViewModel(Guid Id);
 
     public class GetCityByIdViewModelValidator : AbstractValidator<GetCityByIdViewModel>
     {
         public GetCityByIdViewModelValidator()
         {
             RuleFor(x => x.Id)
-                .GreaterThan(0).WithMessage("City Id must be greater than 0.");
+                .NotEmpty().WithMessage("City Id is required.")
+                .NotEqual(Guid.Empty).WithMessage("City Id must not be empty.");
         }
     }
 }

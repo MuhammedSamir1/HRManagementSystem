@@ -1,12 +1,12 @@
-﻿using HRManagementSystem.Features.Common.IsAnyChildAssignedGeneric;
+using HRManagementSystem.Features.Common.IsAnyChildAssignedGeneric;
 using HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Commands;
 
 namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Orchestrators;
 
 public sealed class DeleteDepartmentOrchestratorHandler : RequestHandlerBase<DeleteDepartmentOrchestrator,
-   RequestResult<bool>, Department, int>
+   RequestResult<bool>, Department, Guid>
 {
-    public DeleteDepartmentOrchestratorHandler(RequestHandlerBaseParameters<Department, int> parameters) : base(parameters)
+    public DeleteDepartmentOrchestratorHandler(RequestHandlerBaseParameters<Department, Guid> parameters) : base(parameters)
     { }
 
     public override async Task<RequestResult<bool>> Handle(DeleteDepartmentOrchestrator request, CancellationToken ct)
@@ -14,7 +14,7 @@ public sealed class DeleteDepartmentOrchestratorHandler : RequestHandlerBase<Del
         // Check if any Team assigned to this Department 
 
         var hasTeams = await _mediator.Send(new IsAnyChildAssignedQuery<
-            Department, Team, int>(request.departmentId), ct);
+            Department, Team, Guid>(request.departmentId), ct);
         if (hasTeams.data)
         {
             return RequestResult<bool>.Failure("Cannot delete department. There are teams assigned to this department.");

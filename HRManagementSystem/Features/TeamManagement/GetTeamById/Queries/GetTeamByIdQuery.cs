@@ -1,14 +1,14 @@
-﻿using AutoMapper.QueryableExtensions;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.TeamManagement.GetTeamById.Queries
 {
-    public sealed record GetTeamByIdQuery(int Id) : IRequest<RequestResult<ViewTeamByIdDto>>;
+    public sealed record GetTeamByIdQuery(Guid Id) : IRequest<RequestResult<ViewTeamByIdDto>>;
 
     public sealed class GetTeamByIdQueryHandler : RequestHandlerBase<GetTeamByIdQuery,
-        RequestResult<ViewTeamByIdDto>, Team, int>
+        RequestResult<ViewTeamByIdDto>, Team, Guid>
     {
-        public GetTeamByIdQueryHandler(RequestHandlerBaseParameters<Team, int> parameters)
+        public GetTeamByIdQueryHandler(RequestHandlerBaseParameters<Team, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<ViewTeamByIdDto>> Handle(GetTeamByIdQuery request, CancellationToken ct)
@@ -24,3 +24,4 @@ namespace HRManagementSystem.Features.TeamManagement.GetTeamById.Queries
         }
     }
 }
+

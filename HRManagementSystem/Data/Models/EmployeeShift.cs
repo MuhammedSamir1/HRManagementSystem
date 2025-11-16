@@ -1,9 +1,9 @@
 ﻿namespace HRManagementSystem.Data.Models
 {
-    public class EmployeeShift : BaseModel<int>
+    public class EmployeeShift : BaseModel<Guid>
     {
-        public int EmployeeId { get; set; }
-        public int ShiftId { get; set; }
+        public Guid EmployeeId { get; set; }
+        public Guid ShiftId { get; set; }
 
         public DateTime Date { get; set; }
     }

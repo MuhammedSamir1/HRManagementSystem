@@ -7,9 +7,9 @@ using System.Linq.Dynamic.Core.Exceptions;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.GetAllHolidays.Queries
 {
-    public sealed class GetAllHolidaysQueryHandler : RequestHandlerBase<GetAllHolidaysQuery, RequestResult<PagedList<ViewHolidayDto>>, Holiday, int>
+    public sealed class GetAllHolidaysQueryHandler : RequestHandlerBase<GetAllHolidaysQuery, RequestResult<PagedList<ViewHolidayDto>>, Holiday, Guid>
     {
-        public GetAllHolidaysQueryHandler(RequestHandlerBaseParameters<Holiday, int> parameters) : base(parameters) { }
+        public GetAllHolidaysQueryHandler(RequestHandlerBaseParameters<Holiday, Guid> parameters) : base(parameters) { }
 
         public override async Task<RequestResult<PagedList<ViewHolidayDto>>> Handle(GetAllHolidaysQuery request, CancellationToken ct)
         {
@@ -19,9 +19,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
 
             if (!string.IsNullOrWhiteSpace(request.Name))
                 query = query.Where(h => h.Name.Contains(request.Name));
-
-            if (request.CompanyId.HasValue)
-                query = query.Where(h => h.CompanyId == request.CompanyId.Value);
 
             if (request.IsMandatory.HasValue)
                 query = query.Where(h => h.IsMandatory == request.IsMandatory.Value);
@@ -69,3 +66,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
         }
     }
 }
+

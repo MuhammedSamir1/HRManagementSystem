@@ -1,11 +1,11 @@
-﻿using HRManagementSystem.Data.Models.AddressEntity;
+using HRManagementSystem.Data.Models.AddressEntity;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.CityManagement.HasAssignedCities
 {
-    public sealed class HasAssignedCitiesQueryHandler : RequestHandlerBase<HasAssignedCitiesQuery, RequestResult<bool>, City, int>
+    public sealed class HasAssignedCitiesQueryHandler : RequestHandlerBase<HasAssignedCitiesQuery, RequestResult<bool>, City, Guid>
     {
-        public HasAssignedCitiesQueryHandler(RequestHandlerBaseParameters<City, int> parameters) : base(parameters) { }
+        public HasAssignedCitiesQueryHandler(RequestHandlerBaseParameters<City, Guid> parameters) : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(HasAssignedCitiesQuery request, CancellationToken ct)
         {
@@ -23,3 +23,4 @@ namespace HRManagementSystem.Features.CityManagement.HasAssignedCities
         }
     }
 }
+

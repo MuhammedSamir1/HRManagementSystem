@@ -2,13 +2,13 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodManagement.UpdateProbationPeriod.Commands
 {
-    public sealed record UpdateProbationPeriodCommand(int Id, DateTime StartDate, DateTime EndDate,
+    public sealed record UpdateProbationPeriodCommand(Guid Id, DateTime StartDate, DateTime EndDate,
         int DurationInDays, bool IsApproved, DateTime? ApprovalDate, ProbationPeriodStatus Status)
         : IRequest<RequestResult<bool>>;
 
-    public class UpdateProbationPeriodCommandHandler : RequestHandlerBase<UpdateProbationPeriodCommand, RequestResult<bool>, ProbationPeriod, int>
+    public class UpdateProbationPeriodCommandHandler : RequestHandlerBase<UpdateProbationPeriodCommand, RequestResult<bool>, ProbationPeriod, Guid>
     {
-        public UpdateProbationPeriodCommandHandler(RequestHandlerBaseParameters<ProbationPeriod, int> parameters) : base(parameters)
+        public UpdateProbationPeriodCommandHandler(RequestHandlerBaseParameters<ProbationPeriod, Guid> parameters) : base(parameters)
         {
         }
 
@@ -27,4 +27,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodMa
 
     }
 }
+
 

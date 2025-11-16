@@ -1,11 +1,11 @@
-﻿namespace HRManagementSystem.Features.Common.CustodyCommon.ViewModels
+namespace HRManagementSystem.Features.Common.CustodyCommon.ViewModels
 {
     public record ViewCustodyViewModel(
-      int Id,
+      Guid Id,
       string ItemName,
       string SerialNumber,
       DateTime HandoverDate,
       DateTime? ReturnDate,
-      string Status,
-      int EmployeeId);
+      string Status);
 }
+

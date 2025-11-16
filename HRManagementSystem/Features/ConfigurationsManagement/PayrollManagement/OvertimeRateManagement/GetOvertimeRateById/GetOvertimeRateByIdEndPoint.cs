@@ -3,13 +3,13 @@ using HRManagementSystem.Features.Common.PayrollCommon;
 namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.OvertimeRateManagement.GetOvertimeRateById
 {
     public class GetOvertimeRateByIdEndPoint
-        : BaseEndPoint<int, ResponseViewModel<OvertimeRateDto>>
+        : BaseEndPoint<Guid, ResponseViewModel<OvertimeRateDto>>
     {
-        public GetOvertimeRateByIdEndPoint(EndPointBaseParameters<int> parameters)
+        public GetOvertimeRateByIdEndPoint(EndPointBaseParameters<Guid> parameters)
             : base(parameters) { }
 
         [HttpGet("payroll/overtime-rates/{id:int}")] // ????: GET /api/payroll/overtime-rates/5
-        public async Task<ResponseViewModel<OvertimeRateDto>> GetOvertimeRateById([FromRoute] int id, CancellationToken ct)
+        public async Task<ResponseViewModel<OvertimeRateDto>> GetOvertimeRateById([FromRoute] Guid id, CancellationToken ct)
         {
             var query = new Queries.GetOvertimeRateByIdQuery(id);
             var result = await _mediator.Send(query, ct);
@@ -21,3 +21,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
         }
     }
 }
+

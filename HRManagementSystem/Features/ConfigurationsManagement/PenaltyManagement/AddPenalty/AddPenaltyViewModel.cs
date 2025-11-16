@@ -8,8 +8,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
         decimal Amount,
         DateTime PenaltyDate,
         string? Reason,
-        PenaltyStatus Status,
-        int? EmployeeId);
+        PenaltyStatus Status);
 
     public sealed class AddPenaltyViewModelValidator : AbstractValidator<AddPenaltyViewModel>
     {
@@ -34,4 +33,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
         }
     }
 }
+
 

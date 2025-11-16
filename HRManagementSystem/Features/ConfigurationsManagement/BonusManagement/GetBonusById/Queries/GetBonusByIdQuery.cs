@@ -2,11 +2,11 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.GetBonusById.Queries
 {
-    public sealed record GetBonusByIdQuery(int Id) : IRequest<RequestResult<ViewBonusByIdDto>>;
+    public sealed record GetBonusByIdQuery(Guid Id) : IRequest<RequestResult<ViewBonusByIdDto>>;
 
-    public class GetBonusByIdQueryHandler : RequestHandlerBase<GetBonusByIdQuery, RequestResult<ViewBonusByIdDto>, Bonus, int>
+    public class GetBonusByIdQueryHandler : RequestHandlerBase<GetBonusByIdQuery, RequestResult<ViewBonusByIdDto>, Bonus, Guid>
     {
-        public GetBonusByIdQueryHandler(RequestHandlerBaseParameters<Bonus, int> parameters)
+        public GetBonusByIdQueryHandler(RequestHandlerBaseParameters<Bonus, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<ViewBonusByIdDto>> Handle(GetBonusByIdQuery request, CancellationToken ct)
@@ -21,3 +21,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.G
         }
     }
 }
+

@@ -1,8 +1,8 @@
-﻿using FluentValidation;
+using FluentValidation;
 
 namespace HRManagementSystem.Features.TeamManagement.UpdateTeam
 {
-    public sealed record UpdateTeamViewModel(int Id, string Name, string? Description, string Code, int DepartmentId);
+    public sealed record UpdateTeamViewModel(Guid Id, string Name, string? Description, string Code, Guid DepartmentId);
 
 
     public sealed class UpdateTeamViewModelValidator : AbstractValidator<UpdateTeamViewModel>
@@ -26,7 +26,9 @@ namespace HRManagementSystem.Features.TeamManagement.UpdateTeam
 
             RuleFor(x => x.DepartmentId)
                 .NotEmpty().WithMessage("DepartmentId is required.")
-                .GreaterThan(0).WithMessage("Id must be greater than 0.");
+                .NotEqual(Guid.Empty).WithMessage("Id must be greater than 0.");
         }
     }
 }
+
+

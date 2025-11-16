@@ -1,8 +1,8 @@
-﻿using FluentValidation;
+using FluentValidation;
 
 namespace HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.ViewModels
 {
-    public sealed record UpdateOrganizationAddressViewModel(int CountryId, int StateId, int CityId,
+    public sealed record UpdateOrganizationAddressViewModel(Guid CountryId, Guid StateId, Guid CityId,
              string? Street, string? ZipCode);
 
 
@@ -10,9 +10,15 @@ namespace HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtos
     {
         public UpdateOrganizationAddressViewModelValidator()
         {
-            RuleFor(x => x.CountryId).GreaterThan(0);
-            RuleFor(x => x.StateId).GreaterThan(0);
-            RuleFor(x => x.CityId).GreaterThan(0);
+            RuleFor(x => x.CountryId)
+                .NotEmpty().WithMessage("CountryId is required.")
+                .NotEqual(Guid.Empty).WithMessage("CountryId must be provided.");
+            RuleFor(x => x.StateId)
+                .NotEmpty().WithMessage("StateId is required.")
+                .NotEqual(Guid.Empty).WithMessage("StateId must be provided.");
+            RuleFor(x => x.CityId)
+                .NotEmpty().WithMessage("CityId is required.")
+                .NotEqual(Guid.Empty).WithMessage("CityId must be provided.");
 
             //Street
             RuleFor(x => x.Street)
@@ -27,3 +33,4 @@ namespace HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtos
         }
     }
 }
+

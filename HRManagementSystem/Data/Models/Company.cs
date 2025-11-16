@@ -1,8 +1,8 @@
 ﻿namespace HRManagementSystem.Data.Models
 {
-    public sealed class Company : BaseModel<int>
+    public sealed class Company : BaseModel<Guid>
     {
-        public int OrganizationId { get; set; }
+        public Guid OrganizationId { get; set; }
         public Organization Organization { get; set; } = null!;
         public string Name { get; set; } = default!;
         public string Code { get; set; } = default!;

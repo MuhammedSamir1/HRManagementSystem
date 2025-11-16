@@ -1,11 +1,11 @@
-﻿using HRManagementSystem.Features.Common.Dtos;
+using HRManagementSystem.Features.Common.Dtos;
 
 namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation.Commands;
 
 public sealed class AddOrganizationCommandHandler : RequestHandlerBase<AddOrganizationCommand,
-        RequestResult<CreatedIdDto>, Organization, int>
+        RequestResult<CreatedIdDto>, Organization, Guid>
 {
-    public AddOrganizationCommandHandler(RequestHandlerBaseParameters<Organization, int> parameters) : base(parameters)
+    public AddOrganizationCommandHandler(RequestHandlerBaseParameters<Organization, Guid> parameters) : base(parameters)
     {
     }
 

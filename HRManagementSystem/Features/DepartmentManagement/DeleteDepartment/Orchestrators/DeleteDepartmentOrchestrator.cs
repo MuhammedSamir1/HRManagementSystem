@@ -1,4 +1,5 @@
-﻿namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Orchestrators;
+namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Orchestrators;
 
-public record DeleteDepartmentOrchestrator(int departmentId) : IRequest<RequestResult<bool>>;
+public record DeleteDepartmentOrchestrator(Guid departmentId) : IRequest<RequestResult<bool>>;
+
 

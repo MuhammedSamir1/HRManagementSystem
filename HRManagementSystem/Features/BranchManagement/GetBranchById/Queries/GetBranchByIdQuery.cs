@@ -1,14 +1,14 @@
-﻿using AutoMapper.QueryableExtensions;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.BranchManagement.GetBranchById.Queries
 {
-    public sealed record GetBranchByIdQuery(int Id) : IRequest<RequestResult<ViewBranchByIdDto>>;
+    public sealed record GetBranchByIdQuery(Guid Id) : IRequest<RequestResult<ViewBranchByIdDto>>;
 
     public sealed class GetBranchByIdQueryHandler : RequestHandlerBase<GetBranchByIdQuery,
-        RequestResult<ViewBranchByIdDto>, Branch, int>
+        RequestResult<ViewBranchByIdDto>, Branch, Guid>
     {
-        public GetBranchByIdQueryHandler(RequestHandlerBaseParameters<Branch, int> parameters)
+        public GetBranchByIdQueryHandler(RequestHandlerBaseParameters<Branch, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<ViewBranchByIdDto>> Handle(GetBranchByIdQuery request, CancellationToken ct)
@@ -24,3 +24,4 @@ namespace HRManagementSystem.Features.BranchManagement.GetBranchById.Queries
         }
     }
 }
+

@@ -7,9 +7,9 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodMa
     public sealed record GetAllProbationPeriodsQuery : IRequest<RequestResult<IEnumerable<ViewProbationPeriodDto>>>;
 
     public sealed class GetAllProbationPeriodsQueryHandler : RequestHandlerBase<GetAllProbationPeriodsQuery,
-        RequestResult<IEnumerable<ViewProbationPeriodDto>>, ProbationPeriod, int>
+        RequestResult<IEnumerable<ViewProbationPeriodDto>>, ProbationPeriod, Guid>
     {
-        public GetAllProbationPeriodsQueryHandler(RequestHandlerBaseParameters<ProbationPeriod, int> parameters)
+        public GetAllProbationPeriodsQueryHandler(RequestHandlerBaseParameters<ProbationPeriod, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<IEnumerable<ViewProbationPeriodDto>>> Handle(GetAllProbationPeriodsQuery request, CancellationToken ct)
@@ -25,4 +25,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodMa
         }
     }
 }
+
 

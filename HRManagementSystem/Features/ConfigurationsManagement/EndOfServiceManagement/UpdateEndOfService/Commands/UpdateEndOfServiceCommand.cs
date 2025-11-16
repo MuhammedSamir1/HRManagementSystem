@@ -3,7 +3,7 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagement.UpdateEndOfService.Commands
 {
     public sealed record UpdateEndOfServiceCommand(
-        int Id,
+        Guid Id,
         string Title,
         string? Description,
         decimal Amount,
@@ -12,13 +12,12 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         int TotalServiceYears,
         int TotalServiceMonths,
         int TotalServiceDays,
-        DateTime? PaymentDate,
-        int? EmployeeId)
+        DateTime? PaymentDate)
         : IRequest<RequestResult<bool>>;
 
-    public class UpdateEndOfServiceCommandHandler : RequestHandlerBase<UpdateEndOfServiceCommand, RequestResult<bool>, EndOfService, int>
+    public class UpdateEndOfServiceCommandHandler : RequestHandlerBase<UpdateEndOfServiceCommand, RequestResult<bool>, EndOfService, Guid>
     {
-        public UpdateEndOfServiceCommandHandler(RequestHandlerBaseParameters<EndOfService, int> parameters)
+        public UpdateEndOfServiceCommandHandler(RequestHandlerBaseParameters<EndOfService, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(UpdateEndOfServiceCommand request, CancellationToken ct)
@@ -37,7 +36,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
             endOfService.TotalServiceMonths = request.TotalServiceMonths;
             endOfService.TotalServiceDays = request.TotalServiceDays;
             endOfService.PaymentDate = request.PaymentDate;
-            endOfService.EmployeeId = request.EmployeeId;
 
             await _generalRepo.UpdateAsync(endOfService, ct);
 
@@ -45,3 +43,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         }
     }
 }
+

@@ -1,19 +1,19 @@
-﻿using HRManagementSystem.Features.BranchManagement.DeleteBranch.Commands;
+using HRManagementSystem.Features.BranchManagement.DeleteBranch.Commands;
 using HRManagementSystem.Features.Common.IsAnyChildAssignedGeneric;
 
 namespace HRManagementSystem.Features.BranchManagement.DeleteBranch.Orchestrators;
 
 public sealed class DeleteBranchOrchestratorHandler : RequestHandlerBase<DeleteBranchOrchestrator,
-        RequestResult<bool>, Branch, int>
+        RequestResult<bool>, Branch, Guid>
 {
-    public DeleteBranchOrchestratorHandler(RequestHandlerBaseParameters<Branch, int> parameters)
+    public DeleteBranchOrchestratorHandler(RequestHandlerBaseParameters<Branch, Guid> parameters)
         : base(parameters) { }
 
     public override async Task<RequestResult<bool>> Handle(DeleteBranchOrchestrator request, CancellationToken ct)
     {
         // Check if any Departments assigned to this Branch 
 
-        var hasDepartments = await _mediator.Send(new IsAnyChildAssignedQuery<Branch, Department, int>(request.Id), ct);
+        var hasDepartments = await _mediator.Send(new IsAnyChildAssignedQuery<Branch, Department, Guid>(request.Id), ct);
         if (hasDepartments.data)
         {
             return RequestResult<bool>.Failure("Cannot delete branch. There are departments assigned to this branch.");

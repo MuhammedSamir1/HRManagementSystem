@@ -4,18 +4,17 @@ using System.ComponentModel.DataAnnotations;
 namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.UpdateHoliday
 {
     public record UpdateHolidayRequestViewModel(
-     [Required] int Id, // ????? ???????
+     [Required] Guid Id, // ????? ???????
      [Required] string Name,
      [Required] DateTime StartDate,
      [Required] DateTime EndDate,
      [Required] bool IsMandatory,
-     [Required] HolidayType Type,
-     int? CompanyId);
+     [Required] HolidayType Type);
     public class UpdateHolidayRequestViewModelValidator : AbstractValidator<UpdateHolidayRequestViewModel>
     {
         public UpdateHolidayRequestViewModelValidator()
         {
-            RuleFor(x => x.Id).GreaterThan(0).WithMessage("Holiday ID is required.");
+            RuleFor(x => x.Id).NotEqual(Guid.Empty).WithMessage("Holiday ID is required.");
             RuleFor(x => x.Name).NotEmpty().MaximumLength(150);
             RuleFor(x => x.StartDate).NotEmpty();
             RuleFor(x => x.EndDate).NotEmpty()
@@ -24,3 +23,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
         }
     }
 }
+
+

@@ -1,19 +1,19 @@
-﻿using HRManagementSystem.Features.Common.CustodyCommon.Dtos;
+using HRManagementSystem.Features.Common.CustodyCommon.Dtos;
 using HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.GetCustodyById.Queries;
 
 namespace HRManagementSystem.Features.Configurations.CustodyManagement.GetCustodyById
 {
-    public class GetCustodyByIdEndPoint : BaseEndPoint<int, ResponseViewModel<ViewCustodyDto>>
+    public class GetCustodyByIdEndPoint : BaseEndPoint<Guid, ResponseViewModel<ViewCustodyDto>>
     {
 
-        public GetCustodyByIdEndPoint(EndPointBaseParameters<int> parameters)
+        public GetCustodyByIdEndPoint(EndPointBaseParameters<Guid> parameters)
             : base(parameters)
         {
         }
 
 
         [HttpGet("{id:int}")]
-        public async Task<ResponseViewModel<ViewCustodyDto>> GetCustodyById(int id, CancellationToken ct)
+        public async Task<ResponseViewModel<ViewCustodyDto>> GetCustodyById(Guid id, CancellationToken ct)
         {
 
             var query = new GetCustodyByIdQuery(id);
@@ -33,3 +33,4 @@ namespace HRManagementSystem.Features.Configurations.CustodyManagement.GetCustod
         }
     }
 }
+

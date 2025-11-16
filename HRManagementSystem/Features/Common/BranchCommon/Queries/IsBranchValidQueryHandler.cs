@@ -1,8 +1,8 @@
-﻿namespace HRManagementSystem.Features.Common.BranchCommon.Queries
+namespace HRManagementSystem.Features.Common.BranchCommon.Queries
 {
-    public sealed class IsBranchValidQueryHandler : RequestHandlerBase<IsBranchValidQuery, RequestResult<bool>, Branch, int>
+    public sealed class IsBranchValidQueryHandler : RequestHandlerBase<IsBranchValidQuery, RequestResult<bool>, Branch, Guid>
     {
-        public IsBranchValidQueryHandler(RequestHandlerBaseParameters<Branch, int> parameters) : base(parameters) { }
+        public IsBranchValidQueryHandler(RequestHandlerBaseParameters<Branch, Guid> parameters) : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(IsBranchValidQuery request, CancellationToken ct)
         {
@@ -17,3 +17,4 @@
         }
     }
 }
+

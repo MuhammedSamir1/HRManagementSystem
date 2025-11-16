@@ -8,8 +8,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
     [Required] DateTime StartDate,
     [Required] DateTime EndDate,
     [Required] bool IsMandatory,
-    [Required] HolidayType Type,
-    int? CompanyId);
+    [Required] HolidayType Type);
     public class AddHolidayRequestViewModelValidator : AbstractValidator<AddHolidayRequestViewModel>
     {
         public AddHolidayRequestViewModelValidator()
@@ -23,3 +22,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
         }
     }
 }
+

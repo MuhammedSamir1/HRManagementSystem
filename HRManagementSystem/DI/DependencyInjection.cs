@@ -37,10 +37,10 @@ namespace HRManagementSystem.DI
             //Generic Child Check Handlers Registration
             var maps = new (Type Parent, Type Child, Type Key)[]
          {
-                (typeof(Organization), typeof(Company),  typeof(int)),
-                (typeof(Company),      typeof(Branch),   typeof(int)),
-                (typeof(Branch),       typeof(Department), typeof(int)),
-                (typeof(Department),   typeof(Team),     typeof(int)),
+                (typeof(Organization), typeof(Company),  typeof(Guid)),
+                (typeof(Company),      typeof(Branch),   typeof(Guid)),
+                (typeof(Branch),       typeof(Department), typeof(Guid)),
+                (typeof(Department),   typeof(Team),     typeof(Guid)),
          };
             foreach (var (p, c, k) in maps)
             {

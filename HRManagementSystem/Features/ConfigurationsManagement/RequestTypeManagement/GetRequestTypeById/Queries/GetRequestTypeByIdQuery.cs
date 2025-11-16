@@ -2,11 +2,11 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.RequestTypeManagement.GetRequestTypeById.Queries
 {
-    public record GetRequestTypeByIdQuery(int Id) : IRequest<RequestResult<GetRequestTypeByIdDto>>;
+    public record GetRequestTypeByIdQuery(Guid Id) : IRequest<RequestResult<GetRequestTypeByIdDto>>;
 
-    public class GetRequestTypeByIdQueryHandler : RequestHandlerBase<GetRequestTypeByIdQuery, RequestResult<GetRequestTypeByIdDto>, RequestType, int>
+    public class GetRequestTypeByIdQueryHandler : RequestHandlerBase<GetRequestTypeByIdQuery, RequestResult<GetRequestTypeByIdDto>, RequestType, Guid>
     {
-        public GetRequestTypeByIdQueryHandler(RequestHandlerBaseParameters<RequestType, int> parameters)
+        public GetRequestTypeByIdQueryHandler(RequestHandlerBaseParameters<RequestType, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<GetRequestTypeByIdDto>> Handle(GetRequestTypeByIdQuery request, CancellationToken ct)
@@ -22,4 +22,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.RequestTypeManage
         }
     }
 }
+
 

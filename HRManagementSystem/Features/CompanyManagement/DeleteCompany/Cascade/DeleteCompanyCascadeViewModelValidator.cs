@@ -1,9 +1,9 @@
-﻿using HRManagementSystem.Features.Common.DeleteEntityCascade;
+using HRManagementSystem.Features.Common.DeleteEntityCascade;
 
 namespace HRManagementSystem.Features.CompanyManagement.DeleteCompany.Cascade;
 
 public sealed class DeleteCompanyCascadeViewModelValidator
-        : DeleteEntityCascadeViewModelValidator<Company, int>
+        : DeleteEntityCascadeViewModelValidator<Company, Guid>
 {
     public DeleteCompanyCascadeViewModelValidator() : base()
     {

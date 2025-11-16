@@ -1,8 +1,8 @@
-﻿using FluentValidation;
+using FluentValidation;
 
 namespace HRManagementSystem.Features.OrganizationManagement.DeleteOrganization
 {
-    public sealed record DeleteOrganizationViewModel(int Id);
+    public sealed record DeleteOrganizationViewModel(Guid Id);
 
 
 
@@ -12,7 +12,9 @@ namespace HRManagementSystem.Features.OrganizationManagement.DeleteOrganization
         {
             RuleFor(d => d.Id)
                 .NotEmpty().WithMessage("Id is required.")
-                .GreaterThan(0).WithMessage("Id must be greater than 0");
+                .NotEqual(Guid.Empty).WithMessage("Id must be greater than 0");
         }
     }
 }
+
+

@@ -5,9 +5,9 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
 {
     public sealed record GetAllEndOfServicesQuery() : IRequest<RequestResult<PagedList<ViewEndOfServiceDto>>>;
 
-    public class GetAllEndOfServicesQueryHandler : RequestHandlerBase<GetAllEndOfServicesQuery, RequestResult<PagedList<ViewEndOfServiceDto>>, EndOfService, int>
+    public class GetAllEndOfServicesQueryHandler : RequestHandlerBase<GetAllEndOfServicesQuery, RequestResult<PagedList<ViewEndOfServiceDto>>, EndOfService, Guid>
     {
-        public GetAllEndOfServicesQueryHandler(RequestHandlerBaseParameters<EndOfService, int> parameters)
+        public GetAllEndOfServicesQueryHandler(RequestHandlerBaseParameters<EndOfService, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<PagedList<ViewEndOfServiceDto>>> Handle(GetAllEndOfServicesQuery request, CancellationToken ct)
@@ -26,3 +26,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         }
     }
 }
+

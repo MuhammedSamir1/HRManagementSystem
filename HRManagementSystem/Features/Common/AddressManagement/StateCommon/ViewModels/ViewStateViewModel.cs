@@ -1,8 +1,8 @@
-﻿namespace HRManagementSystem.Features.Common.AddressManagement.StateCommon.ViewModels
+namespace HRManagementSystem.Features.Common.AddressManagement.StateCommon.ViewModels
 {
     public sealed record ViewStateViewModel
     {
-        public int Id { get; init; }
+        public Guid Id { get; init; }
         public string Code { get; init; } = default!;
         public string Name { get; init; } = default!;
         public ViewStateCountryViewModel Country { get; init; } = default!;
@@ -11,3 +11,4 @@
 
 
 }
+

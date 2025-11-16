@@ -3,16 +3,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.IsHolidayOverlapping
 {
-    public sealed class IsHolidayOverlappingQueryHandler : RequestHandlerBase<IsHolidayOverlappingQuery, RequestResult<bool>, Holiday, int>
+    public sealed class IsHolidayOverlappingQueryHandler : RequestHandlerBase<IsHolidayOverlappingQuery, RequestResult<bool>, Holiday, Guid>
     {
-        public IsHolidayOverlappingQueryHandler(RequestHandlerBaseParameters<Holiday, int> parameters) : base(parameters) { }
+        public IsHolidayOverlappingQueryHandler(RequestHandlerBaseParameters<Holiday, Guid> parameters) : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(IsHolidayOverlappingQuery request, CancellationToken ct)
         {
             // ????? ???????: Start1 <= End2 AND End1 >= Start2
             var isOverlapping = await _generalRepo
-                .Get(h => h.Id != request.ExcludeHolidayId &&
-                          h.CompanyId == request.CompanyId &&
+                .Get(h => (!request.ExcludeHolidayId.HasValue || h.Id != request.ExcludeHolidayId.Value) &&
                           request.StartDate <= h.EndDate &&
                           request.EndDate >= h.StartDate, ct)
                 .AnyAsync(ct);
@@ -25,3 +24,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
         }
     }
 }
+

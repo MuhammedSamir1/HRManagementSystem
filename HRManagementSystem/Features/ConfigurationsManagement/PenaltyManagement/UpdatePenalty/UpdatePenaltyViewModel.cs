@@ -3,21 +3,20 @@ using FluentValidation;
 namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.UpdatePenalty
 {
     public sealed record UpdatePenaltyViewModel(
-        int Id,
+        Guid Id,
         string Title,
         string? Description,
         decimal Amount,
         DateTime PenaltyDate,
         string? Reason,
-        PenaltyStatus Status,
-        int? EmployeeId);
+        PenaltyStatus Status);
 
     public sealed class UpdatePenaltyViewModelValidator : AbstractValidator<UpdatePenaltyViewModel>
     {
         public UpdatePenaltyViewModelValidator()
         {
             RuleFor(x => x.Id)
-                .GreaterThan(0).WithMessage("Id must be greater than 0.");
+                .NotEqual(Guid.Empty).WithMessage("Id must be greater than 0.");
 
             RuleFor(x => x.Title)
                 .NotEmpty().WithMessage("Title is required.")
@@ -38,4 +37,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
         }
     }
 }
+
+
 

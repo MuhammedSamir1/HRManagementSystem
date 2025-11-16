@@ -1,16 +1,18 @@
-﻿using FluentValidation;
+using FluentValidation;
 
 namespace HRManagementSystem.Features.CountryManagement.DeleteCountry
 {
-    public sealed record DeleteCountryViewModel(int Id);
+    public sealed record DeleteCountryViewModel(Guid Id);
     public class DeleteCountryViewModelValidator : AbstractValidator<DeleteCountryViewModel>
     {
         public DeleteCountryViewModelValidator()
         {
-            // عشان اتاكد ان ID موجود
+            // ???? ????? ?? ID ?????
             RuleFor(x => x.Id)
                 .NotEmpty().WithMessage("Country ID is required for deletion.")
-                .GreaterThan(0).WithMessage("Country ID must be a positive integer.");
+                .NotEqual(Guid.Empty).WithMessage("Country ID must be a positive integer.");
         }
     }
 }
+
+

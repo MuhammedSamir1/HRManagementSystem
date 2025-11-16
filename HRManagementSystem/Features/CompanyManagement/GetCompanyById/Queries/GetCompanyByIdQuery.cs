@@ -1,13 +1,13 @@
-﻿using AutoMapper.QueryableExtensions;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.CompanyManagement.GetCompanyById.Queries
 {
-    public record GetCompanyByIdQuery(int companyId) : IRequest<RequestResult<GetCompanyByIdDto>>;
+    public record GetCompanyByIdQuery(Guid companyId) : IRequest<RequestResult<GetCompanyByIdDto>>;
 
-    public sealed class GetCompanyByIdQueryHandler : RequestHandlerBase<GetCompanyByIdQuery, RequestResult<GetCompanyByIdDto>, Company, int>
+    public sealed class GetCompanyByIdQueryHandler : RequestHandlerBase<GetCompanyByIdQuery, RequestResult<GetCompanyByIdDto>, Company, Guid>
     {
-        public GetCompanyByIdQueryHandler(RequestHandlerBaseParameters<Company, int> parameters) : base(parameters)
+        public GetCompanyByIdQueryHandler(RequestHandlerBaseParameters<Company, Guid> parameters) : base(parameters)
         {
         }
 
@@ -25,3 +25,4 @@ namespace HRManagementSystem.Features.CompanyManagement.GetCompanyById.Queries
 
     }
 }
+

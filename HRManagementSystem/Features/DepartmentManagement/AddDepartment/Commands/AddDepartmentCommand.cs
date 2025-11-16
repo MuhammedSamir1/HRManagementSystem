@@ -1,15 +1,15 @@
-﻿using HRManagementSystem.Features.Common.Dtos;
+using HRManagementSystem.Features.Common.Dtos;
 
 namespace HRManagementSystem.Features.DepartmentManagement.AddDepartment.Commands
 {
     public record AddDepartmentCommand(
-                                   int branchId, string name,
+                                   Guid branchId, string name,
                                    string code, string? description)
                                    : IRequest<RequestResult<CreatedIdDto>>;
 
-    public sealed class AddDepartmentCommandHandler : RequestHandlerBase<AddDepartmentCommand, RequestResult<CreatedIdDto>, Department, int>
+    public sealed class AddDepartmentCommandHandler : RequestHandlerBase<AddDepartmentCommand, RequestResult<CreatedIdDto>, Department, Guid>
     {
-        public AddDepartmentCommandHandler(RequestHandlerBaseParameters<Department, int> parameters) : base(parameters)
+        public AddDepartmentCommandHandler(RequestHandlerBaseParameters<Department, Guid> parameters) : base(parameters)
         {
         }
 
@@ -26,3 +26,4 @@ namespace HRManagementSystem.Features.DepartmentManagement.AddDepartment.Command
         }
     }
 }
+

@@ -1,13 +1,13 @@
-﻿using AutoMapper.QueryableExtensions;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.DepartmentManagement.GetAllDepartments.Queries
 {
     public record GetAllDepartmentsQuery() : IRequest<RequestResult<IEnumerable<GetAllDepartmentsDto>>>;
 
-    public sealed class GetAllDepartmentsQueryHandler : RequestHandlerBase<GetAllDepartmentsQuery, RequestResult<IEnumerable<GetAllDepartmentsDto>>, Department, int>
+    public sealed class GetAllDepartmentsQueryHandler : RequestHandlerBase<GetAllDepartmentsQuery, RequestResult<IEnumerable<GetAllDepartmentsDto>>, Department, Guid>
     {
-        public GetAllDepartmentsQueryHandler(RequestHandlerBaseParameters<Department, int> parameters) : base(parameters)
+        public GetAllDepartmentsQueryHandler(RequestHandlerBaseParameters<Department, Guid> parameters) : base(parameters)
         {
         }
 
@@ -24,3 +24,4 @@ namespace HRManagementSystem.Features.DepartmentManagement.GetAllDepartments.Que
         }
     }
 }
+

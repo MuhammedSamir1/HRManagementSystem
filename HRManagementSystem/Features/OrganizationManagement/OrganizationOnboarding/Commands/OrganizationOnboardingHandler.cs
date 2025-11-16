@@ -1,4 +1,4 @@
-﻿using HRManagementSystem.Features.BranchManagement.AddBranch.Commands;
+using HRManagementSystem.Features.BranchManagement.AddBranch.Commands;
 using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
 using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.Dtos;
 using HRManagementSystem.Features.CompanyManagement.AddCompany.Commands;
@@ -9,9 +9,9 @@ using HRManagementSystem.Features.TeamManagement.AddTeam.Commands;
 namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding.Commands
 {
     public sealed class OrganizationOnboardingHandler
-        : RequestHandlerBase<OrganizationOnboardingCommand, RequestResult<ViewOrganizationOnboardingDto>, Organization, int>
+        : RequestHandlerBase<OrganizationOnboardingCommand, RequestResult<ViewOrganizationOnboardingDto>, Organization, Guid>
     {
-        public OrganizationOnboardingHandler(RequestHandlerBaseParameters<Organization, int> parameters)
+        public OrganizationOnboardingHandler(RequestHandlerBaseParameters<Organization, Guid> parameters)
             : base(parameters)
         {
         }
@@ -132,3 +132,4 @@ namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboard
         }
     }
 }
+

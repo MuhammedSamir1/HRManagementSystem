@@ -1,13 +1,13 @@
-﻿using AutoMapper.QueryableExtensions;
+using AutoMapper.QueryableExtensions;
 using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.CountryManagement.GetAllCountries.Queries
 {
-    public sealed class GetAllCountriesQueryHandler : RequestHandlerBase<GetAllCountriesQuery, RequestResult<List<ViewCountryDto>>, Country, int>
+    public sealed class GetAllCountriesQueryHandler : RequestHandlerBase<GetAllCountriesQuery, RequestResult<List<ViewCountryDto>>, Country, Guid>
     {
-        public GetAllCountriesQueryHandler(RequestHandlerBaseParameters<Country, int> parameters) : base(parameters)
+        public GetAllCountriesQueryHandler(RequestHandlerBaseParameters<Country, Guid> parameters) : base(parameters)
         {
         }
 
@@ -15,7 +15,7 @@ namespace HRManagementSystem.Features.CountryManagement.GetAllCountries.Queries
         {
             var countryDtos = await _generalRepo
            .Get(x => !x.IsDeleted, ct)
-           .OrderBy(x => x.Name) // مهم جداً: sorting في ال DB
+           .OrderBy(x => x.Name) // ??? ????: sorting ?? ?? DB
            .ProjectTo<ViewCountryDto>(_mapper.ConfigurationProvider)
            .ToListAsync(ct);
 
@@ -23,3 +23,4 @@ namespace HRManagementSystem.Features.CountryManagement.GetAllCountries.Queries
         }
     }
 }
+

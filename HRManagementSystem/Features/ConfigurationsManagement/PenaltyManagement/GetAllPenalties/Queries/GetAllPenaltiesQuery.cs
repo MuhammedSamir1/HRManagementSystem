@@ -5,9 +5,9 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
 {
     public sealed record GetAllPenaltiesQuery() : IRequest<RequestResult<PagedList<ViewPenaltyDto>>>;
 
-    public class GetAllPenaltiesQueryHandler : RequestHandlerBase<GetAllPenaltiesQuery, RequestResult<PagedList<ViewPenaltyDto>>, Penalty, int>
+    public class GetAllPenaltiesQueryHandler : RequestHandlerBase<GetAllPenaltiesQuery, RequestResult<PagedList<ViewPenaltyDto>>, Penalty, Guid>
     {
-        public GetAllPenaltiesQueryHandler(RequestHandlerBaseParameters<Penalty, int> parameters)
+        public GetAllPenaltiesQueryHandler(RequestHandlerBaseParameters<Penalty, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<PagedList<ViewPenaltyDto>>> Handle(GetAllPenaltiesQuery request, CancellationToken ct)
@@ -26,3 +26,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
         }
     }
 }
+

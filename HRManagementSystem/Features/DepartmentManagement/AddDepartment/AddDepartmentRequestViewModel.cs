@@ -1,9 +1,9 @@
-﻿using FluentValidation;
+using FluentValidation;
 
 namespace HRManagementSystem.Features.DepartmentManagement.AddDepartment
 {
     public record AddDepartmentRequestViewModel(
-                               int branchId, string name,
+                               Guid branchId, string name,
                                string code, string? description);
 
     public class AddDepartmentRequestViewModelValidator : AbstractValidator<AddDepartmentRequestViewModel>
@@ -12,7 +12,7 @@ namespace HRManagementSystem.Features.DepartmentManagement.AddDepartment
         {
             // BranchId validation
             RuleFor(x => x.branchId)
-                .GreaterThan(0).WithMessage("Organization ID must be greater than zero.");
+                .NotEqual(Guid.Empty).WithMessage("Organization ID must be greater than zero.");
 
             // Name validation
             RuleFor(x => x.name)
@@ -30,3 +30,5 @@ namespace HRManagementSystem.Features.DepartmentManagement.AddDepartment
     }
 
 }
+
+

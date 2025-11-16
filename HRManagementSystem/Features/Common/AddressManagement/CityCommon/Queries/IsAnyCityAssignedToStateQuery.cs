@@ -1,12 +1,12 @@
-﻿using HRManagementSystem.Data.Models.AddressEntity;
+using HRManagementSystem.Data.Models.AddressEntity;
 
 namespace HRManagementSystem.Features.Common.AddressManagement.CityCommon.Queries
 {
-    public record IsAnyCityAssignedToStateQuery(int stateId) : IRequest<RequestResult<bool>>;
+    public record IsAnyCityAssignedToStateQuery(Guid stateId) : IRequest<RequestResult<bool>>;
 
-    public class IsAnyCityAssignedToStateQueryHandler : RequestHandlerBase<IsAnyCityAssignedToStateQuery, RequestResult<bool>, City, int>
+    public class IsAnyCityAssignedToStateQueryHandler : RequestHandlerBase<IsAnyCityAssignedToStateQuery, RequestResult<bool>, City, Guid>
     {
-        public IsAnyCityAssignedToStateQueryHandler(RequestHandlerBaseParameters<City, int> _params) : base(_params)
+        public IsAnyCityAssignedToStateQueryHandler(RequestHandlerBaseParameters<City, Guid> _params) : base(_params)
         {
 
         }
@@ -27,3 +27,4 @@ namespace HRManagementSystem.Features.Common.AddressManagement.CityCommon.Querie
     }
 
 }
+

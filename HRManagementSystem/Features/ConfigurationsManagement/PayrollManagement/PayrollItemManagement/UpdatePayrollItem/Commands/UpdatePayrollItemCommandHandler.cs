@@ -4,10 +4,10 @@ using HRManagementSystem.Features.Common.PayrollCommon;
 namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.UpdatePayrollItem.Commands
 {
     public sealed class UpdatePayrollItemCommandHandler :
-     RequestHandlerBase<UpdatePayrollItemCommand, RequestResult<PayrollItemDto>, PayrollItem, int>
+     RequestHandlerBase<UpdatePayrollItemCommand, RequestResult<PayrollItemDto>, PayrollItem, Guid>
     {
         public UpdatePayrollItemCommandHandler(
-            RequestHandlerBaseParameters<PayrollItem, int> parameters)
+            RequestHandlerBaseParameters<PayrollItem, Guid> parameters)
             : base(parameters)
         {
         }
@@ -58,3 +58,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
         }
     }
 }
+

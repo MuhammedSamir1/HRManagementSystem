@@ -11,7 +11,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagemen
         decimal ContractValue,
         ContractType ContractType,
         ContractStatus Status,
-        int? EmployeeId,
         string? Terms);
 
     public class AddContractRequestViewModelValidator : AbstractValidator<AddContractRequestViewModel>
@@ -45,4 +44,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagemen
         }
     }
 }
+
 

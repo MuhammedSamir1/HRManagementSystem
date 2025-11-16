@@ -1,8 +1,8 @@
-﻿using FluentValidation;
+using FluentValidation;
 
 namespace HRManagementSystem.Features.BranchManagement.DeleteBranch
 {
-    public sealed record DeleteBranchViewModel(int Id);
+    public sealed record DeleteBranchViewModel(Guid Id);
 
 
 
@@ -12,7 +12,9 @@ namespace HRManagementSystem.Features.BranchManagement.DeleteBranch
         {
             RuleFor(d => d.Id)
                 .NotEmpty().WithMessage("Id is required.")
-                .GreaterThan(0).WithMessage("Id must be greater than 0");
+                .NotEqual(Guid.Empty).WithMessage("Id must be greater than 0");
         }
     }
 }
+
+

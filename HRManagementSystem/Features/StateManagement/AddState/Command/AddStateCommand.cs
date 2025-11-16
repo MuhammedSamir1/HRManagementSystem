@@ -1,16 +1,16 @@
-﻿using HRManagementSystem.Data.Models.AddressEntity;
+using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.Common.AddressManagement.StateCommon.Dtos;
 using HRManagementSystem.Features.Common.AddressManagement.StateCommon.IsStateExistWithSameCode.Query;
 
 namespace HRManagementSystem.Features.StateManagement.AddState.Command
 {
-    public sealed record AddStateCommand(string Code, string Name, int CountryId) : IRequest<RequestResult<ViewStateDto>>;
+    public sealed record AddStateCommand(string Code, string Name, Guid CountryId) : IRequest<RequestResult<ViewStateDto>>;
 
 
     public sealed class AddStateCommandHandler : RequestHandlerBase<AddStateCommand,
-        RequestResult<ViewStateDto>, State, int>
+        RequestResult<ViewStateDto>, State, Guid>
     {
-        public AddStateCommandHandler(RequestHandlerBaseParameters<State, int> parameters)
+        public AddStateCommandHandler(RequestHandlerBaseParameters<State, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<ViewStateDto>> Handle(AddStateCommand request, CancellationToken ct)
@@ -39,3 +39,4 @@ namespace HRManagementSystem.Features.StateManagement.AddState.Command
         }
     }
 }
+

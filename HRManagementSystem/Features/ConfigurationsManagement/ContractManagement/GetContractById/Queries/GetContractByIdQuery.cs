@@ -2,11 +2,11 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.GetContractById.Queries
 {
-    public record GetContractByIdQuery(int Id) : IRequest<RequestResult<GetContractByIdDto>>;
+    public record GetContractByIdQuery(Guid Id) : IRequest<RequestResult<GetContractByIdDto>>;
 
-    public class GetContractByIdQueryHandler : RequestHandlerBase<GetContractByIdQuery, RequestResult<GetContractByIdDto>, Contract, int>
+    public class GetContractByIdQueryHandler : RequestHandlerBase<GetContractByIdQuery, RequestResult<GetContractByIdDto>, Contract, Guid>
     {
-        public GetContractByIdQueryHandler(RequestHandlerBaseParameters<Contract, int> parameters)
+        public GetContractByIdQueryHandler(RequestHandlerBaseParameters<Contract, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<GetContractByIdDto>> Handle(GetContractByIdQuery request, CancellationToken ct)
@@ -22,4 +22,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagemen
         }
     }
 }
+
 

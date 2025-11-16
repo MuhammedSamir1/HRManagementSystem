@@ -2,11 +2,11 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.DeleteBonus.Commands
 {
-    public sealed record DeleteBonusCommand(int Id) : IRequest<RequestResult<bool>>;
+    public sealed record DeleteBonusCommand(Guid Id) : IRequest<RequestResult<bool>>;
 
-    public class DeleteBonusCommandHandler : RequestHandlerBase<DeleteBonusCommand, RequestResult<bool>, Bonus, int>
+    public class DeleteBonusCommandHandler : RequestHandlerBase<DeleteBonusCommand, RequestResult<bool>, Bonus, Guid>
     {
-        public DeleteBonusCommandHandler(RequestHandlerBaseParameters<Bonus, int> parameters)
+        public DeleteBonusCommandHandler(RequestHandlerBaseParameters<Bonus, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(DeleteBonusCommand request, CancellationToken ct)
@@ -20,3 +20,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.D
         }
     }
 }
+

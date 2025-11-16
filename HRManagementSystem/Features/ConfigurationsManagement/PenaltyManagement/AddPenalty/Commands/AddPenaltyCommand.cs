@@ -8,25 +8,25 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
         decimal Amount,
         DateTime PenaltyDate,
         string? Reason,
-        PenaltyStatus Status,
-        int? EmployeeId)
-        : IRequest<RequestResult<int>>;
+        PenaltyStatus Status)
+        : IRequest<RequestResult<Guid>>;
 
-    public class AddPenaltyCommandHandler : RequestHandlerBase<AddPenaltyCommand, RequestResult<int>, Penalty, int>
+    public class AddPenaltyCommandHandler : RequestHandlerBase<AddPenaltyCommand, RequestResult<Guid>, Penalty, Guid>
     {
-        public AddPenaltyCommandHandler(RequestHandlerBaseParameters<Penalty, int> parameters)
+        public AddPenaltyCommandHandler(RequestHandlerBaseParameters<Penalty, Guid> parameters)
             : base(parameters) { }
 
-        public override async Task<RequestResult<int>> Handle(AddPenaltyCommand request, CancellationToken ct)
+        public override async Task<RequestResult<Guid>> Handle(AddPenaltyCommand request, CancellationToken ct)
         {
             var penalty = _mapper.Map<Penalty>(request);
 
             var isAdded = await _generalRepo.AddAsync(penalty, ct);
 
             if (!isAdded)
-                return RequestResult<int>.Failure("Penalty wasn't added successfully!", ErrorCode.InternalServerError);
+                return RequestResult<Guid>.Failure("Penalty wasn't added successfully!", ErrorCode.InternalServerError);
 
-            return RequestResult<int>.Success(penalty.Id, "Penalty added successfully!");
+            return RequestResult<Guid>.Success(penalty.Id, "Penalty added successfully!");
         }
     }
 }
+

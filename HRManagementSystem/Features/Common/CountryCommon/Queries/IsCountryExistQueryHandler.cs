@@ -1,12 +1,12 @@
-﻿using HRManagementSystem.Data.Models.AddressEntity;
+using HRManagementSystem.Data.Models.AddressEntity;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.Common.CountryCommon.Queries
 {
-    public sealed class IsCountryExistQueryHandler : RequestHandlerBase<IsCountryExistQuery, RequestResult<bool>, Country, int>
+    public sealed class IsCountryExistQueryHandler : RequestHandlerBase<IsCountryExistQuery, RequestResult<bool>, Country, Guid>
     {
 
-        public IsCountryExistQueryHandler(RequestHandlerBaseParameters<Country, int> parameters) : base(parameters) { }
+        public IsCountryExistQueryHandler(RequestHandlerBaseParameters<Country, Guid> parameters) : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(IsCountryExistQuery request, CancellationToken ct)
         {
@@ -23,3 +23,4 @@ namespace HRManagementSystem.Features.Common.CountryCommon.Queries
         }
     }
 }
+

@@ -4,19 +4,18 @@ using Microsoft.EntityFrameworkCore;
 namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.UpdateSalaryItem.Commands
 {
     public sealed record UpdateSalaryItemCommand(
-        int Id,
+        Guid Id,
         string Name,
         string? Description,
         decimal Amount,
         PayrollItemType ItemType,
         bool IsFixed,
-        bool IsRecurring,
-        int? EmployeeId)
+        bool IsRecurring)
         : IRequest<RequestResult<bool>>;
 
-    public class UpdateSalaryItemCommandHandler : RequestHandlerBase<UpdateSalaryItemCommand, RequestResult<bool>, SalaryItem, int>
+    public class UpdateSalaryItemCommandHandler : RequestHandlerBase<UpdateSalaryItemCommand, RequestResult<bool>, SalaryItem, Guid>
     {
-        public UpdateSalaryItemCommandHandler(RequestHandlerBaseParameters<SalaryItem, int> parameters)
+        public UpdateSalaryItemCommandHandler(RequestHandlerBaseParameters<SalaryItem, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(UpdateSalaryItemCommand request, CancellationToken ct)
@@ -36,7 +35,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
             salaryItem.ItemType = request.ItemType;
             salaryItem.IsFixed = request.IsFixed;
             salaryItem.IsRecurring = request.IsRecurring;
-            salaryItem.EmployeeId = request.EmployeeId;
 
             await _generalRepo.UpdateAsync(salaryItem, ct);
 
@@ -44,3 +42,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
         }
     }
 }
+

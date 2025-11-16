@@ -1,9 +1,9 @@
-﻿namespace HRManagementSystem.Features.BranchManagement.DeleteBranch.Commands;
+namespace HRManagementSystem.Features.BranchManagement.DeleteBranch.Commands;
 
 public sealed class DeleteBranchCommandHandler : RequestHandlerBase<DeleteBranchCommand,
-        RequestResult<bool>, Branch, int>
+        RequestResult<bool>, Branch, Guid>
 {
-    public DeleteBranchCommandHandler(RequestHandlerBaseParameters<Branch, int> parameters)
+    public DeleteBranchCommandHandler(RequestHandlerBaseParameters<Branch, Guid> parameters)
         : base(parameters) { }
 
     public override async Task<RequestResult<bool>> Handle(DeleteBranchCommand request, CancellationToken ct)
@@ -13,3 +13,4 @@ public sealed class DeleteBranchCommandHandler : RequestHandlerBase<DeleteBranch
         return RequestResult<bool>.Success(isDeleted);
     }
 }
+

@@ -5,6 +5,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
      DateTime StartDate,
      DateTime EndDate,
      bool IsMandatory,
-     HolidayType Type,
-     int? CompanyId) : IRequest<RequestResult<bool>>;
+     HolidayType Type) : IRequest<RequestResult<bool>>;
 }
+

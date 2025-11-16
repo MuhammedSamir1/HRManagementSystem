@@ -3,21 +3,21 @@ using FluentValidation;
 namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.UpdateSalaryItem
 {
     public sealed record UpdateSalaryItemViewModel(
-        int Id,
+        Guid Id,
         string Name,
         string? Description,
         decimal Amount,
         PayrollItemType ItemType,
         bool IsFixed,
-        bool IsRecurring,
-        int? EmployeeId);
+        bool IsRecurring);
 
     public sealed class UpdateSalaryItemViewModelValidator : AbstractValidator<UpdateSalaryItemViewModel>
     {
         public UpdateSalaryItemViewModelValidator()
         {
             RuleFor(x => x.Id)
-                .GreaterThan(0).WithMessage("Id must be greater than 0.");
+                .NotEmpty().WithMessage("Id is required.")
+                .NotEqual(Guid.Empty).WithMessage("Id must be provided.");
 
             RuleFor(x => x.Name)
                 .NotEmpty().WithMessage("Name is required.")
@@ -32,4 +32,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
         }
     }
 }
+
+
 

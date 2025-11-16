@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HRManagementSystem.Data.Models
 {
-    public class Organization : BaseModel<int>
+    public class Organization : BaseModel<Guid>
     {
         [Required]
         [MaxLength(150)]
@@ -11,7 +11,7 @@ namespace HRManagementSystem.Data.Models
         public string? Description { get; set; }
         public string? LegalName { get; set; }
         public string? Industry { get; set; }
-        public int? AddressId { get; set; }
+        public Guid? AddressId { get; set; }
         [Required]
         public Address Address { get; set; } = default!;
         public DateTime? DefaultTimezone { get; set; } = DateTime.UtcNow;

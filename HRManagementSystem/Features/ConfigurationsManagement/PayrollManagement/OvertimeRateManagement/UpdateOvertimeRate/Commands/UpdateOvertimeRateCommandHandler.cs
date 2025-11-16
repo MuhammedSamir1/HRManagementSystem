@@ -4,10 +4,10 @@ using HRManagementSystem.Features.Common.PayrollCommon;
 namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.OvertimeRateManagement.UpdateOvertimeRate.Commands
 {
     public sealed class UpdateOvertimeRateCommandHandler :
-         RequestHandlerBase<UpdateOvertimeRateCommand, RequestResult<OvertimeRateDto>, OvertimeRate, int>
+         RequestHandlerBase<UpdateOvertimeRateCommand, RequestResult<OvertimeRateDto>, OvertimeRate, Guid>
     {
         public UpdateOvertimeRateCommandHandler(
-            RequestHandlerBaseParameters<OvertimeRate, int> parameters)
+            RequestHandlerBaseParameters<OvertimeRate, Guid> parameters)
             : base(parameters)
         {
         }
@@ -56,3 +56,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
         }
     }
 }
+

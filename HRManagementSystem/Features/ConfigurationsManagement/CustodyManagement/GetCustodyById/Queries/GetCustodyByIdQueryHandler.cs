@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore;
 namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.GetCustodyById.Queries
 {
     public sealed class GetCustodyByIdQueryHandler :
-          RequestHandlerBase<GetCustodyByIdQuery, RequestResult<ViewCustodyDto>, Custody, int>
+          RequestHandlerBase<GetCustodyByIdQuery, RequestResult<ViewCustodyDto>, Custody, Guid>
     {
         public GetCustodyByIdQueryHandler(
-            RequestHandlerBaseParameters<Custody, int> parameters)
+            RequestHandlerBaseParameters<Custody, Guid> parameters)
             : base(parameters)
         {
         }
@@ -39,3 +39,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement
         }
     }
 }
+

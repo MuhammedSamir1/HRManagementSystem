@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodManagement.GetProbationPeriodById.Queries
 {
-    public sealed record GetProbationPeriodByIdQuery(int Id) : IRequest<RequestResult<ViewProbationPeriodByIdDto>>;
+    public sealed record GetProbationPeriodByIdQuery(Guid Id) : IRequest<RequestResult<ViewProbationPeriodByIdDto>>;
 
     public sealed class GetProbationPeriodByIdQueryHandler : RequestHandlerBase<GetProbationPeriodByIdQuery,
-        RequestResult<ViewProbationPeriodByIdDto>, ProbationPeriod, int>
+        RequestResult<ViewProbationPeriodByIdDto>, ProbationPeriod, Guid>
     {
-        public GetProbationPeriodByIdQueryHandler(RequestHandlerBaseParameters<ProbationPeriod, int> parameters)
+        public GetProbationPeriodByIdQueryHandler(RequestHandlerBaseParameters<ProbationPeriod, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<ViewProbationPeriodByIdDto>> Handle(GetProbationPeriodByIdQuery request, CancellationToken ct)
@@ -25,4 +25,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodMa
         }
     }
 }
+
 

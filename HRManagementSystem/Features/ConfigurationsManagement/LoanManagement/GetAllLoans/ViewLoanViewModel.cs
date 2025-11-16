@@ -1,7 +1,7 @@
 namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.GetAllLoans
 {
     public sealed record ViewLoanViewModel(
-        int Id,
+        Guid Id,
         string Title,
         string? Description,
         decimal Amount,
@@ -10,7 +10,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Ge
         int InstallmentMonths,
         DateTime LoanDate,
         DateTime? StartDeductionDate,
-        LoanStatus Status,
-        int? EmployeeId);
+        LoanStatus Status);
 }
+
 

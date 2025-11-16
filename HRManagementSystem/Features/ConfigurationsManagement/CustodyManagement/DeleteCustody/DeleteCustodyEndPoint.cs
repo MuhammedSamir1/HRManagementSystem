@@ -1,18 +1,18 @@
-﻿using HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.DeleteCustody.Commands;
+using HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.DeleteCustody.Commands;
 
 namespace HRManagementSystem.Features.Configurations.CustodyManagement.DeleteCustody
 {
-    public class DeleteCustodyEndPoint : BaseEndPoint<int, ResponseViewModel<bool>>
+    public class DeleteCustodyEndPoint : BaseEndPoint<Guid, ResponseViewModel<bool>>
     {
 
-        public DeleteCustodyEndPoint(EndPointBaseParameters<int> parameters)
+        public DeleteCustodyEndPoint(EndPointBaseParameters<Guid> parameters)
             : base(parameters)
         {
 
         }
 
         [HttpDelete("{id:int}")]
-        public async Task<ResponseViewModel<bool>> DeleteCustody(int id, CancellationToken ct)
+        public async Task<ResponseViewModel<bool>> DeleteCustody(Guid id, CancellationToken ct)
         {
 
             var command = new DeleteCustodyCommand(id);
@@ -32,3 +32,4 @@ namespace HRManagementSystem.Features.Configurations.CustodyManagement.DeleteCus
         }
     }
 }
+

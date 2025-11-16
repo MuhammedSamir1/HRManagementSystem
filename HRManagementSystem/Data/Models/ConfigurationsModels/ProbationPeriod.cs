@@ -1,6 +1,6 @@
 namespace HRManagementSystem.Data.Models.ConfigurationsModels
 {
-    public class ProbationPeriod : BaseModel<int>
+    public class ProbationPeriod : BaseModel<Guid>
     {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

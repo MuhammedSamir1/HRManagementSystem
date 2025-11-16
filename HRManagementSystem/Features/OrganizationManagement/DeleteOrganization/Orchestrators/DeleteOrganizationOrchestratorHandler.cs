@@ -1,17 +1,17 @@
-﻿using HRManagementSystem.Features.Common.IsAnyChildAssignedGeneric;
+using HRManagementSystem.Features.Common.IsAnyChildAssignedGeneric;
 using HRManagementSystem.Features.OrganizationManagement.DeleteOrganization.Commands;
 
 namespace HRManagementSystem.Features.OrganizationManagement.DeleteOrganization.Orchestrators;
 
 public sealed class DeleteOrganizationOrchestratorHandler : RequestHandlerBase<DeleteOrganizationOrchestrator,
-       RequestResult<bool>, Organization, int>
+       RequestResult<bool>, Organization, Guid>
 {
-    public DeleteOrganizationOrchestratorHandler(RequestHandlerBaseParameters<Organization, int> parameters)
+    public DeleteOrganizationOrchestratorHandler(RequestHandlerBaseParameters<Organization, Guid> parameters)
         : base(parameters) { }
 
     public override async Task<RequestResult<bool>> Handle(DeleteOrganizationOrchestrator request, CancellationToken ct)
     {
-        var hasBranches = await _mediator.Send(new IsAnyChildAssignedQuery<Organization, Company, int>(request.Id), ct);
+        var hasBranches = await _mediator.Send(new IsAnyChildAssignedQuery<Organization, Company, Guid>(request.Id), ct);
         if (hasBranches.data)
         {
             return RequestResult<bool>.Failure("Cannot delete Organization. There are Companies assigned to this Organization.");
@@ -21,3 +21,4 @@ public sealed class DeleteOrganizationOrchestratorHandler : RequestHandlerBase<D
         return RequestResult<bool>.Success(isDeleted.isSuccess, isDeleted.message);
     }
 }
+

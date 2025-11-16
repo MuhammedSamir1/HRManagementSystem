@@ -2,12 +2,12 @@ using HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Delete
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.DeleteLoan
 {
-    public class DeleteLoanEndPoint : BaseEndPoint<int, ResponseViewModel<bool>>
+    public class DeleteLoanEndPoint : BaseEndPoint<Guid, ResponseViewModel<bool>>
     {
-        public DeleteLoanEndPoint(EndPointBaseParameters<int> parameters) : base(parameters) { }
+        public DeleteLoanEndPoint(EndPointBaseParameters<Guid> parameters) : base(parameters) { }
 
         [HttpDelete("{id:int}")]
-        public async Task<ResponseViewModel<bool>> DeleteLoan(int id, CancellationToken ct)
+        public async Task<ResponseViewModel<bool>> DeleteLoan(Guid id, CancellationToken ct)
         {
             var command = new DeleteLoanCommand(id);
             var result = await _mediator.Send(command, ct);
@@ -21,3 +21,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.De
         }
     }
 }
+

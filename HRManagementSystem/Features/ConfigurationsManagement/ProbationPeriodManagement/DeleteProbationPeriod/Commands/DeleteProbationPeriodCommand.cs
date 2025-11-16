@@ -2,13 +2,13 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodManagement.DeleteProbationPeriod.Commands
 {
-    public sealed record DeleteProbationPeriodCommand(int Id) : IRequest<RequestResult<bool>>;
+    public sealed record DeleteProbationPeriodCommand(Guid Id) : IRequest<RequestResult<bool>>;
 
 
     public sealed class DeleteProbationPeriodCommandHandler : RequestHandlerBase<DeleteProbationPeriodCommand,
-        RequestResult<bool>, ProbationPeriod, int>
+        RequestResult<bool>, ProbationPeriod, Guid>
     {
-        public DeleteProbationPeriodCommandHandler(RequestHandlerBaseParameters<ProbationPeriod, int> parameters)
+        public DeleteProbationPeriodCommandHandler(RequestHandlerBaseParameters<ProbationPeriod, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(DeleteProbationPeriodCommand request, CancellationToken cancellationToken)
@@ -19,4 +19,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodMa
         }
     }
 }
+
 

@@ -2,13 +2,13 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.DeleteCustody.Commands
 {
-    public sealed class DeleteCustodyCommandHandler : RequestHandlerBase<DeleteCustodyCommand, RequestResult<bool>, Custody, int>
+    public sealed class DeleteCustodyCommandHandler : RequestHandlerBase<DeleteCustodyCommand, RequestResult<bool>, Custody, Guid>
     {
 
 
 
         public DeleteCustodyCommandHandler(
-            RequestHandlerBaseParameters<Custody, int> parameters
+            RequestHandlerBaseParameters<Custody, Guid> parameters
          )
             : base(parameters)
         {
@@ -33,3 +33,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement
         }
     }
 }
+

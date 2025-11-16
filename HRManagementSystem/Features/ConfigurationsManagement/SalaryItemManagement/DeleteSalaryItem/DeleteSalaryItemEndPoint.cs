@@ -2,12 +2,12 @@ using HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.DeleteSalaryItem
 {
-    public class DeleteSalaryItemEndPoint : BaseEndPoint<int, ResponseViewModel<bool>>
+    public class DeleteSalaryItemEndPoint : BaseEndPoint<Guid, ResponseViewModel<bool>>
     {
-        public DeleteSalaryItemEndPoint(EndPointBaseParameters<int> parameters) : base(parameters) { }
+        public DeleteSalaryItemEndPoint(EndPointBaseParameters<Guid> parameters) : base(parameters) { }
 
         [HttpDelete("{id:int}")]
-        public async Task<ResponseViewModel<bool>> DeleteSalaryItem(int id, CancellationToken ct)
+        public async Task<ResponseViewModel<bool>> DeleteSalaryItem(Guid id, CancellationToken ct)
         {
             var command = new DeleteSalaryItemCommand(id);
             var result = await _mediator.Send(command, ct);
@@ -21,3 +21,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
         }
     }
 }
+

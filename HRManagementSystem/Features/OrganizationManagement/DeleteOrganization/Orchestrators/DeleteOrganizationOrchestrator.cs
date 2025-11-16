@@ -1,4 +1,5 @@
-﻿namespace HRManagementSystem.Features.OrganizationManagement.DeleteOrganization.Orchestrators;
+namespace HRManagementSystem.Features.OrganizationManagement.DeleteOrganization.Orchestrators;
 
-public sealed record DeleteOrganizationOrchestrator(int Id) : IRequest<RequestResult<bool>>;
+public sealed record DeleteOrganizationOrchestrator(Guid Id) : IRequest<RequestResult<bool>>;
+
 

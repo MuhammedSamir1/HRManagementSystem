@@ -3,13 +3,13 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.OvertimeRateManagement.DeleteOvertimeRate.Commands
 {
     public sealed class DeleteOvertimeRateCommandHandler :
-         RequestHandlerBase<DeleteOvertimeRateCommand, RequestResult<bool>, OvertimeRate, int>
+         RequestHandlerBase<DeleteOvertimeRateCommand, RequestResult<bool>, OvertimeRate, Guid>
     {
         private readonly ILogger<DeleteOvertimeRateCommandHandler> _logger;
 
         // ??? ???? repository ??? ?????? ?? ???? ????? (????? payroll items) ???? ?? parameter ???.
         public DeleteOvertimeRateCommandHandler(
-            RequestHandlerBaseParameters<OvertimeRate, int> parameters,
+            RequestHandlerBaseParameters<OvertimeRate, Guid> parameters,
             IMapper mapper,
             ILogger<DeleteOvertimeRateCommandHandler> logger)
             : base(parameters)
@@ -79,3 +79,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
         }
     }
 }
+

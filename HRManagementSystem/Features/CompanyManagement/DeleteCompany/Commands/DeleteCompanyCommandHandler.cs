@@ -1,9 +1,9 @@
-﻿namespace HRManagementSystem.Features.CompanyManagement.DeleteCompany.Commands;
+namespace HRManagementSystem.Features.CompanyManagement.DeleteCompany.Commands;
 
 public sealed class DeleteCompanyCommandHandler : RequestHandlerBase<DeleteCompanyCommand,
-RequestResult<bool>, Company, int>
+RequestResult<bool>, Company, Guid>
 {
-    public DeleteCompanyCommandHandler(RequestHandlerBaseParameters<Company, int> parameters) : base(parameters)
+    public DeleteCompanyCommandHandler(RequestHandlerBaseParameters<Company, Guid> parameters) : base(parameters)
     { }
 
     public override async Task<RequestResult<bool>> Handle(DeleteCompanyCommand request, CancellationToken ct)

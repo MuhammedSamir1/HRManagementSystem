@@ -2,9 +2,9 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.DeleteHoliday.Commands
 {
-    public sealed class DeleteHolidayCommandHandler : RequestHandlerBase<DeleteHolidayCommand, RequestResult<bool>, Holiday, int>
+    public sealed class DeleteHolidayCommandHandler : RequestHandlerBase<DeleteHolidayCommand, RequestResult<bool>, Holiday, Guid>
     {
-        public DeleteHolidayCommandHandler(RequestHandlerBaseParameters<Holiday, int> parameters) : base(parameters) { }
+        public DeleteHolidayCommandHandler(RequestHandlerBaseParameters<Holiday, Guid> parameters) : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(DeleteHolidayCommand request, CancellationToken ct)
         {
@@ -27,3 +27,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
         }
     }
 }
+

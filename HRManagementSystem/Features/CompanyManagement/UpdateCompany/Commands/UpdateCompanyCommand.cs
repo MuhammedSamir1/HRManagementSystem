@@ -1,14 +1,14 @@
-﻿using HRManagementSystem.Features.Common.CompanyCommon.IsCompanyExist.Queries;
+using HRManagementSystem.Features.Common.CompanyCommon.IsCompanyExist.Queries;
 
 namespace HRManagementSystem.Features.CompanyManagement.UpdateCompany.Commands
 {
-    public record UpdateCompanyCommand(int id, string name, string? description)
+    public record UpdateCompanyCommand(Guid id, string name, string? description)
         : IRequest<RequestResult<bool>>;
 
 
-    public class UpdateCompanyCommandHandler : RequestHandlerBase<UpdateCompanyCommand, RequestResult<bool>, Company, int>
+    public class UpdateCompanyCommandHandler : RequestHandlerBase<UpdateCompanyCommand, RequestResult<bool>, Company, Guid>
     {
-        public UpdateCompanyCommandHandler(RequestHandlerBaseParameters<Company, int> parameters) : base(parameters)
+        public UpdateCompanyCommandHandler(RequestHandlerBaseParameters<Company, Guid> parameters) : base(parameters)
         {
         }
 
@@ -25,3 +25,4 @@ namespace HRManagementSystem.Features.CompanyManagement.UpdateCompany.Commands
         }
     }
 }
+

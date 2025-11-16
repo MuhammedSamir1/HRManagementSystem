@@ -1,9 +1,9 @@
-﻿using FluentValidation;
+using FluentValidation;
 using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.ViewModels;
 
 namespace HRManagementSystem.Features.BranchManagement.AddBranch
 {
-    public sealed record AddBranchViewModel(string Name, string? Description, int CompanyId,
+    public sealed record AddBranchViewModel(string Name, string? Description, Guid CompanyId,
         string Code, AddBranchAddressViewModel Address);
 
 
@@ -34,3 +34,4 @@ namespace HRManagementSystem.Features.BranchManagement.AddBranch
         }
     }
 }
+

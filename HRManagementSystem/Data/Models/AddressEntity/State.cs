@@ -1,8 +1,8 @@
 ﻿namespace HRManagementSystem.Data.Models.AddressEntity
 {
-    public sealed class State : BaseModel<int>
+    public sealed class State : BaseModel<Guid>
     {
-        public int CountryId { get; set; }
+        public Guid CountryId { get; set; }
         public Country Country { get; set; } = default!;
 
         public string Code { get; set; } = default!;   // "RIY"

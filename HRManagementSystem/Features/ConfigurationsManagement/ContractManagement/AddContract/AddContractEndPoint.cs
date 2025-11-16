@@ -27,7 +27,6 @@ namespace HRManagementSystem.Features.Configurations.ContractManagement.AddContr
                 request.ContractValue,
                 request.ContractType,
                 request.Status,
-                request.EmployeeId,
                 request.Terms), ct);
 
             if (!result.isSuccess) return ResponseViewModel<bool>.Failure(result.errorCode);

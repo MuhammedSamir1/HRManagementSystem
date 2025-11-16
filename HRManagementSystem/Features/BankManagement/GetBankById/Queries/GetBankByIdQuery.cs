@@ -2,11 +2,11 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.BankManagement.GetBankById.Queries
 {
-    public record GetBankByIdQuery(int Id) : IRequest<RequestResult<GetBankByIdDto>>;
+    public record GetBankByIdQuery(Guid Id) : IRequest<RequestResult<GetBankByIdDto>>;
 
-    public class GetBankByIdQueryHandler : RequestHandlerBase<GetBankByIdQuery, RequestResult<GetBankByIdDto>, Bank, int>
+    public class GetBankByIdQueryHandler : RequestHandlerBase<GetBankByIdQuery, RequestResult<GetBankByIdDto>, Bank, Guid>
     {
-        public GetBankByIdQueryHandler(RequestHandlerBaseParameters<Bank, int> parameters)
+        public GetBankByIdQueryHandler(RequestHandlerBaseParameters<Bank, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<GetBankByIdDto>> Handle(GetBankByIdQuery request, CancellationToken ct)
@@ -22,4 +22,5 @@ namespace HRManagementSystem.Features.BankManagement.GetBankById.Queries
         }
     }
 }
+
 

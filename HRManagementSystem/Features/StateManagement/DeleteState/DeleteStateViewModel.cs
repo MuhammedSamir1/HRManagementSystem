@@ -4,7 +4,7 @@ namespace HRManagementSystem.Features.StateManagement.DeleteState
 {
     public sealed record DeleteStateViewModel
     {
-        public int Id { get; init; }
+        public Guid Id { get; init; }
     }
     public sealed class DeleteStateViewModelValidator : AbstractValidator<DeleteStateViewModel>
     {
@@ -12,7 +12,7 @@ namespace HRManagementSystem.Features.StateManagement.DeleteState
         {
             RuleFor(x => x.Id)
                 .NotEmpty().WithMessage("ID is required.")
-                .GreaterThan(0).WithMessage("ID must be greater than 0.");
+                .NotEqual(Guid.Empty).WithMessage("ID must not be empty.");
         }
     }
 }

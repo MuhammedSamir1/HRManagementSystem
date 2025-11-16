@@ -11,7 +11,7 @@ namespace HRManagementSystem.Features.StateManagement.UpdateState
 
         [HttpPut("{id}")]
         public async Task<ResponseViewModel<ViewStateViewModel>> Update(
-            [FromRoute] int id,
+            [FromRoute] Guid id,
             [FromBody] UpdateStateViewModel model)
         {
             // Ensure ID from route matches ID from body

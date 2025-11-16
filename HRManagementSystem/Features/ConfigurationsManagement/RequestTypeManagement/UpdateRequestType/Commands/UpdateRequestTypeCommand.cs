@@ -2,11 +2,11 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.RequestTypeManagement.UpdateRequestType.Commands
 {
-    public record UpdateRequestTypeCommand(int Id, string Name, string? Description, bool RequiresAttachments) : IRequest<RequestResult<bool>>;
+    public record UpdateRequestTypeCommand(Guid Id, string Name, string? Description, bool RequiresAttachments) : IRequest<RequestResult<bool>>;
 
-    public class UpdateRequestTypeCommandHandler : RequestHandlerBase<UpdateRequestTypeCommand, RequestResult<bool>, RequestType, int>
+    public class UpdateRequestTypeCommandHandler : RequestHandlerBase<UpdateRequestTypeCommand, RequestResult<bool>, RequestType, Guid>
     {
-        public UpdateRequestTypeCommandHandler(RequestHandlerBaseParameters<RequestType, int> parameters)
+        public UpdateRequestTypeCommandHandler(RequestHandlerBaseParameters<RequestType, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(UpdateRequestTypeCommand request, CancellationToken ct)
@@ -26,4 +26,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.RequestTypeManage
         }
     }
 }
+
 

@@ -1,18 +1,18 @@
-﻿using HRManagementSystem.Data.Models.AddressEntity;
+using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Data.Repositories;
 using HRManagementSystem.Features.Common.AddressManagement.StateCommon.Dtos;
 using HRManagementSystem.Features.StateManagement.GetStateById.Queries;
 namespace HRManagementSystem.Features.StateManagement.UpdateState.Command
 {
-    public sealed record UpdateStateCommand(int Id, string Code, string Name, int CountryId) : IRequest<RequestResult<ViewStateDto>>;
+    public sealed record UpdateStateCommand(Guid Id, string Code, string Name, Guid CountryId) : IRequest<RequestResult<ViewStateDto>>;
     public sealed class UpdateStateCommandHandler : RequestHandlerBase<UpdateStateCommand,
-        RequestResult<ViewStateDto>, State, int>
+        RequestResult<ViewStateDto>, State, Guid>
     {
-        private readonly IGeneralRepository<Country, int> _countryRepo;
+        private readonly IGeneralRepository<Country, Guid> _countryRepo;
 
         public UpdateStateCommandHandler(
-            RequestHandlerBaseParameters<State, int> parameters,
-            IGeneralRepository<Country, int> countryRepo)
+            RequestHandlerBaseParameters<State, Guid> parameters,
+            IGeneralRepository<Country, Guid> countryRepo)
             : base(parameters)
         {
             _countryRepo = countryRepo;
@@ -52,3 +52,4 @@ namespace HRManagementSystem.Features.StateManagement.UpdateState.Command
     }
 
 }
+

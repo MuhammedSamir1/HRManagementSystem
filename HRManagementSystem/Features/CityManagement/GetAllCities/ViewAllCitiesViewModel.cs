@@ -1,7 +1,8 @@
-﻿namespace HRManagementSystem.Features.CityManagement.GetAllCities
+namespace HRManagementSystem.Features.CityManagement.GetAllCities
 {
     public sealed record ViewAllCitiesViewModel
-    (int Id,
+    (Guid Id,
         string Name,
-        int StateId);
+        Guid StateId);
 }
+

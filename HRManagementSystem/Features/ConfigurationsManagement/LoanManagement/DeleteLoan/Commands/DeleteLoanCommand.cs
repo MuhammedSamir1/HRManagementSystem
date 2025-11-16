@@ -2,11 +2,11 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.DeleteLoan.Commands
 {
-    public sealed record DeleteLoanCommand(int Id) : IRequest<RequestResult<bool>>;
+    public sealed record DeleteLoanCommand(Guid Id) : IRequest<RequestResult<bool>>;
 
-    public class DeleteLoanCommandHandler : RequestHandlerBase<DeleteLoanCommand, RequestResult<bool>, Loan, int>
+    public class DeleteLoanCommandHandler : RequestHandlerBase<DeleteLoanCommand, RequestResult<bool>, Loan, Guid>
     {
-        public DeleteLoanCommandHandler(RequestHandlerBaseParameters<Loan, int> parameters)
+        public DeleteLoanCommandHandler(RequestHandlerBaseParameters<Loan, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(DeleteLoanCommand request, CancellationToken ct)
@@ -20,3 +20,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.De
         }
     }
 }
+

@@ -8,8 +8,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
         decimal Amount,
         PayrollItemType ItemType,
         bool IsFixed,
-        bool IsRecurring,
-        int? EmployeeId);
+        bool IsRecurring);
 
     public sealed class AddSalaryItemViewModelValidator : AbstractValidator<AddSalaryItemViewModel>
     {
@@ -28,4 +27,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
         }
     }
 }
+
 

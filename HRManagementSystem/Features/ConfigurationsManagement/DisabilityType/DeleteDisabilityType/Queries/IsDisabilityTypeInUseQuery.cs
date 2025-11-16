@@ -1,13 +1,13 @@
 namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.DeleteDisabilityType.Queries
 {
     // Queries/IsDisabilityTypeInUseQuery.cs
-    public record IsDisabilityTypeInUseQuery(int DisabilityTypeId)
+    public record IsDisabilityTypeInUseQuery(Guid DisabilityTypeId)
         : IRequest<RequestResult<bool>>;
 
-    public sealed class IsDisabilityTypeInUseQueryHandler : RequestHandlerBase<IsDisabilityTypeInUseQuery, RequestResult<bool>, Employee, int>
+    public sealed class IsDisabilityTypeInUseQueryHandler : RequestHandlerBase<IsDisabilityTypeInUseQuery, RequestResult<bool>, Employee, Guid>
     {
 
-        public IsDisabilityTypeInUseQueryHandler(RequestHandlerBaseParameters<Employee, int> _parameters) : base(_parameters)
+        public IsDisabilityTypeInUseQueryHandler(RequestHandlerBaseParameters<Employee, Guid> _parameters) : base(_parameters)
         {
 
         }
@@ -19,3 +19,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.De
         }
     }
 }
+

@@ -1,4 +1,5 @@
-﻿namespace HRManagementSystem.Features.Common.AddressManagement.CountryCommon.ViewModels
+namespace HRManagementSystem.Features.Common.AddressManagement.CountryCommon.ViewModels
 {
-    public sealed record ViewCountryViewModel(int Id, string Name);
+    public sealed record ViewCountryViewModel(Guid Id, string Name);
 }
+

@@ -1,15 +1,15 @@
-﻿using HRManagementSystem.Features.Common.Dtos;
+using HRManagementSystem.Features.Common.Dtos;
 
 namespace HRManagementSystem.Features.CompanyManagement.AddCompany.Commands
 {
     public record AddCompanyCommand(
-                                    int organizationId, string name,
+                                    Guid organizationId, string name,
                                     string code, string? description)
                                     : IRequest<RequestResult<CreatedIdDto>>;
 
-    public sealed class AddCompanyCommandHandler : RequestHandlerBase<AddCompanyCommand, RequestResult<CreatedIdDto>, Company, int>
+    public sealed class AddCompanyCommandHandler : RequestHandlerBase<AddCompanyCommand, RequestResult<CreatedIdDto>, Company, Guid>
     {
-        public AddCompanyCommandHandler(RequestHandlerBaseParameters<Company, int> parameters) : base(parameters)
+        public AddCompanyCommandHandler(RequestHandlerBaseParameters<Company, Guid> parameters) : base(parameters)
         {
         }
 
@@ -26,3 +26,4 @@ namespace HRManagementSystem.Features.CompanyManagement.AddCompany.Commands
         }
     }
 }
+

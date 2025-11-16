@@ -1,7 +1,7 @@
 namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagement.GetEndOfServiceById
 {
     public sealed record ViewEndOfServiceByIdViewModel(
-        int Id,
+        Guid Id,
         string Title,
         string? Description,
         decimal Amount,
@@ -10,7 +10,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         int TotalServiceYears,
         int TotalServiceMonths,
         int TotalServiceDays,
-        DateTime? PaymentDate,
-        int? EmployeeId);
+        DateTime? PaymentDate);
 }
+
 

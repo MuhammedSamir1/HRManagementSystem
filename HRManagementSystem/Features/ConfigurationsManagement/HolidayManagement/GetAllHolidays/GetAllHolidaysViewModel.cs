@@ -3,7 +3,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
     public record GetAllHolidaysViewModel(
      //  ???????
      string? Name,
-     int? CompanyId,
      bool? IsMandatory,
 
      //  Pagination  (  Base)
@@ -12,3 +11,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
      string? SortBy,
      string? SortDirection);
 }
+

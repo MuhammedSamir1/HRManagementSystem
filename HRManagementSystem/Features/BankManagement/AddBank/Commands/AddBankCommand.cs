@@ -5,9 +5,9 @@ namespace HRManagementSystem.Features.BankManagement.AddBank.Commands
 {
     public record AddBankCommand(string Name, string Code, string Address) : IRequest<RequestResult<CreatedIdDto>>;
 
-    public class AddBankCommandHandler : RequestHandlerBase<AddBankCommand, RequestResult<CreatedIdDto>, Bank, int>
+    public class AddBankCommandHandler : RequestHandlerBase<AddBankCommand, RequestResult<CreatedIdDto>, Bank, Guid>
     {
-        public AddBankCommandHandler(RequestHandlerBaseParameters<Bank, int> parameters)
+        public AddBankCommandHandler(RequestHandlerBaseParameters<Bank, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<CreatedIdDto>> Handle(AddBankCommand request, CancellationToken ct)
@@ -27,4 +27,5 @@ namespace HRManagementSystem.Features.BankManagement.AddBank.Commands
         }
     }
 }
+
 

@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.TeamManagement.HasAssignedTeams
 {
-    public sealed class HasAssignedTeamsQueryHandler : RequestHandlerBase<HasAssignedTeamsQuery, RequestResult<bool>, Team, int>
+    public sealed class HasAssignedTeamsQueryHandler : RequestHandlerBase<HasAssignedTeamsQuery, RequestResult<bool>, Team, Guid>
     {
-        public HasAssignedTeamsQueryHandler(RequestHandlerBaseParameters<Team, int> parameters) : base(parameters) { }
+        public HasAssignedTeamsQueryHandler(RequestHandlerBaseParameters<Team, Guid> parameters) : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(HasAssignedTeamsQuery request, CancellationToken ct)
         {
@@ -22,3 +22,4 @@ namespace HRManagementSystem.Features.TeamManagement.HasAssignedTeams
         }
     }
 }
+

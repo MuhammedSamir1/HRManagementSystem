@@ -4,12 +4,12 @@ using HRManagementSystem.Features.Common.PayrollCommon;
 namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.OvertimeRateManagement.AddOvertimeRate.Commands
 {
     public sealed class AddOvertimeRateCommandHandler :
-         RequestHandlerBase<AddOvertimeRateCommand, RequestResult<OvertimeRateDto>, OvertimeRate, int>
+         RequestHandlerBase<AddOvertimeRateCommand, RequestResult<OvertimeRateDto>, OvertimeRate, Guid>
     {
 
 
         public AddOvertimeRateCommandHandler(
-            RequestHandlerBaseParameters<OvertimeRate, int> parameters)
+            RequestHandlerBaseParameters<OvertimeRate, Guid> parameters)
             : base(parameters)
         {
 
@@ -51,3 +51,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
         }
     }
 }
+

@@ -3,19 +3,18 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.UpdatePenalty.Commands
 {
     public sealed record UpdatePenaltyCommand(
-        int Id,
+        Guid Id,
         string Title,
         string? Description,
         decimal Amount,
         DateTime PenaltyDate,
         string? Reason,
-        PenaltyStatus Status,
-        int? EmployeeId)
+        PenaltyStatus Status)
         : IRequest<RequestResult<bool>>;
 
-    public class UpdatePenaltyCommandHandler : RequestHandlerBase<UpdatePenaltyCommand, RequestResult<bool>, Penalty, int>
+    public class UpdatePenaltyCommandHandler : RequestHandlerBase<UpdatePenaltyCommand, RequestResult<bool>, Penalty, Guid>
     {
-        public UpdatePenaltyCommandHandler(RequestHandlerBaseParameters<Penalty, int> parameters)
+        public UpdatePenaltyCommandHandler(RequestHandlerBaseParameters<Penalty, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(UpdatePenaltyCommand request, CancellationToken ct)
@@ -31,7 +30,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
             penalty.PenaltyDate = request.PenaltyDate;
             penalty.Reason = request.Reason;
             penalty.Status = request.Status;
-            penalty.EmployeeId = request.EmployeeId;
 
             await _generalRepo.UpdateAsync(penalty, ct);
 
@@ -39,3 +37,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
         }
     }
 }
+

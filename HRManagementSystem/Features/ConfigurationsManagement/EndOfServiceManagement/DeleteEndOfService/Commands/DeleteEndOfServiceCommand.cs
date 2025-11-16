@@ -2,11 +2,11 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagement.DeleteEndOfService.Commands
 {
-    public sealed record DeleteEndOfServiceCommand(int Id) : IRequest<RequestResult<bool>>;
+    public sealed record DeleteEndOfServiceCommand(Guid Id) : IRequest<RequestResult<bool>>;
 
-    public class DeleteEndOfServiceCommandHandler : RequestHandlerBase<DeleteEndOfServiceCommand, RequestResult<bool>, EndOfService, int>
+    public class DeleteEndOfServiceCommandHandler : RequestHandlerBase<DeleteEndOfServiceCommand, RequestResult<bool>, EndOfService, Guid>
     {
-        public DeleteEndOfServiceCommandHandler(RequestHandlerBaseParameters<EndOfService, int> parameters)
+        public DeleteEndOfServiceCommandHandler(RequestHandlerBaseParameters<EndOfService, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(DeleteEndOfServiceCommand request, CancellationToken ct)
@@ -20,3 +20,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         }
     }
 }
+

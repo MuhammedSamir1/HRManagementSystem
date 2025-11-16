@@ -1,6 +1,6 @@
 namespace HRManagementSystem.Data.Models.ConfigurationsModels
 {
-    public sealed class RequestType : BaseModel<int>
+    public sealed class RequestType : BaseModel<Guid>
     {
         public string Name { get; set; } = default!;
         public string? Description { get; set; }

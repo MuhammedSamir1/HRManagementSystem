@@ -1,4 +1,4 @@
-﻿using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.DeletePayrollItem.Commands;
+using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.DeletePayrollItem.Commands;
 using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.DeletePayrollItem.ViewModels;
 
 namespace HRManagementSystem.Features.Configurations.PayrollManagement.PayrollItemManagement.DeletePayrollItem
@@ -9,7 +9,7 @@ namespace HRManagementSystem.Features.Configurations.PayrollManagement.PayrollIt
             : base(parameters) { }
 
         [HttpDelete("payroll-items/{id:int}")] // DELETE /api/payroll/payroll-items/5
-        public async Task<ResponseViewModel<bool>> DeleteItem([FromRoute] int id, CancellationToken ct)
+        public async Task<ResponseViewModel<bool>> DeleteItem([FromRoute] Guid id, CancellationToken ct)
         {
 
             var command = new DeletePayrollItemCommand(id);
@@ -27,3 +27,4 @@ namespace HRManagementSystem.Features.Configurations.PayrollManagement.PayrollIt
         }
     }
 }
+

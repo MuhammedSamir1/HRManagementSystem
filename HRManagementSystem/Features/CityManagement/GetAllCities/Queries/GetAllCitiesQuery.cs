@@ -1,4 +1,4 @@
-﻿using HRManagementSystem.Data.Models.AddressEntity;
+using HRManagementSystem.Data.Models.AddressEntity;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.CityManagement.GetAllCities.Queries
@@ -6,9 +6,9 @@ namespace HRManagementSystem.Features.CityManagement.GetAllCities.Queries
     public record GetAllCitiesQuery() : IRequest<RequestResult<List<ViewAllCitiesDto>>>;
 
     public sealed class GetAllCitiesCommandHandler
-        : RequestHandlerBase<GetAllCitiesQuery, RequestResult<List<ViewAllCitiesDto>>, City, int>
+        : RequestHandlerBase<GetAllCitiesQuery, RequestResult<List<ViewAllCitiesDto>>, City, Guid>
     {
-        public GetAllCitiesCommandHandler(RequestHandlerBaseParameters<City, int> parameters)
+        public GetAllCitiesCommandHandler(RequestHandlerBaseParameters<City, Guid> parameters)
             : base(parameters)
         {
         }
@@ -26,3 +26,4 @@ namespace HRManagementSystem.Features.CityManagement.GetAllCities.Queries
         }
     }
 }
+

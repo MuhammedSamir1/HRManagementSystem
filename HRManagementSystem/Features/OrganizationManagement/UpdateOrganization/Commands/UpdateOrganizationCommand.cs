@@ -1,16 +1,16 @@
-﻿using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos;
+using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos;
 using HRManagementSystem.Features.Common.CurrencyManagement.UpdateCurrencyDtosAndVms.Dtos;
 using HRManagementSystem.Features.Common.OrganizationCommon.Queries;
 
 namespace HRManagementSystem.Features.OrganizationManagement.UpdateOrganization.Commands
 {
-    public sealed record UpdateOrganizationCommand(int Id, string Name, string? LegalName, string? Industry, string? Descreption,
+    public sealed record UpdateOrganizationCommand(Guid Id, string Name, string? LegalName, string? Industry, string? Descreption,
         UpdateOrganizationCurrencyDto CurrencyDto, UpdateOrganizationAddressDto AddressDto) : IRequest<RequestResult<bool>>;
 
 
-    public class UpdateOrganizationCommandHandler : RequestHandlerBase<UpdateOrganizationCommand, RequestResult<bool>, Organization, int>
+    public class UpdateOrganizationCommandHandler : RequestHandlerBase<UpdateOrganizationCommand, RequestResult<bool>, Organization, Guid>
     {
-        public UpdateOrganizationCommandHandler(RequestHandlerBaseParameters<Organization, int> parameters) : base(parameters)
+        public UpdateOrganizationCommandHandler(RequestHandlerBaseParameters<Organization, Guid> parameters) : base(parameters)
         {
         }
 
@@ -32,3 +32,4 @@ namespace HRManagementSystem.Features.OrganizationManagement.UpdateOrganization.
         }
     }
 }
+

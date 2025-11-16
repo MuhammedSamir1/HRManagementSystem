@@ -2,11 +2,11 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.RequestTypeManagement.DeleteRequestType.Commands
 {
-    public record DeleteRequestTypeCommand(int Id) : IRequest<RequestResult<bool>>;
+    public record DeleteRequestTypeCommand(Guid Id) : IRequest<RequestResult<bool>>;
 
-    public class DeleteRequestTypeCommandHandler : RequestHandlerBase<DeleteRequestTypeCommand, RequestResult<bool>, RequestType, int>
+    public class DeleteRequestTypeCommandHandler : RequestHandlerBase<DeleteRequestTypeCommand, RequestResult<bool>, RequestType, Guid>
     {
-        public DeleteRequestTypeCommandHandler(RequestHandlerBaseParameters<RequestType, int> parameters)
+        public DeleteRequestTypeCommandHandler(RequestHandlerBaseParameters<RequestType, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(DeleteRequestTypeCommand request, CancellationToken ct)
@@ -19,4 +19,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.RequestTypeManage
         }
     }
 }
+
 

@@ -1,6 +1,6 @@
-﻿namespace HRManagementSystem.Data.Models.ConfigurationOfSys
+﻿namespace HRManagementSystem.Data.Models.ConfigurationsModels
 {
-    public class DisabilityType : BaseModel<int>
+    public class DisabilityType : BaseModel<Guid>
     {
         public required string Name { get; set; }
         public string? Description { get; set; }

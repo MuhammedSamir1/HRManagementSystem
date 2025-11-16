@@ -1,10 +1,10 @@
-﻿using FluentValidation;
+using FluentValidation;
 using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.ViewModels;
 using HRManagementSystem.Features.Common.CurrencyManagement.UpdateCurrencyDtosAndVms.ViewModels;
 
 namespace HRManagementSystem.Features.OrganizationManagement.UpdateOrganization
 {
-    public sealed record UpdateOrganizationViewModel(int Id, string Name, string? LegalName, string? Industry, string? Descreption,
+    public sealed record UpdateOrganizationViewModel(Guid Id, string Name, string? LegalName, string? Industry, string? Descreption,
          UpdateOrganizationCurrencyViewModel Currency, UpdateOrganizationAddressViewModel Address);
 
 
@@ -42,3 +42,4 @@ namespace HRManagementSystem.Features.OrganizationManagement.UpdateOrganization
         }
     }
 }
+

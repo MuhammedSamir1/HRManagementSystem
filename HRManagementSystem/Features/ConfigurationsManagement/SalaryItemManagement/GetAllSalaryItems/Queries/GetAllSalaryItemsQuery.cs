@@ -5,9 +5,9 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
 {
     public sealed record GetAllSalaryItemsQuery() : IRequest<RequestResult<PagedList<ViewSalaryItemDto>>>;
 
-    public class GetAllSalaryItemsQueryHandler : RequestHandlerBase<GetAllSalaryItemsQuery, RequestResult<PagedList<ViewSalaryItemDto>>, SalaryItem, int>
+    public class GetAllSalaryItemsQueryHandler : RequestHandlerBase<GetAllSalaryItemsQuery, RequestResult<PagedList<ViewSalaryItemDto>>, SalaryItem, Guid>
     {
-        public GetAllSalaryItemsQueryHandler(RequestHandlerBaseParameters<SalaryItem, int> parameters)
+        public GetAllSalaryItemsQueryHandler(RequestHandlerBaseParameters<SalaryItem, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<PagedList<ViewSalaryItemDto>>> Handle(GetAllSalaryItemsQuery request, CancellationToken ct)
@@ -26,3 +26,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
         }
     }
 }
+

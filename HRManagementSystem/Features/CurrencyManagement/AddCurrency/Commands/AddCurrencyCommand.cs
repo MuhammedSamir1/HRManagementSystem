@@ -1,13 +1,13 @@
-﻿namespace HRManagementSystem.Features.CurrencyManagement.AddCurrency.Commands
+namespace HRManagementSystem.Features.CurrencyManagement.AddCurrency.Commands
 {
     public record AddCurrencyCommand(
                                     string Code, int NumericCode,
                                     string Name, string Symbol)
                                     : IRequest<RequestResult<bool>>;
 
-    public sealed class AddCurrencyCommandHandler : RequestHandlerBase<AddCurrencyCommand, RequestResult<bool>, Currency, int>
+    public sealed class AddCurrencyCommandHandler : RequestHandlerBase<AddCurrencyCommand, RequestResult<bool>, Currency, Guid>
     {
-        public AddCurrencyCommandHandler(RequestHandlerBaseParameters<Currency, int> parameters) : base(parameters)
+        public AddCurrencyCommandHandler(RequestHandlerBaseParameters<Currency, Guid> parameters) : base(parameters)
         {
         }
 
@@ -22,3 +22,4 @@
         }
     }
 }
+

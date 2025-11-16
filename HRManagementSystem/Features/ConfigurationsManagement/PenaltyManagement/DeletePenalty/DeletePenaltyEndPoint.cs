@@ -2,12 +2,12 @@ using HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.Del
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.DeletePenalty
 {
-    public class DeletePenaltyEndPoint : BaseEndPoint<int, ResponseViewModel<bool>>
+    public class DeletePenaltyEndPoint : BaseEndPoint<Guid, ResponseViewModel<bool>>
     {
-        public DeletePenaltyEndPoint(EndPointBaseParameters<int> parameters) : base(parameters) { }
+        public DeletePenaltyEndPoint(EndPointBaseParameters<Guid> parameters) : base(parameters) { }
 
         [HttpDelete("{id:int}")]
-        public async Task<ResponseViewModel<bool>> DeletePenalty(int id, CancellationToken ct)
+        public async Task<ResponseViewModel<bool>> DeletePenalty(Guid id, CancellationToken ct)
         {
             var command = new DeletePenaltyCommand(id);
             var result = await _mediator.Send(command, ct);
@@ -21,3 +21,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
         }
     }
 }
+

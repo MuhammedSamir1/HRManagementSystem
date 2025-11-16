@@ -1,11 +1,12 @@
-﻿namespace HRManagementSystem.Features.TeamManagement.GetAllTeams
+namespace HRManagementSystem.Features.TeamManagement.GetAllTeams
 {
     public sealed record ViewTeamViewModel
     {
-        public int Id { get; private set; }
+        public Guid Id { get; private set; }
         public string Name { get; init; } = default!;
         public string Code { get; init; } = default!;
         public string? Description { get; init; }
-        public int DepartmentId { get; init; } = default!;
+        public Guid DepartmentId { get; init; } = default!;
     }
 }
+

@@ -1,4 +1,5 @@
-﻿namespace HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos
+namespace HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos
 {
-    public sealed record UpdateBranchAddressDto(int CountryId, int StateId, int CityId, string? Street, string? ZipCode);
+    public sealed record UpdateBranchAddressDto(Guid CountryId, Guid StateId, Guid CityId, string? Street, string? ZipCode);
 }
+

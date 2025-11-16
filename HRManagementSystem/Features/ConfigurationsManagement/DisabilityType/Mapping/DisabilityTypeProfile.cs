@@ -8,18 +8,18 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Ma
     {
         public DisabilityTypeProfile()
         {
-            CreateMap<Data.Models.ConfigurationOfSys.DisabilityType, ViewDisabilityTypeDto>();
+            CreateMap<Data.Models.ConfigurationsModels.DisabilityType, ViewDisabilityTypeDto>();
             CreateMap<ViewDisabilityTypeDto, ViewDisabilityTypeViewModel>();
-            CreateMap<AddDisabilityTypeCommand, Data.Models.ConfigurationOfSys.DisabilityType>();
+            CreateMap<AddDisabilityTypeCommand, Data.Models.ConfigurationsModels.DisabilityType>();
 
-            CreateMap<AddDisabilityTypeCommand, Data.Models.ConfigurationOfSys.DisabilityType>()
+            CreateMap<AddDisabilityTypeCommand, Data.Models.ConfigurationsModels.DisabilityType>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore()) // Important: Ignore Id
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
                 .ForMember(dest => dest.Employees, opt => opt.Ignore());
 
-            CreateMap<UpdateDisabilityTypeCommand, Data.Models.ConfigurationOfSys.DisabilityType>()
+            CreateMap<UpdateDisabilityTypeCommand, Data.Models.ConfigurationsModels.DisabilityType>()
              .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
              .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
              .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))

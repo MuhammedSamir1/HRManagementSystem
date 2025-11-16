@@ -1,8 +1,8 @@
-﻿using FluentValidation;
+using FluentValidation;
 
 namespace HRManagementSystem.Features.TeamManagement.GetTeamById
 {
-    public sealed record GetTeamByIdViewModel(int Id);
+    public sealed record GetTeamByIdViewModel(Guid Id);
 
 
     public sealed class GetTeamByIdViewModelValidator : AbstractValidator<GetTeamByIdViewModel>
@@ -11,7 +11,9 @@ namespace HRManagementSystem.Features.TeamManagement.GetTeamById
         {
             RuleFor(d => d.Id)
               .NotEmpty().WithMessage("Id is required.")
-              .GreaterThan(0).WithMessage("Id must be greater than 0");
+              .NotEqual(Guid.Empty).WithMessage("Id must be greater than 0");
         }
     }
 }
+
+

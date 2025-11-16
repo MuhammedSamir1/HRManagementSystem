@@ -4,7 +4,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Ad
     // ViewModels for API response
     public sealed record ViewDisabilityTypeViewModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Code { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string? Description { get; set; }
@@ -12,3 +12,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Ad
         public DateTime CreatedAt { get; set; }
     }
 }
+

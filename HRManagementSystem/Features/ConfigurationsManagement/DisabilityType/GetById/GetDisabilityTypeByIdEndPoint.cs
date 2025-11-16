@@ -12,7 +12,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Ge
 
         [HttpGet("{id}")]
         public async Task<ResponseViewModel<ViewDisabilityTypeViewModel>> GetById(
-            [FromRoute] int id)
+            [FromRoute] Guid id)
         {
             var model = new GetDisabilityTypeByIdViewModel(id);
 
@@ -37,3 +37,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Ge
         }
     }
 }
+

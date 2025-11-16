@@ -1,13 +1,13 @@
-﻿using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos;
+using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos;
 
 namespace HRManagementSystem.Features.BranchManagement.UpdateBranch.Commands
 {
-    public sealed record UpdateBranchCommand(int Id, string Name, string? Description, string Code,
+    public sealed record UpdateBranchCommand(Guid Id, string Name, string? Description, string Code,
           UpdateBranchAddressDto AddressDto) : IRequest<RequestResult<bool>>;
 
-    public class UpdateBranchCommandHandler : RequestHandlerBase<UpdateBranchCommand, RequestResult<bool>, Branch, int>
+    public class UpdateBranchCommandHandler : RequestHandlerBase<UpdateBranchCommand, RequestResult<bool>, Branch, Guid>
     {
-        public UpdateBranchCommandHandler(RequestHandlerBaseParameters<Branch, int> parameters) : base(parameters)
+        public UpdateBranchCommandHandler(RequestHandlerBaseParameters<Branch, Guid> parameters) : base(parameters)
         {
         }
 
@@ -28,3 +28,4 @@ namespace HRManagementSystem.Features.BranchManagement.UpdateBranch.Commands
         }
     }
 }
+

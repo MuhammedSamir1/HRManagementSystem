@@ -31,4 +31,12 @@ namespace HRManagementSystem.Data.Middlewares
         }
     }
 
+    public static class UserStateMiddlewareExtensions
+    {
+        public static IApplicationBuilder UseUserStateMiddleware(this IApplicationBuilder builder)
+        {
+            return builder.UseMiddleware<UserStateMiddleware>();
+        }
+    }
+
 }

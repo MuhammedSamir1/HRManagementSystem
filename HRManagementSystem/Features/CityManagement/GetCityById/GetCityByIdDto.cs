@@ -1,8 +1,9 @@
-﻿namespace HRManagementSystem.Features.CityManagement.GetCityById
+namespace HRManagementSystem.Features.CityManagement.GetCityById
 {
     public sealed record GetCityByIdDto(
-        int Id,
+        Guid Id,
         string Name,
-        int StateId
+        Guid StateId
     );
 }
+

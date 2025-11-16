@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.OrganizationManagement.GetOrganizationById.Queries
 {
-    public sealed record GetOrganizationByIdQuery(int Id) : IRequest<RequestResult<ViewOrganizationDto>>;
+    public sealed record GetOrganizationByIdQuery(Guid Id) : IRequest<RequestResult<ViewOrganizationDto>>;
 
     public sealed class GetOrganizationByIdQueryHandler : RequestHandlerBase<GetOrganizationByIdQuery,
-        RequestResult<ViewOrganizationDto>, Organization, int>
+        RequestResult<ViewOrganizationDto>, Organization, Guid>
     {
-        public GetOrganizationByIdQueryHandler(RequestHandlerBaseParameters<Organization, int> parameters)
+        public GetOrganizationByIdQueryHandler(RequestHandlerBaseParameters<Organization, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<ViewOrganizationDto>> Handle(GetOrganizationByIdQuery request, CancellationToken ct)

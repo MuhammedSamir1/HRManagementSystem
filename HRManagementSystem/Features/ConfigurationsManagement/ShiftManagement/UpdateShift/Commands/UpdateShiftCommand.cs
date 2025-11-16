@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.UpdateShift.Commands
 {
-    public sealed record UpdateShiftCommand(int Id, string Name, TimeSpan StartTime, TimeSpan EndTime)
+    public sealed record UpdateShiftCommand(Guid Id, string Name, TimeSpan StartTime, TimeSpan EndTime)
         : IRequest<RequestResult<bool>>;
 
-    public class UpdateShiftCommandHandler : RequestHandlerBase<UpdateShiftCommand, RequestResult<bool>, Shift, int>
+    public class UpdateShiftCommandHandler : RequestHandlerBase<UpdateShiftCommand, RequestResult<bool>, Shift, Guid>
     {
-        public UpdateShiftCommandHandler(RequestHandlerBaseParameters<Shift, int> parameters) : base(parameters)
+        public UpdateShiftCommandHandler(RequestHandlerBaseParameters<Shift, Guid> parameters) : base(parameters)
         {
         }
 
@@ -34,4 +34,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.U
 
     }
 }
+
 

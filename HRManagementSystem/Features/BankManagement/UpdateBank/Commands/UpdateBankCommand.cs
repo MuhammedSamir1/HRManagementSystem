@@ -2,11 +2,11 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.BankManagement.UpdateBank.Commands
 {
-    public record UpdateBankCommand(int Id, string Name, string Code, string Address) : IRequest<RequestResult<bool>>;
+    public record UpdateBankCommand(Guid Id, string Name, string Code, string Address) : IRequest<RequestResult<bool>>;
 
-    public class UpdateBankCommandHandler : RequestHandlerBase<UpdateBankCommand, RequestResult<bool>, Bank, int>
+    public class UpdateBankCommandHandler : RequestHandlerBase<UpdateBankCommand, RequestResult<bool>, Bank, Guid>
     {
-        public UpdateBankCommandHandler(RequestHandlerBaseParameters<Bank, int> parameters)
+        public UpdateBankCommandHandler(RequestHandlerBaseParameters<Bank, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(UpdateBankCommand request, CancellationToken ct)
@@ -26,4 +26,5 @@ namespace HRManagementSystem.Features.BankManagement.UpdateBank.Commands
         }
     }
 }
+
 

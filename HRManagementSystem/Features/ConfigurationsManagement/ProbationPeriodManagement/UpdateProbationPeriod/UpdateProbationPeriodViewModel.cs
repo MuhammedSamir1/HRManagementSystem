@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodManagement.UpdateProbationPeriod
 {
-    public sealed record UpdateProbationPeriodViewModel(int Id, DateTime StartDate, DateTime EndDate,
+    public sealed record UpdateProbationPeriodViewModel(Guid Id, DateTime StartDate, DateTime EndDate,
         int DurationInDays, bool IsApproved, DateTime? ApprovalDate, ProbationPeriodStatus Status);
 
 
@@ -12,7 +12,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodMa
         {
             RuleFor(x => x.Id)
                 .NotEmpty().WithMessage("Id is required.")
-                .GreaterThan(0).WithMessage("Id must be greater than 0.");
+                .NotEqual(Guid.Empty).WithMessage("Id must be greater than 0.");
 
             RuleFor(x => x.StartDate)
                 .NotEmpty().WithMessage("Start date is required.")
@@ -35,4 +35,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodMa
         }
     }
 }
+
+
 

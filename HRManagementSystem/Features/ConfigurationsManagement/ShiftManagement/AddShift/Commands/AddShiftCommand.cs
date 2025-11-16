@@ -7,9 +7,9 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.A
         : IRequest<RequestResult<CreatedIdDto>>;
 
 
-    public class AddShiftCommandHandler : RequestHandlerBase<AddShiftCommand, RequestResult<CreatedIdDto>, Shift, int>
+    public class AddShiftCommandHandler : RequestHandlerBase<AddShiftCommand, RequestResult<CreatedIdDto>, Shift, Guid>
     {
-        public AddShiftCommandHandler(RequestHandlerBaseParameters<Shift, int> parameters)
+        public AddShiftCommandHandler(RequestHandlerBaseParameters<Shift, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<CreatedIdDto>> Handle(AddShiftCommand request, CancellationToken ct)
@@ -29,4 +29,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.A
         }
     }
 }
+
 

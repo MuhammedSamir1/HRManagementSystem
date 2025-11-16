@@ -1,13 +1,13 @@
-﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.IsHolidayOverlapping;
 using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.UpdateHoliday.Command;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.Configurations.HolidayManagement.UpdateHoliday.Command
 {
-    public sealed class UpdateHolidayCommandHandler : RequestHandlerBase<UpdateHolidayCommand, RequestResult<bool>, Holiday, int>
+    public sealed class UpdateHolidayCommandHandler : RequestHandlerBase<UpdateHolidayCommand, RequestResult<bool>, Holiday, Guid>
     {
-        public UpdateHolidayCommandHandler(RequestHandlerBaseParameters<Holiday, int> parameters) : base(parameters) { }
+        public UpdateHolidayCommandHandler(RequestHandlerBaseParameters<Holiday, Guid> parameters) : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(UpdateHolidayCommand request, CancellationToken ct)
         {
@@ -18,12 +18,11 @@ namespace HRManagementSystem.Features.Configurations.HolidayManagement.UpdateHol
                 return RequestResult<bool>.Failure("Holiday not found.", ErrorCode.NotFound);
             }
 
-            // 2.  من التداخل (No Overlap) - استثناء الاجازة نفسها
+            // 2.  ?? ??????? (No Overlap) - ??????? ??????? ?????
             var overlapValidation = await _mediator.Send(
                 new IsHolidayOverlappingQuery(
                     request.StartDate,
                     request.EndDate,
-                    request.CompanyId,
                     request.Id
                 ), ct);
 
@@ -35,8 +34,7 @@ namespace HRManagementSystem.Features.Configurations.HolidayManagement.UpdateHol
 
             var isNameDuplicate = await _generalRepo
                 .Get(h => h.Id != request.Id &&
-                          h.Name == request.Name &&
-                          h.CompanyId == request.CompanyId, ct)
+                          h.Name == request.Name, ct)
                 .AnyAsync(ct);
 
             if (isNameDuplicate)
@@ -56,3 +54,4 @@ namespace HRManagementSystem.Features.Configurations.HolidayManagement.UpdateHol
         }
     }
 }
+

@@ -2,7 +2,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodMa
 {
     public sealed record ViewProbationPeriodDto
     {
-        public int Id { get; private set; }
+        public Guid Id { get; private set; }
         public DateTime StartDate { get; init; }
         public DateTime EndDate { get; init; }
         public int DurationInDays { get; init; }
@@ -11,4 +11,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodMa
         public ProbationPeriodStatus Status { get; init; }
     }
 }
+
 

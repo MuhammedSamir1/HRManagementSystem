@@ -3,7 +3,7 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.UpdateLoan.Commands
 {
     public sealed record UpdateLoanCommand(
-        int Id,
+        Guid Id,
         string Title,
         string? Description,
         decimal Amount,
@@ -12,13 +12,12 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Up
         int InstallmentMonths,
         DateTime LoanDate,
         DateTime? StartDeductionDate,
-        LoanStatus Status,
-        int? EmployeeId)
+        LoanStatus Status)
         : IRequest<RequestResult<bool>>;
 
-    public class UpdateLoanCommandHandler : RequestHandlerBase<UpdateLoanCommand, RequestResult<bool>, Loan, int>
+    public class UpdateLoanCommandHandler : RequestHandlerBase<UpdateLoanCommand, RequestResult<bool>, Loan, Guid>
     {
-        public UpdateLoanCommandHandler(RequestHandlerBaseParameters<Loan, int> parameters)
+        public UpdateLoanCommandHandler(RequestHandlerBaseParameters<Loan, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(UpdateLoanCommand request, CancellationToken ct)
@@ -37,7 +36,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Up
             loan.LoanDate = request.LoanDate;
             loan.StartDeductionDate = request.StartDeductionDate;
             loan.Status = request.Status;
-            loan.EmployeeId = request.EmployeeId;
 
             await _generalRepo.UpdateAsync(loan, ct);
 
@@ -45,3 +43,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Up
         }
     }
 }
+

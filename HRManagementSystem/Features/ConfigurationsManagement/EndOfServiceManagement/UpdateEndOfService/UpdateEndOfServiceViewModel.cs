@@ -3,7 +3,7 @@ using FluentValidation;
 namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagement.UpdateEndOfService
 {
     public sealed record UpdateEndOfServiceViewModel(
-        int Id,
+        Guid Id,
         string Title,
         string? Description,
         decimal Amount,
@@ -12,15 +12,14 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         int TotalServiceYears,
         int TotalServiceMonths,
         int TotalServiceDays,
-        DateTime? PaymentDate,
-        int? EmployeeId);
+        DateTime? PaymentDate);
 
     public sealed class UpdateEndOfServiceViewModelValidator : AbstractValidator<UpdateEndOfServiceViewModel>
     {
         public UpdateEndOfServiceViewModelValidator()
         {
             RuleFor(x => x.Id)
-                .GreaterThan(0).WithMessage("Id must be greater than 0.");
+                .NotEqual(Guid.Empty).WithMessage("Id must be greater than 0.");
 
             RuleFor(x => x.Title)
                 .NotEmpty().WithMessage("Title is required.")
@@ -42,4 +41,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         }
     }
 }
+
+
 

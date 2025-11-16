@@ -1,9 +1,9 @@
-﻿using FluentValidation;
+using FluentValidation;
 using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.ViewModels;
 
 namespace HRManagementSystem.Features.BranchManagement.UpdateBranch
 {
-    public sealed record UpdateBranchViewModel(int Id, string Name, string? Description, string Code,
+    public sealed record UpdateBranchViewModel(Guid Id, string Name, string? Description, string Code,
           UpdateBranchAddressViewModel Address) : IRequest<RequestResult<bool>>;
 
 
@@ -33,3 +33,4 @@ namespace HRManagementSystem.Features.BranchManagement.UpdateBranch
         }
     }
 }
+

@@ -1,4 +1,5 @@
-﻿namespace HRManagementSystem.Features.Common.AddressManagement.CityCommon.Dtos
+namespace HRManagementSystem.Features.Common.AddressManagement.CityCommon.Dtos
 {
-    public sealed record ViewCityDto(int Id, string Name);
+    public sealed record ViewCityDto(Guid Id, string Name);
 }
+

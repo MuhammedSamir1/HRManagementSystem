@@ -7,7 +7,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Ge
         public GetLoanByIdEndPoint(EndPointBaseParameters<GetLoanByIdViewModel> parameters) : base(parameters) { }
 
         [HttpGet("{id:int}")]
-        public async Task<ResponseViewModel<ViewLoanByIdViewModel>> GetLoanById(int id, CancellationToken ct)
+        public async Task<ResponseViewModel<ViewLoanByIdViewModel>> GetLoanById(Guid id, CancellationToken ct)
         {
             var query = new GetLoanByIdQuery(id);
             var result = await _mediator.Send(query, ct);
@@ -23,3 +23,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Ge
         }
     }
 }
+

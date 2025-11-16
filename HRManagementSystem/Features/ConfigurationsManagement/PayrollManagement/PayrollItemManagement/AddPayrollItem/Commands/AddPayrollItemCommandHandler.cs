@@ -4,12 +4,12 @@ using HRManagementSystem.Features.Common.PayrollCommon;
 namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.AddPayrollItem.Commands
 {
     public sealed class AddPayrollItemCommandHandler :
-    RequestHandlerBase<AddPayrollItemCommand, RequestResult<PayrollItemDto>, PayrollItem, int>
+    RequestHandlerBase<AddPayrollItemCommand, RequestResult<PayrollItemDto>, PayrollItem, Guid>
     {
 
 
         public AddPayrollItemCommandHandler(
-            RequestHandlerBaseParameters<PayrollItem, int> parameters)
+            RequestHandlerBaseParameters<PayrollItem, Guid> parameters)
             : base(parameters)
         {
 
@@ -50,3 +50,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
         }
     }
 }
+

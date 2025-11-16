@@ -1,8 +1,8 @@
-﻿using FluentValidation;
+using FluentValidation;
 
 namespace HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.ViewModels
 {
-    public sealed record AddOrganizationCurrencyViewModel(int CurrencyId);
+    public sealed record AddOrganizationCurrencyViewModel(Guid CurrencyId);
 
 
     public sealed class AddOrganizationCurrencyViewModelValidator : AbstractValidator<AddOrganizationCurrencyViewModel>
@@ -10,10 +10,12 @@ namespace HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosA
         public AddOrganizationCurrencyViewModelValidator()
         {
             RuleFor(x => x.CurrencyId)
-                .GreaterThan(0).WithMessage("CurrencyId must be greater than 0!");
+                .NotEqual(Guid.Empty).WithMessage("CurrencyId must be greater than 0!");
 
         }
     }
 }
+
+
 
 

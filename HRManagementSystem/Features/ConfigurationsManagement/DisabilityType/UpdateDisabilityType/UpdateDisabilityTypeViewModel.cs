@@ -3,7 +3,7 @@ using FluentValidation;
 namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.UpdateDisabilityType
 {
     // ViewModels/UpdateDisabilityTypeViewModel.cs
-    public sealed record UpdateDisabilityTypeViewModel(int Id, string Code, string Name, string? Description = null);
+    public sealed record UpdateDisabilityTypeViewModel(Guid Id, string Code, string Name, string? Description = null);
 
     // Validators/UpdateDisabilityTypeViewModelValidator.cs
     public sealed class UpdateDisabilityTypeViewModelValidator : AbstractValidator<UpdateDisabilityTypeViewModel>
@@ -12,7 +12,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Up
         {
             RuleFor(x => x.Id)
                 .NotEmpty().WithMessage("ID is required.")
-                .GreaterThan(0).WithMessage("ID must be greater than 0.");
+                .NotEqual(Guid.Empty).WithMessage("ID must be greater than 0.");
 
             RuleFor(x => x.Code)
                 .NotEmpty().WithMessage("Code is required.")
@@ -30,3 +30,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Up
         }
     }
 }
+
+

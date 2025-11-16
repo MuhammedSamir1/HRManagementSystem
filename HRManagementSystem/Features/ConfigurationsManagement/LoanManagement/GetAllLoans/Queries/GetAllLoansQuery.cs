@@ -5,9 +5,9 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Ge
 {
     public sealed record GetAllLoansQuery() : IRequest<RequestResult<PagedList<ViewLoanDto>>>;
 
-    public class GetAllLoansQueryHandler : RequestHandlerBase<GetAllLoansQuery, RequestResult<PagedList<ViewLoanDto>>, Loan, int>
+    public class GetAllLoansQueryHandler : RequestHandlerBase<GetAllLoansQuery, RequestResult<PagedList<ViewLoanDto>>, Loan, Guid>
     {
-        public GetAllLoansQueryHandler(RequestHandlerBaseParameters<Loan, int> parameters)
+        public GetAllLoansQueryHandler(RequestHandlerBaseParameters<Loan, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<PagedList<ViewLoanDto>>> Handle(GetAllLoansQuery request, CancellationToken ct)
@@ -26,3 +26,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Ge
         }
     }
 }
+

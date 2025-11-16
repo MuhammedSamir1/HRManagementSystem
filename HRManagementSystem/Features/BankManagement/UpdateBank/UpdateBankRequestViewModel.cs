@@ -2,14 +2,14 @@ using FluentValidation;
 
 namespace HRManagementSystem.Features.BankManagement.UpdateBank
 {
-    public record UpdateBankRequestViewModel(int Id, string Name, string Code, string Address);
+    public record UpdateBankRequestViewModel(Guid Id, string Name, string Code, string Address);
 
     public class UpdateBankRequestViewModelValidator : AbstractValidator<UpdateBankRequestViewModel>
     {
         public UpdateBankRequestViewModelValidator()
         {
             RuleFor(x => x.Id)
-                .GreaterThan(0).WithMessage("Id must be greater than 0.");
+                .NotEqual(Guid.Empty).WithMessage("Id must be greater than 0.");
 
             RuleFor(x => x.Name)
                 .NotEmpty().WithMessage("Name is required.")
@@ -29,4 +29,6 @@ namespace HRManagementSystem.Features.BankManagement.UpdateBank
         }
     }
 }
+
+
 
