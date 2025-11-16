@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.Get
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.GetPenaltyById
 {
+    [ApiGroup("Configurations Management", "Penalty Management")]
     public class GetPenaltyByIdEndPoint : BaseEndPoint<GetPenaltyByIdViewModel, ResponseViewModel<ViewPenaltyByIdViewModel>>
     {
         public GetPenaltyByIdEndPoint(EndPointBaseParameters<GetPenaltyByIdViewModel> parameters) : base(parameters) { }
@@ -23,4 +24,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
         }
     }
 }
+
+
+
 

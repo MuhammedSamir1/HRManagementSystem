@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.Delet
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.DeleteBonus
 {
+    [ApiGroup("Configurations Management", "Bonus Management")]
     public class DeleteBonusEndPoint : BaseEndPoint<Guid, ResponseViewModel<bool>>
     {
         public DeleteBonusEndPoint(EndPointBaseParameters<Guid> parameters) : base(parameters) { }
@@ -21,4 +22,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.D
         }
     }
 }
+
+
+
 

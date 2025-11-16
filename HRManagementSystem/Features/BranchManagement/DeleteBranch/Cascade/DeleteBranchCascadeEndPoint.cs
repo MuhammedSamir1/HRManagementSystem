@@ -3,6 +3,7 @@ using HRManagementSystem.Features.Common.DeleteEntityCascade.Command;
 
 namespace HRManagementSystem.Features.BranchManagement.DeleteBranch.Cascade;
 
+[ApiGroup("Branch Management")]
 public class DeleteBranchCascadeEndPoint : BaseEndPoint<DeleteEntityCascadeViewModel<Branch, Guid>, ResponseViewModel<bool>>
 {
     public DeleteBranchCascadeEndPoint(EndPointBaseParameters<DeleteEntityCascadeViewModel<Branch, Guid>> parameters)
@@ -19,3 +20,4 @@ public class DeleteBranchCascadeEndPoint : BaseEndPoint<DeleteEntityCascadeViewM
         return ResponseViewModel<bool>.Success(isDeleted.isSuccess, "Branch Deleted Successfully!");
     }
 }
+

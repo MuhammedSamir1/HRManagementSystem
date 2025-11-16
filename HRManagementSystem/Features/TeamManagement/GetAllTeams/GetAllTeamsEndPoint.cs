@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.TeamManagement.GetAllTeams.Queries;
+using HRManagementSystem.Features.TeamManagement.GetAllTeams.Queries;
 
 namespace HRManagementSystem.Features.TeamManagement.GetAllTeams
 {
+    [ApiGroup("Team Management")]
     public class GetAllTeamsEndPoint : BaseEndPoint<GetAllTeamsViewModel,
        ResponseViewModel<ViewTeamViewModel>>
     {
@@ -27,3 +28,4 @@ namespace HRManagementSystem.Features.TeamManagement.GetAllTeams
         }
     }
 }
+

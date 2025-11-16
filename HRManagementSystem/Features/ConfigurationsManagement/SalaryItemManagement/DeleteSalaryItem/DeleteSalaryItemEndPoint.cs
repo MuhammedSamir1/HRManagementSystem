@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.DeleteSalaryItem
 {
+    [ApiGroup("Configurations Management", "Salary Item Management")]
     public class DeleteSalaryItemEndPoint : BaseEndPoint<Guid, ResponseViewModel<bool>>
     {
         public DeleteSalaryItemEndPoint(EndPointBaseParameters<Guid> parameters) : base(parameters) { }
@@ -21,4 +22,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
         }
     }
 }
+
+
+
 

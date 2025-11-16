@@ -4,6 +4,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Update
 namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.UpdateDisabilityType
 {
     // Endpoints/UpdateDisabilityTypeEndPoint.cs
+    [ApiGroup("Configurations Management", "Disability Type")]
     public class UpdateDisabilityTypeEndPoint : BaseEndPoint<UpdateDisabilityTypeViewModel,
         ResponseViewModel<ViewDisabilityTypeViewModel>>
     {
@@ -36,3 +37,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Up
         }
     }
 }
+
+
+

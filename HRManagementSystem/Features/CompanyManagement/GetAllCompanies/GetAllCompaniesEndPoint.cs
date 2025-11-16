@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.CompanyManagement.GetAllCompanies.Queries;
+using HRManagementSystem.Features.CompanyManagement.GetAllCompanies.Queries;
 
 namespace HRManagementSystem.Features.CompanyManagement.GetAllCompanies
 {
+    [ApiGroup("Company Management")]
     public class GetAllCompaniesEndPoint : BaseEndPoint<GetAllCompaniesRequestViewModel, ResponseViewModel<IEnumerable<GetAllCompaniesResponseViewModel>>>
     {
         public GetAllCompaniesEndPoint(EndPointBaseParameters<GetAllCompaniesRequestViewModel> parameters) : base(parameters)
@@ -29,3 +30,4 @@ namespace HRManagementSystem.Features.CompanyManagement.GetAllCompanies
 
     }
 }
+

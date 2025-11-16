@@ -2,6 +2,7 @@ using HRManagementSystem.Features.BankManagement.DeleteBank.Commands;
 
 namespace HRManagementSystem.Features.BankManagement.DeleteBank
 {
+    [ApiGroup("Configurations Management", "Bank Management")]
     public class DeleteBankEndPoint : BaseEndPoint<DeleteBankRequestViewModel, ResponseViewModel<bool>>
     {
         public DeleteBankEndPoint(EndPointBaseParameters<DeleteBankRequestViewModel> parameters)

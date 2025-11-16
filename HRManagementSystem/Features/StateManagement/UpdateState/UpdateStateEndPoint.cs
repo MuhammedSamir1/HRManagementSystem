@@ -1,8 +1,9 @@
-﻿using HRManagementSystem.Features.Common.AddressManagement.StateCommon.ViewModels;
+using HRManagementSystem.Features.Common.AddressManagement.StateCommon.ViewModels;
 using HRManagementSystem.Features.StateManagement.UpdateState.Command;
 
 namespace HRManagementSystem.Features.StateManagement.UpdateState
 {
+    [ApiGroup("State Management")]
     public class UpdateStateEndPoint : BaseEndPoint<UpdateStateViewModel,
      ResponseViewModel<ViewStateViewModel>>
     {
@@ -38,3 +39,4 @@ namespace HRManagementSystem.Features.StateManagement.UpdateState
         }
     }
 }
+

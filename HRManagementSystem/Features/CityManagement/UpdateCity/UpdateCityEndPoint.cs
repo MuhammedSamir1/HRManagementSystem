@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.CityManagement.UpdateCity.Command;
+using HRManagementSystem.Features.CityManagement.UpdateCity.Command;
 
 namespace HRManagementSystem.Features.CityManagement.UpdateCity
 {
+    [ApiGroup("City Management")]
     public class UpdateCityEndPoint
         : BaseEndPoint<UpdateCityViewModel, ResponseViewModel<bool>>
     {
@@ -26,5 +27,6 @@ namespace HRManagementSystem.Features.CityManagement.UpdateCity
         }
     }
 }
+
 
 

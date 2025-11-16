@@ -4,6 +4,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.GetAll
 namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.GetAll
 {
     // Endpoints/GetAllDisabilityTypesEndPoint.cs
+    [ApiGroup("Configurations Management", "Disability Type")]
     public class GetAllDisabilityTypesEndPoint : BaseEndPoint<GetAllDisabilityTypesViewModel,
         ResponseViewModel<IEnumerable<ViewDisabilityTypeViewModel>>>
     {
@@ -35,3 +36,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Ge
         }
     }
 }
+
+
+

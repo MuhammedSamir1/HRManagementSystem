@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.Add
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.AddPenalty
 {
+    [ApiGroup("Configurations Management", "Penalty Management")]
     public class AddPenaltyEndPoint : BaseEndPoint<AddPenaltyViewModel, ResponseViewModel<Guid>>
     {
         public AddPenaltyEndPoint(EndPointBaseParameters<AddPenaltyViewModel> parameters) : base(parameters) { }
@@ -21,4 +22,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
         }
     }
 }
+
+
+
 

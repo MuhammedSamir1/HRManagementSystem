@@ -4,6 +4,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.GetAllSalaryItems
 {
+    [ApiGroup("Configurations Management", "Salary Item Management")]
     public class GetAllSalaryItemsEndPoint : BaseEndPoint<GetAllSalaryItemsViewModel, ResponseViewModel<object>>
     {
         public GetAllSalaryItemsEndPoint(EndPointBaseParameters<GetAllSalaryItemsViewModel> parameters) : base(parameters) { }
@@ -25,3 +26,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
         }
     }
 }
+
+
+

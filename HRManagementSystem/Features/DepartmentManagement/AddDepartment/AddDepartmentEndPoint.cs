@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.DepartmentManagement.AddDepartment.Commands;
+using HRManagementSystem.Features.DepartmentManagement.AddDepartment.Commands;
 
 namespace HRManagementSystem.Features.DepartmentManagement.AddDepartment
 {
+    [ApiGroup("Department Management")]
     public class AddDepartmentEndPoint : BaseEndPoint<AddDepartmentRequestViewModel, ResponseViewModel<bool>>
     {
         public AddDepartmentEndPoint(EndPointBaseParameters<AddDepartmentRequestViewModel> parameters) : base(parameters)
@@ -28,3 +29,4 @@ namespace HRManagementSystem.Features.DepartmentManagement.AddDepartment
         }
     }
 }
+

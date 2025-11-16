@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodManage
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodManagement.AddProbationPeriod
 {
+    [ApiGroup("Configurations Management", "Probation Period Management")]
     public class AddProbationPeriodEndPoint : BaseEndPoint<AddProbationPeriodViewModel, ResponseViewModel<bool>>
     {
         public AddProbationPeriodEndPoint(EndPointBaseParameters<AddProbationPeriodViewModel> parameters)
@@ -25,4 +26,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodMa
         }
     }
 }
+
+
+
 

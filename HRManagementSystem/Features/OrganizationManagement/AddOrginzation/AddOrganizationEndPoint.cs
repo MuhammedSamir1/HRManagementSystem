@@ -1,10 +1,11 @@
-﻿using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
+using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
 using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.Dtos;
 
 using HRManagementSystem.Features.OrganizationManagement.AddOrginzation.Commands;
 
 namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation
 {
+    [ApiGroup("Organization Management")]
     public class AddOrganizationEndPoint : BaseEndPoint<AddOrganizationViewModel, ResponseViewModel<bool>>
     {
         public AddOrganizationEndPoint(EndPointBaseParameters<AddOrganizationViewModel> parameters) : base(parameters)
@@ -30,3 +31,4 @@ namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation
         }
     }
 }
+

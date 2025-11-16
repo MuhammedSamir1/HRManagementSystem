@@ -3,6 +3,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.Ge
 
 namespace HRManagementSystem.Features.Configurations.ContractManagement.GetAllContracts
 {
+    [ApiGroup("Configurations Management", "Contract Management")]
     public class GetAllContractsEndPoint : BaseEndPoint<GetAllContractsRequestViewModel, ResponseViewModel<IEnumerable<GetAllContractsResponseViewModel>>>
     {
         public GetAllContractsEndPoint(EndPointBaseParameters<GetAllContractsRequestViewModel> parameters) : base(parameters)
@@ -29,4 +30,7 @@ namespace HRManagementSystem.Features.Configurations.ContractManagement.GetAllCo
         }
     }
 }
+
+
+
 

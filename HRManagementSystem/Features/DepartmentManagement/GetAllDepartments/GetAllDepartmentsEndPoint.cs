@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.DepartmentManagement.GetAllDepartments.Queries;
+using HRManagementSystem.Features.DepartmentManagement.GetAllDepartments.Queries;
 
 namespace HRManagementSystem.Features.DepartmentManagement.GetAllDepartments
 {
+    [ApiGroup("Department Management")]
     public class GetAllDepartmentsEndPoint : BaseEndPoint<GetAllDepartmentsRequestViewModel, ResponseViewModel<IEnumerable<GetAllDepartmentsResponseViewModel>>>
     {
         public GetAllDepartmentsEndPoint(EndPointBaseParameters<GetAllDepartmentsRequestViewModel> parameters) : base(parameters)
@@ -29,3 +30,4 @@ namespace HRManagementSystem.Features.DepartmentManagement.GetAllDepartments
 
     }
 }
+

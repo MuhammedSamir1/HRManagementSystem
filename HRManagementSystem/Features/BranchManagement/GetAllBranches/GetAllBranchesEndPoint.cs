@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.BranchManagement.GetAllBranches.Queries;
+using HRManagementSystem.Features.BranchManagement.GetAllBranches.Queries;
 
 namespace HRManagementSystem.Features.BranchManagement.GetAllBranches
 {
+    [ApiGroup("Branch Management")]
     public class GetAllBranchesEndPoint : BaseEndPoint<GetAllBranchesViewModel,
          ResponseViewModel<List<ViewBranchViewModel>>>
     {
@@ -21,3 +22,4 @@ namespace HRManagementSystem.Features.BranchManagement.GetAllBranches
         }
     }
 }
+

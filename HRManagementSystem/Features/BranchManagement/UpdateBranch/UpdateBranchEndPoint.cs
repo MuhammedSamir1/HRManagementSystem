@@ -1,8 +1,9 @@
-﻿using HRManagementSystem.Features.BranchManagement.UpdateBranch.Commands;
+using HRManagementSystem.Features.BranchManagement.UpdateBranch.Commands;
 using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos;
 
 namespace HRManagementSystem.Features.BranchManagement.UpdateBranch
 {
+    [ApiGroup("Branch Management")]
     public class UpdateBranchEndPoint : BaseEndPoint<UpdateBranchViewModel, RequestResult<bool>>
     {
         public UpdateBranchEndPoint(EndPointBaseParameters<UpdateBranchViewModel> parameters) : base(parameters) { }
@@ -25,3 +26,4 @@ namespace HRManagementSystem.Features.BranchManagement.UpdateBranch
         }
     }
 }
+

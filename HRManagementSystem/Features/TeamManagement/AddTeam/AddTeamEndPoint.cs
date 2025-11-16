@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.TeamManagement.AddTeam.Commands;
+using HRManagementSystem.Features.TeamManagement.AddTeam.Commands;
 
 namespace HRManagementSystem.Features.TeamManagement.AddTeam
 {
+    [ApiGroup("Team Management")]
     public class AddTeamEndPoint : BaseEndPoint<AddTeamViewModel, ResponseViewModel<bool>>
     {
         public AddTeamEndPoint(EndPointBaseParameters<AddTeamViewModel> parameters)
@@ -25,3 +26,4 @@ namespace HRManagementSystem.Features.TeamManagement.AddTeam
         }
     }
 }
+

@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.UserManagement.RegisterUser.Commands;
+using HRManagementSystem.Features.UserManagement.RegisterUser.Commands;
 
 namespace HRManagementSystem.Features.UserManagement.RegisterUser
 {
+    [ApiGroup("User Management")]
     public class RegisterUserEndPoint : BaseEndPoint<RegisterUserRequestViewModel, ResponseViewModel<bool>>
     {
         public RegisterUserEndPoint(EndPointBaseParameters<RegisterUserRequestViewModel> parameters) : base(parameters)
@@ -30,3 +31,4 @@ namespace HRManagementSystem.Features.UserManagement.RegisterUser
         }
     }
 }
+

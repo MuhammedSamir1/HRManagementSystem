@@ -4,6 +4,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.Pay
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.AddPayrollItem
 {
+    [ApiGroup("Configurations Management", "Payroll Management")]
     public class AddPayrollItemEndPoint : BaseEndPoint<AddPayrollItemViewModel, ResponseViewModel<PayrollItemDto>>
     {
         public AddPayrollItemEndPoint(EndPointBaseParameters<AddPayrollItemViewModel> parameters)
@@ -29,3 +30,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
         }
     }
 }
+
+
+

@@ -4,6 +4,7 @@ using HRManagementSystem.Features.Common.DeleteEntityCascade.Command;
 
 namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Cascade;
 
+[ApiGroup("Department Management")]
 public class DeleteDepartmentCascadeEndPoint : BaseEndPoint<DeleteEntityCascadeViewModel<Department, Guid>, ResponseViewModel<bool>>
 {
     public DeleteDepartmentCascadeEndPoint(EndPointBaseParameters<DeleteEntityCascadeViewModel<Department, Guid>> parameters)
@@ -20,4 +21,5 @@ public class DeleteDepartmentCascadeEndPoint : BaseEndPoint<DeleteEntityCascadeV
         return ResponseViewModel<bool>.Success(isDeleted.isSuccess, "Department Deleted Successfully!");
     }
 }
+
 

@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.CompanyManagement.UpdateCompany.Commands;
+using HRManagementSystem.Features.CompanyManagement.UpdateCompany.Commands;
 
 namespace HRManagementSystem.Features.CompanyManagement.UpdateCompany
 {
+    [ApiGroup("Company Management")]
     public class UpdateCompanyEndPoint : BaseEndPoint<UpdateCompanyRequestViewModel, ResponseViewModel<bool>>
     {
         public UpdateCompanyEndPoint(EndPointBaseParameters<UpdateCompanyRequestViewModel> parameters) : base(parameters) { }
@@ -22,3 +23,4 @@ namespace HRManagementSystem.Features.CompanyManagement.UpdateCompany
         }
     }
 }
+

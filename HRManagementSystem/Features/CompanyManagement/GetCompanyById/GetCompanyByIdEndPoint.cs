@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.CompanyManagement.GetCompanyById.Queries;
+using HRManagementSystem.Features.CompanyManagement.GetCompanyById.Queries;
 
 namespace HRManagementSystem.Features.CompanyManagement.GetCompanyById
 {
+    [ApiGroup("Company Management")]
     public class GetCompanyByIdEndPoint : BaseEndPoint<GetCompanyByIdRequestViewModel, ResponseViewModel<GetCompanyByIdResponseViewModel>>
     {
         public GetCompanyByIdEndPoint(EndPointBaseParameters<GetCompanyByIdRequestViewModel> parameters) : base(parameters)
@@ -27,3 +28,4 @@ namespace HRManagementSystem.Features.CompanyManagement.GetCompanyById
 
     }
 }
+

@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding.Commands;
+using HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding.Commands;
 
 namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding
 {
+    [ApiGroup("Onboarding")]
     public class OrganizationOnboardingEndpoint : BaseEndPoint<OrganizationOnboardingRequestViewModel, ResponseViewModel<bool>>
     {
         public OrganizationOnboardingEndpoint(EndPointBaseParameters<OrganizationOnboardingRequestViewModel> parameters) : base(parameters)
@@ -32,3 +33,4 @@ namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboard
         }
     }
 }
+

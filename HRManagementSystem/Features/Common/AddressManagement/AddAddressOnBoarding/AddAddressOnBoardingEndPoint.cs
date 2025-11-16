@@ -4,6 +4,7 @@ using HRManagementSystem.Features.Common.AddressManagement.AddAddressOnBoarding.
 
 namespace HRManagementSystem.Features.Common.AddressManagement.AddAddressOnBoarding
 {
+    [ApiGroup("Onboarding")]
     public sealed class AddAddressOnBoardingEndPoint
         : BaseEndPoint<AddAddressOnBoardingRequestViewModel, ResponseViewModel<bool>>
     {

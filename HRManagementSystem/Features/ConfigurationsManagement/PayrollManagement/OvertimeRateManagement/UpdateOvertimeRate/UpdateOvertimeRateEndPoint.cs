@@ -4,6 +4,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.Ove
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.OvertimeRateManagement.UpdateOvertimeRate
 {
+    [ApiGroup("Configurations Management", "Payroll Management")]
     public class UpdateOvertimeRateEndPoint : BaseEndPoint<UpdateOvertimeRateViewModel, ResponseViewModel<OvertimeRateDto>>
     {
         public UpdateOvertimeRateEndPoint(EndPointBaseParameters<UpdateOvertimeRateViewModel> parameters)
@@ -28,3 +29,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
         }
     }
 }
+
+
+

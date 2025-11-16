@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.CityManagement.AddCity.Commands;
+using HRManagementSystem.Features.CityManagement.AddCity.Commands;
 
 namespace HRManagementSystem.Features.CityManagement.AddCity
 {
+    [ApiGroup("City Management")]
     public class AddCityEndPoint : BaseEndPoint<AddCityViewModel, ResponseViewModel<bool>>
     {
         public AddCityEndPoint(EndPointBaseParameters<AddCityViewModel> parameters) : base(parameters)
@@ -32,3 +33,4 @@ namespace HRManagementSystem.Features.CityManagement.AddCity
         }
     }
 }
+

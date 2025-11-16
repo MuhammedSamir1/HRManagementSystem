@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.Up
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.UpdateContract
 {
+    [ApiGroup("Configurations Management", "Contract Management")]
     public class UpdateContractEndPoint : BaseEndPoint<UpdateContractRequestViewModel, ResponseViewModel<bool>>
     {
         public UpdateContractEndPoint(EndPointBaseParameters<UpdateContractRequestViewModel> parameters) : base(parameters)
@@ -34,4 +35,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagemen
         }
     }
 }
+
+
+
 

@@ -1,8 +1,9 @@
-﻿using HRManagementSystem.Features.BranchManagement.AddBranch.Commands;
+using HRManagementSystem.Features.BranchManagement.AddBranch.Commands;
 using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
 
 namespace HRManagementSystem.Features.BranchManagement.AddBranch
 {
+    [ApiGroup("Branch Management")]
     public class AddBranchEndPoint : BaseEndPoint<AddBranchViewModel, ResponseViewModel<bool>>
     {
         public AddBranchEndPoint(EndPointBaseParameters<AddBranchViewModel> parameters)
@@ -26,3 +27,4 @@ namespace HRManagementSystem.Features.BranchManagement.AddBranch
         }
     }
 }
+

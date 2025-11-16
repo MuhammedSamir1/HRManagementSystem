@@ -1,8 +1,9 @@
-﻿using HRManagementSystem.Features.Common.AddressManagement.StateCommon.ViewModels;
+using HRManagementSystem.Features.Common.AddressManagement.StateCommon.ViewModels;
 using HRManagementSystem.Features.StateManagement.GetAllStates.Queries;
 
 namespace HRManagementSystem.Features.StateManagement.GetAllStates
 {
+    [ApiGroup("State Management")]
     public class GetAllStatesEndPoint : BaseEndPoint<GetAllStatesViewModel,
     ResponseViewModel<IEnumerable<ViewStateViewModel>>>
     {
@@ -28,3 +29,4 @@ namespace HRManagementSystem.Features.StateManagement.GetAllStates
         }
     }
 }
+

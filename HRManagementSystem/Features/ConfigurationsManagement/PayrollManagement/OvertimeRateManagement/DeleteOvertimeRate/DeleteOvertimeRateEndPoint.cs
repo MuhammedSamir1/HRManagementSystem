@@ -1,5 +1,6 @@
 namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.OvertimeRateManagement.DeleteOvertimeRate
 {
+    [ApiGroup("Configurations Management", "Payroll Management")]
     public class DeleteOvertimeRateEndPoint : BaseEndPoint<Guid, ResponseViewModel<bool>>
     {
         public DeleteOvertimeRateEndPoint(EndPointBaseParameters<Guid> parameters) : base(parameters) { }
@@ -19,4 +20,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
         }
     }
 }
+
+
+
 

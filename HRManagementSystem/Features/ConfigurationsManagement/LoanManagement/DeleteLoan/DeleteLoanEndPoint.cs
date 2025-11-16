@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Delete
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.DeleteLoan
 {
+    [ApiGroup("Configurations Management", "Loan Management")]
     public class DeleteLoanEndPoint : BaseEndPoint<Guid, ResponseViewModel<bool>>
     {
         public DeleteLoanEndPoint(EndPointBaseParameters<Guid> parameters) : base(parameters) { }
@@ -21,4 +22,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.De
         }
     }
 }
+
+
+
 

@@ -2,6 +2,7 @@ using HRManagementSystem.Features.BankManagement.AddBank.Commands;
 
 namespace HRManagementSystem.Features.BankManagement.AddBank
 {
+    [ApiGroup("Configurations Management", "Bank Management")]
     public class AddBankEndPoint : BaseEndPoint<AddBankRequestViewModel, ResponseViewModel<bool>>
     {
         public AddBankEndPoint(EndPointBaseParameters<AddBankRequestViewModel> parameters) : base(parameters)

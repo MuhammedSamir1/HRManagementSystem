@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.TeamManagement.DeleteTeam.Commands;
+using HRManagementSystem.Features.TeamManagement.DeleteTeam.Commands;
 
 namespace HRManagementSystem.Features.TeamManagement.DeleteTeam
 {
+    [ApiGroup("Team Management")]
     public class DeleteTeamEndPoint : BaseEndPoint<DeleteTeamViewModel, ResponseViewModel<bool>>
     {
         public DeleteTeamEndPoint(EndPointBaseParameters<DeleteTeamViewModel> parameters)
@@ -22,3 +23,4 @@ namespace HRManagementSystem.Features.TeamManagement.DeleteTeam
         }
     }
 }
+

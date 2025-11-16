@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.GetBo
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.GetBonusById
 {
+    [ApiGroup("Configurations Management", "Bonus Management")]
     public class GetBonusByIdEndPoint : BaseEndPoint<GetBonusByIdViewModel, ResponseViewModel<ViewBonusByIdViewModel>>
     {
         public GetBonusByIdEndPoint(EndPointBaseParameters<GetBonusByIdViewModel> parameters) : base(parameters) { }
@@ -23,4 +24,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.G
         }
     }
 }
+
+
+
 

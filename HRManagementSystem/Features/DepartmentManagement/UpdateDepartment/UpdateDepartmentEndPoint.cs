@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.DepartmentManagement.UpdateDepartment.Commands;
+using HRManagementSystem.Features.DepartmentManagement.UpdateDepartment.Commands;
 
 namespace HRManagementSystem.Features.DepartmentManagement.UpdateDepartment
 {
+    [ApiGroup("Department Management")]
     public class UpdateDepartmentEndPoint : BaseEndPoint<UpdateDepartmentRequestViewModel, ResponseViewModel<bool>>
     {
         public UpdateDepartmentEndPoint(EndPointBaseParameters<UpdateDepartmentRequestViewModel> parameters) : base(parameters) { }
@@ -30,3 +31,4 @@ namespace HRManagementSystem.Features.DepartmentManagement.UpdateDepartment
         }
     }
 }
+

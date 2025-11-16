@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.RequestTypeManagement
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.RequestTypeManagement.DeleteRequestType
 {
+    [ApiGroup("Configurations Management", "Request Type Management")]
     public class DeleteRequestTypeEndPoint : BaseEndPoint<DeleteRequestTypeRequestViewModel, ResponseViewModel<bool>>
     {
         public DeleteRequestTypeEndPoint(EndPointBaseParameters<DeleteRequestTypeRequestViewModel> parameters)
@@ -21,4 +22,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.RequestTypeManage
         }
     }
 }
+
+
+
 

@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.RoleManagement.AddRole.Commands;
+using HRManagementSystem.Features.RoleManagement.AddRole.Commands;
 
 namespace HRManagementSystem.Features.RoleManagement.AddRole
 {
+    [ApiGroup("Role Management")]
     public class AddRoleEndpoint : BaseEndPoint<AddRoleRequestViewModel, ResponseViewModel<bool>>
     {
         public AddRoleEndpoint(EndPointBaseParameters<AddRoleRequestViewModel> parameters) : base(parameters)
@@ -24,3 +25,4 @@ namespace HRManagementSystem.Features.RoleManagement.AddRole
         }
     }
 }
+

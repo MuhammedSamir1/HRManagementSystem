@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.StateManagement.DeleteState.Command;
+using HRManagementSystem.Features.StateManagement.DeleteState.Command;
 
 namespace HRManagementSystem.Features.StateManagement.DeleteState
 {
+    [ApiGroup("State Management")]
     public class DeleteStateEndPoint : BaseEndPoint<DeleteStateViewModel,
     ResponseViewModel<DeleteStateResponseViewModel>>
     {
@@ -34,3 +35,4 @@ namespace HRManagementSystem.Features.StateManagement.DeleteState
         }
     }
 }
+

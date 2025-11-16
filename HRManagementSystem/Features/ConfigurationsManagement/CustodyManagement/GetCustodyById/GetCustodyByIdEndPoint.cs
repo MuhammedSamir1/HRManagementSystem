@@ -3,6 +3,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.Get
 
 namespace HRManagementSystem.Features.Configurations.CustodyManagement.GetCustodyById
 {
+    [ApiGroup("Configurations Management", "Custody Management")]
     public class GetCustodyByIdEndPoint : BaseEndPoint<Guid, ResponseViewModel<ViewCustodyDto>>
     {
 
@@ -33,4 +34,7 @@ namespace HRManagementSystem.Features.Configurations.CustodyManagement.GetCustod
         }
     }
 }
+
+
+
 

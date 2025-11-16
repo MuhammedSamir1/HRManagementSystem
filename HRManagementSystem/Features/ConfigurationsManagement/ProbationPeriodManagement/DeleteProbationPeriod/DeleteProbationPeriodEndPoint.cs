@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodManage
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodManagement.DeleteProbationPeriod
 {
+    [ApiGroup("Configurations Management", "Probation Period Management")]
     public class DeleteProbationPeriodEndPoint : BaseEndPoint<DeleteProbationPeriodViewModel, ResponseViewModel<bool>>
     {
         public DeleteProbationPeriodEndPoint(EndPointBaseParameters<DeleteProbationPeriodViewModel> parameters)
@@ -22,4 +23,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodMa
         }
     }
 }
+
+
+
 

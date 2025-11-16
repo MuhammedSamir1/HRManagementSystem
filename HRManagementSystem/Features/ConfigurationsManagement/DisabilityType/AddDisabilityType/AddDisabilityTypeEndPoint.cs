@@ -3,6 +3,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.AddDis
 namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.AddDisabilityType
 {
     // Endpoints/AddDisabilityTypeEndPoint.cs
+    [ApiGroup("Configurations Management", "Disability Type")]
     public class AddDisabilityTypeEndPoint : BaseEndPoint<AddDisabilityTypeViewModel,
         ResponseViewModel<ViewDisabilityTypeViewModel>>
     {
@@ -36,3 +37,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Ad
     }
 
 }
+
+
+

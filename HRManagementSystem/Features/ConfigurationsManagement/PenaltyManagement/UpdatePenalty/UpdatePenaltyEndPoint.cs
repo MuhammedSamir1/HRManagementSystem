@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.Upd
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.UpdatePenalty
 {
+    [ApiGroup("Configurations Management", "Penalty Management")]
     public class UpdatePenaltyEndPoint : BaseEndPoint<UpdatePenaltyViewModel, ResponseViewModel<bool>>
     {
         public UpdatePenaltyEndPoint(EndPointBaseParameters<UpdatePenaltyViewModel> parameters) : base(parameters) { }
@@ -21,3 +22,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
         }
     }
 }
+
+
+

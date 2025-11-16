@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.RequestTypeManagement
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.RequestTypeManagement.AddRequestType
 {
+    [ApiGroup("Configurations Management", "Request Type Management")]
     public class AddRequestTypeEndPoint : BaseEndPoint<AddRequestTypeRequestViewModel, ResponseViewModel<bool>>
     {
         public AddRequestTypeEndPoint(EndPointBaseParameters<AddRequestTypeRequestViewModel> parameters) : base(parameters)
@@ -24,4 +25,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.RequestTypeManage
         }
     }
 }
+
+
+
 

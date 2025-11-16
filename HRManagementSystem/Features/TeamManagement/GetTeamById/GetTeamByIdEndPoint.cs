@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.TeamManagement.GetTeamById.Queries;
+using HRManagementSystem.Features.TeamManagement.GetTeamById.Queries;
 
 namespace HRManagementSystem.Features.TeamManagement.GetTeamById
 {
+    [ApiGroup("Team Management")]
     public class GetTeamByIdEndPoint : BaseEndPoint<GetTeamByIdViewModel,
        ResponseViewModel<ViewTeamByIdViewModel>>
     {
@@ -27,3 +28,4 @@ namespace HRManagementSystem.Features.TeamManagement.GetTeamById
         }
     }
 }
+

@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.UserManagement.LoginUser.Query;
+using HRManagementSystem.Features.UserManagement.LoginUser.Query;
 
 namespace HRManagementSystem.Features.UserManagement.LoginUser
 {
+    [ApiGroup("User Management")]
     public class LoginUserEndPoint : BaseEndPoint<LoginUserRequestViewModel, ResponseViewModel<string>>
     {
         public LoginUserEndPoint(EndPointBaseParameters<LoginUserRequestViewModel> parameters) : base(parameters)
@@ -26,3 +27,4 @@ namespace HRManagementSystem.Features.UserManagement.LoginUser
         }
     }
 }
+

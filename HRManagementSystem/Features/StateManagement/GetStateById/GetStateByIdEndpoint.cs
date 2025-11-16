@@ -1,8 +1,9 @@
-﻿using HRManagementSystem.Features.Common.AddressManagement.StateCommon.ViewModels;
+using HRManagementSystem.Features.Common.AddressManagement.StateCommon.ViewModels;
 using HRManagementSystem.Features.StateManagement.GetStateById.Queries;
 
 namespace HRManagementSystem.Features.StateManagement.GetStateById
 {
+    [ApiGroup("State Management")]
     public class GetStateByIdEndPoint : BaseEndPoint<GetStateByIdViewModel,
     ResponseViewModel<ViewStateViewModel>>
     {
@@ -28,3 +29,4 @@ namespace HRManagementSystem.Features.StateManagement.GetStateById
         }
     }
 }
+

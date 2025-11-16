@@ -1,9 +1,10 @@
-﻿using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos;
+using HRManagementSystem.Features.Common.AddressManagement.UpdateAddressDtosAndVms.Dtos;
 using HRManagementSystem.Features.Common.CurrencyManagement.UpdateCurrencyDtosAndVms.Dtos;
 using HRManagementSystem.Features.OrganizationManagement.UpdateOrganization.Commands;
 
 namespace HRManagementSystem.Features.OrganizationManagement.UpdateOrganization
 {
+    [ApiGroup("Organization Management")]
     public class UpdateOrganizationEndPoint : BaseEndPoint<UpdateOrganizationViewModel, ResponseViewModel<bool>>
     {
         public UpdateOrganizationEndPoint(EndPointBaseParameters<UpdateOrganizationViewModel> parameters) : base(parameters) { }
@@ -27,3 +28,4 @@ namespace HRManagementSystem.Features.OrganizationManagement.UpdateOrganization
         }
     }
 }
+

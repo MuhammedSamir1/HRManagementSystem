@@ -2,6 +2,7 @@ using HRManagementSystem.Features.CountryManagement.DeleteCountry.Commands;
 
 namespace HRManagementSystem.Features.CountryManagement.DeleteCountry
 {
+    [ApiGroup("Country Management")]
     public class DeleteCountryEndPoint : BaseEndPoint<DeleteCountryViewModel, bool>
     {
         public DeleteCountryEndPoint(EndPointBaseParameters<DeleteCountryViewModel> parameters) : base(parameters) { }
@@ -26,4 +27,5 @@ namespace HRManagementSystem.Features.CountryManagement.DeleteCountry
         }
     }
 }
+
 

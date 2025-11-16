@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagemen
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagement.UpdateEndOfService
 {
+    [ApiGroup("Configurations Management", "End Of Service Management")]
     public class UpdateEndOfServiceEndPoint : BaseEndPoint<UpdateEndOfServiceViewModel, ResponseViewModel<bool>>
     {
         public UpdateEndOfServiceEndPoint(EndPointBaseParameters<UpdateEndOfServiceViewModel> parameters) : base(parameters) { }
@@ -21,3 +22,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         }
     }
 }
+
+
+

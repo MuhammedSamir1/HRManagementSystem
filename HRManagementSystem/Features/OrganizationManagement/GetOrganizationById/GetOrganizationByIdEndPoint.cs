@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.OrganizationManagement.GetOrganizationById.Queries;
+using HRManagementSystem.Features.OrganizationManagement.GetOrganizationById.Queries;
 
 namespace HRManagementSystem.Features.OrganizationManagement.GetOrganizationById
 {
+    [ApiGroup("Organization Management")]
     public class GetOrganizationByIdEndPoint : BaseEndPoint<GetOrganizationByIdViewModel,
         ResponseViewModel<ViewOrganizationViewModel>>
     {
@@ -27,3 +28,4 @@ namespace HRManagementSystem.Features.OrganizationManagement.GetOrganizationById
         }
     }
 }
+

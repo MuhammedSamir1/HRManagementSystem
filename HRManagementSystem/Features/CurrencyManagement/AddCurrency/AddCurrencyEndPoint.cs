@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.CurrencyManagement.AddCurrency.Commands;
+using HRManagementSystem.Features.CurrencyManagement.AddCurrency.Commands;
 
 namespace HRManagementSystem.Features.CurrencyManagement.AddCurrency
 {
+    [ApiGroup("Currency Management")]
     public class AddCurrencyEndPoint : BaseEndPoint<AddCurrencyRequestViewModel, ResponseViewModel<bool>>
     {
         public AddCurrencyEndPoint(EndPointBaseParameters<AddCurrencyRequestViewModel> parameters) : base(parameters)
@@ -24,3 +25,4 @@ namespace HRManagementSystem.Features.CurrencyManagement.AddCurrency
         }
     }
 }
+

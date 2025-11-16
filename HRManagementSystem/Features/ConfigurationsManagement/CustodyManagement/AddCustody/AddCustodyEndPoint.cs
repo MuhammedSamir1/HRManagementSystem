@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.Add
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.AddCustody
 {
+    [ApiGroup("Configurations Management", "Custody Management")]
     public class AddCustodyEndPoint : BaseEndPoint<AddCustodyViewModel, ResponseViewModel<Guid>>
     {
 
@@ -25,4 +26,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement
         }
     }
 }
+
+
+
 

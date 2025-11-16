@@ -3,6 +3,7 @@ using HRManagementSystem.Features.Common.DeleteEntityCascade.Command;
 
 namespace HRManagementSystem.Features.OrganizationManagement.DeleteOrganization.Cascade;
 
+[ApiGroup("Organization Management")]
 public class DeleteOrganizationCascadeEndPoint : BaseEndPoint<DeleteEntityCascadeViewModel<
     Organization, Guid>, ResponseViewModel<bool>>
 {
@@ -20,4 +21,5 @@ public class DeleteOrganizationCascadeEndPoint : BaseEndPoint<DeleteEntityCascad
         return ResponseViewModel<bool>.Success(isDeleted.isSuccess, "Organization Deleted Successfully!");
     }
 }
+
 

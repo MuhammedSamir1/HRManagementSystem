@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.CompanyManagement.DeleteCompany.Orchestrators;
+using HRManagementSystem.Features.CompanyManagement.DeleteCompany.Orchestrators;
 
 namespace HRManagementSystem.Features.CompanyManagement.DeleteCompany
 {
+    [ApiGroup("Company Management")]
     public class DeleteCompanyEndPoint : BaseEndPoint<DeleteCompanyRequestViewModel, ResponseViewModel<bool>>
     {
         public DeleteCompanyEndPoint(EndPointBaseParameters<DeleteCompanyRequestViewModel> parameters)
@@ -21,3 +22,4 @@ namespace HRManagementSystem.Features.CompanyManagement.DeleteCompany
         }
     }
 }
+

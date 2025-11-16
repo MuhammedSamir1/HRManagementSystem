@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.GetLoa
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.GetLoanById
 {
+    [ApiGroup("Configurations Management", "Loan Management")]
     public class GetLoanByIdEndPoint : BaseEndPoint<GetLoanByIdViewModel, ResponseViewModel<ViewLoanByIdViewModel>>
     {
         public GetLoanByIdEndPoint(EndPointBaseParameters<GetLoanByIdViewModel> parameters) : base(parameters) { }
@@ -23,4 +24,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Ge
         }
     }
 }
+
+
+
 

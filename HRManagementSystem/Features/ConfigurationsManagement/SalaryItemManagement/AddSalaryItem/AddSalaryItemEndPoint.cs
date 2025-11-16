@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.AddSalaryItem
 {
+    [ApiGroup("Configurations Management", "Salary Item Management")]
     public class AddSalaryItemEndPoint : BaseEndPoint<AddSalaryItemViewModel, ResponseViewModel<Guid>>
     {
         public AddSalaryItemEndPoint(EndPointBaseParameters<AddSalaryItemViewModel> parameters) : base(parameters) { }
@@ -21,4 +22,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
         }
     }
 }
+
+
+
 

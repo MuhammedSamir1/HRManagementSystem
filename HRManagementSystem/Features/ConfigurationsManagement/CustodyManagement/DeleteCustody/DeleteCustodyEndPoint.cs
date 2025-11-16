@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.Del
 
 namespace HRManagementSystem.Features.Configurations.CustodyManagement.DeleteCustody
 {
+    [ApiGroup("Configurations Management", "Custody Management")]
     public class DeleteCustodyEndPoint : BaseEndPoint<Guid, ResponseViewModel<bool>>
     {
 
@@ -32,4 +33,7 @@ namespace HRManagementSystem.Features.Configurations.CustodyManagement.DeleteCus
         }
     }
 }
+
+
+
 

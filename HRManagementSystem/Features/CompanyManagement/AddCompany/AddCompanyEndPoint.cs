@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.CompanyManagement.AddCompany.Commands;
+using HRManagementSystem.Features.CompanyManagement.AddCompany.Commands;
 
 namespace HRManagementSystem.Features.CompanyManagement.AddCompany
 {
+    [ApiGroup("Company Management")]
     public class AddCompanyEndPoint : BaseEndPoint<AddCompanyRequestViewModel, ResponseViewModel<bool>>
     {
         public AddCompanyEndPoint(EndPointBaseParameters<AddCompanyRequestViewModel> parameters) : base(parameters)
@@ -28,3 +29,4 @@ namespace HRManagementSystem.Features.CompanyManagement.AddCompany
         }
     }
 }
+

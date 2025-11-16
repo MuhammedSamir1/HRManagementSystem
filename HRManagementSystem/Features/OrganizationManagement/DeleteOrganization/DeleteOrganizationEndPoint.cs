@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.OrganizationManagement.DeleteOrganization.Orchestrators;
+using HRManagementSystem.Features.OrganizationManagement.DeleteOrganization.Orchestrators;
 
 namespace HRManagementSystem.Features.OrganizationManagement.DeleteOrganization
 {
+    [ApiGroup("Organization Management")]
     public class DeleteOrganizationEndPoint : BaseEndPoint<DeleteOrganizationViewModel, ResponseViewModel<bool>>
     {
         public DeleteOrganizationEndPoint(EndPointBaseParameters<DeleteOrganizationViewModel> parameters)
@@ -22,3 +23,4 @@ namespace HRManagementSystem.Features.OrganizationManagement.DeleteOrganization
         }
     }
 }
+

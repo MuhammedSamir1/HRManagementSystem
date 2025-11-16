@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Orchestrators;
+using HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Orchestrators;
 
 namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment
 {
+    [ApiGroup("Department Management")]
     public class DeleteDepartmentEndPoint : BaseEndPoint<DeleteDepartmentRequestViewModel, ResponseViewModel<bool>>
     {
         public DeleteDepartmentEndPoint(EndPointBaseParameters<DeleteDepartmentRequestViewModel> parameters)
@@ -21,3 +22,4 @@ namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment
         }
     }
 }
+

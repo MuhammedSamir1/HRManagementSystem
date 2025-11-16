@@ -4,6 +4,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.Pay
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.UpdatePayrollItem
 {
+    [ApiGroup("Configurations Management", "Payroll Management")]
     public class UpdatePayrollItemEndPoint : BaseEndPoint<UpdatePayrollItemViewModel, ResponseViewModel<PayrollItemDto>>
     {
         public UpdatePayrollItemEndPoint(EndPointBaseParameters<UpdatePayrollItemViewModel> parameters)
@@ -28,3 +29,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
         }
     }
 }
+
+
+

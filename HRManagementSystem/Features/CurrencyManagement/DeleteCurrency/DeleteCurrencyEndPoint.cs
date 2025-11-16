@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.CurrencyManagement.DeleteCurrency.Commands;
+using HRManagementSystem.Features.CurrencyManagement.DeleteCurrency.Commands;
 
 namespace HRManagementSystem.Features.CurrencyManagement.DeleteCurrency
 {
+    [ApiGroup("Currency Management")]
     public class DeleteCurrencyEndPoint : BaseEndPoint<DeleteCurrencyRequestViewModel, ResponseViewModel<bool>>
     {
         public DeleteCurrencyEndPoint(EndPointBaseParameters<DeleteCurrencyRequestViewModel> parameters)
@@ -21,3 +22,4 @@ namespace HRManagementSystem.Features.CurrencyManagement.DeleteCurrency
         }
     }
 }
+

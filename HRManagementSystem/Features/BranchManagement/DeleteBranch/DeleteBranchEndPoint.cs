@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.BranchManagement.DeleteBranch.Commands;
+using HRManagementSystem.Features.BranchManagement.DeleteBranch.Commands;
 
 namespace HRManagementSystem.Features.BranchManagement.DeleteBranch
 {
+    [ApiGroup("Branch Management")]
     public class DeleteBranchEndPoint : BaseEndPoint<DeleteBranchViewModel, ResponseViewModel<bool>>
     {
         public DeleteBranchEndPoint(EndPointBaseParameters<DeleteBranchViewModel> parameters)
@@ -22,3 +23,4 @@ namespace HRManagementSystem.Features.BranchManagement.DeleteBranch
         }
     }
 }
+

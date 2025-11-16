@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.CityManagement.GetCityById.Queries;
+using HRManagementSystem.Features.CityManagement.GetCityById.Queries;
 
 namespace HRManagementSystem.Features.CityManagement.GetCityById
 {
+    [ApiGroup("City Management")]
     public class GetCityByIdEndPoint
         : BaseEndPoint<GetCityByIdViewModel, ResponseViewModel<GetCityByIdViewModel>>
     {
@@ -32,3 +33,4 @@ namespace HRManagementSystem.Features.CityManagement.GetCityById
         }
     }
 }
+

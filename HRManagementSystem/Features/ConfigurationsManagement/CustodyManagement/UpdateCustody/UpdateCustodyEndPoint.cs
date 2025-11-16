@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.Upd
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.UpdateCustody
 {
+    [ApiGroup("Configurations Management", "Custody Management")]
     public class UpdateCustodyEndPoint : BaseEndPoint<UpdateCustodyViewModel, ResponseViewModel<bool>>
     {
 
@@ -34,3 +35,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement
         }
     }
 }
+
+
+

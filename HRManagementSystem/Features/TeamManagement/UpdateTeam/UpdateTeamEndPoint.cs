@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.TeamManagement.UpdateTeam.Commands;
+using HRManagementSystem.Features.TeamManagement.UpdateTeam.Commands;
 
 namespace HRManagementSystem.Features.TeamManagement.UpdateTeam
 {
+    [ApiGroup("Team Management")]
     public class UpdateTeamEndPoint : BaseEndPoint<UpdateTeamViewModel, RequestResult<bool>>
     {
         public UpdateTeamEndPoint(EndPointBaseParameters<UpdateTeamViewModel> parameters) : base(parameters) { }
@@ -23,3 +24,4 @@ namespace HRManagementSystem.Features.TeamManagement.UpdateTeam
         }
     }
 }
+

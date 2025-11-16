@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.DepartmentManagement.GetDepartmentById.Queries;
+using HRManagementSystem.Features.DepartmentManagement.GetDepartmentById.Queries;
 
 namespace HRManagementSystem.Features.DepartmentManagement.GetDepartmentById
 {
+    [ApiGroup("Department Management")]
     public class GetDepartmentByIdEndPoint : BaseEndPoint<GetDepartmentByIdRequestViewModel, ResponseViewModel<GetDepartmentByIdResponseViewModel>>
     {
         public GetDepartmentByIdEndPoint(EndPointBaseParameters<GetDepartmentByIdRequestViewModel> parameters) : base(parameters)
@@ -26,3 +27,4 @@ namespace HRManagementSystem.Features.DepartmentManagement.GetDepartmentById
         }
     }
 }
+

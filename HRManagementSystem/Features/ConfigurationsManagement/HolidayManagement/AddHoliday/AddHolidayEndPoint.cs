@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.Add
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.AddHoliday
 {
+    [ApiGroup("Configurations Management", "Holiday Management")]
     public class AddHolidayEndPoint : BaseEndPoint<AddHolidayRequestViewModel, ResponseViewModel<bool>>
     {
         public AddHolidayEndPoint(EndPointBaseParameters<AddHolidayRequestViewModel> parameters) : base(parameters) { }
@@ -26,3 +27,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
         }
     }
 }
+
+
+

@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagemen
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagement.DeleteEndOfService
 {
+    [ApiGroup("Configurations Management", "End Of Service Management")]
     public class DeleteEndOfServiceEndPoint : BaseEndPoint<Guid, ResponseViewModel<bool>>
     {
         public DeleteEndOfServiceEndPoint(EndPointBaseParameters<Guid> parameters) : base(parameters) { }
@@ -21,4 +22,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         }
     }
 }
+
+
+
 

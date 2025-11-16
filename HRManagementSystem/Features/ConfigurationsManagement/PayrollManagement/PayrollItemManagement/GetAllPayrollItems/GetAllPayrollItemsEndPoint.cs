@@ -1,8 +1,9 @@
-﻿using HRManagementSystem.Features.Common.PayrollCommon;
+using HRManagementSystem.Features.Common.PayrollCommon;
 using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.GetAllPayrollItems.Queries;
 
 namespace HRManagementSystem.Features.Configurations.PayrollManagement.PayrollItemManagement.GetAllPayrollItems
 {
+    [ApiGroup("Configurations Management", "Payroll Management")]
     public class GetAllPayrollItemsEndPoint : BaseEndPoint<object, ResponseViewModel<IEnumerable<PayrollItemDto>>>
     {
         // نستخدم object لأن الـ Query لا تحتاج أي مدخلات في هذه النسخة
@@ -25,3 +26,6 @@ namespace HRManagementSystem.Features.Configurations.PayrollManagement.PayrollIt
         }
     }
 }
+
+
+

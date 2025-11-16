@@ -1400,6 +1400,108 @@ namespace HRManagementSystem.Migrations
                     b.ToTable("RoleFeatures");
                 });
 
+            modelBuilder.Entity("HRManagementSystem.Data.Models.Scopes.Scope", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("BranchId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("CreatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("DepartmentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<Guid?>("OrganizationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("TeamId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("UpdatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId", "OrganizationId", "BranchId", "DepartmentId", "TeamId")
+                        .IsUnique()
+                        .HasFilter("[OrganizationId] IS NOT NULL AND [BranchId] IS NOT NULL AND [DepartmentId] IS NOT NULL AND [TeamId] IS NOT NULL");
+
+                    b.ToTable("Scopes", (string)null);
+                });
+
+            modelBuilder.Entity("HRManagementSystem.Data.Models.Scopes.ShiftScope", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("CreatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<Guid>("ScopeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ShiftId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("UpdatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ScopeId");
+
+                    b.HasIndex("ShiftId", "ScopeId")
+                        .IsUnique();
+
+                    b.ToTable("ShiftScopes", (string)null);
+                });
+
             modelBuilder.Entity("HRManagementSystem.Data.Models.Team", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1636,6 +1738,25 @@ namespace HRManagementSystem.Migrations
                     b.Navigation("Role");
                 });
 
+            modelBuilder.Entity("HRManagementSystem.Data.Models.Scopes.ShiftScope", b =>
+                {
+                    b.HasOne("HRManagementSystem.Data.Models.Scopes.Scope", "Scope")
+                        .WithMany("ShiftScopes")
+                        .HasForeignKey("ScopeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("HRManagementSystem.Data.Models.ConfigurationsModels.Shift", "Shift")
+                        .WithMany()
+                        .HasForeignKey("ShiftId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Scope");
+
+                    b.Navigation("Shift");
+                });
+
             modelBuilder.Entity("HRManagementSystem.Data.Models.Team", b =>
                 {
                     b.HasOne("HRManagementSystem.Data.Models.Department", "Department")
@@ -1691,6 +1812,11 @@ namespace HRManagementSystem.Migrations
             modelBuilder.Entity("HRManagementSystem.Data.Models.Organization", b =>
                 {
                     b.Navigation("Companies");
+                });
+
+            modelBuilder.Entity("HRManagementSystem.Data.Models.Scopes.Scope", b =>
+                {
+                    b.Navigation("ShiftScopes");
                 });
 #pragma warning restore 612, 618
         }

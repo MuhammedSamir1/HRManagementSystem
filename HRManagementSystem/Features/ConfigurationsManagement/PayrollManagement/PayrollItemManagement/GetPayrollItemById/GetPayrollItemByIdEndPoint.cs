@@ -3,6 +3,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.Pay
 
 namespace HRManagementSystem.Features.Configurations.PayrollManagement.PayrollItemManagement.GetPayrollItemById
 {
+    [ApiGroup("Configurations Management", "Payroll Management")]
     public class GetPayrollItemByIdEndPoint : BaseEndPoint<Guid, ResponseViewModel<PayrollItemDto>>
     {
         public GetPayrollItemByIdEndPoint(EndPointBaseParameters<Guid> parameters)
@@ -23,4 +24,7 @@ namespace HRManagementSystem.Features.Configurations.PayrollManagement.PayrollIt
         }
     }
 }
+
+
+
 

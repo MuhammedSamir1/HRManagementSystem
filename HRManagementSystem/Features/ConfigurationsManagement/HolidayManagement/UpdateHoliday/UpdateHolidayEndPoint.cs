@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.Upd
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.UpdateHoliday
 {
+    [ApiGroup("Configurations Management", "Holiday Management")]
     public class UpdateHolidayEndPoint : BaseEndPoint<UpdateHolidayRequestViewModel, ResponseViewModel<bool>>
     {
         public UpdateHolidayEndPoint(EndPointBaseParameters<UpdateHolidayRequestViewModel> parameters) : base(parameters) { }
@@ -25,3 +26,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
         }
     }
 }
+
+
+

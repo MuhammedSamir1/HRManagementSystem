@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.CityManagement.Delete.Command;
+using HRManagementSystem.Features.CityManagement.Delete.Command;
 
 namespace HRManagementSystem.Features.CityManagement.Delete
 {
+    [ApiGroup("City Management")]
     public class DeleteCityEndPoint
         : BaseEndPoint<DeleteCityViewModel, ResponseViewModel<bool>>
     {
@@ -25,3 +26,4 @@ namespace HRManagementSystem.Features.CityManagement.Delete
         }
     }
 }
+

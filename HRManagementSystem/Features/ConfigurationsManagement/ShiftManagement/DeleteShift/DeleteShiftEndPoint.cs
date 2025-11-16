@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.Delet
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.DeleteShift
 {
+    [ApiGroup("Configurations Management", "Shift Management")]
     public class DeleteShiftEndPoint : BaseEndPoint<DeleteShiftViewModel, ResponseViewModel<bool>>
     {
         public DeleteShiftEndPoint(EndPointBaseParameters<DeleteShiftViewModel> parameters)
@@ -22,4 +23,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.D
         }
     }
 }
+
+
+
 

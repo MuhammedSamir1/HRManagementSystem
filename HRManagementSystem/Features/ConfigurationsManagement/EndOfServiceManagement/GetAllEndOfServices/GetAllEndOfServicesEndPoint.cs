@@ -4,6 +4,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagemen
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagement.GetAllEndOfServices
 {
+    [ApiGroup("Configurations Management", "End Of Service Management")]
     public class GetAllEndOfServicesEndPoint : BaseEndPoint<GetAllEndOfServicesViewModel, ResponseViewModel<object>>
     {
         public GetAllEndOfServicesEndPoint(EndPointBaseParameters<GetAllEndOfServicesViewModel> parameters) : base(parameters) { }
@@ -25,3 +26,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         }
     }
 }
+
+
+

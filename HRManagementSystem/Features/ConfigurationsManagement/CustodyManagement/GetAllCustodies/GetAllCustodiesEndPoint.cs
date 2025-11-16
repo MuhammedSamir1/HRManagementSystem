@@ -4,6 +4,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.Get
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.GetAllCustodies
 {
+    [ApiGroup("Configurations Management", "Custody Management")]
     public class GetAllCustodiesEndPoint : BaseEndPoint<GetAllCustodiesViewModel, ResponseViewModel<PagedList<ViewCustodyDto>>>
     {
         public GetAllCustodiesEndPoint(EndPointBaseParameters<GetAllCustodiesViewModel> parameters) : base(parameters) { }
@@ -26,3 +27,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement
         }
     }
 }
+
+
+

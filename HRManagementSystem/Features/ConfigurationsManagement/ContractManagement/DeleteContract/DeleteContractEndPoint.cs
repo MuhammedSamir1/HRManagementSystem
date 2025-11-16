@@ -3,6 +3,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.De
 
 namespace HRManagementSystem.Features.Configurations.ContractManagement.DeleteContract
 {
+    [ApiGroup("Configurations Management", "Contract Management")]
     public class DeleteContractEndPoint : BaseEndPoint<DeleteContractRequestViewModel, ResponseViewModel<bool>>
     {
         public DeleteContractEndPoint(EndPointBaseParameters<DeleteContractRequestViewModel> parameters)
@@ -22,4 +23,7 @@ namespace HRManagementSystem.Features.Configurations.ContractManagement.DeleteCo
         }
     }
 }
+
+
+
 

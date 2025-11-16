@@ -4,6 +4,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.Ove
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.OvertimeRateManagement.GetAllOvertimeRates
 {
+    [ApiGroup("Configurations Management", "Payroll Management")]
     public class GetAllOvertimeRatesEndPoint : BaseEndPoint<GetAllOvertimeRatesViewModel, ResponseViewModel<object>>
     {
         public GetAllOvertimeRatesEndPoint(EndPointBaseParameters<GetAllOvertimeRatesViewModel> parameters) : base(parameters) { }
@@ -23,4 +24,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
         }
     }
 }
+
+
+
 

@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.GetSh
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.GetShiftById
 {
+    [ApiGroup("Configurations Management", "Shift Management")]
     public class GetShiftByIdEndPoint : BaseEndPoint<GetShiftByIdViewModel,
        ResponseViewModel<ViewShiftByIdViewModel>>
     {
@@ -27,4 +28,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.G
         }
     }
 }
+
+
+
 

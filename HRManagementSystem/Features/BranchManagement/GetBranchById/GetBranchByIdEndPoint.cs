@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.BranchManagement.GetBranchById.Queries;
+using HRManagementSystem.Features.BranchManagement.GetBranchById.Queries;
 
 namespace HRManagementSystem.Features.BranchManagement.GetBranchById
 {
+    [ApiGroup("Branch Management")]
     public class GetBranchByIdEndPoint : BaseEndPoint<GetBranchByIdViewModel,
         ResponseViewModel<ViewBranchByIdViewModel>>
     {
@@ -27,3 +28,4 @@ namespace HRManagementSystem.Features.BranchManagement.GetBranchById
         }
     }
 }
+

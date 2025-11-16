@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.AddSh
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.AddShift
 {
+    [ApiGroup("Configurations Management", "Shift Management")]
     public class AddShiftEndPoint : BaseEndPoint<AddShiftViewModel, ResponseViewModel<bool>>
     {
         public AddShiftEndPoint(EndPointBaseParameters<AddShiftViewModel> parameters)
@@ -24,4 +25,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.A
         }
     }
 }
+
+
+
 

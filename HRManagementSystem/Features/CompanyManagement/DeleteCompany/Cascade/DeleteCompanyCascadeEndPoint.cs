@@ -4,6 +4,7 @@ using HRManagementSystem.Features.Common.DeleteEntityCascade.Command;
 
 namespace HRManagementSystem.Features.CompanyManagement.DeleteCompany.Cascade;
 
+[ApiGroup("Company Management")]
 public class DeleteCompanyCascadeEndPoint : BaseEndPoint<DeleteEntityCascadeViewModel<Company, Guid>, ResponseViewModel<bool>>
 {
     public DeleteCompanyCascadeEndPoint(EndPointBaseParameters<DeleteEntityCascadeViewModel<Company, Guid>> parameters)
@@ -20,4 +21,5 @@ public class DeleteCompanyCascadeEndPoint : BaseEndPoint<DeleteEntityCascadeView
         return ResponseViewModel<bool>.Success(isDeleted.isSuccess, "Company Deleted Successfully!");
     }
 }
+
 

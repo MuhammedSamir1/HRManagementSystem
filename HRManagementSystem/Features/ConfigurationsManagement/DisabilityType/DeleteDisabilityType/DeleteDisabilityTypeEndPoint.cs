@@ -3,6 +3,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Delete
 namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.DeleteDisabilityType
 {
     // Endpoints/DeleteDisabilityTypeEndPoint.cs
+    [ApiGroup("Configurations Management", "Disability Type")]
     public class DeleteDisabilityTypeEndPoint : BaseEndPoint<DeleteDisabilityTypeViewModel,
         ResponseViewModel<bool>>
     {
@@ -33,3 +34,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.De
         }
     }
 }
+
+
+

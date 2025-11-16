@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.UpdateSalaryItem
 {
+    [ApiGroup("Configurations Management", "Salary Item Management")]
     public class UpdateSalaryItemEndPoint : BaseEndPoint<UpdateSalaryItemViewModel, ResponseViewModel<bool>>
     {
         public UpdateSalaryItemEndPoint(EndPointBaseParameters<UpdateSalaryItemViewModel> parameters) : base(parameters) { }
@@ -21,3 +22,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
         }
     }
 }
+
+
+

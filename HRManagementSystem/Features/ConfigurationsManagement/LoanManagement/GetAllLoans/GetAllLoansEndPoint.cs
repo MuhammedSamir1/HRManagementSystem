@@ -4,6 +4,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.GetAll
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.GetAllLoans
 {
+    [ApiGroup("Configurations Management", "Loan Management")]
     public class GetAllLoansEndPoint : BaseEndPoint<GetAllLoansViewModel, ResponseViewModel<object>>
     {
         public GetAllLoansEndPoint(EndPointBaseParameters<GetAllLoansViewModel> parameters) : base(parameters) { }
@@ -25,3 +26,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Ge
         }
     }
 }
+
+
+

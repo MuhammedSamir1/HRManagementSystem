@@ -3,6 +3,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.Get
 
 namespace HRManagementSystem.Features.Configurations.HolidayManagement.GetHolidayById
 {
+    [ApiGroup("Configurations Management", "Holiday Management")]
     public class GetHolidayByIdEndPoint : BaseEndPoint<object, ResponseViewModel<object>>
     {
         public GetHolidayByIdEndPoint(EndPointBaseParameters<object> parameters) : base(parameters) { }
@@ -23,4 +24,7 @@ namespace HRManagementSystem.Features.Configurations.HolidayManagement.GetHolida
         }
     }
 }
+
+
+
 

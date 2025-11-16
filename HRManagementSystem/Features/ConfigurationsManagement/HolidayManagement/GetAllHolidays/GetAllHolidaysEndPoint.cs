@@ -6,6 +6,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.Com
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.GetAllHolidays
 {
+    [ApiGroup("Configurations Management", "Holiday Management")]
     public class GetAllHolidaysEndPoint : BaseEndPoint<GetAllHolidaysViewModel, ResponseViewModel<object>>
     {
 
@@ -33,3 +34,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
         }
     }
 }
+
+
+

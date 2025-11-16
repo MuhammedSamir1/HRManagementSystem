@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.CityManagement.GetAllCities.Queries;
+using HRManagementSystem.Features.CityManagement.GetAllCities.Queries;
 
 namespace HRManagementSystem.Features.CityManagement.GetAllCities
 {
+    [ApiGroup("City Management")]
     public class GetAllCitiesEndPoint
         : BaseEndPoint<GetAllCitiesViewModel, ResponseViewModel<List<ViewAllCitiesViewModel>>>
     {
@@ -24,3 +25,4 @@ namespace HRManagementSystem.Features.CityManagement.GetAllCities
         }
     }
 }
+

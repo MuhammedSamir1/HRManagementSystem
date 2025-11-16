@@ -4,6 +4,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.GetAl
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.GetAllBonuses
 {
+    [ApiGroup("Configurations Management", "Bonus Management")]
     public class GetAllBonusesEndPoint : BaseEndPoint<GetAllBonusesViewModel, ResponseViewModel<object>>
     {
         public GetAllBonusesEndPoint(EndPointBaseParameters<GetAllBonusesViewModel> parameters) : base(parameters) { }
@@ -25,3 +26,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.G
         }
     }
 }
+
+
+

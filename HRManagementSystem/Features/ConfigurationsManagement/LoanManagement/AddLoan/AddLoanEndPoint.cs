@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.AddLoa
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.AddLoan
 {
+    [ApiGroup("Configurations Management", "Loan Management")]
     public class AddLoanEndPoint : BaseEndPoint<AddLoanViewModel, ResponseViewModel<Guid>>
     {
         public AddLoanEndPoint(EndPointBaseParameters<AddLoanViewModel> parameters) : base(parameters) { }
@@ -21,4 +22,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Ad
         }
     }
 }
+
+
+
 

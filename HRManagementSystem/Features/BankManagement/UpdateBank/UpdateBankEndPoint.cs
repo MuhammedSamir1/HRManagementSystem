@@ -2,6 +2,7 @@ using HRManagementSystem.Features.BankManagement.UpdateBank.Commands;
 
 namespace HRManagementSystem.Features.BankManagement.UpdateBank
 {
+    [ApiGroup("Bank Management")]
     public class UpdateBankEndPoint : BaseEndPoint<UpdateBankRequestViewModel, ResponseViewModel<bool>>
     {
         public UpdateBankEndPoint(EndPointBaseParameters<UpdateBankRequestViewModel> parameters) : base(parameters)
@@ -9,7 +10,7 @@ namespace HRManagementSystem.Features.BankManagement.UpdateBank
         }
 
         [HttpPut("update")]
-        public async Task<ResponseViewModel<bool>> UpdateBank([FromQuery] UpdateBankRequestViewModel request, CancellationToken ct)
+        public async Task<ResponseViewModel<bool>> UpdateBank([FromBody] UpdateBankRequestViewModel request, CancellationToken ct)
         {
             var validationResult = ValidateRequest(request);
             if (!validationResult.isSuccess)
@@ -19,8 +20,12 @@ namespace HRManagementSystem.Features.BankManagement.UpdateBank
 
             var result = await _mediator.Send(new UpdateBankCommand(request.Id, request.Name, request.Code, request.Address), ct);
 
-            if (!result.isSuccess) return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
-            return ResponseViewModel<bool>.Success(true, "Bank Updated Successfully!");
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<bool>.Failure(result.message, result.errorCode);
+            }
+
+            return ResponseViewModel<bool>.Success(result.isSuccess, "Bank updated successfully!");
         }
     }
 }

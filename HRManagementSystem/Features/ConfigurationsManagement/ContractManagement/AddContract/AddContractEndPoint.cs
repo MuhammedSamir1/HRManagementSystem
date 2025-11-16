@@ -3,6 +3,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.Ad
 
 namespace HRManagementSystem.Features.Configurations.ContractManagement.AddContract
 {
+    [ApiGroup("Configurations Management", "Contract Management")]
     public class AddContractEndPoint : BaseEndPoint<AddContractRequestViewModel, ResponseViewModel<bool>>
     {
         public AddContractEndPoint(EndPointBaseParameters<AddContractRequestViewModel> parameters) : base(parameters)
@@ -34,4 +35,7 @@ namespace HRManagementSystem.Features.Configurations.ContractManagement.AddContr
         }
     }
 }
+
+
+
 

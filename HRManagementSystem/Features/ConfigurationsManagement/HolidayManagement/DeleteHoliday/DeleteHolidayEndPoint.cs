@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.Del
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.DeleteHoliday
 {
+    [ApiGroup("Configurations Management", "Holiday Management")]
     public class DeleteHolidayEndPoint : BaseEndPoint<DeleteHolidayViewModel, ResponseViewModel<bool>>
     {
         public DeleteHolidayEndPoint(EndPointBaseParameters<DeleteHolidayViewModel> parameters) : base(parameters) { }
@@ -26,4 +27,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
         }
     }
 }
+
+
+
 

@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.Updat
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.UpdateBonus
 {
+    [ApiGroup("Configurations Management", "Bonus Management")]
     public class UpdateBonusEndPoint : BaseEndPoint<UpdateBonusViewModel, ResponseViewModel<bool>>
     {
         public UpdateBonusEndPoint(EndPointBaseParameters<UpdateBonusViewModel> parameters) : base(parameters) { }
@@ -21,3 +22,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.U
         }
     }
 }
+
+
+

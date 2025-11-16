@@ -2,6 +2,7 @@ using HRManagementSystem.Features.BankManagement.GetAllBanks.Queries;
 
 namespace HRManagementSystem.Features.BankManagement.GetAllBanks
 {
+    [ApiGroup("Configurations Management", "Bank Management")]
     public class GetAllBanksEndPoint : BaseEndPoint<GetAllBanksRequestViewModel, ResponseViewModel<IEnumerable<GetAllBanksResponseViewModel>>>
     {
         public GetAllBanksEndPoint(EndPointBaseParameters<GetAllBanksRequestViewModel> parameters) : base(parameters)

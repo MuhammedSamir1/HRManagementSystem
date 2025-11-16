@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.Del
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.DeletePenalty
 {
+    [ApiGroup("Configurations Management", "Penalty Management")]
     public class DeletePenaltyEndPoint : BaseEndPoint<Guid, ResponseViewModel<bool>>
     {
         public DeletePenaltyEndPoint(EndPointBaseParameters<Guid> parameters) : base(parameters) { }
@@ -21,4 +22,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
         }
     }
 }
+
+
+
 

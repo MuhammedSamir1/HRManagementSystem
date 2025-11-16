@@ -3,6 +3,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.Pay
 
 namespace HRManagementSystem.Features.Configurations.PayrollManagement.PayrollItemManagement.DeletePayrollItem
 {
+    [ApiGroup("Configurations Management", "Payroll Management")]
     public class DeletePayrollItemEndPoint : BaseEndPoint<DeletePayrollItemViewModel, ResponseViewModel<bool>>
     {
         public DeletePayrollItemEndPoint(EndPointBaseParameters<DeletePayrollItemViewModel> parameters)
@@ -27,4 +28,7 @@ namespace HRManagementSystem.Features.Configurations.PayrollManagement.PayrollIt
         }
     }
 }
+
+
+
 

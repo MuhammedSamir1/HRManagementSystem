@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.RoleFeatureManagement.AssignFeatureToRole.Commands;
+using HRManagementSystem.Features.RoleFeatureManagement.AssignFeatureToRole.Commands;
 
 namespace HRManagementSystem.Features.RoleFeatureManagement.AssignFeatureToRole
 {
+    [ApiGroup("Role Feature Management")]
     public class AssignFeatureToRoleEndpoint : BaseEndPoint<AssignFeatureToRoleRequestViewModel, ResponseViewModel<bool>>
     {
         public AssignFeatureToRoleEndpoint(EndPointBaseParameters<AssignFeatureToRoleRequestViewModel> parameters) : base(parameters)
@@ -24,3 +25,4 @@ namespace HRManagementSystem.Features.RoleFeatureManagement.AssignFeatureToRole
         }
     }
 }
+

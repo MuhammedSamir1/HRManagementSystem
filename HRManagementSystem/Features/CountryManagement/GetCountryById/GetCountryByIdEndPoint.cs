@@ -2,6 +2,7 @@ using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos;
 
 namespace HRManagementSystem.Features.CountryManagement.GetCountryById
 {
+    [ApiGroup("Country Management")]
     public class GetCountryByIdEndPoint : BaseEndPoint<Guid, ViewCountryDto>
     {
         public GetCountryByIdEndPoint(EndPointBaseParameters<Guid> parameters) : base(parameters) { }
@@ -17,4 +18,5 @@ namespace HRManagementSystem.Features.CountryManagement.GetCountryById
         }
     }
 }
+
 

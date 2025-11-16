@@ -1,7 +1,8 @@
-﻿using HRManagementSystem.Features.CurrencyManagement.GetAllCurrency.Queries;
+using HRManagementSystem.Features.CurrencyManagement.GetAllCurrency.Queries;
 
 namespace HRManagementSystem.Features.CurrencyManagement.GetAllCurrency
 {
+    [ApiGroup("Currency Management")]
     public class GetAllCurrencyEndPoint : BaseEndPoint<GetAllCurrencyRequestViewModel, ResponseViewModel<IEnumerable<GetAllCurrencyResponseViewModel>>>
     {
         public GetAllCurrencyEndPoint(EndPointBaseParameters<GetAllCurrencyRequestViewModel> parameters) : base(parameters)
@@ -29,3 +30,4 @@ namespace HRManagementSystem.Features.CurrencyManagement.GetAllCurrency
 
     }
 }
+

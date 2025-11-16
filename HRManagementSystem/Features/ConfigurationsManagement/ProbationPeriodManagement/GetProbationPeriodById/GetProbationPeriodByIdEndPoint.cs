@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodManage
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodManagement.GetProbationPeriodById
 {
+    [ApiGroup("Configurations Management", "Probation Period Management")]
     public class GetProbationPeriodByIdEndPoint : BaseEndPoint<GetProbationPeriodByIdViewModel,
        ResponseViewModel<ViewProbationPeriodByIdViewModel>>
     {
@@ -27,4 +28,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodMa
         }
     }
 }
+
+
+
 

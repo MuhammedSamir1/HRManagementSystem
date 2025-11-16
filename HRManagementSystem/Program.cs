@@ -1,8 +1,12 @@
+using HRManagementSystem.Common.Swagger;
 using HRManagementSystem.Data;
 using HRManagementSystem.Data.Middlewares;
 using HRManagementSystem.DI;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.AspNetCore.SwaggerUI;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace HRManagementSystem
@@ -42,6 +46,7 @@ namespace HRManagementSystem
 
 
             var app = builder.Build();
+            var apiGroups = app.Services.GetRequiredService<IReadOnlyList<ApiGroup>>();
 
             #region Migrate Database - Data Seeding
             //using var Scope = app.Services.CreateScope();
@@ -59,7 +64,23 @@ namespace HRManagementSystem
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerUI(options =>
+                {
+                    if (apiGroups.Any())
+                    {
+                        foreach (var group in apiGroups)
+                        {
+                            options.SwaggerEndpoint($"/swagger/{group.Name}/swagger.json", group.DisplayName);
+                        }
+                    }
+                    else
+                    {
+                        options.SwaggerEndpoint("/swagger/v1/swagger.json", "HRManagementSystem API");
+                    }
+
+                    options.DocExpansion(DocExpansion.None);
+                    options.DisplayRequestDuration();
+                });
             }
 
             app.UseHttpsRedirection();

@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.Updat
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.UpdateShift
 {
+    [ApiGroup("Configurations Management", "Shift Management")]
     public class UpdateShiftEndPoint : BaseEndPoint<UpdateShiftViewModel, RequestResult<bool>>
     {
         public UpdateShiftEndPoint(EndPointBaseParameters<UpdateShiftViewModel> parameters) : base(parameters) { }
@@ -23,4 +24,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.U
         }
     }
 }
+
+
+
 

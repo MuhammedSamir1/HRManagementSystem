@@ -1,8 +1,9 @@
-﻿using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.ViewModels;
+using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.ViewModels;
 using HRManagementSystem.Features.CountryManagement.AddCountry.Commands;
 
 namespace HRManagementSystem.Features.CountryManagement.AddCountry
 {
+    [ApiGroup("Country Management")]
     public class AddCountryEndPoint : BaseEndPoint<AddCountryViewModel, ViewCountryViewModel>
     {
         public AddCountryEndPoint(EndPointBaseParameters<AddCountryViewModel> parameters) : base(parameters) { }
@@ -28,3 +29,4 @@ namespace HRManagementSystem.Features.CountryManagement.AddCountry
         }
     }
 }
+

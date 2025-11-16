@@ -2,6 +2,7 @@ using HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodManage
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodManagement.UpdateProbationPeriod
 {
+    [ApiGroup("Configurations Management", "Probation Period Management")]
     public class UpdateProbationPeriodEndPoint : BaseEndPoint<UpdateProbationPeriodViewModel, RequestResult<bool>>
     {
         public UpdateProbationPeriodEndPoint(EndPointBaseParameters<UpdateProbationPeriodViewModel> parameters) : base(parameters) { }
@@ -23,4 +24,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodMa
         }
     }
 }
+
+
+
 
