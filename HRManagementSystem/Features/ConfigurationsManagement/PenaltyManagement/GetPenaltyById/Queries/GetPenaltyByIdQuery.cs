@@ -2,11 +2,11 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.GetPenaltyById.Queries
 {
-    public sealed record GetPenaltyByIdQuery(int Id) : IRequest<RequestResult<ViewPenaltyByIdDto>>;
+    public sealed record GetPenaltyByIdQuery(Guid Id) : IRequest<RequestResult<ViewPenaltyByIdDto>>;
 
-    public class GetPenaltyByIdQueryHandler : RequestHandlerBase<GetPenaltyByIdQuery, RequestResult<ViewPenaltyByIdDto>, Penalty, int>
+    public class GetPenaltyByIdQueryHandler : RequestHandlerBase<GetPenaltyByIdQuery, RequestResult<ViewPenaltyByIdDto>, Penalty, Guid>
     {
-        public GetPenaltyByIdQueryHandler(RequestHandlerBaseParameters<Penalty, int> parameters)
+        public GetPenaltyByIdQueryHandler(RequestHandlerBaseParameters<Penalty, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<ViewPenaltyByIdDto>> Handle(GetPenaltyByIdQuery request, CancellationToken ct)
@@ -21,3 +21,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
         }
     }
 }
+

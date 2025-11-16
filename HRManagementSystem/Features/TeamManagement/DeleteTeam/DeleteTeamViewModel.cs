@@ -1,8 +1,8 @@
-﻿using FluentValidation;
+using FluentValidation;
 
 namespace HRManagementSystem.Features.TeamManagement.DeleteTeam
 {
-    public sealed record DeleteTeamViewModel(int Id);
+    public sealed record DeleteTeamViewModel(Guid Id);
 
 
 
@@ -12,7 +12,9 @@ namespace HRManagementSystem.Features.TeamManagement.DeleteTeam
         {
             RuleFor(d => d.Id)
                 .NotEmpty().WithMessage("Id is required.")
-                .GreaterThan(0).WithMessage("Id must be greater than 0");
+                .NotEqual(Guid.Empty).WithMessage("Id must be greater than 0");
         }
     }
 }
+
+

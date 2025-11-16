@@ -1,4 +1,5 @@
 namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.DeleteHoliday.Commands
 {
-    public record DeleteHolidayCommand(int Id) : IRequest<RequestResult<bool>>;
+    public record DeleteHolidayCommand(Guid Id) : IRequest<RequestResult<bool>>;
 }
+

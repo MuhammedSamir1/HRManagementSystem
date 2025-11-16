@@ -1,14 +1,14 @@
-﻿using HRManagementSystem.Data.Models.AddressEntity;
+using HRManagementSystem.Data.Models.AddressEntity;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.Common.AddressManagement.StateCommon.IsStateExistWithSameCode.Query
 {
-    public record IsStateExistWithSameCodeQuery(string code, int countryId) : IRequest<RequestResult<bool>>;
+    public record IsStateExistWithSameCodeQuery(string code, Guid countryId) : IRequest<RequestResult<bool>>;
 
-    public class IsStateExistWithSameCodeQueryHandler : RequestHandlerBase<IsStateExistWithSameCodeQuery, RequestResult<bool>, State, int>
+    public class IsStateExistWithSameCodeQueryHandler : RequestHandlerBase<IsStateExistWithSameCodeQuery, RequestResult<bool>, State, Guid>
     {
 
-        public IsStateExistWithSameCodeQueryHandler(RequestHandlerBaseParameters<State, int> _params) : base(_params)
+        public IsStateExistWithSameCodeQueryHandler(RequestHandlerBaseParameters<State, Guid> _params) : base(_params)
         {
         }
         public override async Task<RequestResult<bool>> Handle(IsStateExistWithSameCodeQuery request, CancellationToken ct)
@@ -29,3 +29,4 @@ namespace HRManagementSystem.Features.Common.AddressManagement.StateCommon.IsSta
         }
     }
 }
+

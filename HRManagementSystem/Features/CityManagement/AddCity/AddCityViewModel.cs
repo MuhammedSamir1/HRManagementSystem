@@ -1,11 +1,11 @@
-﻿
+
 using FluentValidation;
 
 
 namespace HRManagementSystem.Features.CityManagement.AddCity
 {
 
-    public record AddCityViewModel(string Name, int StateId);
+    public record AddCityViewModel(string Name, Guid StateId);
 
 
     public class AddCityViewModelValidator : AbstractValidator<AddCityViewModel>
@@ -19,7 +19,9 @@ namespace HRManagementSystem.Features.CityManagement.AddCity
                 .Must(v => v!.Trim().Length <= 200);
 
             RuleFor(x => x.StateId)
-                .GreaterThan(0).WithMessage("State is required.");
+                .NotEmpty().WithMessage("State is required.")
+                .NotEqual(Guid.Empty).WithMessage("State is required.");
         }
     }
 }
+

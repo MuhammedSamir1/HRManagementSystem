@@ -1,4 +1,5 @@
-﻿namespace HRManagementSystem.Features.CompanyManagement.UpdateCompany
+namespace HRManagementSystem.Features.CompanyManagement.UpdateCompany
 {
-    public record UpdateCompanyRequestViewModel(int id, string name, string? description);
+    public record UpdateCompanyRequestViewModel(Guid id, string name, string? description);
 }
+

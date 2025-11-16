@@ -2,12 +2,12 @@ using HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.Delet
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.DeleteBonus
 {
-    public class DeleteBonusEndPoint : BaseEndPoint<int, ResponseViewModel<bool>>
+    public class DeleteBonusEndPoint : BaseEndPoint<Guid, ResponseViewModel<bool>>
     {
-        public DeleteBonusEndPoint(EndPointBaseParameters<int> parameters) : base(parameters) { }
+        public DeleteBonusEndPoint(EndPointBaseParameters<Guid> parameters) : base(parameters) { }
 
         [HttpDelete("{id:int}")]
-        public async Task<ResponseViewModel<bool>> DeleteBonus(int id, CancellationToken ct)
+        public async Task<ResponseViewModel<bool>> DeleteBonus(Guid id, CancellationToken ct)
         {
             var command = new DeleteBonusCommand(id);
             var result = await _mediator.Send(command, ct);
@@ -21,3 +21,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.D
         }
     }
 }
+

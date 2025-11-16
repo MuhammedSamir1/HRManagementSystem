@@ -1,4 +1,5 @@
-﻿namespace HRManagementSystem.Features.Common.AddressManagement.StateCommon.Dtos
+namespace HRManagementSystem.Features.Common.AddressManagement.StateCommon.Dtos
 {
-    public sealed record ViewStateDto(int Id, string Name);
+    public sealed record ViewStateDto(Guid Id, string Name);
 }
+

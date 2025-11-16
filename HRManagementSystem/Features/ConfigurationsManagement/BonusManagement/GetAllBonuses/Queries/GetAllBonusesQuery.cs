@@ -5,9 +5,9 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.G
 {
     public sealed record GetAllBonusesQuery() : IRequest<RequestResult<PagedList<ViewBonusDto>>>;
 
-    public class GetAllBonusesQueryHandler : RequestHandlerBase<GetAllBonusesQuery, RequestResult<PagedList<ViewBonusDto>>, Bonus, int>
+    public class GetAllBonusesQueryHandler : RequestHandlerBase<GetAllBonusesQuery, RequestResult<PagedList<ViewBonusDto>>, Bonus, Guid>
     {
-        public GetAllBonusesQueryHandler(RequestHandlerBaseParameters<Bonus, int> parameters)
+        public GetAllBonusesQueryHandler(RequestHandlerBaseParameters<Bonus, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<PagedList<ViewBonusDto>>> Handle(GetAllBonusesQuery request, CancellationToken ct)
@@ -26,3 +26,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.G
         }
     }
 }
+

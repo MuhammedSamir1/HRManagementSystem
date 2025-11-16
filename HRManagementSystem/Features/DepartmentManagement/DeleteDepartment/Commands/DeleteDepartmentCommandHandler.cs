@@ -1,9 +1,9 @@
-﻿namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Commands;
+namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Commands;
 
 public sealed class DeleteDepartmentCommandHandler : RequestHandlerBase<DeleteDepartmentCommand,
-   RequestResult<bool>, Department, int>
+   RequestResult<bool>, Department, Guid>
 {
-    public DeleteDepartmentCommandHandler(RequestHandlerBaseParameters<Department, int> parameters) : base(parameters)
+    public DeleteDepartmentCommandHandler(RequestHandlerBaseParameters<Department, Guid> parameters) : base(parameters)
     { }
 
     public override async Task<RequestResult<bool>> Handle(DeleteDepartmentCommand request, CancellationToken ct)

@@ -1,8 +1,8 @@
-﻿using FluentValidation;
+using FluentValidation;
 
 namespace HRManagementSystem.Features.CompanyManagement.AddCompany
 {
-    public record AddCompanyRequestViewModel(int organizationId,
+    public record AddCompanyRequestViewModel(Guid organizationId,
                                             string Name,
                                             string code,
                                             string? Descreption);
@@ -13,7 +13,7 @@ namespace HRManagementSystem.Features.CompanyManagement.AddCompany
         {
             // OrganizationId validation
             RuleFor(x => x.organizationId)
-                .GreaterThan(0).WithMessage("Organization ID must be greater than zero.");
+                .NotEqual(Guid.Empty).WithMessage("Organization ID must be greater than zero.");
 
             // Name validation
             RuleFor(x => x.Name)
@@ -34,3 +34,5 @@ namespace HRManagementSystem.Features.CompanyManagement.AddCompany
         }
     }
 }
+
+

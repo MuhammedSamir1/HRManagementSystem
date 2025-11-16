@@ -2,13 +2,13 @@ using HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.Add
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.AddCustody
 {
-    public class AddCustodyEndPoint : BaseEndPoint<AddCustodyViewModel, ResponseViewModel<int>>
+    public class AddCustodyEndPoint : BaseEndPoint<AddCustodyViewModel, ResponseViewModel<Guid>>
     {
 
         public AddCustodyEndPoint(EndPointBaseParameters<AddCustodyViewModel> parameters) : base(parameters) { }
 
         [HttpPost]
-        public async Task<ResponseViewModel<int>> AddCustody([FromBody] AddCustodyViewModel model, CancellationToken ct)
+        public async Task<ResponseViewModel<Guid>> AddCustody([FromBody] AddCustodyViewModel model, CancellationToken ct)
         {
 
             var command = _mapper.Map<AddCustodyCommand>(model);
@@ -17,11 +17,12 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement
 
             if (!result.isSuccess)
             {
-                return ResponseViewModel<int>.Failure(result.message, result.errorCode);
+                return ResponseViewModel<Guid>.Failure(result.message, result.errorCode);
             }
 
 
-            return ResponseViewModel<int>.Success(result.data, "?? ????? ?????? ?????.");
+            return ResponseViewModel<Guid>.Success(result.data, "?? ????? ?????? ?????.");
         }
     }
 }
+

@@ -18,8 +18,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement
 
             CreateMap<AddCustodyCommand, Custody>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
-                .ForMember(dest => dest.IsDeleted, opt => opt.Ignore())
-                .ForMember(dest => dest.Employee, opt => opt.Ignore());
+                .ForMember(dest => dest.IsDeleted, opt => opt.Ignore());
 
             // =======================================================
             // 2. Mappings   (Update)
@@ -33,13 +32,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement
             // =======================================================
 
 
-            CreateMap<Custody, ViewCustodyDto>()
-
-                .ForMember(dest => dest.EmployeeName, opt => opt.MapFrom(src => src.Employee.Name))
-
-                .ForMember(dest => dest.EmployeeId, opt => opt.MapFrom(src => src.EmployeeId));
-
-
+            CreateMap<Custody, ViewCustodyDto>();
 
             CreateMap<GetAllCustodiesViewModel, GetAllCustodiesQuery>();
         }

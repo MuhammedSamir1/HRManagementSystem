@@ -1,8 +1,8 @@
-﻿using FluentValidation;
+using FluentValidation;
 
 namespace HRManagementSystem.Features.StateManagement.AddState
 {
-    public sealed record AddStateViewModel(string Code, string Name, int CountryId);
+    public sealed record AddStateViewModel(string Code, string Name, Guid CountryId);
 
     public sealed class AddStateViewModelValidator : AbstractValidator<AddStateViewModel>
     {
@@ -20,9 +20,11 @@ namespace HRManagementSystem.Features.StateManagement.AddState
 
             RuleFor(x => x.CountryId)
                 .NotEmpty().WithMessage("Country ID is required.")
-                .GreaterThan(0).WithMessage("Country ID must be greater than 0.");
+                .NotEqual(Guid.Empty).WithMessage("Country ID must be greater than 0.");
         }
     }
 
 
 }
+
+

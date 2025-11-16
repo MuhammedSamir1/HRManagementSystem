@@ -11,25 +11,25 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         int TotalServiceYears,
         int TotalServiceMonths,
         int TotalServiceDays,
-        DateTime? PaymentDate,
-        int? EmployeeId)
-        : IRequest<RequestResult<int>>;
+        DateTime? PaymentDate)
+        : IRequest<RequestResult<Guid>>;
 
-    public class AddEndOfServiceCommandHandler : RequestHandlerBase<AddEndOfServiceCommand, RequestResult<int>, EndOfService, int>
+    public class AddEndOfServiceCommandHandler : RequestHandlerBase<AddEndOfServiceCommand, RequestResult<Guid>, EndOfService, Guid>
     {
-        public AddEndOfServiceCommandHandler(RequestHandlerBaseParameters<EndOfService, int> parameters)
+        public AddEndOfServiceCommandHandler(RequestHandlerBaseParameters<EndOfService, Guid> parameters)
             : base(parameters) { }
 
-        public override async Task<RequestResult<int>> Handle(AddEndOfServiceCommand request, CancellationToken ct)
+        public override async Task<RequestResult<Guid>> Handle(AddEndOfServiceCommand request, CancellationToken ct)
         {
             var endOfService = _mapper.Map<EndOfService>(request);
 
             var isAdded = await _generalRepo.AddAsync(endOfService, ct);
 
             if (!isAdded)
-                return RequestResult<int>.Failure("End Of Service wasn't added successfully!", ErrorCode.InternalServerError);
+                return RequestResult<Guid>.Failure("End Of Service wasn't added successfully!", ErrorCode.InternalServerError);
 
-            return RequestResult<int>.Success(endOfService.Id, "End Of Service added successfully!");
+            return RequestResult<Guid>.Success(endOfService.Id, "End Of Service added successfully!");
         }
     }
 }
+

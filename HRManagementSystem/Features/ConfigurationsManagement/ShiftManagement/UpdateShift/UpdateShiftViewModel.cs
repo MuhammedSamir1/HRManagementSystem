@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.UpdateShift
 {
-    public sealed record UpdateShiftViewModel(int Id, string Name, TimeSpan StartTime, TimeSpan EndTime);
+    public sealed record UpdateShiftViewModel(Guid Id, string Name, TimeSpan StartTime, TimeSpan EndTime);
 
 
     public sealed class UpdateShiftViewModelValidator : AbstractValidator<UpdateShiftViewModel>
@@ -11,7 +11,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.U
         {
             RuleFor(x => x.Id)
                 .NotEmpty().WithMessage("Id is required.")
-                .GreaterThan(0).WithMessage("Id must be greater than 0.");
+                .NotEqual(Guid.Empty).WithMessage("Id must be greater than 0.");
 
             RuleFor(x => x.Name)
                .NotEmpty().WithMessage("Name is required.")
@@ -29,4 +29,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.U
         }
     }
 }
+
+
 

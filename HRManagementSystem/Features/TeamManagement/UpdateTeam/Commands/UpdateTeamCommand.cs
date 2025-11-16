@@ -1,11 +1,11 @@
-﻿namespace HRManagementSystem.Features.TeamManagement.UpdateTeam.Commands
+namespace HRManagementSystem.Features.TeamManagement.UpdateTeam.Commands
 {
-    public sealed record UpdateTeamCommand(int Id, string Name, string? Description, string Code, int DepartmentId)
+    public sealed record UpdateTeamCommand(Guid Id, string Name, string? Description, string Code, Guid DepartmentId)
         : IRequest<RequestResult<bool>>;
 
-    public class UpdateTeamCommandHandler : RequestHandlerBase<UpdateTeamCommand, RequestResult<bool>, Team, int>
+    public class UpdateTeamCommandHandler : RequestHandlerBase<UpdateTeamCommand, RequestResult<bool>, Team, Guid>
     {
-        public UpdateTeamCommandHandler(RequestHandlerBaseParameters<Team, int> parameters) : base(parameters)
+        public UpdateTeamCommandHandler(RequestHandlerBaseParameters<Team, Guid> parameters) : base(parameters)
         {
         }
 
@@ -27,3 +27,4 @@
 
     }
 }
+

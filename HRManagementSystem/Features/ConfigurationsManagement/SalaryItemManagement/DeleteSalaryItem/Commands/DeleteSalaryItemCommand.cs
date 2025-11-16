@@ -2,11 +2,11 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagement.DeleteSalaryItem.Commands
 {
-    public sealed record DeleteSalaryItemCommand(int Id) : IRequest<RequestResult<bool>>;
+    public sealed record DeleteSalaryItemCommand(Guid Id) : IRequest<RequestResult<bool>>;
 
-    public class DeleteSalaryItemCommandHandler : RequestHandlerBase<DeleteSalaryItemCommand, RequestResult<bool>, SalaryItem, int>
+    public class DeleteSalaryItemCommandHandler : RequestHandlerBase<DeleteSalaryItemCommand, RequestResult<bool>, SalaryItem, Guid>
     {
-        public DeleteSalaryItemCommandHandler(RequestHandlerBaseParameters<SalaryItem, int> parameters)
+        public DeleteSalaryItemCommandHandler(RequestHandlerBaseParameters<SalaryItem, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(DeleteSalaryItemCommand request, CancellationToken ct)
@@ -20,3 +20,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
         }
     }
 }
+

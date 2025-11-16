@@ -3,21 +3,23 @@
 namespace HRManagementSystem.Features.CityManagement.UpdateCity
 {
     // ✅ ViewModel اللي هيستقبل البيانات من ال Endpoint
-    public sealed record UpdateCityViewModel(int Id, string Name, int StateId);
+    public sealed record UpdateCityViewModel(Guid Id, string Name, Guid StateId);
 
     public sealed class UpdateCityViewModelValidator : AbstractValidator<UpdateCityViewModel>
     {
         public UpdateCityViewModelValidator()
         {
             RuleFor(x => x.Id)
-                .GreaterThan(0).WithMessage("City Id must be greater than 0.");
+                .NotEmpty().WithMessage("City Id is required.")
+                .NotEqual(Guid.Empty).WithMessage("City Id must not be empty.");
 
             RuleFor(x => x.Name)
                 .NotEmpty().WithMessage("City name is required.")
                 .MaximumLength(100).WithMessage("City name cannot exceed 100 characters.");
 
             RuleFor(x => x.StateId)
-                .GreaterThan(0).WithMessage("State Id must be greater than 0.");
+                .NotEmpty().WithMessage("State Id is required.")
+                .NotEqual(Guid.Empty).WithMessage("State Id must not be empty.");
         }
     }
 }

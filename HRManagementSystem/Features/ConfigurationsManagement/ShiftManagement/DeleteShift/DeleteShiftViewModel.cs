@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.DeleteShift
 {
-    public sealed record DeleteShiftViewModel(int Id);
+    public sealed record DeleteShiftViewModel(Guid Id);
 
 
 
@@ -12,8 +12,10 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.D
         {
             RuleFor(d => d.Id)
                 .NotEmpty().WithMessage("Id is required.")
-                .GreaterThan(0).WithMessage("Id must be greater than 0");
+                .NotEqual(Guid.Empty).WithMessage("Id must be greater than 0");
         }
     }
 }
+
+
 

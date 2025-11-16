@@ -20,17 +20,9 @@ namespace HRManagementSystem.Data.Configurations.HolidayConfigurations
             b.Property(x => x.IsMandatory).HasDefaultValue(true).IsRequired();
             b.Property(x => x.Type).IsRequired();
 
-
-            b.HasIndex(x => new { x.Name, x.CompanyId }).IsUnique();
+            b.HasIndex(x => x.Name).IsUnique();
 
             b.Property(x => x.CreatedAt).IsRequired();
-
-            //  Company (1) ← Holiday (many)
-            b.HasOne(x => x.Company)
-                .WithMany()
-                .HasForeignKey(x => x.CompanyId)
-
-                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

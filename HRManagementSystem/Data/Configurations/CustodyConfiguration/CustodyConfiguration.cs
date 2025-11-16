@@ -24,19 +24,7 @@ namespace HRManagementSystem.Data.Configurations.CustodyConfiguration
 
             b.Property(x => x.Status).IsRequired().HasMaxLength(50);
 
-
             b.HasIndex(x => x.SerialNumber).IsUnique();
-
-            // 4.  (Relationships)
-
-            // Employee (1) ← Custody (many)
-            b.HasOne(x => x.Employee)
-                .WithMany()
-                .HasForeignKey(x => x.EmployeeId)
-                .IsRequired()
-
-                .OnDelete(DeleteBehavior.NoAction);
-
 
             b.Property(x => x.CreatedAt).IsRequired();
 

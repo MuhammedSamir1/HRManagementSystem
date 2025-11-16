@@ -1,6 +1,6 @@
 namespace HRManagementSystem.Data.Models.ConfigurationsModels
 {
-    public class Contract : BaseModel<int>
+    public class Contract : BaseModel<Guid>
     {
         public string ContractNumber { get; set; } = default!;
         public string Title { get; set; } = default!;
@@ -10,8 +10,6 @@ namespace HRManagementSystem.Data.Models.ConfigurationsModels
         public decimal ContractValue { get; set; }
         public ContractType ContractType { get; set; }
         public ContractStatus Status { get; set; }
-        public int? EmployeeId { get; set; }
-        public Employee? Employee { get; set; }
         public string? Terms { get; set; }
     }
 }

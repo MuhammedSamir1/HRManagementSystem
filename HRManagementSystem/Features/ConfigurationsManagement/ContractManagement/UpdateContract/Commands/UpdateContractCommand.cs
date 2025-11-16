@@ -3,7 +3,7 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.UpdateContract.Commands
 {
     public record UpdateContractCommand(
-        int Id,
+        Guid Id,
         string ContractNumber,
         string Title,
         string? Description,
@@ -12,12 +12,11 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagemen
         decimal ContractValue,
         ContractType ContractType,
         ContractStatus Status,
-        int? EmployeeId,
         string? Terms) : IRequest<RequestResult<bool>>;
 
-    public class UpdateContractCommandHandler : RequestHandlerBase<UpdateContractCommand, RequestResult<bool>, Contract, int>
+    public class UpdateContractCommandHandler : RequestHandlerBase<UpdateContractCommand, RequestResult<bool>, Contract, Guid>
     {
-        public UpdateContractCommandHandler(RequestHandlerBaseParameters<Contract, int> parameters)
+        public UpdateContractCommandHandler(RequestHandlerBaseParameters<Contract, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(UpdateContractCommand request, CancellationToken ct)
@@ -37,4 +36,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagemen
         }
     }
 }
+
 

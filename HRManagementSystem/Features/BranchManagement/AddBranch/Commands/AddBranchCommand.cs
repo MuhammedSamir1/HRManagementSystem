@@ -1,15 +1,15 @@
-﻿using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
+using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
 using HRManagementSystem.Features.Common.Dtos;
 
 namespace HRManagementSystem.Features.BranchManagement.AddBranch.Commands
 {
-    public sealed record AddBranchCommand(string Name, string? Description, int CompanyId,
+    public sealed record AddBranchCommand(string Name, string? Description, Guid CompanyId,
         string Code, AddBranchAddressDto AddressDto) : IRequest<RequestResult<CreatedIdDto>>;
 
 
-    public class AddBranchCommandHandler : RequestHandlerBase<AddBranchCommand, RequestResult<CreatedIdDto>, Branch, int>
+    public class AddBranchCommandHandler : RequestHandlerBase<AddBranchCommand, RequestResult<CreatedIdDto>, Branch, Guid>
     {
-        public AddBranchCommandHandler(RequestHandlerBaseParameters<Branch, int> parameters)
+        public AddBranchCommandHandler(RequestHandlerBaseParameters<Branch, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<CreatedIdDto>> Handle(AddBranchCommand request, CancellationToken ct)
@@ -29,3 +29,4 @@ namespace HRManagementSystem.Features.BranchManagement.AddBranch.Commands
         }
     }
 }
+

@@ -2,11 +2,11 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.GetLoanById.Queries
 {
-    public sealed record GetLoanByIdQuery(int Id) : IRequest<RequestResult<ViewLoanByIdDto>>;
+    public sealed record GetLoanByIdQuery(Guid Id) : IRequest<RequestResult<ViewLoanByIdDto>>;
 
-    public class GetLoanByIdQueryHandler : RequestHandlerBase<GetLoanByIdQuery, RequestResult<ViewLoanByIdDto>, Loan, int>
+    public class GetLoanByIdQueryHandler : RequestHandlerBase<GetLoanByIdQuery, RequestResult<ViewLoanByIdDto>, Loan, Guid>
     {
-        public GetLoanByIdQueryHandler(RequestHandlerBaseParameters<Loan, int> parameters)
+        public GetLoanByIdQueryHandler(RequestHandlerBaseParameters<Loan, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<ViewLoanByIdDto>> Handle(GetLoanByIdQuery request, CancellationToken ct)
@@ -21,3 +21,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Ge
         }
     }
 }
+

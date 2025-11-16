@@ -1,9 +1,9 @@
-﻿using HRManagementSystem.Features.Common.DeleteEntityCascade;
+using HRManagementSystem.Features.Common.DeleteEntityCascade;
 
 namespace HRManagementSystem.Features.BranchManagement.DeleteBranch.Cascade;
 
 public sealed class DeleteBranchCascadeViewModelValidator
-        : DeleteEntityCascadeViewModelValidator<Branch, int>
+        : DeleteEntityCascadeViewModelValidator<Branch, Guid>
 {
     public DeleteBranchCascadeViewModelValidator() : base()
     {

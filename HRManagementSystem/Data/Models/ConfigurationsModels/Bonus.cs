@@ -1,6 +1,6 @@
 namespace HRManagementSystem.Data.Models.ConfigurationsModels
 {
-    public class Bonus : BaseModel<int>
+    public class Bonus : BaseModel<Guid>
     {
         public string Title { get; set; } = null!;
         public string? Description { get; set; }
@@ -9,8 +9,6 @@ namespace HRManagementSystem.Data.Models.ConfigurationsModels
         public DateTime BonusDate { get; set; }
         public DateTime? PaymentDate { get; set; }
         public bool IsPaid { get; set; }
-        public int? EmployeeId { get; set; }
-        public Employee? Employee { get; set; }
     }
 }
 

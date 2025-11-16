@@ -4,10 +4,10 @@ using HRManagementSystem.Features.Common.PayrollCommon;
 namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.OvertimeRateManagement.GetOvertimeRateById.Queries
 {
     public sealed class GetOvertimeRateByIdQueryHandler :
-        RequestHandlerBase<GetOvertimeRateByIdQuery, RequestResult<OvertimeRateDto>, OvertimeRate, int>
+        RequestHandlerBase<GetOvertimeRateByIdQuery, RequestResult<OvertimeRateDto>, OvertimeRate, Guid>
     {
         public GetOvertimeRateByIdQueryHandler(
-            RequestHandlerBaseParameters<OvertimeRate, int> parameters)
+            RequestHandlerBaseParameters<OvertimeRate, Guid> parameters)
             : base(parameters)
         {
         }
@@ -33,3 +33,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
         }
     }
 }
+

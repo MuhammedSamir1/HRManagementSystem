@@ -1,11 +1,11 @@
 namespace HRManagementSystem.Features.ConfigurationsManagement.CustodyManagement.UpdateCustody.Commands
 {
     public sealed record UpdateCustodyCommand(
-    int Id,
+    Guid Id,
     string? ItemName,
     string? SerialNumber,
-    int? EmployeeId,
     DateTime? HandoverDate,
     DateTime? ReturnDate,
     string? Status) : IRequest<RequestResult<bool>>;
 }
+

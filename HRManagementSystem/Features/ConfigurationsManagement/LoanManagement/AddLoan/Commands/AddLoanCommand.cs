@@ -11,25 +11,25 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Ad
         int InstallmentMonths,
         DateTime LoanDate,
         DateTime? StartDeductionDate,
-        LoanStatus Status,
-        int? EmployeeId)
-        : IRequest<RequestResult<int>>;
+        LoanStatus Status)
+        : IRequest<RequestResult<Guid>>;
 
-    public class AddLoanCommandHandler : RequestHandlerBase<AddLoanCommand, RequestResult<int>, Loan, int>
+    public class AddLoanCommandHandler : RequestHandlerBase<AddLoanCommand, RequestResult<Guid>, Loan, Guid>
     {
-        public AddLoanCommandHandler(RequestHandlerBaseParameters<Loan, int> parameters)
+        public AddLoanCommandHandler(RequestHandlerBaseParameters<Loan, Guid> parameters)
             : base(parameters) { }
 
-        public override async Task<RequestResult<int>> Handle(AddLoanCommand request, CancellationToken ct)
+        public override async Task<RequestResult<Guid>> Handle(AddLoanCommand request, CancellationToken ct)
         {
             var loan = _mapper.Map<Loan>(request);
 
             var isAdded = await _generalRepo.AddAsync(loan, ct);
 
             if (!isAdded)
-                return RequestResult<int>.Failure("Loan wasn't added successfully!", ErrorCode.InternalServerError);
+                return RequestResult<Guid>.Failure("Loan wasn't added successfully!", ErrorCode.InternalServerError);
 
-            return RequestResult<int>.Success(loan.Id, "Loan added successfully!");
+            return RequestResult<Guid>.Success(loan.Id, "Loan added successfully!");
         }
     }
 }
+

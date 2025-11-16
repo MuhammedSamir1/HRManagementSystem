@@ -7,7 +7,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         public GetEndOfServiceByIdEndPoint(EndPointBaseParameters<GetEndOfServiceByIdViewModel> parameters) : base(parameters) { }
 
         [HttpGet("{id:int}")]
-        public async Task<ResponseViewModel<ViewEndOfServiceByIdViewModel>> GetEndOfServiceById(int id, CancellationToken ct)
+        public async Task<ResponseViewModel<ViewEndOfServiceByIdViewModel>> GetEndOfServiceById(Guid id, CancellationToken ct)
         {
             var query = new GetEndOfServiceByIdQuery(id);
             var result = await _mediator.Send(query, ct);
@@ -23,3 +23,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         }
     }
 }
+

@@ -1,13 +1,13 @@
-﻿using AutoMapper.QueryableExtensions;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.CurrencyManagement.GetAllCurrency.Queries
 {
     public record GetAllCurrencyQuery() : IRequest<RequestResult<IEnumerable<GetAllCurrencyDto>>>;
 
-    public sealed class GetAllCurrencyQueryHandler : RequestHandlerBase<GetAllCurrencyQuery, RequestResult<IEnumerable<GetAllCurrencyDto>>, Currency, int>
+    public sealed class GetAllCurrencyQueryHandler : RequestHandlerBase<GetAllCurrencyQuery, RequestResult<IEnumerable<GetAllCurrencyDto>>, Currency, Guid>
     {
-        public GetAllCurrencyQueryHandler(RequestHandlerBaseParameters<Currency, int> parameters) : base(parameters)
+        public GetAllCurrencyQueryHandler(RequestHandlerBaseParameters<Currency, Guid> parameters) : base(parameters)
         {
         }
 
@@ -24,3 +24,4 @@ namespace HRManagementSystem.Features.CurrencyManagement.GetAllCurrency.Queries
         }
     }
 }
+

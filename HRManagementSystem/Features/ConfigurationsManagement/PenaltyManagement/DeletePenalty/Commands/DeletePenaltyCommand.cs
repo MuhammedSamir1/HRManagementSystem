@@ -2,11 +2,11 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement.DeletePenalty.Commands
 {
-    public sealed record DeletePenaltyCommand(int Id) : IRequest<RequestResult<bool>>;
+    public sealed record DeletePenaltyCommand(Guid Id) : IRequest<RequestResult<bool>>;
 
-    public class DeletePenaltyCommandHandler : RequestHandlerBase<DeletePenaltyCommand, RequestResult<bool>, Penalty, int>
+    public class DeletePenaltyCommandHandler : RequestHandlerBase<DeletePenaltyCommand, RequestResult<bool>, Penalty, Guid>
     {
-        public DeletePenaltyCommandHandler(RequestHandlerBaseParameters<Penalty, int> parameters)
+        public DeletePenaltyCommandHandler(RequestHandlerBaseParameters<Penalty, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(DeletePenaltyCommand request, CancellationToken ct)
@@ -20,3 +20,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
         }
     }
 }
+

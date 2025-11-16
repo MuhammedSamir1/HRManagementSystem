@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodManagement.GetProbationPeriodById
 {
-    public sealed record GetProbationPeriodByIdViewModel(int Id);
+    public sealed record GetProbationPeriodByIdViewModel(Guid Id);
 
 
     public sealed class GetProbationPeriodByIdViewModelValidator : AbstractValidator<GetProbationPeriodByIdViewModel>
@@ -11,8 +11,10 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodMa
         {
             RuleFor(d => d.Id)
               .NotEmpty().WithMessage("Id is required.")
-              .GreaterThan(0).WithMessage("Id must be greater than 0");
+              .NotEqual(Guid.Empty).WithMessage("Id must be greater than 0");
         }
     }
 }
+
+
 

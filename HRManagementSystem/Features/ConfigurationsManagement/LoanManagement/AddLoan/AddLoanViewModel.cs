@@ -11,8 +11,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Ad
         int InstallmentMonths,
         DateTime LoanDate,
         DateTime? StartDeductionDate,
-        LoanStatus Status,
-        int? EmployeeId);
+        LoanStatus Status);
 
     public sealed class AddLoanViewModelValidator : AbstractValidator<AddLoanViewModel>
     {
@@ -43,4 +42,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Ad
         }
     }
 }
+
 

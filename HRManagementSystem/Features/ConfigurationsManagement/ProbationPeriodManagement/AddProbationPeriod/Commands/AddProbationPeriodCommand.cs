@@ -8,9 +8,9 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodMa
         : IRequest<RequestResult<CreatedIdDto>>;
 
 
-    public class AddProbationPeriodCommandHandler : RequestHandlerBase<AddProbationPeriodCommand, RequestResult<CreatedIdDto>, ProbationPeriod, int>
+    public class AddProbationPeriodCommandHandler : RequestHandlerBase<AddProbationPeriodCommand, RequestResult<CreatedIdDto>, ProbationPeriod, Guid>
     {
-        public AddProbationPeriodCommandHandler(RequestHandlerBaseParameters<ProbationPeriod, int> parameters)
+        public AddProbationPeriodCommandHandler(RequestHandlerBaseParameters<ProbationPeriod, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<CreatedIdDto>> Handle(AddProbationPeriodCommand request, CancellationToken ct)
@@ -26,4 +26,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ProbationPeriodMa
         }
     }
 }
+
 

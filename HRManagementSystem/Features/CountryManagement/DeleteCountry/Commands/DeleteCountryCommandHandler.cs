@@ -1,10 +1,10 @@
-﻿using HRManagementSystem.Data.Models.AddressEntity;
+using HRManagementSystem.Data.Models.AddressEntity;
 
 namespace HRManagementSystem.Features.CountryManagement.DeleteCountry.Commands
 {
-    public sealed class DeleteCountryCommandHandler : RequestHandlerBase<DeleteCountryCommand, RequestResult<bool>, Country, int>
+    public sealed class DeleteCountryCommandHandler : RequestHandlerBase<DeleteCountryCommand, RequestResult<bool>, Country, Guid>
     {
-        public DeleteCountryCommandHandler(RequestHandlerBaseParameters<Country, int> parameters) : base(parameters)
+        public DeleteCountryCommandHandler(RequestHandlerBaseParameters<Country, Guid> parameters) : base(parameters)
         {
         }
 
@@ -22,3 +22,4 @@ namespace HRManagementSystem.Features.CountryManagement.DeleteCountry.Commands
         }
     }
 }
+

@@ -1,12 +1,12 @@
-﻿namespace HRManagementSystem.Features.TeamManagement.DeleteTeam.Commands
+namespace HRManagementSystem.Features.TeamManagement.DeleteTeam.Commands
 {
-    public sealed record DeleteTeamCommand(int Id) : IRequest<RequestResult<bool>>;
+    public sealed record DeleteTeamCommand(Guid Id) : IRequest<RequestResult<bool>>;
 
 
     public sealed class DeleteTeamCommandHandler : RequestHandlerBase<DeleteTeamCommand,
-        RequestResult<bool>, Team, int>
+        RequestResult<bool>, Team, Guid>
     {
-        public DeleteTeamCommandHandler(RequestHandlerBaseParameters<Team, int> parameters)
+        public DeleteTeamCommandHandler(RequestHandlerBaseParameters<Team, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(DeleteTeamCommand request, CancellationToken cancellationToken)
@@ -17,3 +17,4 @@
         }
     }
 }
+

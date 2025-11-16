@@ -3,9 +3,9 @@ using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.Com
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.GetHolidayById.Queries
 {
-    public sealed class GetHolidayByIdQueryHandler : RequestHandlerBase<GetHolidayByIdQuery, RequestResult<ViewHolidayDto>, Holiday, int>
+    public sealed class GetHolidayByIdQueryHandler : RequestHandlerBase<GetHolidayByIdQuery, RequestResult<ViewHolidayDto>, Holiday, Guid>
     {
-        public GetHolidayByIdQueryHandler(RequestHandlerBaseParameters<Holiday, int> parameters) : base(parameters) { }
+        public GetHolidayByIdQueryHandler(RequestHandlerBaseParameters<Holiday, Guid> parameters) : base(parameters) { }
 
         public override async Task<RequestResult<ViewHolidayDto>> Handle(GetHolidayByIdQuery request, CancellationToken ct)
         {
@@ -22,3 +22,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
         }
     }
 }
+

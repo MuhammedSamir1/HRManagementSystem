@@ -2,13 +2,13 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.DeleteShift.Commands
 {
-    public sealed record DeleteShiftCommand(int Id) : IRequest<RequestResult<bool>>;
+    public sealed record DeleteShiftCommand(Guid Id) : IRequest<RequestResult<bool>>;
 
 
     public sealed class DeleteShiftCommandHandler : RequestHandlerBase<DeleteShiftCommand,
-        RequestResult<bool>, Shift, int>
+        RequestResult<bool>, Shift, Guid>
     {
-        public DeleteShiftCommandHandler(RequestHandlerBaseParameters<Shift, int> parameters)
+        public DeleteShiftCommandHandler(RequestHandlerBaseParameters<Shift, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(DeleteShiftCommand request, CancellationToken cancellationToken)
@@ -19,4 +19,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.D
         }
     }
 }
+
 

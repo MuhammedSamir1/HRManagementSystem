@@ -1,4 +1,5 @@
-﻿namespace HRManagementSystem.Features.BranchManagement.DeleteBranch.Orchestrators;
+namespace HRManagementSystem.Features.BranchManagement.DeleteBranch.Orchestrators;
 
-public sealed record DeleteBranchOrchestrator(int Id) : IRequest<RequestResult<bool>>;
+public sealed record DeleteBranchOrchestrator(Guid Id) : IRequest<RequestResult<bool>>;
+
 

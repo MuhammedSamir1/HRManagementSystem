@@ -1,13 +1,14 @@
-﻿using HRManagementSystem.Features.Common.DeleteEntityCascade.Handler;
+using HRManagementSystem.Features.Common.DeleteEntityCascade.Handler;
 
 namespace HRManagementSystem.Features.BranchManagement.DeleteBranch.Cascade;
 
 public sealed class DeleteBranchCascadeCommandHandler
-        : DeleteEntityCascadeCommandHandler<Branch, int>
+        : DeleteEntityCascadeCommandHandler<Branch, Guid>
 {
     public DeleteBranchCascadeCommandHandler(
-        RequestHandlerBaseParameters<Branch, int> parameters
+        RequestHandlerBaseParameters<Branch, Guid> parameters
     ) : base(parameters)
     {
     }
 }
+

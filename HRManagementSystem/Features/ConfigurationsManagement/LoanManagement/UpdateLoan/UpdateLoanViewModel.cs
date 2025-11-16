@@ -3,7 +3,7 @@ using FluentValidation;
 namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.UpdateLoan
 {
     public sealed record UpdateLoanViewModel(
-        int Id,
+        Guid Id,
         string Title,
         string? Description,
         decimal Amount,
@@ -12,15 +12,14 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Up
         int InstallmentMonths,
         DateTime LoanDate,
         DateTime? StartDeductionDate,
-        LoanStatus Status,
-        int? EmployeeId);
+        LoanStatus Status);
 
     public sealed class UpdateLoanViewModelValidator : AbstractValidator<UpdateLoanViewModel>
     {
         public UpdateLoanViewModelValidator()
         {
             RuleFor(x => x.Id)
-                .GreaterThan(0).WithMessage("Id must be greater than 0.");
+                .NotEqual(Guid.Empty).WithMessage("Id must be greater than 0.");
 
             RuleFor(x => x.Title)
                 .NotEmpty().WithMessage("Title is required.")
@@ -47,4 +46,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.LoanManagement.Up
         }
     }
 }
+
+
 

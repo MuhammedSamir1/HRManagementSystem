@@ -1,19 +1,19 @@
-﻿using HRManagementSystem.Features.Common.IsAnyChildAssignedGeneric;
+using HRManagementSystem.Features.Common.IsAnyChildAssignedGeneric;
 using HRManagementSystem.Features.CompanyManagement.DeleteCompany.Commands;
 
 namespace HRManagementSystem.Features.CompanyManagement.DeleteCompany.Orchestrators;
 
 public sealed class DeleteCompanyOrchestratorHandler : RequestHandlerBase<DeleteCompanyOrchestrator,
-RequestResult<bool>, Company, int>
+RequestResult<bool>, Company, Guid>
 {
-    public DeleteCompanyOrchestratorHandler(RequestHandlerBaseParameters<Company, int> parameters) : base(parameters)
+    public DeleteCompanyOrchestratorHandler(RequestHandlerBaseParameters<Company, Guid> parameters) : base(parameters)
     { }
 
     public override async Task<RequestResult<bool>> Handle(DeleteCompanyOrchestrator request, CancellationToken ct)
     {
         // Check if any Branches assigned to this Company 
 
-        var hasBranches = await _mediator.Send(new IsAnyChildAssignedQuery<Company, Branch, int>(request.companyId), ct);
+        var hasBranches = await _mediator.Send(new IsAnyChildAssignedQuery<Company, Branch, Guid>(request.companyId), ct);
         if (hasBranches.data)
         {
             return RequestResult<bool>.Failure("Cannot delete company. There are branches assigned to this company.");

@@ -2,11 +2,11 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.BankManagement.DeleteBank.Commands
 {
-    public record DeleteBankCommand(int Id) : IRequest<RequestResult<bool>>;
+    public record DeleteBankCommand(Guid Id) : IRequest<RequestResult<bool>>;
 
-    public class DeleteBankCommandHandler : RequestHandlerBase<DeleteBankCommand, RequestResult<bool>, Bank, int>
+    public class DeleteBankCommandHandler : RequestHandlerBase<DeleteBankCommand, RequestResult<bool>, Bank, Guid>
     {
-        public DeleteBankCommandHandler(RequestHandlerBaseParameters<Bank, int> parameters)
+        public DeleteBankCommandHandler(RequestHandlerBaseParameters<Bank, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(DeleteBankCommand request, CancellationToken ct)
@@ -19,4 +19,5 @@ namespace HRManagementSystem.Features.BankManagement.DeleteBank.Commands
         }
     }
 }
+
 

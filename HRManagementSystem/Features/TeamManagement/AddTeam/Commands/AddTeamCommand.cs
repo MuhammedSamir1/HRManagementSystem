@@ -1,14 +1,14 @@
-﻿using HRManagementSystem.Features.Common.Dtos;
+using HRManagementSystem.Features.Common.Dtos;
 
 namespace HRManagementSystem.Features.TeamManagement.AddTeam.Commands
 {
-    public sealed record AddTeamCommand(string Name, string Code, string? Description, int DepartmentId)
+    public sealed record AddTeamCommand(string Name, string Code, string? Description, Guid DepartmentId)
         : IRequest<RequestResult<CreatedIdDto>>;
 
 
-    public class AddTeamCommandHandler : RequestHandlerBase<AddTeamCommand, RequestResult<CreatedIdDto>, Team, int>
+    public class AddTeamCommandHandler : RequestHandlerBase<AddTeamCommand, RequestResult<CreatedIdDto>, Team, Guid>
     {
-        public AddTeamCommandHandler(RequestHandlerBaseParameters<Team, int> parameters)
+        public AddTeamCommandHandler(RequestHandlerBaseParameters<Team, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<CreatedIdDto>> Handle(AddTeamCommand request, CancellationToken ct)
@@ -28,3 +28,4 @@ namespace HRManagementSystem.Features.TeamManagement.AddTeam.Commands
         }
     }
 }
+

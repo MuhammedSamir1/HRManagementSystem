@@ -2,15 +2,17 @@ using FluentValidation;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.RequestTypeManagement.DeleteRequestType
 {
-    public record DeleteRequestTypeRequestViewModel(int Id);
+    public record DeleteRequestTypeRequestViewModel(Guid Id);
 
     public class DeleteRequestTypeRequestViewModelValidator : AbstractValidator<DeleteRequestTypeRequestViewModel>
     {
         public DeleteRequestTypeRequestViewModelValidator()
         {
             RuleFor(x => x.Id)
-                .GreaterThan(0).WithMessage("Id must be greater than 0.");
+                .NotEqual(Guid.Empty).WithMessage("Id must be greater than 0.");
         }
     }
 }
+
+
 

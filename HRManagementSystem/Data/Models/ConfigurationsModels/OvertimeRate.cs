@@ -1,6 +1,6 @@
 ﻿namespace HRManagementSystem.Data.Models.ConfigurationsModels
 {
-    public class OvertimeRate : BaseModel<int>
+    public class OvertimeRate : BaseModel<Guid>
     {
 
         public string Name { get; set; }

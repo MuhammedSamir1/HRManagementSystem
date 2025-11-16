@@ -1,4 +1,5 @@
-﻿namespace HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos
+namespace HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos
 {
-    public sealed record ViewCountryDto(int Id, string Name);
+    public sealed record ViewCountryDto(Guid Id, string Name);
 }
+

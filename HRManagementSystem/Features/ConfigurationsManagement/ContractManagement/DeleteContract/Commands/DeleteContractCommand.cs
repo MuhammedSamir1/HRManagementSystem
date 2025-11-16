@@ -2,11 +2,11 @@ using HRManagementSystem.Data.Models.ConfigurationsModels;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.DeleteContract.Commands
 {
-    public record DeleteContractCommand(int Id) : IRequest<RequestResult<bool>>;
+    public record DeleteContractCommand(Guid Id) : IRequest<RequestResult<bool>>;
 
-    public class DeleteContractCommandHandler : RequestHandlerBase<DeleteContractCommand, RequestResult<bool>, Contract, int>
+    public class DeleteContractCommandHandler : RequestHandlerBase<DeleteContractCommand, RequestResult<bool>, Contract, Guid>
     {
-        public DeleteContractCommandHandler(RequestHandlerBaseParameters<Contract, int> parameters)
+        public DeleteContractCommandHandler(RequestHandlerBaseParameters<Contract, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(DeleteContractCommand request, CancellationToken ct)
@@ -19,4 +19,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagemen
         }
     }
 }
+
 

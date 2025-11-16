@@ -1,28 +1,28 @@
-﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.AddHoliday.Commands;
 using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.IsHolidayOverlapping;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.Configurations.HolidayManagement.AddHoliday.Commands
 {
-    public sealed class AddHolidayCommandHandler : RequestHandlerBase<AddHolidayCommand, RequestResult<bool>, Holiday, int>
+    public sealed class AddHolidayCommandHandler : RequestHandlerBase<AddHolidayCommand, RequestResult<bool>, Holiday, Guid>
     {
-        public AddHolidayCommandHandler(RequestHandlerBaseParameters<Holiday, int> parameters) : base(parameters) { }
+        public AddHolidayCommandHandler(RequestHandlerBaseParameters<Holiday, Guid> parameters) : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(AddHolidayCommand request, CancellationToken ct)
         {
-            // 1. التحقق من التداخل (No Overlap)
+            // 1. ?????? ?? ??????? (No Overlap)
             var overlapValidation = await _mediator.Send(
-                new IsHolidayOverlappingQuery(request.StartDate, request.EndDate, request.CompanyId), ct);
+                new IsHolidayOverlappingQuery(request.StartDate, request.EndDate), ct);
 
             if (!overlapValidation.isSuccess)
             {
                 return RequestResult<bool>.Failure(overlapValidation.message, overlapValidation.errorCode);
             }
 
-            // 2. التحقق من  (Unique Name Check)
+            // 2. ?????? ??  (Unique Name Check)
             var isNameDuplicate = await _generalRepo
-                .Get(h => h.Name == request.Name && h.CompanyId == request.CompanyId, ct)
+                .Get(h => h.Name == request.Name, ct)
                 .AnyAsync(ct);
 
             if (isNameDuplicate)
@@ -42,3 +42,4 @@ namespace HRManagementSystem.Features.Configurations.HolidayManagement.AddHolida
         }
     }
 }
+

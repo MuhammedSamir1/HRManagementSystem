@@ -9,8 +9,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.A
         BonusType BonusType,
         DateTime BonusDate,
         DateTime? PaymentDate,
-        bool IsPaid,
-        int? EmployeeId);
+        bool IsPaid);
 
     public sealed class AddBonusViewModelValidator : AbstractValidator<AddBonusViewModel>
     {
@@ -32,4 +31,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.A
         }
     }
 }
+
 

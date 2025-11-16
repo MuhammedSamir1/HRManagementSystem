@@ -4,10 +4,10 @@ using HRManagementSystem.Features.Common.PayrollCommon;
 namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.GetPayrollItemById.Queries
 {
     public sealed class GetPayrollItemByIdQueryHandler :
-     RequestHandlerBase<GetPayrollItemByIdQuery, RequestResult<PayrollItemDto>, PayrollItem, int>
+     RequestHandlerBase<GetPayrollItemByIdQuery, RequestResult<PayrollItemDto>, PayrollItem, Guid>
     {
         public GetPayrollItemByIdQueryHandler(
-            RequestHandlerBaseParameters<PayrollItem, int> parameters)
+            RequestHandlerBaseParameters<PayrollItem, Guid> parameters)
             : base(parameters)
         {
         }
@@ -29,3 +29,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
         }
     }
 }
+

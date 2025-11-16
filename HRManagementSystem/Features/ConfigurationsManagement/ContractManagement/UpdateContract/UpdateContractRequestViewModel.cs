@@ -3,7 +3,7 @@ using FluentValidation;
 namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagement.UpdateContract
 {
     public record UpdateContractRequestViewModel(
-        int Id,
+        Guid Id,
         string ContractNumber,
         string Title,
         string? Description,
@@ -12,7 +12,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagemen
         decimal ContractValue,
         ContractType ContractType,
         ContractStatus Status,
-        int? EmployeeId,
         string? Terms);
 
     public class UpdateContractRequestViewModelValidator : AbstractValidator<UpdateContractRequestViewModel>
@@ -20,7 +19,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagemen
         public UpdateContractRequestViewModelValidator()
         {
             RuleFor(x => x.Id)
-                .GreaterThan(0).WithMessage("Id is required.");
+                .NotEqual(Guid.Empty).WithMessage("Id is required.");
 
             RuleFor(x => x.ContractNumber)
                 .NotEmpty().WithMessage("Contract Number is required.")
@@ -49,4 +48,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagemen
         }
     }
 }
+
+
 

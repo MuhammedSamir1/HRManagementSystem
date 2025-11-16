@@ -2,12 +2,12 @@ using HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagemen
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManagement.DeleteEndOfService
 {
-    public class DeleteEndOfServiceEndPoint : BaseEndPoint<int, ResponseViewModel<bool>>
+    public class DeleteEndOfServiceEndPoint : BaseEndPoint<Guid, ResponseViewModel<bool>>
     {
-        public DeleteEndOfServiceEndPoint(EndPointBaseParameters<int> parameters) : base(parameters) { }
+        public DeleteEndOfServiceEndPoint(EndPointBaseParameters<Guid> parameters) : base(parameters) { }
 
         [HttpDelete("{id:int}")]
-        public async Task<ResponseViewModel<bool>> DeleteEndOfService(int id, CancellationToken ct)
+        public async Task<ResponseViewModel<bool>> DeleteEndOfService(Guid id, CancellationToken ct)
         {
             var command = new DeleteEndOfServiceCommand(id);
             var result = await _mediator.Send(command, ct);
@@ -21,3 +21,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         }
     }
 }
+

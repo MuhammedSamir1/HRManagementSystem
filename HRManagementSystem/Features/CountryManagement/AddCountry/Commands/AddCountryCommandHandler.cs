@@ -1,12 +1,12 @@
-﻿using HRManagementSystem.Data.Models.AddressEntity;
+using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos;
 using HRManagementSystem.Features.Common.CountryCommon.Queries;
 
 namespace HRManagementSystem.Features.CountryManagement.AddCountry.Commands
 {
-    public sealed class AddCountryCommandHandler : RequestHandlerBase<AddCountryCommand, RequestResult<ViewCountryDto>, Country, int>
+    public sealed class AddCountryCommandHandler : RequestHandlerBase<AddCountryCommand, RequestResult<ViewCountryDto>, Country, Guid>
     {
-        public AddCountryCommandHandler(RequestHandlerBaseParameters<Country, int> parameters) : base(parameters)
+        public AddCountryCommandHandler(RequestHandlerBaseParameters<Country, Guid> parameters) : base(parameters)
         {
         }
 
@@ -34,3 +34,4 @@ namespace HRManagementSystem.Features.CountryManagement.AddCountry.Commands
         }
     }
 }
+

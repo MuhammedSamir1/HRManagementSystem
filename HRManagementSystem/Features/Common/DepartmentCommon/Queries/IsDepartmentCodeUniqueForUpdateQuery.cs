@@ -1,5 +1,6 @@
-﻿namespace HRManagementSystem.Features.Common.DepartmentCommon.Queries
+namespace HRManagementSystem.Features.Common.DepartmentCommon.Queries
 {
-    public sealed record IsDepartmentCodeUniqueForUpdateQuery(int DepartmentId, int BranchId, string Code)
+    public sealed record IsDepartmentCodeUniqueForUpdateQuery(Guid DepartmentId, Guid BranchId, string Code)
         : IRequest<RequestResult<bool>>;
 }
+

@@ -2,7 +2,7 @@
 
 namespace HRManagementSystem.Features.OrganizationManagement.GetOrganizationById
 {
-    public sealed record GetOrganizationByIdViewModel(int Id);
+    public sealed record GetOrganizationByIdViewModel(Guid Id);
 
 
     public sealed class GetOrganizationByIdViewModelValidator : AbstractValidator<GetOrganizationByIdViewModel>
@@ -11,7 +11,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.GetOrganizationById
         {
             RuleFor(d => d.Id)
                 .NotEmpty().WithMessage("Id is required.")
-                .GreaterThan(0).WithMessage("Id must be greater than 0");
+                .NotEqual(Guid.Empty).WithMessage("Id must not be empty.");
         }
     }
 }

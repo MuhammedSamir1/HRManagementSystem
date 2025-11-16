@@ -6,9 +6,9 @@ namespace HRManagementSystem.Features.BankManagement.GetAllBanks.Queries
 {
     public record GetAllBanksQuery() : IRequest<RequestResult<IEnumerable<GetAllBanksDto>>>;
 
-    public class GetAllBanksQueryHandler : RequestHandlerBase<GetAllBanksQuery, RequestResult<IEnumerable<GetAllBanksDto>>, Bank, int>
+    public class GetAllBanksQueryHandler : RequestHandlerBase<GetAllBanksQuery, RequestResult<IEnumerable<GetAllBanksDto>>, Bank, Guid>
     {
-        public GetAllBanksQueryHandler(RequestHandlerBaseParameters<Bank, int> parameters)
+        public GetAllBanksQueryHandler(RequestHandlerBaseParameters<Bank, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<IEnumerable<GetAllBanksDto>>> Handle(GetAllBanksQuery request, CancellationToken ct)
@@ -24,4 +24,5 @@ namespace HRManagementSystem.Features.BankManagement.GetAllBanks.Queries
         }
     }
 }
+
 

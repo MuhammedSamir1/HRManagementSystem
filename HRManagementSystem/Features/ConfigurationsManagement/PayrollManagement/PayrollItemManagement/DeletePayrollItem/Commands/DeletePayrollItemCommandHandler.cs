@@ -1,17 +1,17 @@
-﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
+using HRManagementSystem.Data.Models.ConfigurationsModels;
 using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.Common.Queries;
 using HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.DeletePayrollItem.Commands;
 
 namespace HRManagementSystem.Features.Configurations.PayrollManagement.PayrollItemManagement.DeletePayrollItem.Commands
 {
     public sealed class DeletePayrollItemCommandHandler :
-    RequestHandlerBase<DeletePayrollItemCommand, RequestResult<bool>, PayrollItem, int>
+    RequestHandlerBase<DeletePayrollItemCommand, RequestResult<bool>, PayrollItem, Guid>
     {
 
 
 
         public DeletePayrollItemCommandHandler(
-            RequestHandlerBaseParameters<PayrollItem, int> parameters) : base(parameters)
+            RequestHandlerBaseParameters<PayrollItem, Guid> parameters) : base(parameters)
         {
 
         }
@@ -59,3 +59,4 @@ namespace HRManagementSystem.Features.Configurations.PayrollManagement.PayrollIt
         }
     }
 }
+

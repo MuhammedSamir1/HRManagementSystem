@@ -1,11 +1,12 @@
-﻿namespace HRManagementSystem.Features.CompanyManagement.GetCompanyById
+namespace HRManagementSystem.Features.CompanyManagement.GetCompanyById
 {
     public class GetCompanyByIdDto
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; } = null!;
         public string OrganizationName { get; set; } = null!;
         public string Code { get; set; } = null!;
         public string? Description { get; set; }
     }
 }
+

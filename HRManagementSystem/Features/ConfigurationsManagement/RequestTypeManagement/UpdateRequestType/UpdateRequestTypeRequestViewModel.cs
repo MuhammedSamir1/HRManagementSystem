@@ -2,14 +2,14 @@ using FluentValidation;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.RequestTypeManagement.UpdateRequestType
 {
-    public record UpdateRequestTypeRequestViewModel(int Id, string Name, string? Description, bool RequiresAttachments);
+    public record UpdateRequestTypeRequestViewModel(Guid Id, string Name, string? Description, bool RequiresAttachments);
 
     public class UpdateRequestTypeRequestViewModelValidator : AbstractValidator<UpdateRequestTypeRequestViewModel>
     {
         public UpdateRequestTypeRequestViewModelValidator()
         {
             RuleFor(x => x.Id)
-                .GreaterThan(0).WithMessage("Id must be greater than 0.");
+                .NotEqual(Guid.Empty).WithMessage("Id must be greater than 0.");
 
             RuleFor(x => x.Name)
                 .NotEmpty().WithMessage("Name is required.")
@@ -22,4 +22,6 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.RequestTypeManage
         }
     }
 }
+
+
 

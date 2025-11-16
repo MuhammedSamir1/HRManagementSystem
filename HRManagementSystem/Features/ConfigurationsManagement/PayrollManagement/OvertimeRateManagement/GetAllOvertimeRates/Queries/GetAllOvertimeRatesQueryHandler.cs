@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.OvertimeRateManagement.GetAllOvertimeRates.Queries
 {
     public sealed class GetAllOvertimeRatesQueryHandler :
-         RequestHandlerBase<GetAllOvertimeRatesQuery, RequestResult<PagedList<OvertimeRateDto>>, OvertimeRate, int>
+         RequestHandlerBase<GetAllOvertimeRatesQuery, RequestResult<PagedList<OvertimeRateDto>>, OvertimeRate, Guid>
     {
-        public GetAllOvertimeRatesQueryHandler(RequestHandlerBaseParameters<OvertimeRate, int> parameters)
+        public GetAllOvertimeRatesQueryHandler(RequestHandlerBaseParameters<OvertimeRate, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<PagedList<OvertimeRateDto>>> Handle(GetAllOvertimeRatesQuery request, CancellationToken ct)
@@ -58,3 +58,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
         }
     }
 }
+

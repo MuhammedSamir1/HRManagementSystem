@@ -17,4 +17,11 @@
             }
         }
     }
+    public static class GlobalErrorHandlerMiddlewareExtensions
+    {
+        public static IApplicationBuilder UseGlobalErrorHandlerMiddleware(this IApplicationBuilder builder)
+        {
+            return builder.UseMiddleware<GlobalErrorHandlerMiddleware>();
+        }
+    }
 }

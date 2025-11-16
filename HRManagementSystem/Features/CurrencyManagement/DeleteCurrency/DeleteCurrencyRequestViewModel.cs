@@ -1,8 +1,8 @@
-﻿using FluentValidation;
+using FluentValidation;
 
 namespace HRManagementSystem.Features.CurrencyManagement.DeleteCurrency
 {
-    public record DeleteCurrencyRequestViewModel(int currencyId);
+    public record DeleteCurrencyRequestViewModel(Guid currencyId);
 
     public sealed class DeleteCurrencyRequestViewModelValidator : AbstractValidator<DeleteCurrencyRequestViewModel>
     {
@@ -10,8 +10,10 @@ namespace HRManagementSystem.Features.CurrencyManagement.DeleteCurrency
         {
             RuleFor(d => d.currencyId)
                 .NotEmpty().WithMessage("Currency Id is required.")
-                .GreaterThan(0).WithMessage("Currency Id must be greater than 0");
+                .NotEqual(Guid.Empty).WithMessage("Currency Id must be greater than 0");
         }
     }
 
 }
+
+

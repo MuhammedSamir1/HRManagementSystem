@@ -1,6 +1,6 @@
 namespace HRManagementSystem.Data.Models.ConfigurationsModels
 {
-    public class Loan : BaseModel<int>
+    public class Loan : BaseModel<Guid>
     {
         public string Title { get; set; } = null!;
         public string? Description { get; set; }
@@ -11,8 +11,6 @@ namespace HRManagementSystem.Data.Models.ConfigurationsModels
         public DateTime LoanDate { get; set; }
         public DateTime? StartDeductionDate { get; set; }
         public LoanStatus Status { get; set; }
-        public int? EmployeeId { get; set; }
-        public Employee? Employee { get; set; }
     }
 }
 

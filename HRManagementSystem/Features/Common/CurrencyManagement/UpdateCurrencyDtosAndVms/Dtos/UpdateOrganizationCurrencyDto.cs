@@ -1,4 +1,5 @@
-﻿namespace HRManagementSystem.Features.Common.CurrencyManagement.UpdateCurrencyDtosAndVms.Dtos
+namespace HRManagementSystem.Features.Common.CurrencyManagement.UpdateCurrencyDtosAndVms.Dtos
 {
-    public sealed record UpdateOrganizationCurrencyDto(int CurrencyId);
+    public sealed record UpdateOrganizationCurrencyDto(Guid CurrencyId);
 }
+

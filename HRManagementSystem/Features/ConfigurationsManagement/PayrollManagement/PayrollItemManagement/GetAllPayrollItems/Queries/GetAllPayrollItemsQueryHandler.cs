@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore;
 namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement.PayrollItemManagement.GetAllPayrollItems.Queries
 {
     public sealed class GetAllPayrollItemsQueryHandler :
-     RequestHandlerBase<GetAllPayrollItemsQuery, RequestResult<IEnumerable<PayrollItemDto>>, PayrollItem, int>
+     RequestHandlerBase<GetAllPayrollItemsQuery, RequestResult<IEnumerable<PayrollItemDto>>, PayrollItem, Guid>
     {
 
 
         // ????? ?? IMapper ??? ???? ??? RequestHandlerBaseParameters ?? ???? ?????
         public GetAllPayrollItemsQueryHandler(
-            RequestHandlerBaseParameters<PayrollItem, int> parameters)
+            RequestHandlerBaseParameters<PayrollItem, Guid> parameters)
             : base(parameters)
         {
 
@@ -42,3 +42,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PayrollManagement
         }
     }
 }
+

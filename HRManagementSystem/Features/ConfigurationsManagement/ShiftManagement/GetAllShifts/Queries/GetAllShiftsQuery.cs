@@ -7,9 +7,9 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.G
     public sealed record GetAllShiftsQuery : IRequest<RequestResult<IEnumerable<ViewShiftDto>>>;
 
     public sealed class GetAllShiftsQueryHandler : RequestHandlerBase<GetAllShiftsQuery,
-        RequestResult<IEnumerable<ViewShiftDto>>, Shift, int>
+        RequestResult<IEnumerable<ViewShiftDto>>, Shift, Guid>
     {
-        public GetAllShiftsQueryHandler(RequestHandlerBaseParameters<Shift, int> parameters)
+        public GetAllShiftsQueryHandler(RequestHandlerBaseParameters<Shift, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<IEnumerable<ViewShiftDto>>> Handle(GetAllShiftsQuery request, CancellationToken ct)
@@ -25,4 +25,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.G
         }
     }
 }
+
 

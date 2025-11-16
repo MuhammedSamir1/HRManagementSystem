@@ -7,7 +7,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
         public GetPenaltyByIdEndPoint(EndPointBaseParameters<GetPenaltyByIdViewModel> parameters) : base(parameters) { }
 
         [HttpGet("{id:int}")]
-        public async Task<ResponseViewModel<ViewPenaltyByIdViewModel>> GetPenaltyById(int id, CancellationToken ct)
+        public async Task<ResponseViewModel<ViewPenaltyByIdViewModel>> GetPenaltyById(Guid id, CancellationToken ct)
         {
             var query = new GetPenaltyByIdQuery(id);
             var result = await _mediator.Send(query, ct);
@@ -23,3 +23,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.PenaltyManagement
         }
     }
 }
+

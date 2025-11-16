@@ -9,29 +9,29 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
         decimal Amount,
         PayrollItemType ItemType,
         bool IsFixed,
-        bool IsRecurring,
-        int? EmployeeId)
-        : IRequest<RequestResult<int>>;
+        bool IsRecurring)
+        : IRequest<RequestResult<Guid>>;
 
-    public class AddSalaryItemCommandHandler : RequestHandlerBase<AddSalaryItemCommand, RequestResult<int>, SalaryItem, int>
+    public class AddSalaryItemCommandHandler : RequestHandlerBase<AddSalaryItemCommand, RequestResult<Guid>, SalaryItem, Guid>
     {
-        public AddSalaryItemCommandHandler(RequestHandlerBaseParameters<SalaryItem, int> parameters)
+        public AddSalaryItemCommandHandler(RequestHandlerBaseParameters<SalaryItem, Guid> parameters)
             : base(parameters) { }
 
-        public override async Task<RequestResult<int>> Handle(AddSalaryItemCommand request, CancellationToken ct)
+        public override async Task<RequestResult<Guid>> Handle(AddSalaryItemCommand request, CancellationToken ct)
         {
             var nameExists = await _generalRepo.Get(x => x.Name == request.Name && !x.IsDeleted, ct).AnyAsync(ct);
             if (nameExists)
-                return RequestResult<int>.Failure("Salary Item Name already exists.", ErrorCode.Conflict);
+                return RequestResult<Guid>.Failure("Salary Item Name already exists.", ErrorCode.Conflict);
 
             var salaryItem = _mapper.Map<SalaryItem>(request);
 
             var isAdded = await _generalRepo.AddAsync(salaryItem, ct);
 
             if (!isAdded)
-                return RequestResult<int>.Failure("Salary Item wasn't added successfully!", ErrorCode.InternalServerError);
+                return RequestResult<Guid>.Failure("Salary Item wasn't added successfully!", ErrorCode.InternalServerError);
 
-            return RequestResult<int>.Success(salaryItem.Id, "Salary Item added successfully!");
+            return RequestResult<Guid>.Success(salaryItem.Id, "Salary Item added successfully!");
         }
     }
 }
+

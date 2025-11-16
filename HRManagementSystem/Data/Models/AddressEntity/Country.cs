@@ -1,6 +1,6 @@
 ﻿namespace HRManagementSystem.Data.Models.AddressEntity
 {
-    public sealed class Country : BaseModel<int>
+    public sealed class Country : BaseModel<Guid>
     {
         public string Iso2 { get; set; } = default!;   // "SA"
         public string Iso3 { get; set; } = default!;   // "SAU"

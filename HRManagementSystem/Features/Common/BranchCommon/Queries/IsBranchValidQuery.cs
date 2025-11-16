@@ -1,4 +1,5 @@
-﻿namespace HRManagementSystem.Features.Common.BranchCommon.Queries
+namespace HRManagementSystem.Features.Common.BranchCommon.Queries
 {
-    public sealed record IsBranchValidQuery(int BranchId) : IRequest<RequestResult<bool>>;
+    public sealed record IsBranchValidQuery(Guid BranchId) : IRequest<RequestResult<bool>>;
 }
+

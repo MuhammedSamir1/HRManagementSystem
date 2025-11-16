@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.Common.DepartmentCommon.Queries
 {
-    public sealed class IsDepartmentCodeUniqueForUpdateQueryHandler : RequestHandlerBase<IsDepartmentCodeUniqueForUpdateQuery, RequestResult<bool>, Department, int>
+    public sealed class IsDepartmentCodeUniqueForUpdateQueryHandler : RequestHandlerBase<IsDepartmentCodeUniqueForUpdateQuery, RequestResult<bool>, Department, Guid>
     {
-        public IsDepartmentCodeUniqueForUpdateQueryHandler(RequestHandlerBaseParameters<Department, int> parameters) : base(parameters) { }
+        public IsDepartmentCodeUniqueForUpdateQueryHandler(RequestHandlerBaseParameters<Department, Guid> parameters) : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(IsDepartmentCodeUniqueForUpdateQuery request, CancellationToken ct)
         {
@@ -22,3 +22,4 @@ namespace HRManagementSystem.Features.Common.DepartmentCommon.Queries
         }
     }
 }
+

@@ -1,4 +1,5 @@
-﻿namespace HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.Dtos
+namespace HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.Dtos
 {
-    public sealed record AddOrganizationCurrencyDto(int CurrencyId);
+    public sealed record AddOrganizationCurrencyDto(Guid CurrencyId);
 }
+

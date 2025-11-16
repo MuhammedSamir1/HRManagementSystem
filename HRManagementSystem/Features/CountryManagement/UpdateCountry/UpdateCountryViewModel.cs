@@ -1,9 +1,9 @@
-﻿using FluentValidation;
+using FluentValidation;
 using System.ComponentModel.DataAnnotations;
 
 namespace HRManagementSystem.Features.CountryManagement.UpdateCountry
 {
-    public sealed record UpdateCountryViewModel(int Id, [Required] string Iso2, [Required] string Iso3, [Required] string Name);
+    public sealed record UpdateCountryViewModel(Guid Id, [Required] string Iso2, [Required] string Iso3, [Required] string Name);
 
     public class UpdateCountryViewModelValidator : AbstractValidator<UpdateCountryViewModel>
     {
@@ -20,3 +20,4 @@ namespace HRManagementSystem.Features.CountryManagement.UpdateCountry
         }
     }
 }
+

@@ -7,7 +7,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
         public GetSalaryItemByIdEndPoint(EndPointBaseParameters<GetSalaryItemByIdViewModel> parameters) : base(parameters) { }
 
         [HttpGet("{id:int}")]
-        public async Task<ResponseViewModel<ViewSalaryItemByIdViewModel>> GetSalaryItemById(int id, CancellationToken ct)
+        public async Task<ResponseViewModel<ViewSalaryItemByIdViewModel>> GetSalaryItemById(Guid id, CancellationToken ct)
         {
             var query = new GetSalaryItemByIdQuery(id);
             var result = await _mediator.Send(query, ct);
@@ -23,3 +23,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.SalaryItemManagem
         }
     }
 }
+

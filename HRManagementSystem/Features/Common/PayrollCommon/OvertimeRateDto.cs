@@ -1,9 +1,10 @@
-﻿namespace HRManagementSystem.Features.Common.PayrollCommon
+namespace HRManagementSystem.Features.Common.PayrollCommon
 {
     public record OvertimeRateDto(
-         int Id,
+         Guid Id,
          string Name,
-         decimal RateFactor, // معامل السعر (مثل 1.5)
+         decimal RateFactor, // ????? ????? (??? 1.5)
          string Description,
          bool IsActive);
 }
+

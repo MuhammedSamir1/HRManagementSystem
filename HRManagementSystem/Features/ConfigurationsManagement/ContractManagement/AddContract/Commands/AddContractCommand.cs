@@ -12,12 +12,11 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagemen
         decimal ContractValue,
         ContractType ContractType,
         ContractStatus Status,
-        int? EmployeeId,
         string? Terms) : IRequest<RequestResult<CreatedIdDto>>;
 
-    public class AddContractCommandHandler : RequestHandlerBase<AddContractCommand, RequestResult<CreatedIdDto>, Contract, int>
+    public class AddContractCommandHandler : RequestHandlerBase<AddContractCommand, RequestResult<CreatedIdDto>, Contract, Guid>
     {
-        public AddContractCommandHandler(RequestHandlerBaseParameters<Contract, int> parameters)
+        public AddContractCommandHandler(RequestHandlerBaseParameters<Contract, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<CreatedIdDto>> Handle(AddContractCommand request, CancellationToken ct)
@@ -37,4 +36,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ContractManagemen
         }
     }
 }
+
 

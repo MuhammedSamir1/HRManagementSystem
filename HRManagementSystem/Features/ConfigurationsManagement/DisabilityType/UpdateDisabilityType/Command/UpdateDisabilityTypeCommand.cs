@@ -2,15 +2,15 @@ using HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.AddDis
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.UpdateDisabilityType.Command
 {
-    public sealed record UpdateDisabilityTypeCommand(int Id, string Code, string Name, string? Description = null) : IRequest<RequestResult<ViewDisabilityTypeDto>>;
+    public sealed record UpdateDisabilityTypeCommand(Guid Id, string Code, string Name, string? Description = null) : IRequest<RequestResult<ViewDisabilityTypeDto>>;
 
     // Commands/UpdateDisabilityType/UpdateDisabilityTypeCommandHandler.cs
     public sealed class UpdateDisabilityTypeCommandHandler
         : RequestHandlerBase<UpdateDisabilityTypeCommand, RequestResult<ViewDisabilityTypeDto>,
-          HRManagementSystem.Data.Models.ConfigurationOfSys.DisabilityType, int>
+          Data.Models.ConfigurationsModels.DisabilityType, Guid>
     {
         public UpdateDisabilityTypeCommandHandler(
-            RequestHandlerBaseParameters<HRManagementSystem.Data.Models.ConfigurationOfSys.DisabilityType, int> parameters)
+            RequestHandlerBaseParameters<Data.Models.ConfigurationsModels.DisabilityType, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<ViewDisabilityTypeDto>> Handle(
@@ -26,7 +26,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Up
 
 
             // Update disability type
-            var updatedDis = _mapper.Map<Data.Models.ConfigurationOfSys.DisabilityType>(request);
+            var updatedDis = _mapper.Map<Data.Models.ConfigurationsModels.DisabilityType>(request);
 
 
             await _generalRepo.UpdateAsync(updatedDis, ct);
@@ -36,3 +36,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Up
         }
     }
 }
+

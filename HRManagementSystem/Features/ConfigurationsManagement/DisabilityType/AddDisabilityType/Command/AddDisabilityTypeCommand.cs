@@ -6,10 +6,10 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Ad
 
     // Commands/AddDisabilityType/AddDisabilityTypeCommandHandler.cs
     public sealed class AddDisabilityTypeCommandHandler
-        : RequestHandlerBase<AddDisabilityTypeCommand, RequestResult<ViewDisabilityTypeDto>, HRManagementSystem.Data.Models.ConfigurationOfSys.DisabilityType, int>
+        : RequestHandlerBase<AddDisabilityTypeCommand, RequestResult<ViewDisabilityTypeDto>, Data.Models.ConfigurationsModels.DisabilityType, Guid>
     {
         public AddDisabilityTypeCommandHandler(
-            RequestHandlerBaseParameters<HRManagementSystem.Data.Models.ConfigurationOfSys.DisabilityType, int> parameters)
+            RequestHandlerBaseParameters<Data.Models.ConfigurationsModels.DisabilityType, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<ViewDisabilityTypeDto>> Handle(
@@ -26,7 +26,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Ad
 
 
             // Create new disability type
-            var disabilityType = _mapper.Map<Data.Models.ConfigurationOfSys.DisabilityType>(request);
+            var disabilityType = _mapper.Map<Data.Models.ConfigurationsModels.DisabilityType>(request);
 
             await _generalRepo.AddAsync(disabilityType, ct);
 
@@ -35,3 +35,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Ad
         }
     }
 }
+

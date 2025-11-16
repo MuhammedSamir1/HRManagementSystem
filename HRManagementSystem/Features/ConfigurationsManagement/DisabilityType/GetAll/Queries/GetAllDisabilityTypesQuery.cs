@@ -6,10 +6,10 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Ge
     // Queries/GetAllDisabilityTypesQueryHandler.cs
     public sealed class GetAllDisabilityTypesQueryHandler
         : RequestHandlerBase<GetAllDisabilityTypesQuery, RequestResult<IEnumerable<ViewDisabilityTypeDto>>,
-          HRManagementSystem.Data.Models.ConfigurationOfSys.DisabilityType, int>
+          Data.Models.ConfigurationsModels.DisabilityType, Guid>
     {
         public GetAllDisabilityTypesQueryHandler(
-            RequestHandlerBaseParameters<HRManagementSystem.Data.Models.ConfigurationOfSys.DisabilityType, int> parameters)
+            RequestHandlerBaseParameters<Data.Models.ConfigurationsModels.DisabilityType, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<IEnumerable<ViewDisabilityTypeDto>>> Handle(
@@ -37,3 +37,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Ge
         }
     }
 }
+

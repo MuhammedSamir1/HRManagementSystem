@@ -1,11 +1,11 @@
 namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.UpdateHoliday.Command
 {
     public record UpdateHolidayCommand(
-     int Id,
+     Guid Id,
      string Name,
      DateTime StartDate,
      DateTime EndDate,
      bool IsMandatory,
-     HolidayType Type,
-     int? CompanyId) : IRequest<RequestResult<bool>>;
+     HolidayType Type) : IRequest<RequestResult<bool>>;
 }
+

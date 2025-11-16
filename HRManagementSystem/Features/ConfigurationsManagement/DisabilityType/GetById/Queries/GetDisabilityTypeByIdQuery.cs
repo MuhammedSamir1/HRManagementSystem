@@ -2,15 +2,15 @@ using HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.AddDis
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.GetById.Queries
 {
-    public sealed record GetDisabilityTypeByIdQuery(int Id) : IRequest<RequestResult<ViewDisabilityTypeDto>>;
+    public sealed record GetDisabilityTypeByIdQuery(Guid Id) : IRequest<RequestResult<ViewDisabilityTypeDto>>;
 
     // Queries/GetDisabilityTypeByIdQueryHandler.cs
     public sealed class GetDisabilityTypeByIdQueryHandler
         : RequestHandlerBase<GetDisabilityTypeByIdQuery, RequestResult<ViewDisabilityTypeDto>,
-          HRManagementSystem.Data.Models.ConfigurationOfSys.DisabilityType, int>
+          Data.Models.ConfigurationsModels.DisabilityType, Guid>
     {
         public GetDisabilityTypeByIdQueryHandler(
-            RequestHandlerBaseParameters<HRManagementSystem.Data.Models.ConfigurationOfSys.DisabilityType, int> parameters)
+            RequestHandlerBaseParameters<Data.Models.ConfigurationsModels.DisabilityType, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<ViewDisabilityTypeDto>> Handle(
@@ -33,3 +33,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Ge
         }
     }
 }
+

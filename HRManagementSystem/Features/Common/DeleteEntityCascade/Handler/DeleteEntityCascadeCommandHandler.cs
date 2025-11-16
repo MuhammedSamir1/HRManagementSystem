@@ -1,4 +1,4 @@
-﻿using HRManagementSystem.Features.BranchManagement.DeleteBranch.Commands;
+using HRManagementSystem.Features.BranchManagement.DeleteBranch.Commands;
 using HRManagementSystem.Features.Common.DeleteEntityCascade.Command;
 using HRManagementSystem.Features.CompanyManagement.DeleteCompany.Commands;
 using HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Commands;
@@ -27,12 +27,12 @@ namespace HRManagementSystem.Features.Common.DeleteEntityCascade.Handler
         }
 
         #region Core
-        private async Task<bool> DeleteCascadeAsync(Type rootType, int id, CancellationToken ct)
+        private async Task<bool> DeleteCascadeAsync(Type rootType, Guid id, CancellationToken ct)
         {
             if (rootType == typeof(Organization))
             {
                 // Organization -> Companies
-                var companyIds = await _generalRepo.GetIdsAsync<Company, int>(x => x.OrganizationId == id && !x.IsDeleted, ct);
+                var companyIds = await _generalRepo.GetIdsAsync<Company, Guid>(x => x.OrganizationId == id && !x.IsDeleted, ct);
                 foreach (var cid in companyIds)
                     if (!await DeleteCascadeAsync(typeof(Company), cid, ct)) return false;
 
@@ -43,7 +43,7 @@ namespace HRManagementSystem.Features.Common.DeleteEntityCascade.Handler
             if (rootType == typeof(Company))
             {
                 // Company -> Branches
-                var branchIds = await _generalRepo.GetIdsAsync<Branch, int>(b => b.CompanyId == id && !b.IsDeleted, ct);
+                var branchIds = await _generalRepo.GetIdsAsync<Branch, Guid>(b => b.CompanyId == id && !b.IsDeleted, ct);
                 foreach (var branchId in branchIds)
                     if (!await DeleteCascadeAsync(typeof(Branch), branchId, ct)) return false;
 
@@ -54,7 +54,7 @@ namespace HRManagementSystem.Features.Common.DeleteEntityCascade.Handler
             if (rootType == typeof(Branch))
             {
                 // Branch -> Departments
-                var departmentIds = await _generalRepo.GetIdsAsync<Department, int>(d => d.BranchId == id && !d.IsDeleted, ct);
+                var departmentIds = await _generalRepo.GetIdsAsync<Department, Guid>(d => d.BranchId == id && !d.IsDeleted, ct);
                 foreach (var departmentId in departmentIds)
                     if (!await DeleteCascadeAsync(typeof(Department), departmentId, ct)) return false;
 
@@ -65,7 +65,7 @@ namespace HRManagementSystem.Features.Common.DeleteEntityCascade.Handler
             if (rootType == typeof(Department))
             {
                 // Department -> Teams (Leaf)
-                var teamIds = await _generalRepo.GetIdsAsync<Team, int>(t => t.DepartmentId == id && !t.IsDeleted, ct);
+                var teamIds = await _generalRepo.GetIdsAsync<Team, Guid>(t => t.DepartmentId == id && !t.IsDeleted, ct);
                 foreach (var teamId in teamIds)
                     if (!await DeleteCascadeAsync(typeof(Team), teamId, ct)) return false;
 
@@ -84,3 +84,4 @@ namespace HRManagementSystem.Features.Common.DeleteEntityCascade.Handler
         #endregion
     }
 }
+

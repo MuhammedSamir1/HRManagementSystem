@@ -1,14 +1,14 @@
 namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.DeleteDisabilityType.Command
 {
-    public sealed record DeleteDisabilityTypeCommand(int Id) : IRequest<RequestResult<bool>>;
+    public sealed record DeleteDisabilityTypeCommand(Guid Id) : IRequest<RequestResult<bool>>;
 
     // Commands/DeleteDisabilityType/DeleteDisabilityTypeCommandHandler.cs
     public sealed class DeleteDisabilityTypeCommandHandler
         : RequestHandlerBase<DeleteDisabilityTypeCommand, RequestResult<bool>,
-          HRManagementSystem.Data.Models.ConfigurationOfSys.DisabilityType, int>
+          Data.Models.ConfigurationsModels.DisabilityType, Guid>
     {
         public DeleteDisabilityTypeCommandHandler(
-            RequestHandlerBaseParameters<HRManagementSystem.Data.Models.ConfigurationOfSys.DisabilityType, int> parameters)
+            RequestHandlerBaseParameters<Data.Models.ConfigurationsModels.DisabilityType, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(
@@ -42,3 +42,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.De
         }
     }
 }
+

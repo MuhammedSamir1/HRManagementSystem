@@ -5,9 +5,9 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.RequestTypeManage
 {
     public record AddRequestTypeCommand(string Name, string? Description, bool RequiresAttachments) : IRequest<RequestResult<CreatedIdDto>>;
 
-    public class AddRequestTypeCommandHandler : RequestHandlerBase<AddRequestTypeCommand, RequestResult<CreatedIdDto>, RequestType, int>
+    public class AddRequestTypeCommandHandler : RequestHandlerBase<AddRequestTypeCommand, RequestResult<CreatedIdDto>, RequestType, Guid>
     {
-        public AddRequestTypeCommandHandler(RequestHandlerBaseParameters<RequestType, int> parameters)
+        public AddRequestTypeCommandHandler(RequestHandlerBaseParameters<RequestType, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<CreatedIdDto>> Handle(AddRequestTypeCommand request, CancellationToken ct)
@@ -27,4 +27,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.RequestTypeManage
         }
     }
 }
+
 

@@ -1,11 +1,11 @@
-﻿namespace HRManagementSystem.Features.Common.CompanyCommon.IsCompanyExist.Queries
+namespace HRManagementSystem.Features.Common.CompanyCommon.IsCompanyExist.Queries
 {
-    public sealed record IsCompanyExistQuery(int companyId) : IRequest<RequestResult<bool>>;
+    public sealed record IsCompanyExistQuery(Guid companyId) : IRequest<RequestResult<bool>>;
 
     public sealed class IsCompanyExistQueryHandler : RequestHandlerBase<IsCompanyExistQuery,
-        RequestResult<bool>, Company, int>
+        RequestResult<bool>, Company, Guid>
     {
-        public IsCompanyExistQueryHandler(RequestHandlerBaseParameters<Company, int> parameters) : base(parameters) { }
+        public IsCompanyExistQueryHandler(RequestHandlerBaseParameters<Company, Guid> parameters) : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(IsCompanyExistQuery request, CancellationToken ct)
         {
@@ -15,3 +15,4 @@
         }
     }
 }
+

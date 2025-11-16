@@ -1,4 +1,4 @@
-﻿using AutoMapper.QueryableExtensions;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Common.Views
@@ -11,7 +11,7 @@ namespace HRManagementSystem.Common.Views
         public int TotalCount { get; set; }
         public List<T> Items { get; set; } = new List<T>();
 
-        //  لحساب  إذا كان هناك صفحات   
+        //  ?????  ??? ??? ???? ?????   
         public bool HasPrevious => CurrentPage > 1;
         public bool HasNext => CurrentPage < TotalPages;
 
@@ -48,3 +48,4 @@ namespace HRManagementSystem.Common.Views
         }
     }
 }
+

@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.GetShiftById.Queries
 {
-    public sealed record GetShiftByIdQuery(int Id) : IRequest<RequestResult<ViewShiftByIdDto>>;
+    public sealed record GetShiftByIdQuery(Guid Id) : IRequest<RequestResult<ViewShiftByIdDto>>;
 
     public sealed class GetShiftByIdQueryHandler : RequestHandlerBase<GetShiftByIdQuery,
-        RequestResult<ViewShiftByIdDto>, Shift, int>
+        RequestResult<ViewShiftByIdDto>, Shift, Guid>
     {
-        public GetShiftByIdQueryHandler(RequestHandlerBaseParameters<Shift, int> parameters)
+        public GetShiftByIdQueryHandler(RequestHandlerBaseParameters<Shift, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<ViewShiftByIdDto>> Handle(GetShiftByIdQuery request, CancellationToken ct)
@@ -25,4 +25,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.G
         }
     }
 }
+
 

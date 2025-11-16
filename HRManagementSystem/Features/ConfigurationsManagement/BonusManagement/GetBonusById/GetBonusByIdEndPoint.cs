@@ -7,7 +7,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.G
         public GetBonusByIdEndPoint(EndPointBaseParameters<GetBonusByIdViewModel> parameters) : base(parameters) { }
 
         [HttpGet("{id:int}")]
-        public async Task<ResponseViewModel<ViewBonusByIdViewModel>> GetBonusById(int id, CancellationToken ct)
+        public async Task<ResponseViewModel<ViewBonusByIdViewModel>> GetBonusById(Guid id, CancellationToken ct)
         {
             var query = new GetBonusByIdQuery(id);
             var result = await _mediator.Send(query, ct);
@@ -23,3 +23,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.G
         }
     }
 }
+

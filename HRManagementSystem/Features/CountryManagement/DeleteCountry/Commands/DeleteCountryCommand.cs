@@ -1,5 +1,6 @@
-﻿namespace HRManagementSystem.Features.CountryManagement.DeleteCountry.Commands
+namespace HRManagementSystem.Features.CountryManagement.DeleteCountry.Commands
 {
-    public sealed record DeleteCountryCommand(int Id)
+    public sealed record DeleteCountryCommand(Guid Id)
      : IRequest<RequestResult<bool>>;
 }
+

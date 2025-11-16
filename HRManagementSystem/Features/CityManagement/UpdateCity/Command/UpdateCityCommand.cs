@@ -1,14 +1,14 @@
-﻿using HRManagementSystem.Data.Models.AddressEntity;
+using HRManagementSystem.Data.Models.AddressEntity;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.CityManagement.UpdateCity.Command
 {
-    public sealed record UpdateCityCommand(int Id, string Name, int StateId) : IRequest<RequestResult<bool>>;
+    public sealed record UpdateCityCommand(Guid Id, string Name, Guid StateId) : IRequest<RequestResult<bool>>;
 
     public sealed class UpdateCityCommandHandler
-        : RequestHandlerBase<UpdateCityCommand, RequestResult<bool>, City, int>
+        : RequestHandlerBase<UpdateCityCommand, RequestResult<bool>, City, Guid>
     {
-        public UpdateCityCommandHandler(RequestHandlerBaseParameters<City, int> parameters)
+        public UpdateCityCommandHandler(RequestHandlerBaseParameters<City, Guid> parameters)
             : base(parameters)
         {
         }

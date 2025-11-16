@@ -2,5 +2,6 @@ using HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.Com
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement.GetHolidayById.Queries
 {
-    public sealed record GetHolidayByIdQuery(int Id) : IRequest<RequestResult<ViewHolidayDto>>;
+    public sealed record GetHolidayByIdQuery(Guid Id) : IRequest<RequestResult<ViewHolidayDto>>;
 }
+

@@ -1,4 +1,4 @@
-﻿using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.ViewModels;
+using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.ViewModels;
 using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.ViewModels;
 
 namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding
@@ -19,7 +19,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboard
 
     public sealed class CompanyDto
     {
-        public int OrganizationId { get; set; }
+        public Guid OrganizationId { get; set; }
         public string Name { get; set; } = default!;
         public string Code { get; set; } = default!;
         public string? Description { get; set; }
@@ -28,7 +28,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboard
 
     public sealed class BranchDto
     {
-        public int CompanyId { get; set; }
+        public Guid CompanyId { get; set; }
         public string Name { get; set; } = default!;
         public string? Description { get; set; }
         public string Code { get; set; } = default!;
@@ -39,7 +39,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboard
 
     public sealed class DepartmentDto
     {
-        public int BranchId { get; set; }
+        public Guid BranchId { get; set; }
         public string Name { get; set; } = default!;
         public string? Description { get; set; }
         public string Code { get; set; } = default!;
@@ -48,9 +48,10 @@ namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboard
 
     public sealed class TeamDto
     {
-        public int DepartmentId { get; set; }
+        public Guid DepartmentId { get; set; }
         public string Name { get; set; } = default!;
         public string? Description { get; set; }
         public string Code { get; set; } = default!;
     }
 }
+

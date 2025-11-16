@@ -3,9 +3,9 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Ad
     public record IsDisabilityTypeExistWithSameCodeOrNameQuery(string Name, string Code) : IRequest<RequestResult<bool>>;
 
     public sealed class IsDisabilityTypeExistWithSameCodeOrNameQueryHandler
-    : RequestHandlerBase<IsDisabilityTypeExistWithSameCodeOrNameQuery, RequestResult<bool>, Data.Models.ConfigurationOfSys.DisabilityType, int>
+    : RequestHandlerBase<IsDisabilityTypeExistWithSameCodeOrNameQuery, RequestResult<bool>, Data.Models.ConfigurationsModels.DisabilityType, Guid>
     {
-        public IsDisabilityTypeExistWithSameCodeOrNameQueryHandler(RequestHandlerBaseParameters<Data.Models.ConfigurationOfSys.DisabilityType, int> _params) : base(_params) { }
+        public IsDisabilityTypeExistWithSameCodeOrNameQueryHandler(RequestHandlerBaseParameters<Data.Models.ConfigurationsModels.DisabilityType, Guid> _params) : base(_params) { }
         public override async Task<RequestResult<bool>> Handle(IsDisabilityTypeExistWithSameCodeOrNameQuery request, CancellationToken cancellationToken)
         {
             var existingType = await _generalRepo.CheckAnyAsync(D => (D.Code == request.Code || D.Name == request.Name) && !D.IsDeleted, cancellationToken);
@@ -18,3 +18,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.DisabilityType.Ad
     }
 
 }
+

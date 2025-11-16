@@ -1,4 +1,4 @@
-﻿using AutoMapper.QueryableExtensions;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Features.TeamManagement.GetAllTeams.Queries
@@ -6,9 +6,9 @@ namespace HRManagementSystem.Features.TeamManagement.GetAllTeams.Queries
     public sealed record GetAllTeamsQuery : IRequest<RequestResult<IEnumerable<ViewTeamDto>>>;
 
     public sealed class GetAllTeamsQueryHandler : RequestHandlerBase<GetAllTeamsQuery,
-        RequestResult<IEnumerable<ViewTeamDto>>, Team, int>
+        RequestResult<IEnumerable<ViewTeamDto>>, Team, Guid>
     {
-        public GetAllTeamsQueryHandler(RequestHandlerBaseParameters<Team, int> parameters)
+        public GetAllTeamsQueryHandler(RequestHandlerBaseParameters<Team, Guid> parameters)
             : base(parameters) { }
 
         public override async Task<RequestResult<IEnumerable<ViewTeamDto>>> Handle(GetAllTeamsQuery request, CancellationToken ct)

@@ -1,13 +1,14 @@
-﻿using HRManagementSystem.Features.Common.DeleteEntityCascade.Handler;
+using HRManagementSystem.Features.Common.DeleteEntityCascade.Handler;
 
 namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Cascade;
 
 public sealed class DeleteDepartmentCascadeCommandHandler
-        : DeleteEntityCascadeCommandHandler<Department, int>
+        : DeleteEntityCascadeCommandHandler<Department, Guid>
 {
     public DeleteDepartmentCascadeCommandHandler(
-        RequestHandlerBaseParameters<Department, int> parameters
+        RequestHandlerBaseParameters<Department, Guid> parameters
     ) : base(parameters)
     {
     }
 }
+

@@ -7,7 +7,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
         public DeleteHolidayEndPoint(EndPointBaseParameters<DeleteHolidayViewModel> parameters) : base(parameters) { }
 
         [HttpDelete("delete/{id:int}")]
-        public async Task<ResponseViewModel<bool>> DeleteHoliday([FromRoute] int id, CancellationToken ct)
+        public async Task<ResponseViewModel<bool>> DeleteHoliday([FromRoute] Guid id, CancellationToken ct)
         {
             var model = new DeleteHolidayViewModel(id);
             var validationResult = ValidateRequest(model);
@@ -26,3 +26,4 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.HolidayManagement
         }
     }
 }
+

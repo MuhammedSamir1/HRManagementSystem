@@ -9,25 +9,25 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.BonusManagement.A
         BonusType BonusType,
         DateTime BonusDate,
         DateTime? PaymentDate,
-        bool IsPaid,
-        int? EmployeeId)
-        : IRequest<RequestResult<int>>;
+        bool IsPaid)
+        : IRequest<RequestResult<Guid>>;
 
-    public class AddBonusCommandHandler : RequestHandlerBase<AddBonusCommand, RequestResult<int>, Bonus, int>
+    public class AddBonusCommandHandler : RequestHandlerBase<AddBonusCommand, RequestResult<Guid>, Bonus, Guid>
     {
-        public AddBonusCommandHandler(RequestHandlerBaseParameters<Bonus, int> parameters)
+        public AddBonusCommandHandler(RequestHandlerBaseParameters<Bonus, Guid> parameters)
             : base(parameters) { }
 
-        public override async Task<RequestResult<int>> Handle(AddBonusCommand request, CancellationToken ct)
+        public override async Task<RequestResult<Guid>> Handle(AddBonusCommand request, CancellationToken ct)
         {
             var bonus = _mapper.Map<Bonus>(request);
 
             var isAdded = await _generalRepo.AddAsync(bonus, ct);
 
             if (!isAdded)
-                return RequestResult<int>.Failure("Bonus wasn't added successfully!", ErrorCode.InternalServerError);
+                return RequestResult<Guid>.Failure("Bonus wasn't added successfully!", ErrorCode.InternalServerError);
 
-            return RequestResult<int>.Success(bonus.Id, "Bonus added successfully!");
+            return RequestResult<Guid>.Success(bonus.Id, "Bonus added successfully!");
         }
     }
 }
+

@@ -11,8 +11,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         int TotalServiceYears,
         int TotalServiceMonths,
         int TotalServiceDays,
-        DateTime? PaymentDate,
-        int? EmployeeId);
+        DateTime? PaymentDate);
 
     public sealed class AddEndOfServiceViewModelValidator : AbstractValidator<AddEndOfServiceViewModel>
     {
@@ -38,4 +37,5 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.EndOfServiceManag
         }
     }
 }
+
 

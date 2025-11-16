@@ -1,11 +1,12 @@
-﻿namespace HRManagementSystem.Features.DepartmentManagement.GetAllDepartments
+namespace HRManagementSystem.Features.DepartmentManagement.GetAllDepartments
 {
     public class GetAllDepartmentsResponseViewModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string BranchName { get; set; } = null!;
         public string Name { get; set; } = null!;
         public string Code { get; set; } = null!;
         public string? Description { get; set; }
     }
 }
+

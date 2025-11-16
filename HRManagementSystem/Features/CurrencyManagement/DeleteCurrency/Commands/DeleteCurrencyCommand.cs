@@ -1,11 +1,11 @@
-﻿namespace HRManagementSystem.Features.CurrencyManagement.DeleteCurrency.Commands
+namespace HRManagementSystem.Features.CurrencyManagement.DeleteCurrency.Commands
 {
-    public record DeleteCurrencyCommand(int currencyId) : IRequest<RequestResult<bool>>;
+    public record DeleteCurrencyCommand(Guid currencyId) : IRequest<RequestResult<bool>>;
 
     public sealed class DeleteCurrencyCommandHandler : RequestHandlerBase<DeleteCurrencyCommand,
-    RequestResult<bool>, Currency, int>
+    RequestResult<bool>, Currency, Guid>
     {
-        public DeleteCurrencyCommandHandler(RequestHandlerBaseParameters<Currency, int> parameters) : base(parameters)
+        public DeleteCurrencyCommandHandler(RequestHandlerBaseParameters<Currency, Guid> parameters) : base(parameters)
         { }
 
         public override async Task<RequestResult<bool>> Handle(DeleteCurrencyCommand request, CancellationToken ct)
@@ -17,3 +17,4 @@
         }
     }
 }
+

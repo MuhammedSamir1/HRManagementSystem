@@ -1,18 +1,18 @@
-﻿using HRManagementSystem.Features.Common.BranchCommon.Queries;
+using HRManagementSystem.Features.Common.BranchCommon.Queries;
 using HRManagementSystem.Features.Common.DepartmentCommon.Queries;
 
 namespace HRManagementSystem.Features.DepartmentManagement.UpdateDepartment.Commands
 {
     public record UpdateDepartmentCommand(
-     int Id,
-     int branchId,
+     Guid Id,
+     Guid branchId,
      string name,
      string code,
      string? description)
      : IRequest<RequestResult<bool>>;
-    public sealed class UpdateDepartmentCommandHandler : RequestHandlerBase<UpdateDepartmentCommand, RequestResult<bool>, Department, int>
+    public sealed class UpdateDepartmentCommandHandler : RequestHandlerBase<UpdateDepartmentCommand, RequestResult<bool>, Department, Guid>
     {
-        public UpdateDepartmentCommandHandler(RequestHandlerBaseParameters<Department, int> parameters) : base(parameters) { }
+        public UpdateDepartmentCommandHandler(RequestHandlerBaseParameters<Department, Guid> parameters) : base(parameters) { }
 
         public override async Task<RequestResult<bool>> Handle(UpdateDepartmentCommand request, CancellationToken ct)
         {
@@ -65,3 +65,4 @@ namespace HRManagementSystem.Features.DepartmentManagement.UpdateDepartment.Comm
         }
     }
 }
+
