@@ -1281,8 +1281,8 @@ namespace HRManagementSystem.Migrations
                     b.Property<Guid?>("DefaultCurrencyId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime?>("DefaultTimezone")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DefaultTimezone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("DeletedBy")
                         .HasColumnType("uniqueidentifier");
@@ -1434,7 +1434,7 @@ namespace HRManagementSystem.Migrations
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
 
-                    b.Property<Guid?>("OrganizationId")
+                    b.Property<Guid>("OrganizationId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("TeamId")

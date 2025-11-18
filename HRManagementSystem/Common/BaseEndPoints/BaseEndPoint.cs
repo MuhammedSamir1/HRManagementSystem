@@ -18,14 +18,52 @@ namespace HRManagementSystem.Common.BaseEndPoints
         }
 
         protected ResponseViewModel<TResponse> ValidateRequest(TRequest request)
+            => TryValidateRequest(request, out var failureResponse)
+                ? ResponseViewModel<TResponse>.Success(default!, "Validation Successful!")
+                : failureResponse;
+
+        protected bool TryValidateRequest(TRequest request, out ResponseViewModel<TResponse> failureResponse)
         {
             var validationResult = _validator.Validate(request);
             if (!validationResult.IsValid)
             {
                 var errorMessage = string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage));
-                return ResponseViewModel<TResponse>.Failure(errorMessage, ErrorCode.ValidationError);
+                failureResponse = ResponseViewModel<TResponse>.Failure(errorMessage, ErrorCode.ValidationError);
+                return false;
             }
-            return ResponseViewModel<TResponse>.Success(default!, "Validation Successful!");
+
+            failureResponse = default!;
+            return true;
+        }
+
+        protected async Task<ResponseViewModel<TResponse>> HandleRequestAsync(
+            TRequest request,
+            Func<CancellationToken, Task<RequestResult<TResponse>>> handler,
+            CancellationToken ct = default)
+        {
+            if (!TryValidateRequest(request, out var validationFailure))
+                return validationFailure;
+
+            var result = await handler(ct);
+            return BuildResponse(result);
+        }
+
+        protected async Task<ResponseViewModel<TResponse>> HandleRequestAsync(
+            Func<CancellationToken, Task<RequestResult<TResponse>>> handler,
+            CancellationToken ct = default)
+        {
+            var result = await handler(ct);
+            return BuildResponse(result);
+        }
+
+        protected static ResponseViewModel<TResult> BuildResponse<TResult>(RequestResult<TResult> result)
+        {
+            if (!result.isSuccess)
+            {
+                return ResponseViewModel<TResult>.Failure(result.message, result.errorCode);
+            }
+
+            return ResponseViewModel<TResult>.Success(result.data, result.message);
         }
     }
 }

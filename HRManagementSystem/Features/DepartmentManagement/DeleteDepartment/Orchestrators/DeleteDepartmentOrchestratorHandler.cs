@@ -1,4 +1,3 @@
-using HRManagementSystem.Features.Common.IsAnyChildAssignedGeneric;
 using HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Commands;
 
 namespace HRManagementSystem.Features.DepartmentManagement.DeleteDepartment.Orchestrators;

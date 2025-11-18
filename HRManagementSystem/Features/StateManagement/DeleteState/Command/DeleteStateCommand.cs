@@ -1,5 +1,4 @@
 using HRManagementSystem.Data.Models.AddressEntity;
-using HRManagementSystem.Features.Common.IsAnyChildAssignedGeneric;
 
 namespace HRManagementSystem.Features.StateManagement.DeleteState.Command
 {

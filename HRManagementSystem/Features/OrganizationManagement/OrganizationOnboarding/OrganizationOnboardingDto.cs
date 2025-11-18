@@ -1,5 +1,5 @@
-using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.ViewModels;
-using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.ViewModels;
+using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
+using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.Dtos;
 
 namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding
 {
@@ -9,17 +9,16 @@ namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboard
         public string? LegalName { get; set; }
         public string? Industry { get; set; }
         public string? Description { get; set; }
-        public DateTime? DefaultTimezone { get; set; }
+        public string? DefaultTimezone { get; set; }
 
-        public AddOrganizationCurrencyViewModel? Currency { get; set; }
-        public AddOrganizationAddressViewModel? Address { get; set; }
+        public AddOrganizationCurrencyDto? Currency { get; set; }
+        public AddOrganizationAddressDto? Address { get; set; }
 
-        public List<CompanyDto>? Companies { get; set; }
+        public List<CompanyDto> Companies { get; set; } = new();
     }
 
     public sealed class CompanyDto
     {
-        public Guid OrganizationId { get; set; }
         public string Name { get; set; } = default!;
         public string Code { get; set; } = default!;
         public string? Description { get; set; }
@@ -28,18 +27,16 @@ namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboard
 
     public sealed class BranchDto
     {
-        public Guid CompanyId { get; set; }
         public string Name { get; set; } = default!;
         public string? Description { get; set; }
         public string Code { get; set; } = default!;
-        public AddBranchAddressViewModel? Address { get; set; }
+        public AddBranchAddressDto? Address { get; set; }
 
         public List<DepartmentDto>? Departments { get; set; }
     }
 
     public sealed class DepartmentDto
     {
-        public Guid BranchId { get; set; }
         public string Name { get; set; } = default!;
         public string? Description { get; set; }
         public string Code { get; set; } = default!;
@@ -48,7 +45,6 @@ namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboard
 
     public sealed class TeamDto
     {
-        public Guid DepartmentId { get; set; }
         public string Name { get; set; } = default!;
         public string? Description { get; set; }
         public string Code { get; set; } = default!;

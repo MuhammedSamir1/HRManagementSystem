@@ -5,5 +5,6 @@ global using HRManagementSystem.Common.Data.Enums;
 global using HRManagementSystem.Common.Swagger;
 global using HRManagementSystem.Common.Views.Response;
 global using HRManagementSystem.Data.Models;
+global using HRManagementSystem.Features.Common.IsAnyChildAssignedGeneric;
 global using MediatR;
 global using Microsoft.AspNetCore.Mvc;

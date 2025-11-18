@@ -5,7 +5,7 @@ using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVm
 namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation
 {
     public record AddOrganizationViewModel(string Name, string? LegalName, string? Industry, string? Description,
-        DateTime? DefaultTimezone, AddOrganizationCurrencyViewModel Currency, AddOrganizationAddressViewModel Address);
+        string? DefaultTimezone, AddOrganizationCurrencyViewModel Currency, AddOrganizationAddressViewModel Address);
 
     public class AddOrginizationViewModelValidator : AbstractValidator<AddOrganizationViewModel>
     {
@@ -30,6 +30,10 @@ namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation
                 .When(x => !string.IsNullOrWhiteSpace(x.Industry))
                 .Must(v => v!.Trim().Length <= 100);
 
+            RuleFor(x => x.DefaultTimezone)
+                .Must(BeValidTimeZone)
+                .WithMessage("Default timezone must be a valid timezone id.");
+
             RuleFor(x => x.Address)
                 .NotNull().WithMessage("Address is required.")
                 .SetValidator(new AddOrganizationAddressViewModelValidator());
@@ -37,6 +41,15 @@ namespace HRManagementSystem.Features.OrganizationManagement.AddOrginzation
             RuleFor(x => x.Currency)
                .NotNull().WithMessage("Currency is required.")
                .SetValidator(new AddOrganizationCurrencyViewModelValidator());
+        }
+
+        private static bool BeValidTimeZone(string? timezoneId)
+        {
+            if (string.IsNullOrWhiteSpace(timezoneId))
+                return true;
+
+            return TimeZoneInfo.GetSystemTimeZones()
+                .Any(z => z.Id.Equals(timezoneId, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

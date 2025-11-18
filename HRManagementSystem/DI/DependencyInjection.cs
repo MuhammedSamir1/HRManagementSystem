@@ -1,19 +1,14 @@
 ﻿using FluentValidation;
-using HRManagementSystem.Common.Swagger;
 using HRManagementSystem.Common.Views;
 using HRManagementSystem.Data.Contexts.ApplicationDbContext;
 using HRManagementSystem.Data.Middlewares;
 using HRManagementSystem.Data.Repositories;
-using HRManagementSystem.Features.Common.IsAnyChildAssignedGeneric;
+using HRManagementSystem.Features.Common.HierarchyLookup;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Reflection;
 
 namespace HRManagementSystem.DI
@@ -138,27 +133,10 @@ namespace HRManagementSystem.DI
             });
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(apiAssembly));
             services.AddValidatorsFromAssembly(typeof(Program).Assembly);
-            #region Generic Child Check Handlers Registration
-            //Generic Child Check Handlers Registration
-            var maps = new (Type Parent, Type Child, Type Key)[]
-         {
-                (typeof(Organization), typeof(Company),  typeof(Guid)),
-                (typeof(Company),      typeof(Branch),   typeof(Guid)),
-                (typeof(Branch),       typeof(Department), typeof(Guid)),
-                (typeof(Department),   typeof(Team),     typeof(Guid)),
-         };
-            foreach (var (p, c, k) in maps)
-            {
-                var req = typeof(IsAnyChildAssignedQuery<,,>).MakeGenericType(p, c, k);
-                var resp = typeof(RequestResult<bool>);
-                var svc = typeof(IRequestHandler<,>).MakeGenericType(req, resp);
-                var impl = typeof(IsAnyChildAssignedQueryHandler<,,>).MakeGenericType(p, c, k);
-                services.AddTransient(svc, impl);
-            }
-            #endregion
             services.AddScoped<GlobalErrorHandlerMiddleware>();
             services.AddScoped<TransactionMiddleware>();
             services.AddScoped(typeof(IGeneralRepository<,>), typeof(GeneralRepository<,>));
+            services.AddScoped<IHierarchyLookupHelper, HierarchyLookupHelper>();
             services.AddScoped(typeof(EndPointBaseParameters<>));
             services.AddScoped(typeof(RequestHandlerBaseParameters<,>));
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

@@ -1,5 +1,6 @@
 ﻿using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Data.Models.ConfigurationsModels;
+using HRManagementSystem.Data.Models.Scopes;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRManagementSystem.Data.Contexts.ApplicationDbContext;
@@ -41,4 +42,6 @@ public class ApplicationDbContext : DbContext
     public DbSet<Loan> Loans { get; set; }
     public DbSet<SalaryItem> SalaryItems { get; set; }
     public DbSet<Bonus> Bonuses { get; set; }
+    public DbSet<Scope> Scopes { get; set; }
+    public DbSet<ShiftScope> ShiftScopes { get; set; }
 }

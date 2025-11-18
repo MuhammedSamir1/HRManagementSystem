@@ -9,12 +9,12 @@ namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboard
         public string? LegalName { get; set; }
         public string? Industry { get; set; }
         public string? Description { get; set; }
-        public DateTime? DefaultTimezone { get; set; }
+        public string? DefaultTimezone { get; set; }
 
         public AddOrganizationCurrencyViewModel? Currency { get; set; }
         public AddOrganizationAddressViewModel? Address { get; set; }
 
-        public List<CompanyRequestViewModel>? Companies { get; set; }
+        public List<CompanyRequestViewModel> Companies { get; set; } = new();
     }
 
     public class CompanyRequestViewModel

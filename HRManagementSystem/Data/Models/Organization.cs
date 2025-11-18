@@ -14,7 +14,7 @@ namespace HRManagementSystem.Data.Models
         public Guid? AddressId { get; set; }
         [Required]
         public Address Address { get; set; } = default!;
-        public DateTime? DefaultTimezone { get; set; } = DateTime.UtcNow;
+        public string? DefaultTimezone { get; set; } = TimeZoneInfo.Utc.Id;
         public Currency? DefaultCurrency { get; set; }
         public ICollection<Company> Companies { get; set; } = new HashSet<Company>();
     }

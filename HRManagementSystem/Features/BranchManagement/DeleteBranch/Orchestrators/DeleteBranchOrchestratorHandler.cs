@@ -1,5 +1,4 @@
 using HRManagementSystem.Features.BranchManagement.DeleteBranch.Commands;
-using HRManagementSystem.Features.Common.IsAnyChildAssignedGeneric;
 
 namespace HRManagementSystem.Features.BranchManagement.DeleteBranch.Orchestrators;
 
