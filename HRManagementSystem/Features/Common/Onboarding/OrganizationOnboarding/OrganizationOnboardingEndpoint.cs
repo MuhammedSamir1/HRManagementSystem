@@ -1,6 +1,7 @@
-using HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding.Commands;
 
-namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding
+using HRManagementSystem.Features.Common.Onboarding.OrganizationOnboarding.Commands;
+
+namespace HRManagementSystem.Features.Common.Onboarding.OrganizationOnboarding
 {
     [ApiGroup("Onboarding")]
     public class OrganizationOnboardingEndpoint : BaseEndPoint<OrganizationOnboardingRequestViewModel, ResponseViewModel<bool>>

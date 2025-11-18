@@ -1,4 +1,4 @@
-namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding;
+namespace HRManagementSystem.Features.Common.Onboarding.OrganizationOnboarding;
 
 public sealed class ViewOrganizationOnboardingDto
 {

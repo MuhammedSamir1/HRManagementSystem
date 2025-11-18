@@ -1,4 +1,4 @@
-namespace HRManagementSystem.Features.Common.AddressManagement.AddAddressOnBoarding.Dtos
+namespace HRManagementSystem.Features.Common.Onboarding.AddAddressOnBoarding.Dtos
 {
     public sealed class AddAddressOnBoardingDto
     {

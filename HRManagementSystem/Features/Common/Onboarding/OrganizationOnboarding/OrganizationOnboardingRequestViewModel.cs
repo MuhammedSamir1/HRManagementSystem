@@ -1,7 +1,7 @@
 ﻿using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.ViewModels;
 using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.ViewModels;
 
-namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding
+namespace HRManagementSystem.Features.Common.Onboarding.OrganizationOnboarding
 {
     public class OrganizationOnboardingRequestViewModel
     {
