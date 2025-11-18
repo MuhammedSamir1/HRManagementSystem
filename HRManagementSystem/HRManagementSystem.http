@@ -4,3 +4,37 @@ GET {{HRManagementSystem_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+### Hierarchy - Organizations
+GET {{HRManagementSystem_HostAddress}}/api/hierarchy/organizations
+Accept: application/json
+
+###
+
+### Hierarchy - Companies by Organization
+@OrganizationId = 00000000-0000-0000-0000-000000000000
+GET {{HRManagementSystem_HostAddress}}/api/hierarchy/organizations/{{OrganizationId}}/companies
+Accept: application/json
+
+###
+
+### Hierarchy - Branches by Company
+@CompanyId = 00000000-0000-0000-0000-000000000000
+GET {{HRManagementSystem_HostAddress}}/api/hierarchy/companies/{{CompanyId}}/branches
+Accept: application/json
+
+###
+
+### Hierarchy - Departments by Branch
+@BranchId = 00000000-0000-0000-0000-000000000000
+GET {{HRManagementSystem_HostAddress}}/api/hierarchy/branches/{{BranchId}}/departments
+Accept: application/json
+
+###
+
+### Hierarchy - Teams by Department
+@DepartmentId = 00000000-0000-0000-0000-000000000000
+GET {{HRManagementSystem_HostAddress}}/api/hierarchy/departments/{{DepartmentId}}/teams
+Accept: application/json
+
+###

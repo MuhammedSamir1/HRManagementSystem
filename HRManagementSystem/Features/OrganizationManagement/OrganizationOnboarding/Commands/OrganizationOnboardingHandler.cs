@@ -1,9 +1,8 @@
 using HRManagementSystem.Features.BranchManagement.AddBranch.Commands;
-using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
-using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.Dtos;
 using HRManagementSystem.Features.CompanyManagement.AddCompany.Commands;
 using HRManagementSystem.Features.DepartmentManagement.AddDepartment.Commands;
 using HRManagementSystem.Features.OrganizationManagement.AddOrginzation.Commands;
+using HRManagementSystem.Features.ScopeManagement.EnsureScope.Commands;
 using HRManagementSystem.Features.TeamManagement.AddTeam.Commands;
 
 namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding.Commands
@@ -18,10 +17,19 @@ namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboard
 
         public override async Task<RequestResult<ViewOrganizationOnboardingDto>> Handle(OrganizationOnboardingCommand request, CancellationToken ct)
         {
-            #region 1. Add Organization
-            var address = _mapper.Map<AddOrganizationAddressDto>(request.OnboardingDto.Address);
-            var currency = _mapper.Map<AddOrganizationCurrencyDto>(request.OnboardingDto.Currency);
+            if (request.OnboardingDto.Currency is null)
+            {
+                return RequestResult<ViewOrganizationOnboardingDto>.Failure(
+                    "Currency is required for organization onboarding.", ErrorCode.ValidationError);
+            }
 
+            if (request.OnboardingDto.Address is null)
+            {
+                return RequestResult<ViewOrganizationOnboardingDto>.Failure(
+                    "Address is required for organization onboarding.", ErrorCode.ValidationError);
+            }
+
+            #region 1. Add Organization
             var resultOrganization = await _mediator.Send(
                 new AddOrganizationCommand(
                     request.OnboardingDto.Name,
@@ -29,8 +37,8 @@ namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboard
                     request.OnboardingDto.Industry,
                     request.OnboardingDto.Description,
                     request.OnboardingDto.DefaultTimezone,
-                    currency,
-                    address
+                    request.OnboardingDto.Currency,
+                    request.OnboardingDto.Address
                 ), ct);
 
             if (!resultOrganization.isSuccess)
@@ -57,13 +65,23 @@ namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboard
                         companyAdded.message, companyAdded.errorCode);
 
                 var companyId = companyAdded.data.Id;
-                var companyNode = new CompanyNodeDto { CompanyId = companyId };
+                var companyScopeResult = await _mediator.Send(
+                    new EnsureScopeCommand(orgId, companyId, null, null, null), ct);
+                if (!companyScopeResult.isSuccess)
+                    return RequestResult<ViewOrganizationOnboardingDto>.Failure(
+                        companyScopeResult.message, companyScopeResult.errorCode);
+
+                var companyNode = new CompanyNodeDto { CompanyId = companyId, ScopeId = companyScopeResult.data };
                 view.Companies.Add(companyNode);
 
                 #region 3. Loop through Branches
                 foreach (var branchDto in companyDto.Branches ?? new List<BranchDto>())
                 {
-                    var branchAddress = _mapper.Map<AddBranchAddressDto>(branchDto.Address);
+                    if (branchDto.Address is null)
+                    {
+                        return RequestResult<ViewOrganizationOnboardingDto>.Failure(
+                            $"Branch address is required for branch '{branchDto.Name}'.", ErrorCode.ValidationError);
+                    }
 
                     var branchAdded = await _mediator.Send(
                         new AddBranchCommand(
@@ -71,7 +89,7 @@ namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboard
                             branchDto.Description,
                             companyId,
                             branchDto.Code,
-                            branchAddress
+                            branchDto.Address
                         ), ct);
 
                     if (!branchAdded.isSuccess)
@@ -79,7 +97,13 @@ namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboard
                             branchAdded.message, branchAdded.errorCode);
 
                     var branchId = branchAdded.data.Id;
-                    var branchNode = new BranchNodeDto { BranchId = branchId };
+                    var branchScopeResult = await _mediator.Send(
+                        new EnsureScopeCommand(orgId, companyId, branchId, null, null), ct);
+                    if (!branchScopeResult.isSuccess)
+                        return RequestResult<ViewOrganizationOnboardingDto>.Failure(
+                            branchScopeResult.message, branchScopeResult.errorCode);
+
+                    var branchNode = new BranchNodeDto { BranchId = branchId, ScopeId = branchScopeResult.data };
                     companyNode.Branches.Add(branchNode);
 
                     #region 4. Loop through Departments
@@ -98,7 +122,13 @@ namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboard
                                 deptAdded.message, deptAdded.errorCode);
 
                         var deptId = deptAdded.data.Id;
-                        var deptNode = new DepartmentNodeDto { DepartmentId = deptId };
+                        var deptScopeResult = await _mediator.Send(
+                            new EnsureScopeCommand(orgId, companyId, branchId, deptId, null), ct);
+                        if (!deptScopeResult.isSuccess)
+                            return RequestResult<ViewOrganizationOnboardingDto>.Failure(
+                                deptScopeResult.message, deptScopeResult.errorCode);
+
+                        var deptNode = new DepartmentNodeDto { DepartmentId = deptId, ScopeId = deptScopeResult.data };
                         branchNode.Departments.Add(deptNode);
 
                         #region 5. Loop through Teams
@@ -117,7 +147,13 @@ namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboard
                                     teamAdded.message, teamAdded.errorCode);
 
                             var teamId = teamAdded.data.Id;
-                            deptNode.Teams.Add(new TeamNodeDto { TeamId = teamId });
+                            var teamScopeResult = await _mediator.Send(
+                                new EnsureScopeCommand(orgId, companyId, branchId, deptId, teamId), ct);
+                            if (!teamScopeResult.isSuccess)
+                                return RequestResult<ViewOrganizationOnboardingDto>.Failure(
+                                    teamScopeResult.message, teamScopeResult.errorCode);
+
+                            deptNode.Teams.Add(new TeamNodeDto { TeamId = teamId, ScopeId = teamScopeResult.data });
                         }
                         #endregion
                     }

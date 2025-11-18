@@ -1,12 +1,9 @@
-using HRManagementSystem.Common.Swagger;
 using HRManagementSystem.Data;
 using HRManagementSystem.Data.Middlewares;
 using HRManagementSystem.DI;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.SwaggerUI;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace HRManagementSystem

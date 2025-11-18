@@ -1,5 +1,3 @@
-using System;
-
 namespace HRManagementSystem.Common.Swagger
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]

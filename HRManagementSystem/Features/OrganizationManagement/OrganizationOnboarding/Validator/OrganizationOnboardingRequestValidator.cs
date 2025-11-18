@@ -16,8 +16,26 @@ public class OrganizationOnboardingRequestValidator : AbstractValidator<Organiza
         RuleFor(x => x.Address)
             .NotNull().WithMessage("Address is required.");
 
+        RuleFor(x => x.Companies)
+            .NotNull().WithMessage("At least one company is required.")
+            .Must(companies => companies is { Count: > 0 })
+            .WithMessage("At least one company is required.");
+
+        RuleFor(x => x.DefaultTimezone)
+            .Must(BeValidTimeZone)
+            .WithMessage("Default timezone must be a valid timezone id.");
+
         RuleForEach(x => x.Companies)
             .SetValidator(new CompanyRequestValidator());
+    }
+
+    private static bool BeValidTimeZone(string? timezoneId)
+    {
+        if (string.IsNullOrWhiteSpace(timezoneId))
+            return true;
+
+        return TimeZoneInfo.GetSystemTimeZones()
+            .Any(z => z.Id.Equals(timezoneId, StringComparison.OrdinalIgnoreCase));
     }
 }
 
