@@ -1,7 +1,7 @@
 using HRManagementSystem.Features.Common.AddressManagement.AddAddressDtoAndVms.Dtos;
 using HRManagementSystem.Features.Common.CurrencyManagement.AddCurrencyDtosAndVms.Dtos;
 
-namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding
+namespace HRManagementSystem.Features.Common.Onboarding.OrganizationOnboarding
 {
     public sealed class OrganizationOnboardingDto
     {

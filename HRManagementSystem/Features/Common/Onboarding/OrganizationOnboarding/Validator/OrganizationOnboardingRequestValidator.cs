@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
+using HRManagementSystem.Features.Common.Onboarding.OrganizationOnboarding;
 
-namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding.Validator;
+namespace HRManagementSystem.Features.Common.Onboarding.OrganizationOnboarding.Validator;
 
 public class OrganizationOnboardingRequestValidator : AbstractValidator<OrganizationOnboardingRequestViewModel>
 {

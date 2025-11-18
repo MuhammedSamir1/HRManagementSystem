@@ -1,8 +1,8 @@
-using HRManagementSystem.Features.Common.AddressManagement.AddAddressOnBoarding.Dtos;
-using HRManagementSystem.Features.Common.AddressManagement.AddAddressOnBoarding.Orchestrators;
-using HRManagementSystem.Features.Common.AddressManagement.AddAddressOnBoarding.ViewModels;
+using HRManagementSystem.Features.Common.Onboarding.AddAddressOnBoarding.Dtos;
+using HRManagementSystem.Features.Common.Onboarding.AddAddressOnBoarding.Orchestrators;
+using HRManagementSystem.Features.Common.Onboarding.AddAddressOnBoarding.ViewModels;
 
-namespace HRManagementSystem.Features.Common.AddressManagement.AddAddressOnBoarding
+namespace HRManagementSystem.Features.Common.Onboarding.AddAddressOnBoarding
 {
     [ApiGroup("Onboarding")]
     public sealed class AddAddressOnBoardingEndPoint

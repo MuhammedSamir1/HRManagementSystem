@@ -2,15 +2,15 @@ using HRManagementSystem.Data.Models.AddressEntity;
 using HRManagementSystem.Features.CityManagement.AddCity.Commands;
 using HRManagementSystem.Features.CityManagement.GetAllCities;
 using HRManagementSystem.Features.CityManagement.GetAllCities.Queries;
-using HRManagementSystem.Features.Common.AddressManagement.AddAddressOnBoarding.Dtos;
 using HRManagementSystem.Features.Common.AddressManagement.CountryCommon.Dtos;
 using HRManagementSystem.Features.Common.AddressManagement.StateCommon.Dtos;
+using HRManagementSystem.Features.Common.Onboarding.AddAddressOnBoarding.Dtos;
 using HRManagementSystem.Features.CountryManagement.AddCountry.Commands;
 using HRManagementSystem.Features.CountryManagement.GetAllCountries.Queries;
 using HRManagementSystem.Features.StateManagement.AddState.Command;
 using HRManagementSystem.Features.StateManagement.GetAllStates.Queries;
 
-namespace HRManagementSystem.Features.Common.AddressManagement.AddAddressOnBoarding.Orchestrators
+namespace HRManagementSystem.Features.Common.Onboarding.AddAddressOnBoarding.Orchestrators
 {
     public sealed class AddAddressOnBoardingOrchestratorHandler
         : RequestHandlerBase<AddAddressOnBoardingOrchestrator, RequestResult<bool>, Country, Guid>

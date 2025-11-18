@@ -1,11 +1,12 @@
 using HRManagementSystem.Features.BranchManagement.AddBranch.Commands;
+using HRManagementSystem.Features.Common.Onboarding.OrganizationOnboarding;
 using HRManagementSystem.Features.CompanyManagement.AddCompany.Commands;
 using HRManagementSystem.Features.DepartmentManagement.AddDepartment.Commands;
 using HRManagementSystem.Features.OrganizationManagement.AddOrginzation.Commands;
 using HRManagementSystem.Features.ScopeManagement.EnsureScope.Commands;
 using HRManagementSystem.Features.TeamManagement.AddTeam.Commands;
 
-namespace HRManagementSystem.Features.OrganizationManagement.OrganizationOnboarding.Commands
+namespace HRManagementSystem.Features.Common.Onboarding.OrganizationOnboarding.Commands
 {
     public sealed class OrganizationOnboardingHandler
         : RequestHandlerBase<OrganizationOnboardingCommand, RequestResult<ViewOrganizationOnboardingDto>, Organization, Guid>

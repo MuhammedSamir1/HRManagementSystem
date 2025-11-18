@@ -1,7 +1,7 @@
 using FluentValidation;
 using System.ComponentModel.DataAnnotations;
 
-namespace HRManagementSystem.Features.Common.AddressManagement.AddAddressOnBoarding.ViewModels
+namespace HRManagementSystem.Features.Common.Onboarding.AddAddressOnBoarding.ViewModels
 {
     public sealed class AddAddressOnBoardingRequestViewModel
     {
