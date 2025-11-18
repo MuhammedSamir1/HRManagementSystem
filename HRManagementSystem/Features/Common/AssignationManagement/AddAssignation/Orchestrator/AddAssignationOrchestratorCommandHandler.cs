@@ -1,5 +1,4 @@
-﻿using HRManagementSystem.Data.Models.Scopes;
-using HRManagementSystem.Features.Common.Dtos;
+﻿using HRManagementSystem.Features.Common.Dtos;
 
 namespace HRManagementSystem.Features.Common.AssignationManagement.AddAssignation.Orchestrator;
 

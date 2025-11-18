@@ -1,5 +1,4 @@
-﻿using HRManagementSystem.Data.Models.ConfigurationsModels;
-using HRManagementSystem.Data.Models.Scopes;
+﻿using HRManagementSystem.Data.Models.Scopes;
 using HRManagementSystem.Features.Common.AssignationManagement.AddAssignation.Orchestrator;
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.ShiftScopeManagement.AssignShiftScope;
@@ -7,7 +6,7 @@ namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.S
 public class Handler : AddAssignationOrchestratorCommandHandler<ShiftScope>
 {
     public Handler(
-        RequestHandlerBaseParameters<ShiftScope,Guid> parameters
+        RequestHandlerBaseParameters<ShiftScope, Guid> parameters
     ) : base(parameters)
     {
     }
