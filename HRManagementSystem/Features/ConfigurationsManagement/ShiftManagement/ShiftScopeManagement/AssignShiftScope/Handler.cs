@@ -4,11 +4,11 @@ using HRManagementSystem.Features.Common.AssignationManagement.AddAssignation.Or
 
 namespace HRManagementSystem.Features.ConfigurationsManagement.ShiftManagement.ShiftScopeManagement.AssignShiftScope;
 
-//public class Handler : AddAssignationOrchestratorCommandHandler<ShiftScope>
-//{
-//    public Handler(
-//        RequestHandlerBaseParameters<ShiftScope,Guid> parameters
-//    ) : base(parameters)
-//    {
-//    }
-//}
+public class Handler : AddAssignationOrchestratorCommandHandler<ShiftScope>
+{
+    public Handler(
+        RequestHandlerBaseParameters<ShiftScope,Guid> parameters
+    ) : base(parameters)
+    {
+    }
+}
