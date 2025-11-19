@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using HRManagementSystem.Features.Common.Onboarding.OrganizationOnboarding;
 
 namespace HRManagementSystem.Features.Common.Onboarding.OrganizationOnboarding.Validator;
 
@@ -46,6 +45,13 @@ public class CompanyRequestValidator : AbstractValidator<CompanyRequestViewModel
     {
         RuleFor(x => x.Name).NotEmpty().MaximumLength(150);
         RuleFor(x => x.Code).NotEmpty().MaximumLength(50);
+
+        // Each Company MUST have at least one Branch with complete hierarchy
+        RuleFor(x => x.Branches)
+            .NotNull().WithMessage("Company must have at least one branch with a complete hierarchy (Branch → Department → Team).")
+            .Must(branches => branches != null && branches.Count > 0)
+            .WithMessage("Company must have at least one branch with a complete hierarchy (Branch → Department → Team).");
+
         RuleForEach(x => x.Branches).SetValidator(new BranchRequestValidator());
     }
 }
@@ -56,6 +62,16 @@ public class BranchRequestValidator : AbstractValidator<BranchRequestViewModel>
     {
         RuleFor(x => x.Name).NotEmpty();
         RuleFor(x => x.Code).NotEmpty();
+
+        RuleFor(x => x.Address)
+            .NotNull().WithMessage("Branch address is required.");
+
+        // Each Branch MUST have at least one Department with complete hierarchy
+        RuleFor(x => x.Departments)
+            .NotNull().WithMessage("Branch must have at least one department with a complete hierarchy (Department → Team).")
+            .Must(departments => departments != null && departments.Count > 0)
+            .WithMessage("Branch must have at least one department with a complete hierarchy (Department → Team).");
+
         RuleForEach(x => x.Departments).SetValidator(new DepartmentRequestValidator());
     }
 }
@@ -65,6 +81,14 @@ public class DepartmentRequestValidator : AbstractValidator<DepartmentRequestVie
     public DepartmentRequestValidator()
     {
         RuleFor(x => x.Name).NotEmpty();
+        RuleFor(x => x.Code).NotEmpty();
+
+        // Each Department MUST have at least one Team (complete hierarchy)
+        RuleFor(x => x.Teams)
+            .NotNull().WithMessage("Department must have at least one team.")
+            .Must(teams => teams != null && teams.Count > 0)
+            .WithMessage("Department must have at least one team.");
+
         RuleForEach(x => x.Teams).SetValidator(new TeamRequestValidator());
     }
 }
@@ -74,6 +98,7 @@ public class TeamRequestValidator : AbstractValidator<TeamRequestViewModel>
     public TeamRequestValidator()
     {
         RuleFor(x => x.Name).NotEmpty();
+        RuleFor(x => x.Code).NotEmpty();
     }
 }
 

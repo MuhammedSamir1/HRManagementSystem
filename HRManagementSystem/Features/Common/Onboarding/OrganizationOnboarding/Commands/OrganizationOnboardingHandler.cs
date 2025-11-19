@@ -1,5 +1,4 @@
 using HRManagementSystem.Features.BranchManagement.AddBranch.Commands;
-using HRManagementSystem.Features.Common.Onboarding.OrganizationOnboarding;
 using HRManagementSystem.Features.CompanyManagement.AddCompany.Commands;
 using HRManagementSystem.Features.DepartmentManagement.AddDepartment.Commands;
 using HRManagementSystem.Features.OrganizationManagement.AddOrginzation.Commands;
@@ -18,17 +17,8 @@ namespace HRManagementSystem.Features.Common.Onboarding.OrganizationOnboarding.C
 
         public override async Task<RequestResult<ViewOrganizationOnboardingDto>> Handle(OrganizationOnboardingCommand request, CancellationToken ct)
         {
-            if (request.OnboardingDto.Currency is null)
-            {
-                return RequestResult<ViewOrganizationOnboardingDto>.Failure(
-                    "Currency is required for organization onboarding.", ErrorCode.ValidationError);
-            }
-
-            if (request.OnboardingDto.Address is null)
-            {
-                return RequestResult<ViewOrganizationOnboardingDto>.Failure(
-                    "Address is required for organization onboarding.", ErrorCode.ValidationError);
-            }
+            // Validation is handled by OrganizationOnboardingRequestValidator in the endpoint
+            // Currency and Address are already validated before reaching this handler
 
             #region 1. Add Organization
             var resultOrganization = await _mediator.Send(
@@ -66,24 +56,13 @@ namespace HRManagementSystem.Features.Common.Onboarding.OrganizationOnboarding.C
                         companyAdded.message, companyAdded.errorCode);
 
                 var companyId = companyAdded.data.Id;
-                var companyScopeResult = await _mediator.Send(
-                    new EnsureScopeCommand(orgId, companyId, null, null, null), ct);
-                if (!companyScopeResult.isSuccess)
-                    return RequestResult<ViewOrganizationOnboardingDto>.Failure(
-                        companyScopeResult.message, companyScopeResult.errorCode);
-
-                var companyNode = new CompanyNodeDto { CompanyId = companyId, ScopeId = companyScopeResult.data };
+                // REMOVED: Company scope call - only create scope for complete hierarchy paths (Org → Company → Branch → Dept → Team)
+                var companyNode = new CompanyNodeDto { CompanyId = companyId, ScopeId = Guid.Empty };
                 view.Companies.Add(companyNode);
 
                 #region 3. Loop through Branches
                 foreach (var branchDto in companyDto.Branches ?? new List<BranchDto>())
                 {
-                    if (branchDto.Address is null)
-                    {
-                        return RequestResult<ViewOrganizationOnboardingDto>.Failure(
-                            $"Branch address is required for branch '{branchDto.Name}'.", ErrorCode.ValidationError);
-                    }
-
                     var branchAdded = await _mediator.Send(
                         new AddBranchCommand(
                             branchDto.Name,
@@ -98,13 +77,8 @@ namespace HRManagementSystem.Features.Common.Onboarding.OrganizationOnboarding.C
                             branchAdded.message, branchAdded.errorCode);
 
                     var branchId = branchAdded.data.Id;
-                    var branchScopeResult = await _mediator.Send(
-                        new EnsureScopeCommand(orgId, companyId, branchId, null, null), ct);
-                    if (!branchScopeResult.isSuccess)
-                        return RequestResult<ViewOrganizationOnboardingDto>.Failure(
-                            branchScopeResult.message, branchScopeResult.errorCode);
-
-                    var branchNode = new BranchNodeDto { BranchId = branchId, ScopeId = branchScopeResult.data };
+                    // REMOVED: Branch scope call - only create scope for complete hierarchy paths (Org → Company → Branch → Dept → Team)
+                    var branchNode = new BranchNodeDto { BranchId = branchId, ScopeId = Guid.Empty };
                     companyNode.Branches.Add(branchNode);
 
                     #region 4. Loop through Departments
@@ -123,16 +97,11 @@ namespace HRManagementSystem.Features.Common.Onboarding.OrganizationOnboarding.C
                                 deptAdded.message, deptAdded.errorCode);
 
                         var deptId = deptAdded.data.Id;
-                        var deptScopeResult = await _mediator.Send(
-                            new EnsureScopeCommand(orgId, companyId, branchId, deptId, null), ct);
-                        if (!deptScopeResult.isSuccess)
-                            return RequestResult<ViewOrganizationOnboardingDto>.Failure(
-                                deptScopeResult.message, deptScopeResult.errorCode);
-
-                        var deptNode = new DepartmentNodeDto { DepartmentId = deptId, ScopeId = deptScopeResult.data };
+                        // REMOVED: Department scope call - only create scope for complete hierarchy paths (Org → Company → Branch → Dept → Team)
+                        var deptNode = new DepartmentNodeDto { DepartmentId = deptId, ScopeId = Guid.Empty };
                         branchNode.Departments.Add(deptNode);
 
-                        #region 5. Loop through Teams
+                        #region 5. Loop through Teams - ONLY CREATE SCOPE HERE (Complete Hierarchy)
                         foreach (var teamDto in deptDto.Teams ?? new List<TeamDto>())
                         {
                             var teamAdded = await _mediator.Send(
@@ -148,13 +117,25 @@ namespace HRManagementSystem.Features.Common.Onboarding.OrganizationOnboarding.C
                                     teamAdded.message, teamAdded.errorCode);
 
                             var teamId = teamAdded.data.Id;
+
+                            // ONLY CREATE SCOPE FOR COMPLETE HIERARCHY PATHS (Org → Company → Branch → Dept → Team)
                             var teamScopeResult = await _mediator.Send(
                                 new EnsureScopeCommand(orgId, companyId, branchId, deptId, teamId), ct);
+
                             if (!teamScopeResult.isSuccess)
                                 return RequestResult<ViewOrganizationOnboardingDto>.Failure(
                                     teamScopeResult.message, teamScopeResult.errorCode);
 
                             deptNode.Teams.Add(new TeamNodeDto { TeamId = teamId, ScopeId = teamScopeResult.data });
+
+                            // Update parent nodes with the scope ID from the first team (for reference)
+                            // This ensures parent nodes have a scope ID if needed, but scope is only created for complete paths
+                            if (deptNode.ScopeId == Guid.Empty)
+                                deptNode.ScopeId = teamScopeResult.data;
+                            if (branchNode.ScopeId == Guid.Empty)
+                                branchNode.ScopeId = teamScopeResult.data;
+                            if (companyNode.ScopeId == Guid.Empty)
+                                companyNode.ScopeId = teamScopeResult.data;
                         }
                         #endregion
                     }
